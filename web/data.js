@@ -46,7 +46,7 @@ var Prefs = (function () {
     theme: function () { return pick('theme', CONFIG.theme || 'auto'); },
     weather: function () { return pick('weather', true); },
     /** The weather card's forecast: 'hours' (the next 6 hours) or 'days' (the next 5 days). */
-    forecast: function () { return pick('forecast', 'hours') === 'days' ? 'days' : 'hours'; },
+    forecast: function () { return pick('forecast', 'days') === 'hours' ? 'hours' : 'days'; },   // the week by default
     shelf: function () { return pick('shelf', null); },
     /** The shelf_apps of the build that last set the shelf, so a new one wins once over the TV's choice. */
     shelfConfig: function () { return pick('shelfConfig', ''); },

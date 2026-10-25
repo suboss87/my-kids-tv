@@ -155,10 +155,11 @@ public class SettingsActivity extends Activity {
                 POWER = 6;
         private static final float LIST_ROW_H = 68, LIST_ROW_GAP = 6;
         private static final int PICK_VISIBLE = 9;
-        private static final float LIST_X = 1000, LIST_R = 1824, LIST_TOP = 186, ROW_GAP = 8, CHOICE_H = 104;
-        // The main menu: eight rows, then the comparison, the picks (with the Watchmode credit) and two notices, all on
-        // one 1080 px screen: the rows share the 462 px that seven took.
-        private static final float MAIN_TOP = 140, ROW_H = 53.75f, MAIN_GAP = 4;
+        // Every screen sits on one glass panel on the right; the child's TV, at a glance, on the left.
+        private static final float PANEL_L = 680, PANEL_T = 80, PANEL_R = 1840, PANEL_B = 1000, PANEL_RADIUS = 44;
+        private static final float LIST_X = 712, LIST_R = 1808, LIST_TOP = 186, ROW_GAP = 8, CHOICE_H = 104;
+        // The main menu: eight roomy rows under the panel's title; the status lines moved to the left.
+        private static final float MAIN_TOP = 214, ROW_H = 64, MAIN_GAP = 6;
         private static final int AMBER = 0xFFFFC266, INK = 0xFF1C1C1E;
 
         private final SettingsActivity activity;
@@ -461,12 +462,8 @@ public class SettingsActivity extends Activity {
             }
             drawEveningSky(c);
 
-            // On the left: the app's icon, its name and what it's for.
-            float cx = 500 * k;
-            drawIcon(c, cx, 392 * k, 220 * k);
-            c.drawText("My Kids TV", cx, 612 * k, title);
-            c.drawText(Ui.tr("Good films and shows, picked for your child"), cx, 660 * k, subtitle);
-            c.drawText(versionName(getContext()), cx, 704 * k, version);
+            drawIdentity(c);
+            drawPanel(c);
 
             if (lock != null) lock.draw(c, k, LIST_X, LIST_R, LIST_TOP, dt);
             else if (screen == MAIN) drawMain(c, seconds); else if (screen == HOME_CHOICE) drawChoice(c); else if (screen == PICKER) drawPicker(c); else if (screen == SHELF_EDIT) drawShelfEditor(c);
@@ -474,6 +471,7 @@ public class SettingsActivity extends Activity {
         }
 
         private void drawMain(Canvas c, float seconds) {
+            c.drawText(Ui.tr("light|Settings"), LIST_X * k + 30 * k, (LIST_TOP - 24) * k, heading());
             boolean working = busy();
             String busyText = busyText();
             String mode = freeActive() ? "My Kids TV" : Ui.tr("Original");
@@ -532,14 +530,10 @@ public class SettingsActivity extends Activity {
                 c.restore();
                 y += errorLayout.getLineBaseline(errorLayout.getLineCount() - 1) - errorLayout.getLineBaseline(0) + 46 * k;
             }
-            y = drawChildSummary(c, y);
-            y = drawRecs(c, y + 26 * k);
-            drawNotices(c, y + 40 * k);
         }
 
         /** Home screen picks: status, and the credit TMDB asks for. */
-        private float drawRecs(Canvas c, float y) {
-            float x = LIST_X * k + 30 * k;
+        private float drawRecs(Canvas c, float x, float y, float width) {
             c.drawText(Ui.tr("RECOMMENDATIONS"), x, y, header);
             String line;
             String error = recs.optString("error");
@@ -550,14 +544,8 @@ public class SettingsActivity extends Activity {
             else if (!error.isEmpty()) line = Ui.trf("Error: {error}.", "error", error);
             else if (count > 0) line = Ui.trf("On · {n} titles from the TV's apps, 3 new ones every hour.", "n", count);
             else line = Ui.tr("Fetching titles…");
-            c.drawText(TextUtils.ellipsize(line, notice, 790 * k, TextUtils.TruncateAt.END).toString(), x, y + 42 * k, notice);
-            version.setTextAlign(Paint.Align.LEFT);
-            c.drawText(Ui.tr("This product uses the TMDB API but is not endorsed or certified by TMDB."), x, y + 78 * k, version);
-            if (!Config.WATCHMODE_KEY.trim().isEmpty()) {
-                c.drawText(Ui.tr("Links to the titles by Watchmode."), x, y + 108 * k, version);
-            }
-            version.setTextAlign(Paint.Align.CENTER);
-            return y + (Config.WATCHMODE_KEY.trim().isEmpty() ? 78 : 108) * k;
+            c.drawText(TextUtils.ellipsize(line, notice, width, TextUtils.TruncateAt.END).toString(), x, y + 42 * k, notice);
+            return y + 42 * k;
         }
 
         /** List row: no background; focused, white with a shadow (the Apple TV focus). Returns how focused it is. */
@@ -567,7 +555,7 @@ public class SettingsActivity extends Activity {
                 float s = 1 + 0.02f * f;
                 float cx = rowRect.centerX(), cy = rowRect.centerY();
                 tmp.set(cx - rowRect.width() * s / 2, cy - rowRect.height() * s / 2, cx + rowRect.width() * s / 2, cy + rowRect.height() * s / 2);
-                float r = 18 * k * s;
+                float r = 24 * k * s;
                 tmp.offset(0, 10 * k * f);
                 shadow.setColor(Ui.alpha(0xFF000000, 0.4f * f));
                 c.drawRoundRect(tmp, r, r, shadow);
@@ -579,21 +567,96 @@ public class SettingsActivity extends Activity {
             return f;
         }
 
-        /** What the parent set up, at a glance: the child's age, how many vetted titles that age has, the YouTube button. */
-        private float drawChildSummary(Canvas c, float y) {
-            float x = LIST_X * k + 30 * k, col = LIST_R * k - 30 * k;
-            c.drawText(Ui.tr("FOR YOUR CHILD"), x, y, header);
-            cellValue.setColor(0xD9FFFFFF);
-            String band = Prefs.ageBand();
-            String[][] rows = {{Ui.tr("Age"), Ui.trf("{band} years", "band", band)},
-                    {Ui.tr("Catalog"), Ui.trf("{n} titles", "n", catalogSize(band))},
-                    {Ui.tr("Block YouTube button"), onOff(Prefs.blockYoutubeButton())}};
-            for (int i = 0; i < rows.length; i++) {
-                float base = y + (46 + 40 * i) * k;
-                c.drawText(rows[i][0], x, base, cellLabel);
-                c.drawText(rows[i][1], col, base, cellValue);
+        /**
+         * The left side: whose TV this is (the child's initial in a warm squircle and their name, or the app's icon), the
+         * age and how many titles that age has, then how the picks and the last switches went, quietly. At the bottom
+         * the app's version and the credit TMDB asks for.
+         */
+        private void drawIdentity(Canvas c) {
+            float x = 80 * k, top = 96 * k, size = 104 * k, width = 540 * k;
+            String name = Prefs.childName(), band = Prefs.ageBand();
+            if (name.isEmpty()) {
+                drawIcon(c, x + size / 2, top + size / 2, size);
+            } else {
+                tmp.set(x, top, x + size, top + size);
+                shadow.setColor(0x66000014);
+                tmp.offset(0, 14 * k);
+                c.drawRoundRect(tmp, 32 * k, 32 * k, shadow);
+                tmp.offset(0, -14 * k);
+                if (avatarFill == null) {
+                    avatarFill = new Paint(Paint.ANTI_ALIAS_FLAG);
+                    avatarFill.setShader(new android.graphics.LinearGradient(x, top, x + size * 0.6f, top + size,
+                            0xFFFFD9B8, 0xFFF4A38C, android.graphics.Shader.TileMode.CLAMP));
+                    initial = Ui.text(Ui.displaySemibold, 52 * k, 0xFF121A43);
+                    initial.setTextAlign(Paint.Align.CENTER);
+                }
+                c.drawRoundRect(tmp, 32 * k, 32 * k, avatarFill);
+                String first = name.substring(0, name.offsetByCodePoints(0, 1)).toUpperCase(java.util.Locale.ROOT);
+                c.drawText(first, tmp.centerX(), tmp.centerY() + Ui.halfCap(initial), initial);
             }
-            return y + (46 + 40 * rows.length) * k;
+            if (who == null) {
+                who = Ui.text(Ui.displaySemibold, 46 * k, 0xFFFFFFFF);
+                whoSub = Ui.text(Ui.medium, 24 * k, 0xA8F3F5FF);
+            }
+            float tx = x + size + 26 * k;
+            c.drawText(TextUtils.ellipsize(name.isEmpty() ? "My Kids TV" : name, new TextPaint(who), width - size - 26 * k,
+                    TextUtils.TruncateAt.END).toString(), tx, top + 56 * k, who);
+            c.drawText(Ui.trf("{band} years", "band", band) + " · " + Ui.trf("{n} titles", "n", catalogSize(band)),
+                    tx, top + 94 * k, whoSub);
+            if (lock == null && screen == MAIN) {
+                float y = drawRecs(c, x, 330 * k, width);
+                drawNotices(c, x, y + 64 * k, width);
+            }
+            version.setTextAlign(Paint.Align.LEFT);
+            c.drawText(versionName(getContext()), x, 920 * k, version);
+            if (!Config.WATCHMODE_KEY.trim().isEmpty()) c.drawText(Ui.tr("Links to the titles by Watchmode."), x, 888 * k, version);
+            version.setTextAlign(Paint.Align.CENTER);
+            String credit = Ui.tr("This product uses the TMDB API but is not endorsed or certified by TMDB.");
+            if (creditLayout == null || !credit.equals(creditFor)) {
+                TextPaint p = new TextPaint(version);
+                p.setTextAlign(Paint.Align.LEFT);
+                creditLayout = StaticLayout.Builder.obtain(credit, 0, credit.length(), p, Math.round(width))
+                        .setMaxLines(2).setEllipsize(TextUtils.TruncateAt.END).build();
+                creditFor = credit;
+            }
+            c.save();
+            c.translate(x, 934 * k);
+            creditLayout.draw(c);
+            c.restore();
+        }
+
+        private Paint avatarFill, initial, who, whoSub, panelFill, panelRim, headingPaint;
+        private StaticLayout creditLayout;
+        private String creditFor;
+
+        /** The glass panel every screen sits on: a faint white veil with a light top edge, a soft shadow under it. */
+        private void drawPanel(Canvas c) {
+            if (panelFill == null) {
+                panelFill = new Paint(Paint.ANTI_ALIAS_FLAG);
+                panelFill.setColor(0x10FFFFFF);
+                panelRim = new Paint(Paint.ANTI_ALIAS_FLAG);
+                panelRim.setStyle(Paint.Style.STROKE);
+                panelRim.setStrokeWidth(1.5f * k);
+                panelRim.setShader(new android.graphics.LinearGradient(0, PANEL_T * k, 0, PANEL_B * k, 0x40FFFFFF, 0x0FFFFFFF,
+                        android.graphics.Shader.TileMode.CLAMP));
+            }
+            float r = PANEL_RADIUS * k;
+            tmp.set(PANEL_L * k, PANEL_T * k, PANEL_R * k, PANEL_B * k);
+            tmp.offset(0, 24 * k);
+            shadow.setColor(0x47000014);
+            c.drawRoundRect(tmp, r, r, shadow);
+            tmp.offset(0, -24 * k);
+            c.drawRoundRect(tmp, r, r, panelFill);
+            c.drawRoundRect(tmp, r, r, panelRim);
+        }
+
+        /** The panel's title (the screen's name). */
+        private Paint heading() {
+            if (headingPaint == null) {
+                headingPaint = Ui.text(Ui.displaySemibold, 42 * k, 0xFFFFFFFF);
+                headingPaint.setLetterSpacing(-0.01f);
+            }
+            return headingPaint;
         }
 
         private String catalogBand = "";
@@ -645,8 +708,7 @@ public class SettingsActivity extends Activity {
 
         private final Paint iconPaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG);
 
-        private void drawNotices(Canvas c, float y) {
-            float x = LIST_X * k + 30 * k;
+        private void drawNotices(Canvas c, float x, float y, float width) {
             c.drawText(Ui.tr("NOTICES"), x, y, header);
             JSONArray notices = state.optJSONArray("notices");
             int shown = 0;
@@ -654,7 +716,7 @@ public class SettingsActivity extends Activity {
                 JSONObject o = notices.optJSONObject(i);
                 if (o == null) continue;
                 String line = ago(o.optLong("at")) + " · " + o.optString("text");
-                c.drawText(TextUtils.ellipsize(line, notice, 790 * k, TextUtils.TruncateAt.END).toString(), x, y + (42 + 38 * shown) * k, notice);
+                c.drawText(TextUtils.ellipsize(line, notice, width, TextUtils.TruncateAt.END).toString(), x, y + (42 + 38 * shown) * k, notice);
                 shown++;
             }
             if (shown == 0) c.drawText(Ui.tr("None yet."), x, y + 42 * k, notice);
@@ -662,7 +724,7 @@ public class SettingsActivity extends Activity {
 
         /** Home screen choice: My Kids TV or the original, with a check on the one in use. */
         private void drawChoice(Canvas c) {
-            Paint heading = Ui.text(Ui.displaySemibold, 34 * k, 0xFFFFFFFF);
+            Paint heading = heading();
             c.drawText(Ui.tr("Home Screen"), LIST_X * k + 30 * k, (LIST_TOP - 24) * k, heading);
             String[][] options = {{"My Kids TV", Ui.tr("No ads, with the new screensaver")},
                     {Ui.tr("Original"), Ui.tr("The TV's factory home screen")}};
@@ -1253,7 +1315,7 @@ public class SettingsActivity extends Activity {
         }
 
         private void drawShelfEditor(Canvas c) {
-            Paint heading = Ui.text(Ui.displaySemibold, 34 * k, 0xFFFFFFFF);
+            Paint heading = heading();
             c.drawText(editingTop ? Ui.tr("Top Buttons") : Ui.tr("Shelf"), LIST_X * k + 30 * k, (LIST_TOP - 24) * k, heading);
             int rows = rowCount();
             for (int i = 0; i < rows; i++) {
@@ -1319,7 +1381,7 @@ public class SettingsActivity extends Activity {
 
         /** A long list (the apps): nine rows at a time, the one in use checked. */
         private void drawPicker(Canvas c) {
-            Paint heading = Ui.text(Ui.displaySemibold, 34 * k, 0xFFFFFFFF);
+            Paint heading = heading();
             String title = pickFor == PICK_CITY ? Ui.tr("City")
                     : pickFor == PICK_LANGUAGE ? Ui.tr("Language")
                     : pickFor == PICK_SLEEP ? Ui.tr("Sleep Timer") : pickFor == PICK_PLACE ? Ui.tr("Position")
@@ -1352,7 +1414,7 @@ public class SettingsActivity extends Activity {
             boolean keys = screen == REMOTE_KEYS;
             String[] labels = listLabels();
             String[] values = listValues();
-            Paint heading = Ui.text(Ui.displaySemibold, 34 * k, 0xFFFFFFFF);
+            Paint heading = heading();
             c.drawText(keys ? Ui.tr("Remote Buttons") : screen == POWER ? Ui.tr("Sleep Timer") : Ui.tr("Home Settings"),
                     LIST_X * k + 30 * k, (LIST_TOP - 24) * k, heading);
             float pitch = LIST_ROW_H + LIST_ROW_GAP;

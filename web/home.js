@@ -580,16 +580,19 @@
     var d = $('drawer');
     d.innerHTML = '';
     drawerItems = [];
+    // One input, as on Android: the HDMI port with a device on it (the first one when none has); no Live TV.
+    var hdmi = null;
     for (var i = 0; i < inputs.length; i++) {
-      var x = inputs[i];
-      drawerItems.push({label: x.label || tr('Live TV'), symbol: x.symbol, off: !x.connected, run: launcher(x.id, x.label)});
+      if (!inputs[i].label) continue;   // Live TV
+      if (!hdmi || (inputs[i].connected && !hdmi.connected)) hdmi = inputs[i];
     }
+    if (hdmi) drawerItems.push({label: hdmi.label, symbol: hdmi.symbol, off: !hdmi.connected, run: launcher(hdmi.id, hdmi.label)});
     drawerInputs = drawerItems.length;
     drawerItems.push({label: tr('All Apps'), symbol: 'apps', run: openApps});
     drawerItems.push({label: tr('Home Settings'), symbol: 'settings', run: openSettings});
     drawerItems.push({label: tr('TV Settings'), symbol: 'tv_settings', run: tvSettings});
     var n = drawerItems.length, gap = 18, groupGap = 56, groups = drawerInputs > 0 && drawerInputs < n ? 2 : 1;
-    var tw = Math.min(230, (1760 - Math.max(0, n - groups) * gap - (groups - 1) * groupGap) / Math.max(1, n));
+    var tw = Math.min(440, (1760 - Math.max(0, n - groups) * gap - (groups - 1) * groupGap) / Math.max(1, n));   // lines up with the weather card
     var xPos = 80;
     for (var k = 0; k < n; k++) {
       if (k === drawerInputs && k > 0) {

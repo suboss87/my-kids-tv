@@ -1483,6 +1483,15 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             sheen.setAlpha(255);
             c.restore();
         }
+        // A hairline of light around every app: it gives the dark ones (Netflix) an edge on the night sky. Not a
+        // focus ring: it is the same on all of them.
+        float in = 0.6f * k;
+        tmp.set(cell.left + in, cell.top + in, cell.right - in, cell.bottom - in);
+        rim.setShader(null);
+        rim.setColor(tone(0x33FFFFFF, 0x24FFFFFF));
+        rim.setStrokeWidth(1.2f * k);
+        c.drawRoundRect(tmp, r - in, r - in, rim);
+        rim.setStrokeWidth(2.5f * k);
     }
 
     private LinearGradient tileSheen;
@@ -1546,8 +1555,18 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     // MARK: - Bottom drawer
 
+    /**
+     * The drawer: one input, then the shortcuts. Of the HDMI ports only the one with a device on it (the first one when
+     * none has), so a child sees one clear "plug" and not a row of grayed-out ports; no Live TV.
+     */
     private static List<HomeApps.Item> drawerList(Context c) {
-        List<HomeApps.Item> list = HomeApps.allInputs(c);
+        List<HomeApps.Item> list = new ArrayList<>();
+        HomeApps.Item hdmi = null;
+        for (HomeApps.Item it : HomeApps.allInputs(c)) {
+            if (it.kind != HomeApps.INPUT) continue;
+            if (hdmi == null || (it.connected && !hdmi.connected)) hdmi = it;
+        }
+        if (hdmi != null) list.add(hdmi);
         list.addAll(HomeApps.drawerShortcuts(c));
         return list;
     }
@@ -1580,7 +1599,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float left = MARGIN * k, right = CONTENT_R * k;
         float gap = 18 * k, groupGap = 56 * k;
         int groups = drawerInputs > 0 && drawerInputs < n ? 2 : 1;
-        float tw = Math.min(230 * k, (right - left - Math.max(0, n - groups) * gap - (groups - 1) * groupGap) / Math.max(1, n));
+        // The tiles share the full width, so the row lines up with the weather card's edges below it.
+        float tw = Math.min(440 * k, (right - left - Math.max(0, n - groups) * gap - (groups - 1) * groupGap) / Math.max(1, n));
         float x = left, top = ROW_TOP * k;
         for (int i = 0; i < n; i++) {
             if (i == drawerInputs && i > 0) x += groupGap - gap;
