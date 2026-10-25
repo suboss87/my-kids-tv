@@ -47,6 +47,7 @@ final class Recs {
         String kind;            // "movie" or "tv"
         String title, backdrop, meta = "", app, pkg;
         String link;            // opens the title in its app (looked up with Watchmode), or null: the app's home
+        String badge = "";      // why it's worth watching, from the catalog: "must", "learn", "loved" or ""
         boolean detailed;
         java.io.File photo;     // one of your own photos (Photos): no title, no caption
     }
@@ -475,6 +476,7 @@ final class Recs {
      * ratings, Jev's judgments and a person's review). Ids by kind, loaded once.
      */
     private static int[] catalogMovies, catalogShows;
+    private static final Map<String, String> catalogBadges = new HashMap<>();   // "movie:12" -> "must"
 
     private void loadCatalog() {
         if (catalogMovies != null) return;
@@ -484,6 +486,7 @@ final class Recs {
             for (int i = 0; i < titles.length(); i++) {
                 JSONObject t = titles.getJSONObject(i);
                 ("movie".equals(t.optString("kind")) ? movies : shows).add(t.getInt("id"));
+                if (!t.optString("badge").isEmpty()) catalogBadges.put(t.optString("kind") + ":" + t.getInt("id"), t.optString("badge"));
             }
         } catch (Exception e) {
             AppLog.w("catalog " + Prefs.ageBand() + ": " + e.getMessage());
@@ -504,6 +507,8 @@ final class Recs {
             Pick p = new Pick();
             p.id = order.get(i);
             p.kind = kind;
+            String badge = catalogBadges.get(kind + ":" + p.id);
+            if (badge != null) p.badge = badge;
             try {
                 fetchDetails(p);
             } catch (Exception e) {
@@ -901,7 +906,7 @@ final class Recs {
             JSONArray a = new JSONArray();
             for (Pick p : picks) {
                 a.put(new JSONObject().put("id", p.id).put("kind", p.kind).put("title", p.title).put("backdrop", p.backdrop).put("link", p.link == null ? "" : p.link)
-                        .put("meta", p.meta).put("app", p.app == null ? "" : p.app).put("pkg", p.pkg == null ? "" : p.pkg)
+                        .put("meta", p.meta).put("badge", p.badge).put("app", p.app == null ? "" : p.app).put("pkg", p.pkg == null ? "" : p.pkg)
                         .put("detailed", p.detailed));
             }
             SharedPreferences.Editor e = cache.edit().putString("picks", a.toString()).putInt("period", period).putLong("listAt", listAt)
@@ -928,6 +933,7 @@ final class Recs {
             p.backdrop = o.optString("backdrop");
             p.link = o.optString("link").isEmpty() ? null : o.optString("link");
             p.meta = o.optString("meta");
+            p.badge = o.optString("badge");
             p.app = o.optString("app").isEmpty() ? null : o.optString("app");
             p.pkg = o.optString("pkg").isEmpty() ? null : o.optString("pkg");
             p.detailed = o.optBoolean("detailed");

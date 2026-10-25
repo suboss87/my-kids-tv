@@ -148,6 +148,11 @@ final class Prefs {
 
     static void setAgeBand(String v) { put("age_band", v); }
 
+    /** The child's first name for the greeting ("Good morning, Maya"), or "" for none. */
+    static String childName() { return sp().getString("child_name", Config.CHILD_NAME.trim()).trim(); }
+
+    static void setChildName(String v) { put("child_name", v); }
+
     // MARK: - City
 
     static String city() { return sp().getString("city", Place.city()).trim(); }

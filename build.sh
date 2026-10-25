@@ -52,7 +52,7 @@ else
   CURRENCY="$(prop currency USD)"
 fi
 ASSIST=false; [ "$(prop disable_assistant false)" = "true" ] && ASSIST=true
-CRYPTO=false; [ "$(prop show_crypto true)" = "true" ] && CRYPTO=true
+CRYPTO=false; [ "$(prop show_crypto false)" = "true" ] && CRYPTO=true
 ANIMATION=false; [ "$(prop hide_animation false)" = "true" ] && ANIMATION=true
 BLOCK_YT=false; [ "$(prop block_youtube_button false)" = "true" ] && BLOCK_YT=true
 
@@ -79,6 +79,7 @@ final class Config {
     static final boolean SHOW_CRYPTO = $CRYPTO;
     static final boolean HIDE_ANIMATION = $ANIMATION;
     static final String AGE_BAND = "$(prop age_band 7-10)";
+    static final String CHILD_NAME = "$(prop child_name '')";
     static final boolean BLOCK_YOUTUBE_BUTTON = $BLOCK_YT;
 }
 EOF

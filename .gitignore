@@ -17,3 +17,7 @@ tools/.i18n-cache.json
 
 # Catalog pipeline: TMDB response cache (rebuildable, large)
 catalog/work/cache/
+
+# Local tooling and pipeline logs
+.claude/
+catalog/work/*.log

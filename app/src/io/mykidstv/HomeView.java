@@ -146,7 +146,13 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private final Spring[] cardFocus = new Spring[3];
     private final RectF[] cardRects = new RectF[3];
     private final List<HomeApps.Item> lightButtons = new ArrayList<>();
-    private Paint lTitle, lTab, lTabOn, lCardTitle, lCardMeta, lQuote, lTip, lDate, lClock, lWeather, lClockQuote;
+    private Paint lTitle, lTab, lTabOn, lCardTitle, lCardMeta, lQuote, lTip, lDate, lClock, lWeather, lClockQuote, lBadge;
+    /** The greeting over the picks ("Good morning, Maya"), made again only when the hour or the settings change. */
+    private String greeting = "";
+    private int greetingHour = -1, greetingPrefs = -1;
+    private String greetingLanguage = "";
+    /** Card corners: rounder than a grown-up's TV, the way toys and children's books are. */
+    private static final float L_CARD_RADIUS = 30;
     private Shader lightGradient;
 
     // Shelf
@@ -625,6 +631,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         lCardTitle = Ui.text(Ui.semibold, 31 * k, L_INK);
         lCardTitle.setLetterSpacing(0.012f);
         lCardMeta = Ui.text(Ui.medium, 25 * k, L_DIM);
+        lBadge = Ui.text(Ui.semibold, 22 * k, L_INK);
+        lBadge.setLetterSpacing(0.02f);
         lQuote = Ui.numbers(Ui.regular, 21 * k, L_FAINT);
         lTip = Ui.text(Ui.semibold, 25 * k, L_INK);
         lTip.setTextAlign(Paint.Align.CENTER);
@@ -2970,7 +2978,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             if (HomeData.coinCount() > 0) drawQuotes(c);
             return;
         }
-        String hello = Ui.tr("For You");
+        String hello = greeting();
         c.drawText(hello, MARGIN * k - Ui.leftBearing(lTitle, hello), L_TITLE_BASE * k, lTitle);
         // Text tabs (the selected one in bold, in the main text color); with focus on the tabs, the selected one gets
         // the white pill with a shadow and grows a little (the tvOS focus).
@@ -3001,6 +3009,22 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         for (int i = 0; i < 3; i++) if (i != top) drawLightCard(c, i);
         if (top >= 0) drawLightCard(c, top);
         if (HomeData.coinCount() > 0) drawQuotes(c);
+    }
+
+    /** "Good morning" / "Good afternoon" / "Good evening", with the child's name when the parent set one. */
+    private String greeting() {
+        int hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY);
+        if (hour != greetingHour || Prefs.version != greetingPrefs || !Ui.language.equals(greetingLanguage)) {
+            greetingHour = hour;
+            greetingPrefs = Prefs.version;
+            greetingLanguage = Ui.language;
+            String name = Prefs.childName();
+            boolean morning = hour >= 5 && hour < 12, afternoon = hour >= 12 && hour < 17;
+            greeting = name.isEmpty()
+                    ? Ui.tr(morning ? "Good morning" : afternoon ? "Good afternoon" : "Good evening")
+                    : Ui.trf(morning ? "Good morning, {name}" : afternoon ? "Good afternoon, {name}" : "Good evening, {name}", "name", name);
+        }
+        return greeting;
     }
 
     private boolean picksOn() {
@@ -3035,9 +3059,9 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private void drawLightCard(Canvas c, int i) {
         RectF base = cardRects[i];
         Recs.Pick p = i < cards.size() ? cards.get(i) : null;
-        float v = cardFocus[i].value, f = Ui.clamp(v), s = 1 + 0.05f * v;
-        float bw = base.width(), bh = base.height(), r0 = 18 * k;
-        float cx = base.centerX(), cy = base.centerY() - 6 * k * v;
+        float v = cardFocus[i].value, f = Ui.clamp(v), s = 1 + 0.07f * v;   // the spring's overshoot gives a small bounce
+        float bw = base.width(), bh = base.height(), r0 = L_CARD_RADIUS * k;
+        float cx = base.centerX(), cy = base.centerY() - 10 * k * v;
         cell.set(cx - bw * s / 2, cy - bh * s / 2, cx + bw * s / 2, cy + bh * s / 2);
         float r = r0 * s;
         c.save();
@@ -3086,12 +3110,41 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             c.restore();
         }
         if (p == null) return;
+        drawBadge(c, p.badge, cell, s);
         fitPaint.set(lCardTitle);
         c.drawText(TextUtils.ellipsize(p.title, fitPaint, bw, TextUtils.TruncateAt.END).toString(), base.left, base.bottom + 46 * k, lCardTitle);
         if (i == 0 && p.meta != null && !p.meta.isEmpty()) {
             fitPaint.set(lCardMeta);
             c.drawText(TextUtils.ellipsize(p.meta, fitPaint, bw, TextUtils.TruncateAt.END).toString(), base.left, base.bottom + 80 * k, lCardMeta);
         }
+    }
+
+    /**
+     * Why the title is worth watching, as a small frosted pill in the card's top-left corner with a colored dot:
+     * gold for a must-watch, teal for learning something, pink for one children love. Nothing when there's no reason.
+     */
+    private void drawBadge(Canvas c, String badge, RectF card, float s) {
+        if (badge == null || badge.isEmpty()) return;
+        String label;
+        int dot;
+        switch (badge) {
+            case "must": label = Ui.tr("Must-watch"); dot = 0xFFFFB020; break;
+            case "learn": label = Ui.tr("Learn something"); dot = 0xFF14B8A6; break;
+            case "loved": label = Ui.tr("Kids love it"); dot = 0xFFFF5C8A; break;
+            default: return;
+        }
+        float h = 42 * k * s, pad = 16 * k * s, dr = 6 * k * s, gap = 10 * k * s;
+        lBadge.setTextSize(22 * k * s);
+        float w = pad + 2 * dr + gap + lBadge.measureText(label) + pad;
+        float left = card.left + 18 * k * s, top = card.top + 18 * k * s;
+        tmp.set(left, top, left + w, top + h);
+        fill.setShader(null);
+        fill.setColor(tone(0xE6FFFFFF, 0xCC1C1C1E));
+        c.drawRoundRect(tmp, h / 2, h / 2, fill);
+        fill.setColor(dot);
+        c.drawCircle(left + pad + dr, tmp.centerY(), dr, fill);
+        lBadge.setColor(tone(L_INK, WHITE));
+        c.drawText(label, left + pad + 2 * dr + gap, tmp.centerY() + Ui.halfCap(lBadge), lBadge);
     }
 
     /**

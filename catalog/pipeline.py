@@ -199,10 +199,19 @@ def stage_select(band):
 
 # --- Stage 5: the app's catalog -----------------------------------------------------------------------------------
 
+def badge(r, genres):
+    """The one reason shown on the card, from Jev's judgments: must-watch, learn something, or kids love it."""
+    if r['must'] >= 0.75: return 'must'
+    if 'Documentary' in genres: return 'learn'
+    if r['fun'] >= 2.75: return 'loved'
+    return ''
+
 def stage_emit(band):
     keep = load(work(band, 'selected.json'), {}).get('keep', [])
+    genres = {'%s:%d' % (c['kind'], c['id']): c['genres'] for c in load(work(band, 'candidates.json'), [])}
     out = os.path.join(HERE, '..', 'app', 'assets', 'catalog'); os.makedirs(out, exist_ok=True)
-    rows = [{'kind': r['kind'], 'id': r['id'], 'title': r['title'], 'year': r['year'], 'score': r['score']} for r in keep]
+    rows = [{'kind': r['kind'], 'id': r['id'], 'title': r['title'], 'year': r['year'], 'score': r['score'],
+             'badge': badge(r, genres.get('%s:%d' % (r['kind'], r['id']), []))} for r in keep]
     json.dump({'band': band, 'titles': rows}, open(os.path.join(out, band + '.json'), 'w'), indent=0, ensure_ascii=False)
     print('[%s] wrote app/assets/catalog/%s.json (%d titles)' % (band, band, len(rows)))
 
