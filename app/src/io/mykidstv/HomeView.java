@@ -3020,9 +3020,12 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             greetingLanguage = Ui.language;
             String name = Prefs.childName();
             boolean morning = hour >= 5 && hour < 12, afternoon = hour >= 12 && hour < 17;
-            greeting = name.isEmpty()
-                    ? Ui.tr(morning ? "Good morning" : afternoon ? "Good afternoon" : "Good evening")
-                    : Ui.trf(morning ? "Good morning, {name}" : afternoon ? "Good afternoon, {name}" : "Good evening, {name}", "name", name);
+            if (name.isEmpty()) {
+                greeting = morning ? Ui.tr("Good morning") : afternoon ? Ui.tr("Good afternoon") : Ui.tr("Good evening");
+            } else {
+                greeting = morning ? Ui.trf("Good morning, {name}", "name", name)
+                        : afternoon ? Ui.trf("Good afternoon, {name}", "name", name) : Ui.trf("Good evening, {name}", "name", name);
+            }
         }
         return greeting;
     }
