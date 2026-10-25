@@ -28,6 +28,25 @@ Geocode the city with `https://geocoding-api.open-meteo.com/v1/search?name=<city
 them. Temperature: `C` outside the US unless they say otherwise.
 A `parent_pin` is built into the app file: tell them to keep `MyKidsTV.apk` to themselves.
 
+**Their country decides the apps.** Set `tmdb_region` to the country's two-letter code (`US`, `GB`, `IN`, `BR`, ...):
+the picks only show titles streaming there. Then show them the apps the picks support in their country and ask which
+they pay for; put the others (installed but not paid for) in `hide_services`, so no title points to an app they can't
+watch. Any other app still goes on the home screen; it just doesn't feed the picks.
+
+| Country | Apps the picks support (the ones usually there) |
+|---|---|
+| United States | Netflix, Disney+, Prime Video, Hulu, Max, Peacock, Paramount+, Apple TV+ |
+| United Kingdom, Ireland | Netflix, Disney+, Prime Video, NOW, Apple TV+, Paramount+ |
+| India | Netflix, Prime Video, JioHotstar |
+| Canada, Australia, New Zealand | Netflix, Disney+, Prime Video, Apple TV+, Paramount+ |
+| Brazil | Netflix, Disney+, Prime Video, Globoplay, Max, Paramount+, Apple TV+ |
+| Europe (most countries) | Netflix, Disney+, Prime Video, Apple TV+, Max (where launched), Crunchyroll |
+| Anywhere else | Netflix, Disney+, Prime Video, Apple TV+ (check which are available there) |
+
+The services and their TV app packages are in `SERVICES` (`app/src/io/mykidstv/Recs.java`); a new service needs its
+TMDB name and package there. A title opens straight on its page in Netflix, Disney+, Apple TV+, Prime Video, Max and
+JioHotstar when the catalog has its address there (Wikidata, about 85% of titles); otherwise the app opens at its home.
+
 **The TMDB key is theirs and secret.** Ask them to create a free one (themoviedb.org, Settings, API) and paste it after
 `tmdb_key=` in `config.properties` themselves. Never print it, never commit it. If they paste it in the chat anyway,
 put it only in `config.properties`. Without a key everything works except the picks.

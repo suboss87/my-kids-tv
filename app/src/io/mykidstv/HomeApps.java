@@ -532,7 +532,11 @@ final class HomeApps {
                 plain = intent;
                 if (plain != null) plain.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                 if (intent != null && it.uri != null) {
-                    intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(it.uri)).addCategory(Intent.CATEGORY_BROWSABLE).setPackage(it.pkg);
+                    // A fresh task: with the app already open, Android would otherwise only bring it to the front and the
+                    // title's page wouldn't open (the flags Netflix documents for TV launchers).
+                    intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(it.uri)).addCategory(Intent.CATEGORY_BROWSABLE).setPackage(it.pkg)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    if ("com.netflix.ninja".equals(it.pkg)) intent.putExtra("source", "30");   // Netflix: launched from a launcher row
                 }
                 break;
             case LIVE_TV:

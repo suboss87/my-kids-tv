@@ -8,7 +8,7 @@ Stages: 1) candidates from seeds, research lists and TMDB sweeps; 2) hard age-ra
 3) Jev judges age fit, value, must-watch and fun; 4) policy in code plus overrides/<band>.json (a person's review);
 5) app/assets/catalog/<band>.json, which the app reads, and the open dataset in data/. Needs $TYPESAFE_API_KEY for judging, a TMDB key for the rest.
 """
-import argparse, concurrent.futures as cf, json, os, sys, time, urllib.request
+import argparse, concurrent.futures as cf, json, os, sys, time, urllib.parse, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tmdb import get
 from bands import BANDS, questions, craft_question, audience, policy
@@ -225,6 +225,51 @@ def stage_select(band):
     print('[%s] keep %d (movies %d, shows %d), to review %d' % (band, len(keep), sum(r['kind'] == 'movie' for r in keep),
           sum(r['kind'] == 'tv' for r in keep), len(review)), flush=True)
 
+# --- Stage 4b: direct links into the streaming apps -----------------------------------------------------------------
+
+# Each service's id for a title, from Wikidata (CC0), and the address its app opens the title's page with.
+LINK_PROPS = {'netflix': ('P1874', 'https://www.netflix.com/title/%s'),
+              'disney': ('P7595', 'https://www.disneyplus.com/movies/wd/%s'),
+              'disney_tv': ('P7596', 'https://www.disneyplus.com/series/wp/%s'),
+              'appletv': ('P9586', 'https://tv.apple.com/movie/%s'),
+              'appletv_tv': ('P9751', 'https://tv.apple.com/show/%s'),
+              'prime': ('P14440', 'https://www.primevideo.com/detail/%s'),
+              'prime_asin': ('P8055', 'https://www.primevideo.com/detail/%s'),
+              'max': ('P8298', 'https://play.hbomax.com/%s'),
+              'hotstar': ('P11049', 'https://www.hotstar.com/%s')}
+
+def wikidata(sparql):
+    req = urllib.request.Request('https://query.wikidata.org/sparql',
+                                 data=urllib.parse.urlencode({'query': sparql, 'format': 'json'}).encode(),
+                                 headers={'User-Agent': 'MyKidsTV-catalog/1.0 (github.com/suboss87/my-kids-tv)',
+                                          'Content-Type': 'application/x-www-form-urlencoded'})
+    for i in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return json.load(r)['results']['bindings']
+        except Exception:
+            time.sleep(3 * (i + 1))
+    raise RuntimeError('Wikidata did not answer')
+
+def stage_links(band):
+    """Links straight to each kept title's page in the streaming apps, by service: work/<band>/links.json."""
+    keep = load(work(band, 'selected.json'), {}).get('keep', [])
+    links = {}
+    for kind, tmdb_prop in (('movie', 'P4947'), ('tv', 'P4983')):
+        ids = [str(r['id']) for r in keep if r['kind'] == kind]
+        for at in range(0, len(ids), 200):
+            values = ' '.join('"%s"' % i for i in ids[at:at + 200])
+            opt = ' '.join('OPTIONAL { ?item wdt:%s ?%s . }' % (p, k) for k, (p, _) in LINK_PROPS.items())
+            rows = wikidata('SELECT ?tmdb %s WHERE { VALUES ?tmdb { %s } ?item wdt:%s ?tmdb . %s }'
+                            % (' '.join('?' + k for k in LINK_PROPS), values, tmdb_prop, opt))
+            for r in rows:
+                out = links.setdefault('%s:%s' % (kind, r['tmdb']['value']), {})
+                for k, (_, url) in LINK_PROPS.items():
+                    service = k.split('_')[0]
+                    if k in r and service not in out: out[service] = url % r[k]['value']
+    json.dump(links, open(work(band, 'links.json'), 'w'), indent=1, sort_keys=True)
+    print('[%s] links for %d of %d titles' % (band, sum(1 for v in links.values() if v), len(keep)), flush=True)
+
 # --- Stage 5: the app's catalog -----------------------------------------------------------------------------------
 
 def badge(r, genres):
@@ -244,10 +289,13 @@ def stage_emit(band):
     keep = load(work(band, 'selected.json'), {}).get('keep', [])
     cands = {'%s:%d' % (c['kind'], c['id']): c for c in load(work(band, 'candidates.json'), [])}
     genres = {k: c['genres'] for k, c in cands.items()}
+    links = load(work(band, 'links.json'), {})
     out = os.path.join(HERE, '..', 'app', 'assets', 'catalog'); os.makedirs(out, exist_ok=True)
     rows = [{'kind': r['kind'], 'id': r['id'], 'title': r['title'], 'year': r['year'], 'score': r['score'],
              'badge': badge(r, genres.get('%s:%d' % (r['kind'], r['id']), [])),
-             **({'famous': True} if famous(cands.get('%s:%d' % (r['kind'], r['id']))) else {})} for r in keep]
+             **({'famous': True} if famous(cands.get('%s:%d' % (r['kind'], r['id']))) else {}),
+             **({'links': links['%s:%d' % (r['kind'], r['id'])]} if links.get('%s:%d' % (r['kind'], r['id'])) else {})}
+            for r in keep]
     json.dump({'band': band, 'titles': rows}, open(os.path.join(out, band + '.json'), 'w'), indent=0, ensure_ascii=False)
     print('[%s] wrote app/assets/catalog/%s.json (%d titles)' % (band, band, len(rows)))
     export_dataset.export()  # keep the open dataset in data/ in step with the app's catalogs
@@ -255,11 +303,11 @@ def stage_emit(band):
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--band', required=True, choices=sorted(BANDS))
-    ap.add_argument('stage', choices=['all', 'candidates', 'judge', 'craft', 'select', 'expand', 'emit'])
+    ap.add_argument('stage', choices=['all', 'candidates', 'judge', 'craft', 'select', 'expand', 'links', 'emit'])
     a = ap.parse_args()
     if a.stage == 'all':
         stage_candidates(a.band); stage_judge(a.band); stage_select(a.band)
-        stage_expand(a.band); stage_judge(a.band); stage_craft(a.band); stage_select(a.band); stage_emit(a.band)
+        stage_expand(a.band); stage_judge(a.band); stage_craft(a.band); stage_select(a.band); stage_links(a.band); stage_emit(a.band)
     else:
-        {'candidates': stage_candidates, 'judge': stage_judge, 'craft': stage_craft, 'select': stage_select,
+        {'candidates': stage_candidates, 'judge': stage_judge, 'craft': stage_craft, 'select': stage_select, 'links': stage_links,
          'expand': stage_expand, 'emit': stage_emit}[a.stage](a.band)

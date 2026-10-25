@@ -1,0 +1,310 @@
+{
+ "movie:10009": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.1th1pfxoyjs4tqnzgmhqs3j6v",
+  "disney": "https://www.disneyplus.com/movies/wd/2asiYJlL0GMa",
+  "netflix": "https://www.netflix.com/title/60031254"
+ },
+ "movie:10020": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.4m0m5cwqgetm1xtoyncr9m7d4",
+  "disney": "https://www.disneyplus.com/movies/wd/3NGDQClVpZay"
+ },
+ "movie:10144": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.44zn5mij4tcnfk95hxexjm5x8",
+  "disney": "https://www.disneyplus.com/movies/wd/4HkAlqhq1ZKp",
+  "netflix": "https://www.netflix.com/title/705052"
+ },
+ "movie:10198": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.3xn63ajjx99xf0wjde2y6sd7q",
+  "disney": "https://www.disneyplus.com/movies/wd/7TPAcC8QPGpm",
+  "netflix": "https://www.netflix.com/title/70109429"
+ },
+ "movie:10681": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.4hey5l45tegyvjbr84vuihdqf",
+  "disney": "https://www.disneyplus.com/movies/wd/5G1wpZC2Lb6I",
+  "netflix": "https://www.netflix.com/title/70087540"
+ },
+ "movie:109445": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.4b17gber8k76h90rzlulvrbcl",
+  "disney": "https://www.disneyplus.com/movies/wd/1JffnkWmY6mD",
+  "netflix": "https://www.netflix.com/title/70279000"
+ },
+ "movie:11224": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.79wcks09an35qbglv7i1imbmc",
+  "disney": "https://www.disneyplus.com/movies/wd/VJPw3bEy9iHj",
+  "netflix": "https://www.netflix.com/title/60010233"
+ },
+ "movie:11544": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.6nwdu0slhb1fb9jqz3ju5cnrb",
+  "disney": "https://www.disneyplus.com/movies/wd/1KQztXx3gPGi",
+  "netflix": "https://www.netflix.com/title/60022989"
+ },
+ "movie:116149": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.759zk34s47omthqjyvc9i6pgo",
+  "netflix": "https://www.netflix.com/title/70305929"
+ },
+ "movie:11886": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.2f3jb9jb6cmlj6n7nhrgrqwc7",
+  "disney": "https://www.disneyplus.com/movies/wd/5ACMz1bJJwwZ",
+  "netflix": "https://www.netflix.com/title/60001787"
+ },
+ "movie:12": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.6mbogy74hds0btkz7rj83hzhq",
+  "disney": "https://www.disneyplus.com/movies/wd/5Gpj2XqF7BV2"
+ },
+ "movie:12230": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.66qyx82pfnj2gf092d2ehrrqk",
+  "disney": "https://www.disneyplus.com/movies/wd/7NOwGGV7R7kE",
+  "netflix": "https://www.netflix.com/title/205524"
+ },
+ "movie:12429": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.11anqj3fvjt8xg0vs137v8ob6",
+  "max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrWweQmaqDmqwwEAAAAm",
+  "netflix": "https://www.netflix.com/title/70106454"
+ },
+ "movie:126319": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.6n6zshyjc62ijtx5x2t6v446q",
+  "netflix": "https://www.netflix.com/title/70243253"
+ },
+ "movie:127380": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.7k1eigpw7zixnwe61ll44zzis",
+  "disney": "https://www.disneyplus.com/movies/wd/2L6w30vnqebX",
+  "netflix": "https://www.netflix.com/title/80094319"
+ },
+ "movie:13187": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.mbxalimrwrtq72wj4h601pyf",
+  "netflix": "https://www.netflix.com/title/60002162"
+ },
+ "movie:13377": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.2zt04kuteswci6iwvpp3m75eu"
+ },
+ "movie:13382": {},
+ "movie:13396": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.6gg0dfkkdgp23gdbo7cbnktyv"
+ },
+ "movie:13397": {},
+ "movie:13400": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.12cqb6eldlygfn6svgk9dmtr6"
+ },
+ "movie:13479": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.7grdgbjdq3tiy37f4dc3yeyms"
+ },
+ "movie:14813": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.iypxtousnk4m6yqh8nj1e43m",
+  "disney": "https://www.disneyplus.com/movies/wd/7522gHd0GW3X"
+ },
+ "movie:15171": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.wt0ormc49xbff1q7qr0p43fs",
+  "netflix": "https://www.netflix.com/title/60020948"
+ },
+ "movie:1667": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.1uvveahs3ku1e0h9xt7ncssgb",
+  "netflix": "https://www.netflix.com/title/70024092"
+ },
+ "movie:2062": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.2i8p6l6cpu6zxmcpqao7bs147",
+  "disney": "https://www.disneyplus.com/movies/wd/4zRnUvYGbUZG",
+  "netflix": "https://www.netflix.com/title/70045269",
+  "prime": "https://www.primevideo.com/detail/B0060D16VI"
+ },
+ "movie:250480": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.ozxxulz02xbmu8i4uqlinbau",
+  "disney": "https://www.disneyplus.com/movies/wd/6PbecLLcSZQ0",
+  "netflix": "https://www.netflix.com/title/60021868"
+ },
+ "movie:277834": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.13yhzauh3b57obklyle10aepi",
+  "disney": "https://www.disneyplus.com/movies/wd/70GoJHflgHH9",
+  "netflix": "https://www.netflix.com/title/80108238"
+ },
+ "movie:28118": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.27o2cjnzm16zte517ebprmgeg",
+  "netflix": "https://www.netflix.com/title/70197201"
+ },
+ "movie:297270": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.3lczqz71i3j4w4ioyahsasfjc",
+  "disney": "https://www.disneyplus.com/movies/wd/7WSfCSfvgWeb",
+  "netflix": "https://www.netflix.com/title/80028529"
+ },
+ "movie:301528": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.5jnai8irbqw4s2n64dgdwfzz9",
+  "disney": "https://www.disneyplus.com/movies/wd/2CtjW4tKzIHp",
+  "hotstar": "https://www.hotstar.com/1260015326"
+ },
+ "movie:346648": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.6uanyirozllokd56zsopx7no1",
+  "netflix": "https://www.netflix.com/title/80195897"
+ },
+ "movie:360920": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.2bu7hwru4lky6tgu9a91trvr4",
+  "netflix": "https://www.netflix.com/title/80996790",
+  "prime": "https://www.primevideo.com/detail/amzn1.dv.gti.bcb3c57a-7581-7d30-af92-0db26d4103cd"
+ },
+ "movie:364689": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.52ok5fgzlftre3ug6glre6df9",
+  "disney": "https://www.disneyplus.com/movies/wd/2I5C5nArKzvk",
+  "netflix": "https://www.netflix.com/title/80191879"
+ },
+ "movie:399106": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.5ju79an234tkwgnbqadai1dav",
+  "disney": "https://www.disneyplus.com/movies/wd/3j2llXeKBRCu"
+ },
+ "movie:40619": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.zl5lylcmf1plw4qlnbzwad50",
+  "disney": "https://www.disneyplus.com/movies/wd/3iQJNxNpwj5h"
+ },
+ "movie:433": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.1zrtu7kymga7ucaqeolq5akpm",
+  "disney": "https://www.disneyplus.com/movies/wd/3P3waOoBmUdm",
+  "netflix": "https://www.netflix.com/title/60036639"
+ },
+ "movie:475215": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.5n3ojj870mov5u2kwzn694dhg",
+  "netflix": "https://www.netflix.com/title/81004268"
+ },
+ "movie:508965": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.180ns3n9ahzliijlzvaykyfrp",
+  "netflix": "https://www.netflix.com/title/80183187"
+ },
+ "movie:51162": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.3ypq9jn33efvbv0h4aqijbysx",
+  "disney": "https://www.disneyplus.com/movies/wd/6nl0Z9PyWwIC",
+  "netflix": "https://www.netflix.com/title/70178626"
+ },
+ "movie:514754": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.s38fyk3b2mnlwp1ug6jovbpc",
+  "disney": "https://www.disneyplus.com/movies/wd/2NOY3PbUN9os"
+ },
+ "movie:516729": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.5vw4hd6xvenffic45y8aw22q5",
+  "netflix": "https://www.netflix.com/title/81776760"
+ },
+ "movie:528644": {},
+ "movie:530": {},
+ "movie:560050": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.2l50xqarvl3bohr8fp2ut8zq8",
+  "netflix": "https://www.netflix.com/title/80214236"
+ },
+ "movie:568124": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.3uji6fbqdcps9k4oxy1ikddrs",
+  "disney": "https://www.disneyplus.com/movies/wd/33q7DY1rtHQH"
+ },
+ "movie:585": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.3ilsdzy6ghi4adtg3tnwf6jcb",
+  "disney": "https://www.disneyplus.com/movies/wd/5vQuMGjgTZz5",
+  "netflix": "https://www.netflix.com/title/60004479"
+ },
+ "movie:589739": {},
+ "movie:649928": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.3ezbqmgdwexlsljl51zsjgl1k",
+  "netflix": "https://www.netflix.com/title/81058433"
+ },
+ "movie:812": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.13229jkd134ryb4p2jhktwx31",
+  "disney": "https://www.disneyplus.com/movies/wd/2SngByljXESE",
+  "hotstar": "https://www.hotstar.com/1660000031",
+  "netflix": "https://www.netflix.com/title/60010064"
+ },
+ "movie:8392": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.4j11jg8g8n6tei5d7cupfy40k",
+  "max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHaagZAIKu9KwEAAAAm",
+  "netflix": "https://www.netflix.com/title/60032294"
+ },
+ "movie:862": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.qrdx9s4xrk47f4taowt4tx82",
+  "disney": "https://www.disneyplus.com/movies/wd/1Ye1nzUgtF7d",
+  "hotstar": "https://www.hotstar.com/1660010197",
+  "netflix": "https://www.netflix.com/title/60036637"
+ },
+ "movie:863": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.26fwluo98zc2e2d9i595455t2",
+  "disney": "https://www.disneyplus.com/movies/wd/6eunXQzaXkGr",
+  "hotstar": "https://www.hotstar.com/1660000051",
+  "netflix": "https://www.netflix.com/title/60036638"
+ },
+ "movie:920": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.6tkcbec7pfpemkufvlqkyxxyu",
+  "disney": "https://www.disneyplus.com/movies/wd/41KYquQjLwge",
+  "hotstar": "https://www.hotstar.com/1260017229",
+  "netflix": "https://www.netflix.com/title/70043811"
+ },
+ "movie:9325": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.5hv0dvpzmjgiqka0r66rn4cf4",
+  "disney": "https://www.disneyplus.com/movies/wd/5trzAb4Rz3F9",
+  "hotstar": "https://www.hotstar.com/1260018026",
+  "netflix": "https://www.netflix.com/title/60029689"
+ },
+ "movie:9487": {
+  "appletv": "https://tv.apple.com/movie/umc.cmc.40rxsni23f92ibvz5qio38enq",
+  "disney": "https://www.disneyplus.com/movies/wd/2kV0c48TF0Ea",
+  "netflix": "https://www.netflix.com/title/18110943"
+ },
+ "movie:995133": {},
+ "tv:10048": {},
+ "tv:106009": {
+  "appletv": "https://tv.apple.com/show/umc.cmc.354ikstkxoozptt98eakedfpp",
+  "netflix": "https://www.netflix.com/title/81272431"
+ },
+ "tv:10821": {},
+ "tv:10867": {},
+ "tv:118439": {
+  "netflix": "https://www.netflix.com/title/81035680"
+ },
+ "tv:1585": {},
+ "tv:1878": {
+  "netflix": "https://www.netflix.com/title/70177018"
+ },
+ "tv:1894": {},
+ "tv:207": {},
+ "tv:2153": {
+  "appletv": "https://tv.apple.com/show/umc.cmc.32hpmpaty5eem41zg40onjnxw",
+  "netflix": "https://www.netflix.com/title/70176984"
+ },
+ "tv:2957": {},
+ "tv:3090": {
+  "appletv": "https://tv.apple.com/show/umc.cmc.10ernvvcxzws7f4koajoltby9",
+  "disney": "https://www.disneyplus.com/series/wp/1G9YmlC37TnO"
+ },
+ "tv:31623": {
+  "netflix": "https://www.netflix.com/title/70279824"
+ },
+ "tv:33765": {
+  "appletv": "https://tv.apple.com/show/umc.cmc.3ujevsytv3nqn8uolyrrgws8j",
+  "netflix": "https://www.netflix.com/title/70234440"
+ },
+ "tv:35094": {
+  "appletv": "https://tv.apple.com/show/umc.cmc.4qt2ivw9evsqw89hm4x6oox5t",
+  "netflix": "https://www.netflix.com/title/70278880"
+ },
+ "tv:37472": {
+  "netflix": "https://www.netflix.com/title/80020935"
+ },
+ "tv:40050": {
+  "netflix": "https://www.netflix.com/title/70278879"
+ },
+ "tv:4217": {},
+ "tv:502": {
+  "appletv": "https://tv.apple.com/show/umc.cmc.5p59q6xlioskgzklbqnlm1i43",
+  "max": "https://play.hbomax.com/series/urn:hbo:series:GVm91CAr3MaJeisAIAAAv"
+ },
+ "tv:64198": {},
+ "tv:6460": {},
+ "tv:656": {},
+ "tv:720": {
+  "disney": "https://www.disneyplus.com/series/wp/1H1pGQ8RYFqN"
+ },
+ "tv:7248": {
+  "appletv": "https://tv.apple.com/show/umc.cmc.12p25pug3vct9sy63qd7dwjbe",
+  "netflix": "https://www.netflix.com/title/70264612"
+ },
+ "tv:73549": {
+  "netflix": "https://www.netflix.com/title/80062985"
+ },
+ "tv:82728": {
+  "disney": "https://www.disneyplus.com/series/wp/1xy9TAOQ0M3r"
+ },
+ "tv:92885": {
+  "netflix": "https://www.netflix.com/title/81486556"
+ },
+ "tv:94075": {},
+ "tv:9834": {}
+}

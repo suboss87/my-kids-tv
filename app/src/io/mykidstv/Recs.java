@@ -63,7 +63,7 @@ final class Recs {
     private static final long LIST_EVERY = 3600_000L;   // a new set of 60 titles from the catalog every hour
     static final long SPOT_EVERY = 10_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 10 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 14;   // 14 = vetted titles only, looked up in parallel, history no longer hiding what's available
+    private static final int CACHE_VERSION = 15;   // 15 = links straight to each title in its app
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -515,6 +515,8 @@ final class Recs {
     private static final java.util.Set<String> catalogFamous = new java.util.HashSet<>();
     private static final int FAMOUS_MOVIES = 2, FAMOUS_SHOWS = 1;
     private static final Map<String, Double> catalogScores = new HashMap<>();   // Jev's 0-1 score: higher shows up more
+    // Straight to the title's page in each app (Wikidata's ids, built into the catalog): "movie:12" -> {netflix: url}
+    private static final Map<String, JSONObject> catalogLinks = new HashMap<>();
     private static String catalogBand;
 
     private void loadCatalog() {
@@ -524,6 +526,7 @@ final class Recs {
         catalogBadges.clear();
         catalogFamous.clear();
         catalogScores.clear();
+        catalogLinks.clear();
         List<Integer> movies = new ArrayList<>(), shows = new ArrayList<>();
         try (java.io.InputStream in = context.getAssets().open("catalog/" + band + ".json")) {
             JSONArray titles = new JSONObject(read(in)).getJSONArray("titles");
@@ -533,6 +536,7 @@ final class Recs {
                 if (!t.optString("badge").isEmpty()) catalogBadges.put(t.optString("kind") + ":" + t.getInt("id"), t.optString("badge"));
                 if (t.optBoolean("famous")) catalogFamous.add(t.optString("kind") + ":" + t.getInt("id"));
                 catalogScores.put(t.optString("kind") + ":" + t.getInt("id"), t.optDouble("score", 0.7));
+                if (t.optJSONObject("links") != null) catalogLinks.put(t.optString("kind") + ":" + t.getInt("id"), t.optJSONObject("links"));
             }
         } catch (Exception e) {
             AppLog.w("catalog " + band + ": " + e.getMessage());
@@ -641,6 +645,9 @@ final class Recs {
                     if (badge != null) p.badge = badge;
                     batch.add(pool.submit(() -> {
                         fetchDetails(p);
+                        // OK on the card opens the title itself, not just the app, when the catalog knows its address there.
+                        JSONObject links = catalogLinks.get(key(p));
+                        if (p.app != null && links != null && !links.optString(p.app).isEmpty()) p.link = links.optString(p.app);
                         return p;
                     }));
                 }

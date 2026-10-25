@@ -8,7 +8,12 @@
 "year": "2005",
 "score": 0.981,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.4d38ljozi439j6g8e5m5o2bv5",
+"netflix": "https://www.netflix.com/title/70142405",
+"prime": "https://www.primevideo.com/detail/amzn1.dv.gti.eebbea29-4ffd-9538-b0c9-a68a8bdc1b33"
+}
 },
 {
 "kind": "movie",
@@ -17,7 +22,13 @@
 "year": "2001",
 "score": 0.966,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.20eiqqikjqp0aibugjcx9s41p",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHanAQBunUYOAEAAAB3",
+"netflix": "https://www.netflix.com/title/60023642",
+"prime": "https://www.primevideo.com/detail/B081GJPV9P"
+}
 },
 {
 "kind": "movie",
@@ -26,7 +37,12 @@
 "year": "2017",
 "score": 0.938,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5y1554je00oslx5xtkxv9uk7s",
+"disney": "https://www.disneyplus.com/movies/wd/4M9wtfJ9CfQm",
+"netflix": "https://www.netflix.com/title/80189213"
+}
 },
 {
 "kind": "tv",
@@ -34,7 +50,10 @@
 "title": "Planet Earth",
 "year": "2006",
 "score": 0.92,
-"badge": "must"
+"badge": "must",
+"links": {
+"netflix": "https://www.netflix.com/title/70219642"
+}
 },
 {
 "kind": "tv",
@@ -42,7 +61,10 @@
 "title": "Planet Earth II",
 "year": "2016",
 "score": 0.919,
-"badge": "must"
+"badge": "must",
+"links": {
+"netflix": "https://www.netflix.com/title/80195377"
+}
 },
 {
 "kind": "tv",
@@ -51,7 +73,10 @@
 "year": "2012",
 "score": 0.918,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/HZxayxzMJqed"
+}
 },
 {
 "kind": "tv",
@@ -68,7 +93,11 @@
 "year": "2018",
 "score": 0.897,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4a2ypxddplsdsahwxrc5fkz4x",
+"netflix": "https://www.netflix.com/title/81002747"
+}
 },
 {
 "kind": "movie",
@@ -77,7 +106,12 @@
 "year": "1997",
 "score": 0.892,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5sqttudjos4b07rysh0mlc0fl",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHUCwY3E6u9KwEAAAAO",
+"netflix": "https://www.netflix.com/title/28630857"
+}
 },
 {
 "kind": "movie",
@@ -86,7 +120,12 @@
 "year": "2001",
 "score": 0.89,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.55wxtmrughu40phd8lgr6qejr",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GYY7NkAImuJzDwgEAAAAL",
+"netflix": "https://www.netflix.com/title/60004478"
+}
 },
 {
 "kind": "movie",
@@ -95,7 +134,12 @@
 "year": "2008",
 "score": 0.889,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4hey5l45tegyvjbr84vuihdqf",
+"disney": "https://www.disneyplus.com/movies/wd/5G1wpZC2Lb6I",
+"netflix": "https://www.netflix.com/title/70087540"
+}
 },
 {
 "kind": "movie",
@@ -103,7 +147,11 @@
 "title": "The Iron Giant",
 "year": "1999",
 "score": 0.888,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7jled7ztqogpzu7kgycwxkcon",
+"netflix": "https://www.netflix.com/title/70015683"
+}
 },
 {
 "kind": "movie",
@@ -112,7 +160,11 @@
 "year": "2010",
 "score": 0.887,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3028ht7u7qx3a077kxhreuadn",
+"netflix": "https://www.netflix.com/title/70109893"
+}
 },
 {
 "kind": "movie",
@@ -121,7 +173,12 @@
 "year": "2004",
 "score": 0.883,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5iztg97thy2l82qn0euzqjjza",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHR0QRNbnUYOAEAAABB",
+"netflix": "https://www.netflix.com/title/70028883"
+}
 },
 {
 "kind": "movie",
@@ -130,7 +187,13 @@
 "year": "1977",
 "score": 0.883,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2o65qvudvwq1l1rqjlbyfszwn",
+"disney": "https://www.disneyplus.com/movies/wd/12fVeZxD2fWJ",
+"netflix": "https://www.netflix.com/title/60010932",
+"prime": "https://www.primevideo.com/detail/B00VF06PS0"
+}
 },
 {
 "kind": "movie",
@@ -139,7 +202,14 @@
 "year": "1994",
 "score": 0.882,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.hzw12vgjjoz0tf0jn5m0x8i4",
+"disney": "https://www.disneyplus.com/movies/wd/1HqwiEcje6Nj",
+"hotstar": "https://www.hotstar.com/1660000046",
+"netflix": "https://www.netflix.com/title/60029890",
+"prime": "https://www.primevideo.com/detail/B073ZPXDGW"
+}
 },
 {
 "kind": "movie",
@@ -147,7 +217,12 @@
 "title": "Warriors of the Wind",
 "year": "1984",
 "score": 0.878,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5a19fikldgwe4cnl8smazz6tx",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHVaQyRPXUYOAEAAABO",
+"netflix": "https://www.netflix.com/title/70019062"
+}
 },
 {
 "kind": "movie",
@@ -156,7 +231,11 @@
 "year": "2001",
 "score": 0.877,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.29au6l8rcr4g5zhuwcx0euri1",
+"netflix": "https://www.netflix.com/title/60004480"
+}
 },
 {
 "kind": "movie",
@@ -165,7 +244,13 @@
 "year": "1980",
 "score": 0.874,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3vabzkcmuoxxm3r3ng9q4rgh9",
+"disney": "https://www.disneyplus.com/movies/wd/iqtDTZAewwYl",
+"netflix": "https://www.netflix.com/title/60011114",
+"prime": "https://www.primevideo.com/detail/B00VF19E5K"
+}
 },
 {
 "kind": "tv",
@@ -181,7 +266,11 @@
 "title": "Life",
 "year": "2009",
 "score": 0.871,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.5gwwi3fs8nr04oh0hja89w27l",
+"netflix": "https://www.netflix.com/title/70225722"
+}
 },
 {
 "kind": "movie",
@@ -190,7 +279,10 @@
 "year": "2023",
 "score": 0.869,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2zphwshxw2ejh2znevhod0u01"
+}
 },
 {
 "kind": "tv",
@@ -198,7 +290,11 @@
 "title": "Frozen Planet",
 "year": "2011",
 "score": 0.869,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.50ihghdu3qzqkz4t6aplry64v",
+"netflix": "https://www.netflix.com/title/70261978"
+}
 },
 {
 "kind": "tv",
@@ -206,7 +302,13 @@
 "title": "Steven Universe",
 "year": "2013",
 "score": 0.866,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.4rhvo6h6xxxss16xxq1hnj7lx",
+"max": "https://play.hbomax.com/series/urn:hbo:series:GXbGBEw3y6pGYoAEAAAVc",
+"netflix": "https://www.netflix.com/title/80130696",
+"prime": "https://www.primevideo.com/detail/amzn1.dv.gti.5343821f-586a-4657-9936-0eac22b8e361"
+}
 },
 {
 "kind": "tv",
@@ -214,7 +316,10 @@
 "title": "Prehistoric Planet",
 "year": "2022",
 "score": 0.861,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.4lh4bmztauvkooqz400akxav"
+}
 },
 {
 "kind": "tv",
@@ -222,7 +327,10 @@
 "title": "Our Planet",
 "year": "2019",
 "score": 0.86,
-"badge": "must"
+"badge": "must",
+"links": {
+"netflix": "https://www.netflix.com/title/80049832"
+}
 },
 {
 "kind": "movie",
@@ -231,7 +339,12 @@
 "year": "1985",
 "score": 0.857,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1alygfljzpxrofhgpoa6mmjnb",
+"netflix": "https://www.netflix.com/title/60010110",
+"prime": "https://www.primevideo.com/detail/B00498XR9U"
+}
 },
 {
 "kind": "movie",
@@ -240,7 +353,13 @@
 "year": "1998",
 "score": 0.856,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.77brsbjadcf6s3i7g8cc6az36",
+"disney": "https://www.disneyplus.com/movies/wd/85wmj4hahA0B",
+"hotstar": "https://www.hotstar.com/1660010444",
+"netflix": "https://www.netflix.com/title/14607635"
+}
 },
 {
 "kind": "movie",
@@ -249,7 +368,12 @@
 "year": "2015",
 "score": 0.855,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.e8rnwzv7klnnt9d5gq9m45nv",
+"disney": "https://www.disneyplus.com/movies/wd/uzQ2ycVDi2IE",
+"netflix": "https://www.netflix.com/title/80030684"
+}
 },
 {
 "kind": "movie",
@@ -257,7 +381,10 @@
 "title": "Wolfwalkers",
 "year": "2020",
 "score": 0.853,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.amuoq00hqelfi98j0gvg641x"
+}
 },
 {
 "kind": "movie",
@@ -266,7 +393,12 @@
 "year": "2011",
 "score": 0.853,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4a5c366ol33jmntkgz0vwkwhg",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssRwQESq8NMvwEAAABY",
+"netflix": "https://www.netflix.com/title/70120085"
+}
 },
 {
 "kind": "tv",
@@ -275,7 +407,11 @@
 "year": "2020",
 "score": 0.853,
 "badge": "loved",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.6y9jt1us2v5l4q36k7jgttfs8",
+"disney": "https://www.disneyplus.com/series/wp/4cOTrEy0YyaX"
+}
 },
 {
 "kind": "tv",
@@ -283,7 +419,10 @@
 "title": "The Blue Planet",
 "year": "2001",
 "score": 0.852,
-"badge": "must"
+"badge": "must",
+"links": {
+"netflix": "https://www.netflix.com/title/70235731"
+}
 },
 {
 "kind": "tv",
@@ -292,7 +431,11 @@
 "year": "2014",
 "score": 0.851,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.410w5085kvgoshzsilbm3gyu6",
+"netflix": "https://www.netflix.com/title/80233715"
+}
 },
 {
 "kind": "tv",
@@ -308,7 +451,12 @@
 "title": "Castle in the Sky",
 "year": "1986",
 "score": 0.848,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.516swa7pdvopljazl2r52h72e",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHEfQegZY-qmgEAAADp",
+"netflix": "https://www.netflix.com/title/60027393"
+}
 },
 {
 "kind": "movie",
@@ -317,7 +465,12 @@
 "year": "1988",
 "score": 0.844,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4j11jg8g8n6tei5d7cupfy40k",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHaagZAIKu9KwEAAAAm",
+"netflix": "https://www.netflix.com/title/60032294"
+}
 },
 {
 "kind": "tv",
@@ -326,7 +479,10 @@
 "year": "1992",
 "score": 0.843,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"max": "https://play.hbomax.com/series/urn:hbo:series:GX8VcRQca5sLDbAEAAAD-"
+}
 },
 {
 "kind": "tv",
@@ -335,7 +491,12 @@
 "year": "2014",
 "score": 0.842,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.53rl0p0mnts0c4ja25ez8ob9r",
+"disney": "https://www.disneyplus.com/series/wp/3AAcsJhhmU10",
+"netflix": "https://www.netflix.com/title/80004448"
+}
 },
 {
 "kind": "movie",
@@ -344,7 +505,12 @@
 "year": "2004",
 "score": 0.841,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1uwqg0s65yo3lzxz96krkieoq",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssObwqZrVVGwwEAAABI",
+"netflix": "https://www.netflix.com/title/60034567"
+}
 },
 {
 "kind": "movie",
@@ -353,7 +519,12 @@
 "year": "2009",
 "score": 0.84,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7hyl1e1p1ihe8aiij3fzjwwyc",
+"disney": "https://www.disneyplus.com/movies/wd/3XiRSXriK0E8",
+"netflix": "https://www.netflix.com/title/70103760"
+}
 },
 {
 "kind": "tv",
@@ -362,7 +533,10 @@
 "year": "2012",
 "score": 0.838,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"netflix": "https://www.netflix.com/title/80027563"
+}
 },
 {
 "kind": "movie",
@@ -378,7 +552,11 @@
 "title": "Kubo and the Two Strings",
 "year": "2016",
 "score": 0.836,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4beamb7zlan6qut8dzr8z4el4",
+"netflix": "https://www.netflix.com/title/80099365"
+}
 },
 {
 "kind": "tv",
@@ -394,7 +572,11 @@
 "title": "Guillermo del Toro's Pinocchio",
 "year": "2022",
 "score": 0.832,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3wy4xv6exijeds2ybvvkts2pl",
+"netflix": "https://www.netflix.com/title/80218455"
+}
 },
 {
 "kind": "tv",
@@ -403,7 +585,10 @@
 "year": "2017",
 "score": 0.832,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"netflix": "https://www.netflix.com/title/80136311"
+}
 },
 {
 "kind": "tv",
@@ -427,7 +612,10 @@
 "title": "Africa",
 "year": "2013",
 "score": 0.828,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/70298341"
+}
 },
 {
 "kind": "movie",
@@ -435,7 +623,11 @@
 "title": "David Attenborough: A Life on Our Planet",
 "year": "2020",
 "score": 0.827,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1mvozqbi6nljjumlre7tcoi3l",
+"netflix": "https://www.netflix.com/title/80216393"
+}
 },
 {
 "kind": "movie",
@@ -443,7 +635,11 @@
 "title": "Song of the Sea",
 "year": "2014",
 "score": 0.82,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.59z8m4ulxhs357e6573fmox3o",
+"netflix": "https://www.netflix.com/title/80015342"
+}
 },
 {
 "kind": "tv",
@@ -451,7 +647,10 @@
 "title": "The Hunt",
 "year": "2015",
 "score": 0.82,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/80097726"
+}
 },
 {
 "kind": "tv",
@@ -468,7 +667,12 @@
 "year": "2016",
 "score": 0.816,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.13yhzauh3b57obklyle10aepi",
+"disney": "https://www.disneyplus.com/movies/wd/70GoJHflgHH9",
+"netflix": "https://www.netflix.com/title/80108238"
+}
 },
 {
 "kind": "tv",
@@ -477,7 +681,11 @@
 "year": "2019",
 "score": 0.814,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.7g2j1496wukn9p4byllsmfgfk",
+"netflix": "https://www.netflix.com/title/81046193"
+}
 },
 {
 "kind": "movie",
@@ -485,7 +693,12 @@
 "title": "The Tale of The Princess Kaguya",
 "year": "2013",
 "score": 0.809,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1c9r7skqwjgu2vvdpfdscaq8b",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrS6Pgh76I5awgEAAAM5",
+"netflix": "https://www.netflix.com/title/80013552"
+}
 },
 {
 "kind": "movie",
@@ -494,7 +707,12 @@
 "year": "1981",
 "score": 0.808,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.askk2uyh039pu6ik4h8kv4dn",
+"disney": "https://www.disneyplus.com/movies/wd/1iKh3IKEFc2N",
+"netflix": "https://www.netflix.com/title/60011649"
+}
 },
 {
 "kind": "movie",
@@ -511,7 +729,12 @@
 "year": "2016",
 "score": 0.807,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4io2m0zk1cs9g1olb2hduzu6z",
+"disney": "https://www.disneyplus.com/movies/wd/2xa2YdiOJXQt",
+"netflix": "https://www.netflix.com/title/80123775"
+}
 },
 {
 "kind": "movie",
@@ -520,7 +743,11 @@
 "year": "2020",
 "score": 0.805,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6wle5itf2fkzl2gvlw9r14xcx",
+"disney": "https://www.disneyplus.com/movies/wd/77zlWrb9vRYp"
+}
 },
 {
 "kind": "tv",
@@ -528,7 +755,10 @@
 "title": "Haikyu!!",
 "year": "2014",
 "score": 0.803,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80090673"
+}
 },
 {
 "kind": "movie",
@@ -537,7 +767,12 @@
 "year": "1993",
 "score": 0.802,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3bp8rj8ab9otj4ug279xhib2f",
+"netflix": "https://www.netflix.com/title/60002360",
+"prime": "https://www.primevideo.com/detail/B008YI91HS"
+}
 },
 {
 "kind": "movie",
@@ -545,7 +780,11 @@
 "title": "The Wizard of Oz",
 "year": "1939",
 "score": 0.802,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3p71qm0cvb8vsh77ii5cukibs",
+"netflix": "https://www.netflix.com/title/70039535"
+}
 },
 {
 "kind": "movie",
@@ -554,7 +793,11 @@
 "year": "1991",
 "score": 0.801,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4m0m5cwqgetm1xtoyncr9m7d4",
+"disney": "https://www.disneyplus.com/movies/wd/3NGDQClVpZay"
+}
 },
 {
 "kind": "movie",
@@ -563,7 +806,12 @@
 "year": "2002",
 "score": 0.799,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.69sq804vqp3dy39oxiajnr3ux",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssMIAadRcNMvwEAAAA7",
+"netflix": "https://www.netflix.com/title/60024925"
+}
 },
 {
 "kind": "tv",
@@ -580,7 +828,10 @@
 "year": "2026",
 "score": 0.796,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7jxdlxvz304lj3iwhtrhbe8fv"
+}
 },
 {
 "kind": "movie",
@@ -589,7 +840,11 @@
 "year": "2022",
 "score": 0.796,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3ysvrfdjp7h6q8dt73t3bq23i",
+"netflix": "https://www.netflix.com/title/81555726"
+}
 },
 {
 "kind": "movie",
@@ -597,7 +852,10 @@
 "title": "Ne Zha",
 "year": "2019",
 "score": 0.795,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6jfs6q62rhv2hljp59m4zeoue"
+}
 },
 {
 "kind": "movie",
@@ -605,7 +863,11 @@
 "title": "The Sound of Music",
 "year": "1965",
 "score": 0.795,
-"badge": "must"
+"badge": "must",
+"links": {
+"disney": "https://www.disneyplus.com/movies/wd/4c1Sp2qE83Fc",
+"netflix": "https://www.netflix.com/title/60001917"
+}
 },
 {
 "kind": "movie",
@@ -614,7 +876,12 @@
 "year": "2018",
 "score": 0.794,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.53u1tdqk891nlpuvdh8ne00pb",
+"disney": "https://www.disneyplus.com/movies/wd/1GuXuYPj99Ke",
+"hotstar": "https://www.hotstar.com/1660010672"
+}
 },
 {
 "kind": "movie",
@@ -623,7 +890,12 @@
 "year": "2005",
 "score": 0.793,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.24y16k16f8dxl4o2e8ho0lc1t",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssOeAtVmlVGwwEAAABR",
+"netflix": "https://www.netflix.com/title/70021660"
+}
 },
 {
 "kind": "movie",
@@ -632,7 +904,12 @@
 "year": "2017",
 "score": 0.793,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1az1oiykk5wjiczwacw3i05y2",
+"netflix": "https://www.netflix.com/title/80147986",
+"prime": "https://www.primevideo.com/detail/amzn1.dv.gti.0ab0ef77-3f71-fcfa-039d-034c28524a88"
+}
 },
 {
 "kind": "movie",
@@ -640,7 +917,10 @@
 "title": "Anne of Green Gables",
 "year": "1985",
 "score": 0.792,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/70001904"
+}
 },
 {
 "kind": "tv",
@@ -648,7 +928,10 @@
 "title": "Amphibia",
 "year": "2019",
 "score": 0.787,
-"badge": "loved"
+"badge": "loved",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/4jsQ0zDkUTeN"
+}
 },
 {
 "kind": "tv",
@@ -657,7 +940,12 @@
 "year": "2008",
 "score": 0.787,
 "badge": "loved",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.pipey73n3wfe96uwbg7eunec",
+"disney": "https://www.disneyplus.com/series/wp/1wYXzjabXGVZ",
+"netflix": "https://www.netflix.com/title/70155581"
+}
 },
 {
 "kind": "tv",
@@ -681,7 +969,11 @@
 "title": "It's a Wonderful Life",
 "year": "1946",
 "score": 0.785,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.uxp25jw31biuga9xrrskxqrr",
+"netflix": "https://www.netflix.com/title/644637"
+}
 },
 {
 "kind": "movie",
@@ -690,7 +982,11 @@
 "year": "2014",
 "score": 0.785,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2ag6thi96de0ywp2ohysjz2u8",
+"netflix": "https://www.netflix.com/title/70298991"
+}
 },
 {
 "kind": "movie",
@@ -699,7 +995,11 @@
 "year": "1982",
 "score": 0.783,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.y7sdg83ku22c7qmfh4v16q2e",
+"netflix": "https://www.netflix.com/title/60022398"
+}
 },
 {
 "kind": "movie",
@@ -707,7 +1007,12 @@
 "title": "The Princess Bride",
 "year": "1987",
 "score": 0.783,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3gq6dacoanmniq9hil8tz75pw",
+"disney": "https://www.disneyplus.com/movies/wd/6hFucDYzyBdw",
+"netflix": "https://www.netflix.com/title/60000361"
+}
 },
 {
 "kind": "tv",
@@ -715,7 +1020,10 @@
 "title": "Nature's Great Events",
 "year": "2009",
 "score": 0.783,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/70245168"
+}
 },
 {
 "kind": "tv",
@@ -723,7 +1031,10 @@
 "title": "Life on Our Planet",
 "year": "2023",
 "score": 0.782,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/80213846"
+}
 },
 {
 "kind": "movie",
@@ -732,7 +1043,12 @@
 "year": "1983",
 "score": 0.781,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3ggalukb7xb5pf1gfgdlwkcx",
+"disney": "https://www.disneyplus.com/movies/wd/6QGKo5mjDBS8",
+"netflix": "https://www.netflix.com/title/60010820"
+}
 },
 {
 "kind": "tv",
@@ -749,7 +1065,13 @@
 "year": "2005",
 "score": 0.78,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.74ylmvjgg8c0uzugsay5hkkdj",
+"disney": "https://www.disneyplus.com/movies/wd/4rcSmuEmfIvs",
+"hotstar": "https://www.hotstar.com/1260018747",
+"netflix": "https://www.netflix.com/title/70021663"
+}
 },
 {
 "kind": "tv",
@@ -758,7 +1080,11 @@
 "year": "2002",
 "score": 0.78,
 "badge": "loved",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.3i5nwaw2x5ejk401dxbs92rbm",
+"netflix": "https://www.netflix.com/title/70205012"
+}
 },
 {
 "kind": "tv",
@@ -774,7 +1100,10 @@
 "title": "She-Ra and the Princesses of Power",
 "year": "2018",
 "score": 0.779,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80179762"
+}
 },
 {
 "kind": "movie",
@@ -782,7 +1111,10 @@
 "title": "Dangal",
 "year": "2016",
 "score": 0.777,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80166185"
+}
 },
 {
 "kind": "tv",
@@ -798,7 +1130,10 @@
 "title": "How to Train Your Dragon: The Hidden World",
 "year": "2019",
 "score": 0.774,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.64pazyz0q2ux3use2ffd1fspf"
+}
 },
 {
 "kind": "tv",
@@ -807,7 +1142,11 @@
 "year": "1987",
 "score": 0.774,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.3xfdqq5108iysguntm4y3wklc",
+"netflix": "https://www.netflix.com/title/70158329"
+}
 },
 {
 "kind": "tv",
@@ -815,7 +1154,12 @@
 "title": "Doctor Who",
 "year": "1963",
 "score": 0.773,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.1jtpx2ub10fc2kc8a3st7jnaq",
+"max": "https://play.hbomax.com/series/urn:hbo:series:GXnzXWA8PcFSpjQEAAATH",
+"netflix": "https://www.netflix.com/title/70142441"
+}
 },
 {
 "kind": "movie",
@@ -824,7 +1168,12 @@
 "year": "1993",
 "score": 0.772,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.15sv1obrzlxhuf2xhjftbr6ab",
+"disney": "https://www.disneyplus.com/movies/wd/5f9Y4Fphlz7f",
+"netflix": "https://www.netflix.com/title/806284"
+}
 },
 {
 "kind": "tv",
@@ -832,7 +1181,10 @@
 "title": "MythBusters",
 "year": "2003",
 "score": 0.77,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/70136128"
+}
 },
 {
 "kind": "movie",
@@ -841,7 +1193,12 @@
 "year": "1989",
 "score": 0.769,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.38jpsigo8blaihrqu8h445cld",
+"disney": "https://www.disneyplus.com/movies/wd/5zqAAQzi5YlH",
+"netflix": "https://www.netflix.com/title/60010487"
+}
 },
 {
 "kind": "tv",
@@ -858,7 +1215,11 @@
 "year": "2021",
 "score": 0.769,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3uji6fbqdcps9k4oxy1ikddrs",
+"disney": "https://www.disneyplus.com/movies/wd/33q7DY1rtHQH"
+}
 },
 {
 "kind": "tv",
@@ -866,7 +1227,10 @@
 "title": "Horrible Histories",
 "year": "2009",
 "score": 0.769,
-"badge": "loved"
+"badge": "loved",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.6b8xd7j81oyoh52wz9rs3m7tb"
+}
 },
 {
 "kind": "movie",
@@ -874,7 +1238,12 @@
 "title": "Kiki's Delivery Service",
 "year": "1989",
 "score": 0.766,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5w5rol5j2y9kaxsrrtbfme7dh",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHTGwYHRnUYOAEAAABC",
+"netflix": "https://www.netflix.com/title/60027106"
+}
 },
 {
 "kind": "movie",
@@ -883,7 +1252,11 @@
 "year": "2009",
 "score": 0.763,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.17hvodr5b8uuq3z45cs23akbd",
+"netflix": "https://www.netflix.com/title/70105599"
+}
 },
 {
 "kind": "movie",
@@ -891,7 +1264,11 @@
 "title": "Children of Heaven",
 "year": "1997",
 "score": 0.763,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1n22ruxo6py1fnx468vdihmjw",
+"netflix": "https://www.netflix.com/title/60010229"
+}
 },
 {
 "kind": "tv",
@@ -900,7 +1277,12 @@
 "year": "2010",
 "score": 0.763,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"max": "https://play.hbomax.com/show/cfa4a2c3-b392-4a70-88f0-1691b3b007e5",
+"netflix": "https://www.netflix.com/title/70241425",
+"prime": "https://www.primevideo.com/detail/amzn1.dv.gti.8b945a69-5417-4fbe-b6b4-7d8044df3ac1"
+}
 },
 {
 "kind": "movie",
@@ -909,7 +1291,12 @@
 "year": "2004",
 "score": 0.762,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3l02o7h3trocpynaslpu6epsv",
+"disney": "https://www.disneyplus.com/movies/wd/4jfOKErlmVcJ",
+"netflix": "https://www.netflix.com/title/70001989"
+}
 },
 {
 "kind": "movie",
@@ -918,7 +1305,12 @@
 "year": "2009",
 "score": 0.762,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4pxzxmpprsj02d4cf8g5jve3b",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssQ0A7HLFVGwwEAAABc",
+"netflix": "https://www.netflix.com/title/70099612"
+}
 },
 {
 "kind": "movie",
@@ -926,7 +1318,10 @@
 "title": "To Kill a Mockingbird",
 "year": "1962",
 "score": 0.76,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4gv4yhd3qrt6e4vdg7whlq3n4"
+}
 },
 {
 "kind": "tv",
@@ -944,7 +1339,12 @@
 "year": "2007",
 "score": 0.759,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.37a9axm70raoztdprh6fimsth",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssPaAiBJ1VGwwEAAABW",
+"netflix": "https://www.netflix.com/title/70058027"
+}
 },
 {
 "kind": "movie",
@@ -953,7 +1353,12 @@
 "year": "2014",
 "score": 0.758,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1vrwat5k1ucm5k42q97ioqyq3",
+"netflix": "https://www.netflix.com/title/70305903",
+"prime": "https://www.primevideo.com/detail/B00TU9UFTS"
+}
 },
 {
 "kind": "movie",
@@ -961,7 +1366,11 @@
 "title": "Apollo 13",
 "year": "1995",
 "score": 0.758,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5vgm2wvd7nt2eklpd7lk1arpz",
+"netflix": "https://www.netflix.com/title/262866"
+}
 },
 {
 "kind": "movie",
@@ -970,7 +1379,13 @@
 "year": "2007",
 "score": 0.754,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2i8p6l6cpu6zxmcpqao7bs147",
+"disney": "https://www.disneyplus.com/movies/wd/4zRnUvYGbUZG",
+"netflix": "https://www.netflix.com/title/70045269",
+"prime": "https://www.primevideo.com/detail/B0060D16VI"
+}
 },
 {
 "kind": "movie",
@@ -978,7 +1393,10 @@
 "title": "The Boy Who Harnessed the Wind",
 "year": "2019",
 "score": 0.753,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80200047"
+}
 },
 {
 "kind": "movie",
@@ -986,7 +1404,11 @@
 "title": "My Octopus Teacher",
 "year": "2020",
 "score": 0.753,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.45nsep5opyuj0by9fn1yvlxsf",
+"netflix": "https://www.netflix.com/title/81045007"
+}
 },
 {
 "kind": "movie",
@@ -994,7 +1416,12 @@
 "title": "Mary Poppins",
 "year": "1964",
 "score": 0.752,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1zrtu7kymga7ucaqeolq5akpm",
+"disney": "https://www.disneyplus.com/movies/wd/3P3waOoBmUdm",
+"netflix": "https://www.netflix.com/title/60036639"
+}
 },
 {
 "kind": "movie",
@@ -1002,7 +1429,11 @@
 "title": "The Dawn Wall",
 "year": "2017",
 "score": 0.75,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.396ocqbzr02tspwj1ft3a0n01",
+"netflix": "https://www.netflix.com/title/81004270"
+}
 },
 {
 "kind": "tv",
@@ -1010,7 +1441,10 @@
 "title": "Hilda",
 "year": "2018",
 "score": 0.75,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80115346"
+}
 },
 {
 "kind": "tv",
@@ -1018,7 +1452,10 @@
 "title": "Trollhunters: Tales of Arcadia",
 "year": "2016",
 "score": 0.749,
-"badge": "loved"
+"badge": "loved",
+"links": {
+"netflix": "https://www.netflix.com/title/80075820"
+}
 },
 {
 "kind": "movie",
@@ -1026,7 +1463,12 @@
 "title": "October Sky",
 "year": "1999",
 "score": 0.747,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4cb8q2937e379kvres3hwd9sx",
+"netflix": "https://www.netflix.com/title/18957852",
+"prime": "https://www.primevideo.com/detail/amzn1.dv.gti.a6a9f74b-3dcb-8251-4869-4fd6203ba440"
+}
 },
 {
 "kind": "tv",
@@ -1035,7 +1477,10 @@
 "year": "2007",
 "score": 0.747,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"netflix": "https://www.netflix.com/title/80000603"
+}
 },
 {
 "kind": "movie",
@@ -1043,7 +1488,12 @@
 "title": "Hugo",
 "year": "2011",
 "score": 0.746,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.56uqlfteouwj2u8vljw8wqxz5",
+"netflix": "https://www.netflix.com/title/70202136",
+"prime": "https://www.primevideo.com/detail/B09PKPPMNR"
+}
 },
 {
 "kind": "movie",
@@ -1051,7 +1501,11 @@
 "title": "A Christmas Carol",
 "year": "1984",
 "score": 0.746,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5mbalxqjtwcnv8nvl2i35tpm8",
+"netflix": "https://www.netflix.com/title/376039"
+}
 },
 {
 "kind": "tv",
@@ -1059,7 +1513,10 @@
 "title": "Sailor Moon",
 "year": "1992",
 "score": 0.745,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.6p1m4b7zum7r9axdd17q38761"
+}
 },
 {
 "kind": "movie",
@@ -1067,7 +1524,11 @@
 "title": "Lion",
 "year": "2016",
 "score": 0.742,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.nzus1ck6odvkz8bom9w3zhpp",
+"netflix": "https://www.netflix.com/title/80108447"
+}
 },
 {
 "kind": "movie",
@@ -1075,7 +1536,11 @@
 "title": "The Kid",
 "year": "1921",
 "score": 0.739,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6vgfphm37ilad09k68fv8y51a",
+"netflix": "https://www.netflix.com/title/60034527"
+}
 },
 {
 "kind": "movie",
@@ -1083,7 +1548,11 @@
 "title": "The Great Escape",
 "year": "1963",
 "score": 0.738,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.25wh6g4f4ayem0ia86iljy3gm",
+"netflix": "https://www.netflix.com/title/558381"
+}
 },
 {
 "kind": "movie",
@@ -1092,7 +1561,11 @@
 "year": "2012",
 "score": 0.738,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.26cnqi19l1k0z2y9g7udtvfbz",
+"netflix": "https://www.netflix.com/title/70226288"
+}
 },
 {
 "kind": "tv",
@@ -1100,7 +1573,10 @@
 "title": "Wild China",
 "year": "2008",
 "score": 0.736,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/70205730"
+}
 },
 {
 "kind": "movie",
@@ -1108,7 +1584,12 @@
 "title": "Remember the Titans",
 "year": "2000",
 "score": 0.736,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6jbrb3ox9sox1nnnfpxziqyld",
+"disney": "https://www.disneyplus.com/movies/wd/6itmwJfRJIfd",
+"netflix": "https://www.netflix.com/title/60002256"
+}
 },
 {
 "kind": "tv",
@@ -1124,7 +1605,12 @@
 "title": "Little Women",
 "year": "2019",
 "score": 0.733,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2o0marx9k5sgfl9h30cvczea9",
+"netflix": "https://www.netflix.com/title/81140933",
+"prime": "https://www.primevideo.com/detail/B082WLKW5S"
+}
 },
 {
 "kind": "movie",
@@ -1133,7 +1619,12 @@
 "year": "2009",
 "score": 0.732,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1hmaf5hccvdvn71dc5hr7mgcj",
+"disney": "https://www.disneyplus.com/movies/wd/2YOnkRN4LwZZ",
+"hotstar": "https://www.hotstar.com/1770000948"
+}
 },
 {
 "kind": "movie",
@@ -1141,7 +1632,11 @@
 "title": "Willy Wonka & the Chocolate Factory",
 "year": "1971",
 "score": 0.731,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.33jugzmtwhfbl45dd3eui946o",
+"netflix": "https://www.netflix.com/title/60020949"
+}
 },
 {
 "kind": "tv",
@@ -1149,7 +1644,11 @@
 "title": "One Strange Rock",
 "year": "2018",
 "score": 0.73,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/bON1qBV74Bes",
+"netflix": "https://www.netflix.com/title/81071666"
+}
 },
 {
 "kind": "movie",
@@ -1158,7 +1657,13 @@
 "year": "2015",
 "score": 0.729,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4kluf2kwyi1arpo7yult1pt58",
+"disney": "https://www.disneyplus.com/movies/wd/6twitX3cxzgg",
+"hotstar": "https://www.hotstar.com/1770002321",
+"netflix": "https://www.netflix.com/title/80058399"
+}
 },
 {
 "kind": "movie",
@@ -1166,7 +1671,10 @@
 "title": "Senna",
 "year": "2010",
 "score": 0.729,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/70170051"
+}
 },
 {
 "kind": "movie",
@@ -1174,7 +1682,12 @@
 "title": "Togo",
 "year": "2019",
 "score": 0.728,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.kchxjh96mtncjtttqd1g8vp1",
+"disney": "https://www.disneyplus.com/movies/wd/7jEeXqS5aEVr",
+"hotstar": "https://www.hotstar.com/1260021358"
+}
 },
 {
 "kind": "movie",
@@ -1182,7 +1695,11 @@
 "title": "The Miracle Worker",
 "year": "1962",
 "score": 0.728,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7ilg7rnpz3w2daslpv093n7kb",
+"netflix": "https://www.netflix.com/title/60004246"
+}
 },
 {
 "kind": "tv",
@@ -1190,7 +1707,11 @@
 "title": "Star Trek",
 "year": "1966",
 "score": 0.726,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.5howwgk962prd0y3yi928rx5a",
+"netflix": "https://www.netflix.com/title/70136140"
+}
 },
 {
 "kind": "movie",
@@ -1198,7 +1719,11 @@
 "title": "The Little Prince",
 "year": "2015",
 "score": 0.726,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1czdi5ulmuwnulmxs1u2dyydw",
+"netflix": "https://www.netflix.com/title/80057578"
+}
 },
 {
 "kind": "movie",
@@ -1206,7 +1731,11 @@
 "title": "Klaus",
 "year": "2019",
 "score": 0.725,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.180ns3n9ahzliijlzvaykyfrp",
+"netflix": "https://www.netflix.com/title/80183187"
+}
 },
 {
 "kind": "movie",
@@ -1214,7 +1743,11 @@
 "title": "Fiddler on the Roof",
 "year": "1971",
 "score": 0.725,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.742000pfsskx50ck1ev5lbggw",
+"netflix": "https://www.netflix.com/title/499456"
+}
 },
 {
 "kind": "tv",
@@ -1222,7 +1755,10 @@
 "title": "Great Migrations",
 "year": "2010",
 "score": 0.725,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/7m0aH6yYBKWp"
+}
 },
 {
 "kind": "movie",
@@ -1231,7 +1767,13 @@
 "year": "2016",
 "score": 0.724,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.24f3dqmqxdcw4bmcv1c9zw9gj",
+"disney": "https://www.disneyplus.com/movies/wd/1QOxldhm1sKg",
+"hotstar": "https://www.hotstar.com/1260017510",
+"netflix": "https://www.netflix.com/title/80079258"
+}
 },
 {
 "kind": "tv",
@@ -1239,7 +1781,10 @@
 "title": "The Universe",
 "year": "2007",
 "score": 0.724,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/70143831"
+}
 },
 {
 "kind": "movie",
@@ -1247,7 +1792,12 @@
 "title": "The Hunchback of Notre Dame",
 "year": "1996",
 "score": 0.724,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.156bnrnzdegdl4ysr8y5ovse3",
+"disney": "https://www.disneyplus.com/movies/wd/796BIJb9AlES",
+"netflix": "https://www.netflix.com/title/60022496"
+}
 },
 {
 "kind": "tv",
@@ -1263,7 +1813,12 @@
 "title": "Bridge to Terabithia",
 "year": "2007",
 "score": 0.723,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.kt0dr9f6pe7u2eao51glokhw",
+"disney": "https://www.disneyplus.com/movies/wd/6Czf0V5vqJvh",
+"netflix": "https://www.netflix.com/title/70053832"
+}
 },
 {
 "kind": "movie",
@@ -1271,7 +1826,12 @@
 "title": "Pinocchio",
 "year": "1940",
 "score": 0.723,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4ixknv3558j9uodmwlui4gfy8",
+"disney": "https://www.disneyplus.com/movies/wd/3awzEJp1S6xg",
+"netflix": "https://www.netflix.com/title/858168"
+}
 },
 {
 "kind": "tv",
@@ -1279,7 +1839,10 @@
 "title": "Little House on the Prairie",
 "year": "1974",
 "score": 0.722,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.3ez2i5yloitfko3wca7v3frvs"
+}
 },
 {
 "kind": "tv",
@@ -1295,7 +1858,10 @@
 "title": "Teen Titans",
 "year": "2003",
 "score": 0.721,
-"badge": ""
+"badge": "",
+"links": {
+"max": "https://play.hbomax.com/series/urn:hbo:series:GXm_gJg34lp4_wwEAAEZI"
+}
 },
 {
 "kind": "movie",
@@ -1303,7 +1869,11 @@
 "title": "A Christmas Carol",
 "year": "1999",
 "score": 0.721,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4ze6vmi43a8tk22fiykco9jjx",
+"netflix": "https://www.netflix.com/title/60032540"
+}
 },
 {
 "kind": "movie",
@@ -1311,7 +1881,11 @@
 "title": "Modern Times",
 "year": "1936",
 "score": 0.72,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3tcp1o8pfpodim7m9r2bjk3t3",
+"netflix": "https://www.netflix.com/title/60028129"
+}
 },
 {
 "kind": "movie",
@@ -1319,7 +1893,12 @@
 "title": "Singin' in the Rain",
 "year": "1952",
 "score": 0.72,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4y40uv6tngxx1wfrh78p8yzft",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXjS6HwuDQo-njwEAAAT1",
+"netflix": "https://www.netflix.com/title/967758"
+}
 },
 {
 "kind": "tv",
@@ -1327,7 +1906,10 @@
 "title": "Gargoyles",
 "year": "1994",
 "score": 0.718,
-"badge": ""
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/1HRYnnrgmsZ5"
+}
 },
 {
 "kind": "tv",
@@ -1343,7 +1925,11 @@
 "title": "Raya and the Last Dragon",
 "year": "2021",
 "score": 0.714,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.13yhvlcnjgixwpl8hy62kuppp",
+"disney": "https://www.disneyplus.com/movies/wd/6dyengbx3iYK"
+}
 },
 {
 "kind": "tv",
@@ -1351,7 +1937,10 @@
 "title": "Infinity Train",
 "year": "2019",
 "score": 0.714,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.6o7cfts3oihvyb5xepdz9m5zn"
+}
 },
 {
 "kind": "movie",
@@ -1367,7 +1956,11 @@
 "title": "The Secret of Kells",
 "year": "2009",
 "score": 0.71,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3sxzk26ezpba303e9k2tvbzp",
+"netflix": "https://www.netflix.com/title/70120522"
+}
 },
 {
 "kind": "movie",
@@ -1375,7 +1968,12 @@
 "title": "A Christmas Carol",
 "year": "2009",
 "score": 0.71,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.eig39fvss9v0h4zxcj38rc7m",
+"disney": "https://www.disneyplus.com/movies/wd/QnakzyiFzOeP",
+"netflix": "https://www.netflix.com/title/70109890"
+}
 },
 {
 "kind": "movie",
@@ -1384,7 +1982,12 @@
 "year": "2012",
 "score": 0.709,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2ah7ooptctonhjgqyzpetkbt1",
+"disney": "https://www.disneyplus.com/movies/wd/2gUgb0BX9Glj",
+"netflix": "https://www.netflix.com/title/70213509"
+}
 },
 {
 "kind": "tv",
@@ -1392,7 +1995,10 @@
 "title": "Steven Universe Future",
 "year": "2019",
 "score": 0.709,
-"badge": ""
+"badge": "",
+"links": {
+"max": "https://play.hbomax.com/series/urn:hbo:series:GXuf61QBFTpuSkwEAAA1t"
+}
 },
 {
 "kind": "movie",
@@ -1401,7 +2007,12 @@
 "year": "2010",
 "score": 0.708,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2e5zll6jrv7fpc4j73kiw6teq",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssRwQHfmVVGwwEAAABi",
+"netflix": "https://www.netflix.com/title/70115887"
+}
 },
 {
 "kind": "movie",
@@ -1410,7 +2021,10 @@
 "year": "1957",
 "score": 0.708,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2w9gsodu34xfgr9wjpa4a3llb"
+}
 },
 {
 "kind": "movie",
@@ -1418,7 +2032,11 @@
 "title": "The Muppet Christmas Carol",
 "year": "1992",
 "score": 0.708,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.43x9c8qf5dw65k5w4sszfi44u",
+"disney": "https://www.disneyplus.com/movies/wd/6BumPfZlq5OH"
+}
 },
 {
 "kind": "movie",
@@ -1426,7 +2044,11 @@
 "title": "Ben-Hur",
 "year": "1959",
 "score": 0.707,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.523sgjwmhal494z5qfp0xz51g",
+"netflix": "https://www.netflix.com/title/70038486"
+}
 },
 {
 "kind": "movie",
@@ -1435,7 +2057,11 @@
 "year": "1998",
 "score": 0.707,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3thpf98o5diknnctdycef69fu",
+"netflix": "https://www.netflix.com/title/11819086"
+}
 },
 {
 "kind": "movie",
@@ -1443,7 +2069,11 @@
 "title": "The Goonies",
 "year": "1985",
 "score": 0.706,
-"badge": "loved"
+"badge": "loved",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2qrqq24aa4jjhqmdl0kr3b6d0",
+"netflix": "https://www.netflix.com/title/60000575"
+}
 },
 {
 "kind": "tv",
@@ -1459,7 +2089,10 @@
 "title": "The Boy and the Heron",
 "year": "2023",
 "score": 0.704,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1eshy5xlfm3py61p3zrrufp3v"
+}
 },
 {
 "kind": "movie",
@@ -1467,7 +2100,10 @@
 "title": "New Gods: Nezha Reborn",
 "year": "2021",
 "score": 0.704,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/81418302"
+}
 },
 {
 "kind": "movie",
@@ -1476,7 +2112,13 @@
 "year": "2010",
 "score": 0.703,
 "badge": "must",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5eyei47zjeao0u3wdwn5lv93c",
+"disney": "https://www.disneyplus.com/movies/wd/5i3MkHrmohAt",
+"hotstar": "https://www.hotstar.com/1660000056",
+"netflix": "https://www.netflix.com/title/70116690"
+}
 },
 {
 "kind": "tv",
@@ -1484,7 +2126,10 @@
 "title": "Into the Universe with Stephen Hawking",
 "year": "2010",
 "score": 0.703,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.2j7yuxw26tgjbo1aah296j4tw"
+}
 },
 {
 "kind": "tv",
@@ -1500,7 +2145,12 @@
 "title": "Fantastic Mr. Fox",
 "year": "2009",
 "score": 0.699,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.rjm5r8m9xnog8o1rzzl2mxc3",
+"disney": "https://www.disneyplus.com/movies/wd/4cna09XI2gqn",
+"netflix": "https://www.netflix.com/title/70109889"
+}
 },
 {
 "kind": "tv",
@@ -1516,7 +2166,10 @@
 "title": "Earth",
 "year": "2007",
 "score": 0.698,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/70104314"
+}
 },
 {
 "kind": "tv",
@@ -1524,7 +2177,10 @@
 "title": "DuckTales",
 "year": "2017",
 "score": 0.698,
-"badge": ""
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE"
+}
 },
 {
 "kind": "tv",
@@ -1532,7 +2188,10 @@
 "title": "Earth at Night in Colour",
 "year": "2020",
 "score": 0.698,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.37dvcdop7ub4m8tx9fnczl1a1"
+}
 },
 {
 "kind": "movie",
@@ -1540,7 +2199,12 @@
 "title": "Holes",
 "year": "2003",
 "score": 0.697,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3xfxm6sx6ax30et957pya3wa7",
+"disney": "https://www.disneyplus.com/movies/wd/1xOnWSIhnxqY",
+"netflix": "https://www.netflix.com/title/60027593"
+}
 },
 {
 "kind": "movie",
@@ -1548,7 +2212,11 @@
 "title": "The Red Balloon",
 "year": "1956",
 "score": 0.695,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4cru1kyekgf3pc1e47kibe42p",
+"netflix": "https://www.netflix.com/title/70085455"
+}
 },
 {
 "kind": "movie",
@@ -1556,7 +2224,10 @@
 "title": "Apollo 11",
 "year": "2019",
 "score": 0.695,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.26k0ddkuz4rkm9d7pxpe9lrx5"
+}
 },
 {
 "kind": "movie",
@@ -1565,7 +2236,11 @@
 "year": "2001",
 "score": 0.694,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1xebq6b6acn6az49exa5ybl1c",
+"netflix": "https://www.netflix.com/title/60020686"
+}
 },
 {
 "kind": "tv",
@@ -1589,7 +2264,11 @@
 "title": "The Karate Kid",
 "year": "1984",
 "score": 0.693,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.35sgeb85f20mzxp5wv4qo7w0o",
+"netflix": "https://www.netflix.com/title/60036164"
+}
 },
 {
 "kind": "movie",
@@ -1597,7 +2276,11 @@
 "title": "Paddington 2",
 "year": "2017",
 "score": 0.693,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6uanyirozllokd56zsopx7no1",
+"netflix": "https://www.netflix.com/title/80195897"
+}
 },
 {
 "kind": "tv",
@@ -1605,7 +2288,11 @@
 "title": "A Series of Unfortunate Events",
 "year": "2017",
 "score": 0.693,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.mna6rt9bzqd8n1080bj96h8",
+"netflix": "https://www.netflix.com/title/80050008"
+}
 },
 {
 "kind": "tv",
@@ -1622,7 +2309,12 @@
 "year": "1976",
 "score": 0.69,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.s32qp1txtrpzqz861on1fjot",
+"netflix": "https://www.netflix.com/title/915927",
+"prime": "https://www.primevideo.com/detail/0PKD430VQU4ALLISBLIAGREZ99"
+}
 },
 {
 "kind": "movie",
@@ -1630,7 +2322,11 @@
 "title": "Hachi: A Dog's Tale",
 "year": "2009",
 "score": 0.689,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2l2qtmj30xnptzo7cwmppu7b4",
+"netflix": "https://www.netflix.com/title/70118677"
+}
 },
 {
 "kind": "movie",
@@ -1638,7 +2334,11 @@
 "title": "Free Solo",
 "year": "2018",
 "score": 0.688,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5qihxgav718gwxcja7fl9ll2p",
+"disney": "https://www.disneyplus.com/movies/wd/3ibzvuU6iPlE"
+}
 },
 {
 "kind": "movie",
@@ -1646,7 +2346,11 @@
 "title": "A Charlie Brown Christmas",
 "year": "1965",
 "score": 0.687,
-"badge": "must"
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.mbxalimrwrtq72wj4h601pyf",
+"netflix": "https://www.netflix.com/title/60002162"
+}
 },
 {
 "kind": "movie",
@@ -1654,7 +2358,13 @@
 "title": "Miracle",
 "year": "2004",
 "score": 0.687,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3hyj4v7fbysb1617kjdkexusc",
+"disney": "https://www.disneyplus.com/movies/wd/38uh6GJall9b",
+"netflix": "https://www.netflix.com/title/60033300",
+"prime": "https://www.primevideo.com/detail/B003V5G8GG"
+}
 },
 {
 "kind": "tv",
@@ -1694,7 +2404,11 @@
 "title": "Labyrinth",
 "year": "1986",
 "score": 0.685,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.703b2zy35ovxjtm2b9eegx4h",
+"netflix": "https://www.netflix.com/title/680020"
+}
 },
 {
 "kind": "movie",
@@ -1702,7 +2416,10 @@
 "title": "Steven Universe: The Movie",
 "year": "2019",
 "score": 0.684,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6uzy95gzvtum4tdwxyrmacxad"
+}
 },
 {
 "kind": "tv",
@@ -1710,7 +2427,13 @@
 "title": "Everybody Hates Chris",
 "year": "2005",
 "score": 0.684,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.60li3ihc1xnjvofvduj44m9c",
+"max": "https://play.hbomax.com/series/urn:hbo:series:GYVr-Fw8B-IOswwEAAAAC",
+"netflix": "https://www.netflix.com/title/70155643",
+"prime": "https://www.primevideo.com/detail/amzn1.dv.gti.a75e3b04-e388-4576-a82b-7852f77b9873"
+}
 },
 {
 "kind": "movie",
@@ -1726,7 +2449,10 @@
 "title": "Whale Rider",
 "year": "2003",
 "score": 0.682,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1098s6omzk02hawtgsdwx05wi"
+}
 },
 {
 "kind": "tv",
@@ -1734,7 +2460,10 @@
 "title": "Animal",
 "year": "2021",
 "score": 0.682,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81145024"
+}
 },
 {
 "kind": "movie",
@@ -1742,7 +2471,12 @@
 "title": "Lilo & Stitch",
 "year": "2002",
 "score": 0.68,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6nwdu0slhb1fb9jqz3ju5cnrb",
+"disney": "https://www.disneyplus.com/movies/wd/1KQztXx3gPGi",
+"netflix": "https://www.netflix.com/title/60022989"
+}
 },
 {
 "kind": "movie",
@@ -1750,7 +2484,11 @@
 "title": "Weathering with You",
 "year": "2019",
 "score": 0.68,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.28osol0odtehs17xasquys7c5",
+"netflix": "https://www.netflix.com/title/81172898"
+}
 },
 {
 "kind": "movie",
@@ -1758,7 +2496,12 @@
 "title": "A Monster Calls",
 "year": "2016",
 "score": 0.68,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.48jwix00dr2kh0w3n2vm1c7hj",
+"disney": "https://www.disneyplus.com/movies/wd/IF5sa9pbhD5X",
+"netflix": "https://www.netflix.com/title/80022607"
+}
 },
 {
 "kind": "movie",
@@ -1766,7 +2509,12 @@
 "title": "The Sandlot",
 "year": "1993",
 "score": 0.679,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1q4100ra278icgyp06k07p4r9",
+"disney": "https://www.disneyplus.com/movies/wd/4dZNO1hdVSXv",
+"netflix": "https://www.netflix.com/title/60021964"
+}
 },
 {
 "kind": "movie",
@@ -1775,7 +2523,12 @@
 "year": "2014",
 "score": 0.678,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3x3ioa5prp4cjp9nnccadzdrx",
+"disney": "https://www.disneyplus.com/movies/wd/4AozFbXy3sPw",
+"netflix": "https://www.netflix.com/title/70305902"
+}
 },
 {
 "kind": "tv",
@@ -1783,7 +2536,10 @@
 "title": "The Dinosaurs",
 "year": "2026",
 "score": 0.676,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81612719"
+}
 },
 {
 "kind": "tv",
@@ -1791,7 +2547,10 @@
 "title": "Predators",
 "year": "2022",
 "score": 0.676,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81319177"
+}
 },
 {
 "kind": "movie",
@@ -1799,7 +2558,11 @@
 "title": "Scrooge",
 "year": "1951",
 "score": 0.675,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.vfde5sgup1g8s19rkc3uq090",
+"netflix": "https://www.netflix.com/title/60032546"
+}
 },
 {
 "kind": "movie",
@@ -1807,7 +2570,12 @@
 "title": "Jane",
 "year": "2017",
 "score": 0.675,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6ghwig6jmp513vspvssw7ks0l",
+"disney": "https://www.disneyplus.com/movies/wd/7OcmicV8vTM5",
+"netflix": "https://www.netflix.com/title/80216161"
+}
 },
 {
 "kind": "tv",
@@ -1823,7 +2591,10 @@
 "title": "Nimona",
 "year": "2023",
 "score": 0.673,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/81444554"
+}
 },
 {
 "kind": "tv",
@@ -1831,7 +2602,10 @@
 "title": "Percy Jackson and the Olympians",
 "year": "2023",
 "score": 0.673,
-"badge": ""
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/ql33aq42HBdr"
+}
 },
 {
 "kind": "movie",
@@ -1839,7 +2613,10 @@
 "title": "Tenzing",
 "year": "2026",
 "score": 0.673,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6lic0hhuxkrbem0n29vzjopii"
+}
 },
 {
 "kind": "tv",
@@ -1855,7 +2632,10 @@
 "title": "For All Mankind",
 "year": "1989",
 "score": 0.671,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5tuytm6lzyp9zn3ji1x27u63b"
+}
 },
 {
 "kind": "movie",
@@ -1864,7 +2644,11 @@
 "year": "2021",
 "score": 0.67,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4iiqngoc22wuohtan4eyl0qvq",
+"disney": "https://www.disneyplus.com/movies/wd/7K1HyQ6Hl16P"
+}
 },
 {
 "kind": "movie",
@@ -1872,7 +2656,11 @@
 "title": "Hunt for the Wilderpeople",
 "year": "2016",
 "score": 0.67,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5kg12f9bgo8mcy1uytr0k239c",
+"netflix": "https://www.netflix.com/title/80096995"
+}
 },
 {
 "kind": "movie",
@@ -1880,7 +2668,12 @@
 "title": "20,000 Leagues Under the Sea",
 "year": "1954",
 "score": 0.67,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3js4yj4u7jiter34im4npbrxe",
+"disney": "https://www.disneyplus.com/movies/wd/4SAB7qEx02M1",
+"netflix": "https://www.netflix.com/title/60011768"
+}
 },
 {
 "kind": "movie",
@@ -1888,7 +2681,11 @@
 "title": "Isle of Dogs",
 "year": "2018",
 "score": 0.668,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.pz4wxytigxnhfszcrliph225",
+"disney": "https://www.disneyplus.com/movies/wd/3Ypmb1WnRXCH"
+}
 },
 {
 "kind": "movie",
@@ -1896,7 +2693,11 @@
 "title": "Planet of the Apes",
 "year": "1968",
 "score": 0.668,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.22ghp9irlqn1ch8ijtgsuli99",
+"netflix": "https://www.netflix.com/title/60000539"
+}
 },
 {
 "kind": "movie",
@@ -1904,7 +2705,11 @@
 "title": "Little Women",
 "year": "1994",
 "score": 0.668,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.24aw4ek0q70gx13plktremlui",
+"netflix": "https://www.netflix.com/title/707114"
+}
 },
 {
 "kind": "movie",
@@ -1912,7 +2717,12 @@
 "title": "Oceans",
 "year": "2010",
 "score": 0.667,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2pohjoab61si2xukrqngwh7ed",
+"disney": "https://www.disneyplus.com/movies/wd/1b2SphJNsjUp",
+"netflix": "https://www.netflix.com/title/70118953"
+}
 },
 {
 "kind": "movie",
@@ -1920,7 +2730,12 @@
 "title": "A League of Their Own",
 "year": "1992",
 "score": 0.667,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2ep1vwlxkikhdettd106s2qhc",
+"netflix": "https://www.netflix.com/title/691124",
+"prime": "https://www.primevideo.com/detail/0IE8KOB0AME73VMLB4JE8AC5TU"
+}
 },
 {
 "kind": "movie",
@@ -1936,7 +2751,10 @@
 "title": "Tiny World",
 "year": "2020",
 "score": 0.661,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.1sid6bqjoez4sxonuulq12af7"
+}
 },
 {
 "kind": "movie",
@@ -1944,7 +2762,11 @@
 "title": "Something the Lord Made",
 "year": "2004",
 "score": 0.661,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.g8ubw6liqg7nvup9atotsuh5",
+"netflix": "https://www.netflix.com/title/70000203"
+}
 },
 {
 "kind": "tv",
@@ -1952,7 +2774,11 @@
 "title": "DreamWorks Dragons",
 "year": "2012",
 "score": 0.661,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.2g4z9mv973s6ujujrtq6iztxi",
+"netflix": "https://www.netflix.com/title/80039394"
+}
 },
 {
 "kind": "movie",
@@ -1960,7 +2786,11 @@
 "title": "The Secret of NIMH",
 "year": "1982",
 "score": 0.66,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2jddljekegwmjjlp73ewszqn1",
+"netflix": "https://www.netflix.com/title/943973"
+}
 },
 {
 "kind": "movie",
@@ -1968,7 +2798,11 @@
 "title": "Star Trek II: The Wrath of Khan",
 "year": "1982",
 "score": 0.66,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3louhyc2uuswb7fpm9n3fog51",
+"netflix": "https://www.netflix.com/title/60001462"
+}
 },
 {
 "kind": "tv",
@@ -1976,7 +2810,10 @@
 "title": "Planet Dinosaur",
 "year": "2011",
 "score": 0.659,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.rp1n4n1zoj6xihiujt3fgkgp"
+}
 },
 {
 "kind": "movie",
@@ -1984,7 +2821,12 @@
 "title": "Queen of Katwe",
 "year": "2016",
 "score": 0.658,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4y1g24sdpzj34jtd8pb07eb9y",
+"disney": "https://www.disneyplus.com/movies/wd/6FtfjP77HPmS",
+"netflix": "https://www.netflix.com/title/80106180"
+}
 },
 {
 "kind": "movie",
@@ -1992,7 +2834,10 @@
 "title": "Sherlock Jr.",
 "year": "1924",
 "score": 0.657,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6ebziv7dbmdwgctqvqcpwv47g"
+}
 },
 {
 "kind": "movie",
@@ -2000,7 +2845,11 @@
 "title": "Invictus",
 "year": "2009",
 "score": 0.657,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6qat11g24b3u3sa4zwuh3uga1",
+"netflix": "https://www.netflix.com/title/70118779"
+}
 },
 {
 "kind": "movie",
@@ -2009,7 +2858,12 @@
 "year": "2013",
 "score": 0.656,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4b17gber8k76h90rzlulvrbcl",
+"disney": "https://www.disneyplus.com/movies/wd/1JffnkWmY6mD",
+"netflix": "https://www.netflix.com/title/70279000"
+}
 },
 {
 "kind": "movie",
@@ -2017,7 +2871,11 @@
 "title": "Matilda",
 "year": "1996",
 "score": 0.655,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2a04dnrfvmpoln4g3dqqh3qf6",
+"netflix": "https://www.netflix.com/title/70033005"
+}
 },
 {
 "kind": "tv",
@@ -2041,7 +2899,11 @@
 "title": "The Secret Garden",
 "year": "1993",
 "score": 0.654,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7czaxjjie63i6016hu9r0zsn",
+"netflix": "https://www.netflix.com/title/943427"
+}
 },
 {
 "kind": "tv",
@@ -2049,7 +2911,11 @@
 "title": "Star Wars Rebels",
 "year": "2014",
 "score": 0.652,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.29znoughk8bnj2ud456pge0zu",
+"disney": "https://www.disneyplus.com/series/wp/64MCZgAzY0Zw"
+}
 },
 {
 "kind": "movie",
@@ -2057,7 +2923,11 @@
 "title": "North by Northwest",
 "year": "1959",
 "score": 0.65,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1devtykmj8p9grkv02h7cvbk5",
+"netflix": "https://www.netflix.com/title/60000544"
+}
 },
 {
 "kind": "movie",
@@ -2065,7 +2935,11 @@
 "title": "Rabbit-Proof Fence",
 "year": "2002",
 "score": 0.65,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1hz4ygmcg06o3hjusgccmk5sp",
+"netflix": "https://www.netflix.com/title/60022990"
+}
 },
 {
 "kind": "movie",
@@ -2073,7 +2947,11 @@
 "title": "Stand and Deliver",
 "year": "1988",
 "score": 0.65,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3jddlhirxc61h8kbngr5xg00s",
+"netflix": "https://www.netflix.com/title/994957"
+}
 },
 {
 "kind": "tv",
@@ -2081,7 +2959,10 @@
 "title": "Merlin",
 "year": "2008",
 "score": 0.65,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/70142436"
+}
 },
 {
 "kind": "movie",
@@ -2089,7 +2970,11 @@
 "title": "The General",
 "year": "1926",
 "score": 0.649,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6de1w3fmaggxhxfpen10h62th",
+"netflix": "https://www.netflix.com/title/21836171"
+}
 },
 {
 "kind": "movie",
@@ -2097,7 +2982,11 @@
 "title": "Man on Wire",
 "year": "2008",
 "score": 0.648,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3lxfz3f3e5ufyl4l9e9vct3bs",
+"netflix": "https://www.netflix.com/title/70084167"
+}
 },
 {
 "kind": "movie",
@@ -2105,7 +2994,11 @@
 "title": "Hoosiers",
 "year": "1986",
 "score": 0.648,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.646e9yzgy9itqp9l9ba5zr8dx",
+"netflix": "https://www.netflix.com/title/600570"
+}
 },
 {
 "kind": "movie",
@@ -2121,7 +3014,11 @@
 "title": "Kitbull",
 "year": "2019",
 "score": 0.644,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1grhg0g4i1h7thfglms4maxtk",
+"disney": "https://www.disneyplus.com/movies/wd/48I9ePWUtfW1"
+}
 },
 {
 "kind": "movie",
@@ -2129,7 +3026,10 @@
 "title": "Coach Carter",
 "year": "2005",
 "score": 0.644,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7or04wvepbj5c36nkmblnfxt"
+}
 },
 {
 "kind": "movie",
@@ -2137,7 +3037,10 @@
 "title": "Inside Out 2",
 "year": "2024",
 "score": 0.644,
-"badge": ""
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/movies/wd/6MeZYf9JkFii"
+}
 },
 {
 "kind": "tv",
@@ -2153,7 +3056,11 @@
 "title": "The Outsiders",
 "year": "1983",
 "score": 0.642,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.75uhk2e0nfsgmx33t69tm55ip",
+"netflix": "https://www.netflix.com/title/836340"
+}
 },
 {
 "kind": "movie",
@@ -2162,7 +3069,11 @@
 "year": "2008",
 "score": 0.641,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.34elthhr2qybuu3emdzn4d2fr",
+"netflix": "https://www.netflix.com/title/70075480"
+}
 },
 {
 "kind": "tv",
@@ -2170,7 +3081,10 @@
 "title": "Night on Earth",
 "year": "2020",
 "score": 0.641,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/80218938"
+}
 },
 {
 "kind": "tv",
@@ -2178,7 +3092,10 @@
 "title": "Attenborough's Life in Colour",
 "year": "2021",
 "score": 0.641,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81036559"
+}
 },
 {
 "kind": "movie",
@@ -2187,7 +3104,13 @@
 "year": "2002",
 "score": 0.64,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5phzpxxmktrfukrvil304pg8e",
+"disney": "https://www.disneyplus.com/movies/wd/4q3uPuyBeCkw",
+"hotstar": "https://www.hotstar.com/1221006195",
+"netflix": "https://www.netflix.com/title/60004481"
+}
 },
 {
 "kind": "tv",
@@ -2195,7 +3118,11 @@
 "title": "The Mysterious Benedict Society",
 "year": "2021",
 "score": 0.64,
-"badge": ""
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/5HfolGRtUHpv",
+"hotstar": "https://www.hotstar.com/1260064342"
+}
 },
 {
 "kind": "movie",
@@ -2203,7 +3130,11 @@
 "title": "The Adventures of Robin Hood",
 "year": "1938",
 "score": 0.639,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.21bqk3zl1normn8rhyrxsokmf",
+"netflix": "https://www.netflix.com/title/60010997"
+}
 },
 {
 "kind": "movie",
@@ -2212,7 +3143,11 @@
 "year": "1993",
 "score": 0.639,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1w6jlmh7a3csaxq764zd0b6f0",
+"netflix": "https://www.netflix.com/title/563104"
+}
 },
 {
 "kind": "tv",
@@ -2220,7 +3155,11 @@
 "title": "Carmen Sandiego",
 "year": "2019",
 "score": 0.638,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.609frptkjepw6fil6nqqw09ww",
+"netflix": "https://www.netflix.com/title/80167821"
+}
 },
 {
 "kind": "movie",
@@ -2228,7 +3167,11 @@
 "title": "Rudy",
 "year": "1993",
 "score": 0.636,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3pkn8n4d92xhe8vhi1qs79nor",
+"netflix": "https://www.netflix.com/title/60002332"
+}
 },
 {
 "kind": "movie",
@@ -2236,7 +3179,11 @@
 "title": "Turning Red",
 "year": "2022",
 "score": 0.636,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1q3ecu43mgs45qa6rasebsr05",
+"disney": "https://www.disneyplus.com/movies/wd/4mFPCXJi7N2m"
+}
 },
 {
 "kind": "tv",
@@ -2244,7 +3191,10 @@
 "title": "Cells at Work!",
 "year": "2018",
 "score": 0.636,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/81028791"
+}
 },
 {
 "kind": "movie",
@@ -2253,7 +3203,12 @@
 "year": "2012",
 "score": 0.636,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3e0y51zik2vn78l7ejylep5ri",
+"disney": "https://www.disneyplus.com/movies/wd/QAy54qHICSSA",
+"netflix": "https://www.netflix.com/title/70243358"
+}
 },
 {
 "kind": "movie",
@@ -2262,7 +3217,11 @@
 "year": "2019",
 "score": 0.634,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6f6qe9muhuw7g21639iajetn1",
+"disney": "https://www.disneyplus.com/movies/wd/2keS9xTm24AQ"
+}
 },
 {
 "kind": "movie",
@@ -2270,7 +3229,11 @@
 "title": "42",
 "year": "2013",
 "score": 0.634,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2mud5xputvdzmd2revxzmkajt",
+"netflix": "https://www.netflix.com/title/70259169"
+}
 },
 {
 "kind": "movie",
@@ -2278,7 +3241,11 @@
 "title": "Chasing Ice",
 "year": "2012",
 "score": 0.634,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.h9wmmbrpkwvhs9d5r8n63btp",
+"netflix": "https://www.netflix.com/title/70229919"
+}
 },
 {
 "kind": "movie",
@@ -2286,7 +3253,11 @@
 "title": "Fire of Love",
 "year": "2022",
 "score": 0.633,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6wf83qhu40r20qtg0gw8h6jjf",
+"disney": "https://www.disneyplus.com/movies/wd/1hC7erRfsl3B"
+}
 },
 {
 "kind": "movie",
@@ -2303,7 +3274,13 @@
 "year": "2004",
 "score": 0.631,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3r7os17fk4uufvf09l35lc9hp",
+"disney": "https://www.disneyplus.com/movies/wd/1CNlLz5NUKU6",
+"hotstar": "https://www.hotstar.com/1260105551",
+"netflix": "https://www.netflix.com/title/60036230"
+}
 },
 {
 "kind": "movie",
@@ -2311,7 +3288,11 @@
 "title": "Harriet",
 "year": "2019",
 "score": 0.63,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4vxr4zfl2spgshukpx2nu7t51",
+"netflix": "https://www.netflix.com/title/81011382"
+}
 },
 {
 "kind": "movie",
@@ -2319,7 +3300,12 @@
 "title": "Cool Runnings",
 "year": "1993",
 "score": 0.628,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.669df9b4rf4rdif7k385umc9d",
+"disney": "https://www.disneyplus.com/movies/wd/1zyvW8wIgqET",
+"netflix": "https://www.netflix.com/title/397368"
+}
 },
 {
 "kind": "movie",
@@ -2327,7 +3313,12 @@
 "title": "Glory Road",
 "year": "2006",
 "score": 0.627,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3fd4lleay2su1urr7t4ym3jbn",
+"disney": "https://www.disneyplus.com/movies/wd/33N7pEEGffQ7",
+"netflix": "https://www.netflix.com/title/70041956"
+}
 },
 {
 "kind": "movie",
@@ -2335,7 +3326,12 @@
 "title": "The First Slam Dunk",
 "year": "2022",
 "score": 0.627,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6l7e1z8outl5vrqesgwslpu7",
+"disney": "https://www.disneyplus.com/movies/wd/7hsoRMmV7E0o",
+"netflix": "https://www.netflix.com/title/81765372"
+}
 },
 {
 "kind": "movie",
@@ -2343,7 +3339,12 @@
 "title": "Chariots of Fire",
 "year": "1981",
 "score": 0.627,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4cvl5oo1wqgh2aj5gwhyghdtr",
+"disney": "https://www.disneyplus.com/movies/wd/3Zwc6Gx3Wxvy",
+"netflix": "https://www.netflix.com/title/60037204"
+}
 },
 {
 "kind": "movie",
@@ -2351,7 +3352,11 @@
 "title": "Young Woman and the Sea",
 "year": "2024",
 "score": 0.626,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1wrf5vu1bjws4or2kavruq5sb",
+"disney": "https://www.disneyplus.com/movies/wd/7RtNXnCiH1PG"
+}
 },
 {
 "kind": "tv",
@@ -2359,7 +3364,10 @@
 "title": "Our Great National Parks",
 "year": "2022",
 "score": 0.626,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81086133"
+}
 },
 {
 "kind": "movie",
@@ -2367,7 +3375,10 @@
 "title": "Belle",
 "year": "2021",
 "score": 0.625,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4efimo9gav5hlry3do2we0jic"
+}
 },
 {
 "kind": "movie",
@@ -2375,7 +3386,11 @@
 "title": "Wallace & Gromit: The Curse of the Were-Rabbit",
 "year": "2005",
 "score": 0.625,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3m648271booldvtyo6idpp9n6",
+"netflix": "https://www.netflix.com/title/70021655"
+}
 },
 {
 "kind": "movie",
@@ -2384,7 +3399,13 @@
 "year": "2019",
 "score": 0.625,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.8u8dqncoixk0k00wbdlu0zsf",
+"disney": "https://www.disneyplus.com/movies/wd/6uCvSyAXOYKn",
+"hotstar": "https://www.hotstar.com/1260014782",
+"prime": "https://www.primevideo.com/detail/B0B66JJ5VR"
+}
 },
 {
 "kind": "movie",
@@ -2392,7 +3413,11 @@
 "title": "PK",
 "year": "2014",
 "score": 0.624,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4sivzgiw353kug8itkrscx2px",
+"netflix": "https://www.netflix.com/title/70303496"
+}
 },
 {
 "kind": "movie",
@@ -2400,7 +3425,11 @@
 "title": "A Little Princess",
 "year": "1995",
 "score": 0.624,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5xglb9kopqn4dyunbr45e0ymr",
+"netflix": "https://www.netflix.com/title/705734"
+}
 },
 {
 "kind": "movie",
@@ -2408,7 +3437,11 @@
 "title": "ParaNorman",
 "year": "2012",
 "score": 0.624,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4ub4fyywjj54yokepgiydxwq7",
+"netflix": "https://www.netflix.com/title/70217914"
+}
 },
 {
 "kind": "movie",
@@ -2416,7 +3449,11 @@
 "title": "Captains Courageous",
 "year": "1937",
 "score": 0.623,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.70pt5l4870kvc4b4xngwu15jw",
+"netflix": "https://www.netflix.com/title/60010210"
+}
 },
 {
 "kind": "tv",
@@ -2424,7 +3461,10 @@
 "title": "Our Universe",
 "year": "2022",
 "score": 0.623,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81243961"
+}
 },
 {
 "kind": "movie",
@@ -2432,7 +3472,11 @@
 "title": "The Peanut Butter Falcon",
 "year": "2019",
 "score": 0.62,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.20j8bv407mchrifikzyhir4a1",
+"prime": "https://www.primevideo.com/detail/B07W4KCGQP"
+}
 },
 {
 "kind": "movie",
@@ -2441,7 +3485,12 @@
 "year": "1997",
 "score": 0.618,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.75ki76zgijhtzk3xpx27jbtyq",
+"disney": "https://www.disneyplus.com/movies/wd/2e02rZ2TfE0f",
+"netflix": "https://www.netflix.com/title/1171557"
+}
 },
 {
 "kind": "movie",
@@ -2449,7 +3498,11 @@
 "title": "Oliver!",
 "year": "1968",
 "score": 0.618,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.25kr1pr38osipt76ycjg5576l",
+"netflix": "https://www.netflix.com/title/822391"
+}
 },
 {
 "kind": "movie",
@@ -2457,7 +3510,11 @@
 "title": "African Cats",
 "year": "2011",
 "score": 0.617,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1h3bjhigfdg04tavlf618r2ap",
+"disney": "https://www.disneyplus.com/movies/wd/72frq19NDYJ3"
+}
 },
 {
 "kind": "movie",
@@ -2465,7 +3522,10 @@
 "title": "Race",
 "year": "2016",
 "score": 0.617,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.b5ewjh6orhumg9bqwqercyg6"
+}
 },
 {
 "kind": "movie",
@@ -2473,7 +3533,10 @@
 "title": "One Life",
 "year": "2023",
 "score": 0.616,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5zjeuob5v5cnm7rjz2rilygw5"
+}
 },
 {
 "kind": "movie",
@@ -2481,7 +3544,11 @@
 "title": "Batman: Mask of the Phantasm",
 "year": "1993",
 "score": 0.613,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7hvyy2p6cqwfq5yqsz9dkhe1k",
+"netflix": "https://www.netflix.com/title/287366"
+}
 },
 {
 "kind": "movie",
@@ -2489,7 +3556,11 @@
 "title": "Flow",
 "year": "2024",
 "score": 0.612,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.22galt2spi1jlic15bdjvf1mz",
+"netflix": "https://www.netflix.com/title/82040308"
+}
 },
 {
 "kind": "movie",
@@ -2497,7 +3568,11 @@
 "title": "The Swimmers",
 "year": "2022",
 "score": 0.612,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3wzx3jsr5ctbhdgws3ydvdy9l",
+"netflix": "https://www.netflix.com/title/81365134"
+}
 },
 {
 "kind": "movie",
@@ -2505,7 +3580,10 @@
 "title": "Superman",
 "year": "1978",
 "score": 0.612,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5qkqo6kcwxnno7lex3a2wmlal"
+}
 },
 {
 "kind": "tv",
@@ -2513,7 +3591,10 @@
 "title": "NOVA",
 "year": "1974",
 "score": 0.612,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.3csi7ebnowwlq291svp11o8fd"
+}
 },
 {
 "kind": "movie",
@@ -2521,7 +3602,12 @@
 "title": "Old Yeller",
 "year": "1957",
 "score": 0.611,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.ylidyayt31xcqmsv6aiis32w",
+"disney": "https://www.disneyplus.com/movies/wd/6DBzZulIFTKC",
+"netflix": "https://www.netflix.com/title/60021864"
+}
 },
 {
 "kind": "movie",
@@ -2529,7 +3615,10 @@
 "title": "Sgt. Stubby: An American Hero",
 "year": "2018",
 "score": 0.611,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6unln6t5yuzt7z2n4e6ylziqe"
+}
 },
 {
 "kind": "movie",
@@ -2537,7 +3626,10 @@
 "title": "Robot Dreams",
 "year": "2023",
 "score": 0.61,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6x5sprgxtrnb0n5cqwjzmyiki"
+}
 },
 {
 "kind": "movie",
@@ -2545,7 +3637,11 @@
 "title": "Selma",
 "year": "2014",
 "score": 0.61,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.13hpbceyga3v5z06ixcd85kqr",
+"netflix": "https://www.netflix.com/title/80013278"
+}
 },
 {
 "kind": "movie",
@@ -2553,7 +3649,11 @@
 "title": "Galaxy Quest",
 "year": "1999",
 "score": 0.61,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2sz03bfoispn9axvr3e7lm4vh",
+"netflix": "https://www.netflix.com/title/28369403"
+}
 },
 {
 "kind": "movie",
@@ -2562,7 +3662,11 @@
 "year": "2017",
 "score": 0.608,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.z7v0grnlsjbdd8l699lou0wq",
+"netflix": "https://www.netflix.com/title/80157091"
+}
 },
 {
 "kind": "tv",
@@ -2578,7 +3682,10 @@
 "title": "King Richard",
 "year": "2021",
 "score": 0.607,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.11i83ne5iq37usxzghkyicmwk"
+}
 },
 {
 "kind": "tv",
@@ -2594,7 +3701,11 @@
 "title": "The Imagineering Story",
 "year": "2019",
 "score": 0.605,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.6s93rx2e4jewuxdlu3mga78di",
+"disney": "https://www.disneyplus.com/series/wp/6ryoXv1e1rWW"
+}
 },
 {
 "kind": "movie",
@@ -2602,7 +3713,11 @@
 "title": "The Adventures of Tintin",
 "year": "2011",
 "score": 0.604,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.16ygupjgy6v6f70dv1vq03b8n",
+"netflix": "https://www.netflix.com/title/70121502"
+}
 },
 {
 "kind": "movie",
@@ -2610,7 +3725,11 @@
 "title": "Gifted Hands: The Ben Carson Story",
 "year": "2009",
 "score": 0.604,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.72d7woqh65c3cuvex05cup8ch",
+"netflix": "https://www.netflix.com/title/70114497"
+}
 },
 {
 "kind": "movie",
@@ -2618,7 +3737,10 @@
 "title": "Earth: One Amazing Day",
 "year": "2017",
 "score": 0.604,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.38xyk9t2o99691hg0qqhm3x7s"
+}
 },
 {
 "kind": "movie",
@@ -2626,7 +3748,11 @@
 "title": "Fantastic Fungi",
 "year": "2019",
 "score": 0.603,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2ycrosuqjdo2mxuvq9qegaute",
+"netflix": "https://www.netflix.com/title/81183477"
+}
 },
 {
 "kind": "movie",
@@ -2634,7 +3760,10 @@
 "title": "Black",
 "year": "2005",
 "score": 0.601,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/70031975"
+}
 },
 {
 "kind": "movie",
@@ -2642,7 +3771,10 @@
 "title": "Sarah's Oil",
 "year": "2025",
 "score": 0.601,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.184z7jjnfx88khj3kzgmgooh6"
+}
 },
 {
 "kind": "movie",
@@ -2650,7 +3782,12 @@
 "title": "The Book of Life",
 "year": "2014",
 "score": 0.6,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.hzan2ya0s8vtpusnljrs0lt8",
+"disney": "https://www.disneyplus.com/movies/wd/4qIPJn6YtAmH",
+"netflix": "https://www.netflix.com/title/70305898"
+}
 },
 {
 "kind": "tv",
@@ -2658,7 +3795,10 @@
 "title": "Our Oceans",
 "year": "2024",
 "score": 0.6,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81139969"
+}
 },
 {
 "kind": "movie",
@@ -2666,7 +3806,11 @@
 "title": "Bears",
 "year": "2014",
 "score": 0.6,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2tp266zedvgzethnyu2ojojzh",
+"disney": "https://www.disneyplus.com/movies/wd/6aE1rGrfryRI"
+}
 },
 {
 "kind": "movie",
@@ -2674,7 +3818,10 @@
 "title": "A Million Miles Away",
 "year": "2023",
 "score": 0.599,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.57ie0ceaq2vowmf6k26eu8eqj"
+}
 },
 {
 "kind": "movie",
@@ -2682,7 +3829,11 @@
 "title": "Finding Neverland",
 "year": "2004",
 "score": 0.599,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2ztxe0rfghk8fpy2hsfb5dk5l",
+"netflix": "https://www.netflix.com/title/70001999"
+}
 },
 {
 "kind": "movie",
@@ -2690,7 +3841,11 @@
 "title": "The Black Stallion",
 "year": "1979",
 "score": 0.598,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.45kkoukx4wdomj6oeizmga9c1",
+"netflix": "https://www.netflix.com/title/312525"
+}
 },
 {
 "kind": "tv",
@@ -2707,7 +3862,12 @@
 "year": "2019",
 "score": 0.597,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5jnai8irbqw4s2n64dgdwfzz9",
+"disney": "https://www.disneyplus.com/movies/wd/2CtjW4tKzIHp",
+"hotstar": "https://www.hotstar.com/1260015326"
+}
 },
 {
 "kind": "movie",
@@ -2716,7 +3876,11 @@
 "year": "2013",
 "score": 0.597,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6drvg8zg02248k7sipdbwicgh",
+"netflix": "https://www.netflix.com/title/70274337"
+}
 },
 {
 "kind": "movie",
@@ -2724,7 +3888,11 @@
 "title": "Star Trek IV: The Voyage Home",
 "year": "1986",
 "score": 0.595,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.60sgpu17ghb4kal0yh4y5wudx",
+"netflix": "https://www.netflix.com/title/995892"
+}
 },
 {
 "kind": "tv",
@@ -2740,7 +3908,10 @@
 "title": "Rise",
 "year": "2022",
 "score": 0.595,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.50icwocrfmze2ih6c9lsv3n0y"
+}
 },
 {
 "kind": "movie",
@@ -2748,7 +3919,11 @@
 "title": "The Call of the Wild",
 "year": "2020",
 "score": 0.595,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.41ncx35n6i4ktnhimtj3sw6q2",
+"disney": "https://www.disneyplus.com/movies/wd/6I1RqvJwkKpd"
+}
 },
 {
 "kind": "movie",
@@ -2757,7 +3932,11 @@
 "year": "2005",
 "score": 0.594,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3mo8p5peoquw0aniinm2ht3ai",
+"netflix": "https://www.netflix.com/title/70021648"
+}
 },
 {
 "kind": "movie",
@@ -2766,7 +3945,11 @@
 "year": "2011",
 "score": 0.594,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.21tit9ax7g0eo6erxwqdwg9fo",
+"netflix": "https://www.netflix.com/title/70126574"
+}
 },
 {
 "kind": "movie",
@@ -2774,7 +3957,11 @@
 "title": "Akeelah and the Bee",
 "year": "2006",
 "score": 0.593,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1ygv76eug3764fd9m1dt5y9mu",
+"netflix": "https://www.netflix.com/title/70044708"
+}
 },
 {
 "kind": "movie",
@@ -2782,7 +3969,12 @@
 "title": "Robin Hood",
 "year": "1973",
 "score": 0.593,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2f3jb9jb6cmlj6n7nhrgrqwc7",
+"disney": "https://www.disneyplus.com/movies/wd/5ACMz1bJJwwZ",
+"netflix": "https://www.netflix.com/title/60001787"
+}
 },
 {
 "kind": "tv",
@@ -2790,7 +3982,10 @@
 "title": "Star Wars: Visions",
 "year": "2021",
 "score": 0.591,
-"badge": ""
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/5AiiTRJ7OaKg"
+}
 },
 {
 "kind": "movie",
@@ -2798,7 +3993,11 @@
 "title": "The Dark Crystal",
 "year": "1982",
 "score": 0.589,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.299wff8slu38cf9u7xy0xk35n",
+"netflix": "https://www.netflix.com/title/419733"
+}
 },
 {
 "kind": "movie",
@@ -2806,7 +4005,11 @@
 "title": "14 Peaks: Nothing Is Impossible",
 "year": "2021",
 "score": 0.588,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.65rj4turqobtm849kj29jwm47",
+"netflix": "https://www.netflix.com/title/81464765"
+}
 },
 {
 "kind": "movie",
@@ -2814,7 +4017,11 @@
 "title": "WarGames",
 "year": "1983",
 "score": 0.584,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4n8grrnb4vq7tgygwcd1cxzcq",
+"netflix": "https://www.netflix.com/title/1103485"
+}
 },
 {
 "kind": "movie",
@@ -2822,7 +4029,11 @@
 "title": "The World's Fastest Indian",
 "year": "2005",
 "score": 0.583,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.aoqvez5a2r4rhm8g2fa4st7i",
+"netflix": "https://www.netflix.com/title/70043295"
+}
 },
 {
 "kind": "movie",
@@ -2830,7 +4041,10 @@
 "title": "Spare Parts",
 "year": "2015",
 "score": 0.583,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5dnaq5az0tgnpz36c807slbil"
+}
 },
 {
 "kind": "movie",
@@ -2838,7 +4052,10 @@
 "title": "The Biggest Little Farm",
 "year": "2019",
 "score": 0.582,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6bg19twjgke2kqqmhxe48ytj6"
+}
 },
 {
 "kind": "movie",
@@ -2846,7 +4063,11 @@
 "title": "True Grit",
 "year": "1969",
 "score": 0.582,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.12od3ujgpnye3mingugykxlyl",
+"netflix": "https://www.netflix.com/title/1067876"
+}
 },
 {
 "kind": "movie",
@@ -2854,7 +4075,11 @@
 "title": "The Mighty",
 "year": "1998",
 "score": 0.581,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7eqo77x31mcbe83nozkcq7tgr",
+"netflix": "https://www.netflix.com/title/5670487"
+}
 },
 {
 "kind": "movie",
@@ -2862,7 +4087,13 @@
 "title": "Selena",
 "year": "1997",
 "score": 0.58,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4kpcxgpfgubpg4txr0wefeacr",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXmfmmgDsdsNVoAEAAACx",
+"netflix": "https://www.netflix.com/title/1152828",
+"prime": "https://www.primevideo.com/detail/B001AWDF18"
+}
 },
 {
 "kind": "movie",
@@ -2870,7 +4101,11 @@
 "title": "Jason and the Argonauts",
 "year": "1963",
 "score": 0.58,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1zpvc2s8gjg2o2odmjjvbki06",
+"netflix": "https://www.netflix.com/title/649580"
+}
 },
 {
 "kind": "movie",
@@ -2878,7 +4113,10 @@
 "title": "Finch",
 "year": "2021",
 "score": 0.579,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.47dkj9f2ho3h8dwxixflz65q5"
+}
 },
 {
 "kind": "tv",
@@ -2886,7 +4124,11 @@
 "title": "Star Trek: Prodigy",
 "year": "2021",
 "score": 0.579,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.1zqk40gcoayvwt9tai2555wkp",
+"netflix": "https://www.netflix.com/title/81725736"
+}
 },
 {
 "kind": "movie",
@@ -2894,7 +4136,10 @@
 "title": "The Kingdom of Diamonds",
 "year": "1980",
 "score": 0.578,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/70114820"
+}
 },
 {
 "kind": "movie",
@@ -2910,7 +4155,11 @@
 "title": "The Blind Side",
 "year": "2009",
 "score": 0.574,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5v44yjndjjbw4vj7rh4uarheb",
+"netflix": "https://www.netflix.com/title/70119811"
+}
 },
 {
 "kind": "movie",
@@ -2918,7 +4167,12 @@
 "title": "Eight Below",
 "year": "2006",
 "score": 0.574,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.30phugbwab2doykw09z0wbnig",
+"disney": "https://www.disneyplus.com/movies/wd/2MVGNU4jqrII",
+"netflix": "https://www.netflix.com/title/70042689"
+}
 },
 {
 "kind": "movie",
@@ -2926,7 +4180,11 @@
 "title": "Safety",
 "year": "2020",
 "score": 0.574,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.oyfg6n9ipiih7s42efk0edjt",
+"disney": "https://www.disneyplus.com/movies/wd/60yXP18CCjFo"
+}
 },
 {
 "kind": "movie",
@@ -2934,7 +4192,10 @@
 "title": "Roald Dahl's Matilda the Musical",
 "year": "2022",
 "score": 0.573,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80993016"
+}
 },
 {
 "kind": "movie",
@@ -2942,7 +4203,10 @@
 "title": "The Boys in the Boat",
 "year": "2023",
 "score": 0.569,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5r2hybjjqoxxtfai6l39t9sc1"
+}
 },
 {
 "kind": "movie",
@@ -2950,7 +4214,11 @@
 "title": "My Fair Lady",
 "year": "1964",
 "score": 0.567,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5vpmujupbwlivwp00bb7xtb6j",
+"netflix": "https://www.netflix.com/title/60034064"
+}
 },
 {
 "kind": "movie",
@@ -2958,7 +4226,12 @@
 "title": "Swiss Family Robinson",
 "year": "1960",
 "score": 0.567,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1ytuzbwlljz258fxqw6nm93vh",
+"disney": "https://www.disneyplus.com/movies/wd/574SpL5ffj3j",
+"netflix": "https://www.netflix.com/title/60026666"
+}
 },
 {
 "kind": "movie",
@@ -2966,7 +4239,11 @@
 "title": "Field of Dreams",
 "year": "1989",
 "score": 0.565,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4cquzatxd6kupenv237e1tkww",
+"netflix": "https://www.netflix.com/title/499612"
+}
 },
 {
 "kind": "movie",
@@ -2974,7 +4251,11 @@
 "title": "Seabiscuit",
 "year": "2003",
 "score": 0.563,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5rl3uo9zfpplnuqmg35uwmx1i",
+"netflix": "https://www.netflix.com/title/60029177"
+}
 },
 {
 "kind": "movie",
@@ -2982,7 +4263,11 @@
 "title": "Peter Pan",
 "year": "2003",
 "score": 0.563,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.61pmir3e3ob54xzvzzhruu4cp",
+"netflix": "https://www.netflix.com/title/60031292"
+}
 },
 {
 "kind": "movie",
@@ -2990,7 +4275,11 @@
 "title": "Soul Surfer",
 "year": "2011",
 "score": 0.562,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7ce3w2aqem75egkk2z379j5ut",
+"netflix": "https://www.netflix.com/title/70138639"
+}
 },
 {
 "kind": "movie",
@@ -2998,7 +4287,11 @@
 "title": "Paddington",
 "year": "2014",
 "score": 0.559,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.759zk34s47omthqjyvc9i6pgo",
+"netflix": "https://www.netflix.com/title/70305929"
+}
 },
 {
 "kind": "movie",
@@ -3006,7 +4299,10 @@
 "title": "Kedi",
 "year": "2017",
 "score": 0.558,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2hl2on7lmwhc8aj98xavydf5r"
+}
 },
 {
 "kind": "movie",
@@ -3014,7 +4310,11 @@
 "title": "Fly Away Home",
 "year": "1996",
 "score": 0.558,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2n9p7k7c52uqm6gzkebvlxzwy",
+"netflix": "https://www.netflix.com/title/512381"
+}
 },
 {
 "kind": "movie",
@@ -3022,7 +4322,11 @@
 "title": "Radio",
 "year": "2003",
 "score": 0.558,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4xiid43wjv1xa49pzb9l1kc3p",
+"netflix": "https://www.netflix.com/title/60031265"
+}
 },
 {
 "kind": "movie",
@@ -3030,7 +4334,11 @@
 "title": "Shane",
 "year": "1953",
 "score": 0.558,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.r4rdnl5v3v6z8ecypial6d3i",
+"netflix": "https://www.netflix.com/title/60001810"
+}
 },
 {
 "kind": "movie",
@@ -3038,7 +4346,10 @@
 "title": "The King and I",
 "year": "1956",
 "score": 0.557,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/671936"
+}
 },
 {
 "kind": "movie",
@@ -3046,7 +4357,12 @@
 "title": "The Cat Returns",
 "year": "2002",
 "score": 0.555,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5x6i2tqowvflntpxbq5d7z5b6",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrGVHA7FCLfDNQEAAAC8",
+"netflix": "https://www.netflix.com/title/70019058"
+}
 },
 {
 "kind": "movie",
@@ -3054,7 +4370,11 @@
 "title": "The Three Musketeers",
 "year": "1948",
 "score": 0.554,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4bl1ize8uscu9pnq9yyvvtlwr",
+"netflix": "https://www.netflix.com/title/70061356"
+}
 },
 {
 "kind": "movie",
@@ -3062,7 +4382,11 @@
 "title": "Scrooge",
 "year": "1970",
 "score": 0.552,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5rxdv2sjcrrd2hqcrhu4kke6l",
+"netflix": "https://www.netflix.com/title/60010866"
+}
 },
 {
 "kind": "movie",
@@ -3070,7 +4394,10 @@
 "title": "Never Cry Wolf",
 "year": "1983",
 "score": 0.552,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6c1x8u9yzymllvw3khjgnhbip"
+}
 },
 {
 "kind": "movie",
@@ -3078,7 +4405,11 @@
 "title": "Max",
 "year": "2015",
 "score": 0.551,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.50d6a2d9z1ujao2hehdutvcsu",
+"netflix": "https://www.netflix.com/title/80013270"
+}
 },
 {
 "kind": "movie",
@@ -3086,7 +4417,11 @@
 "title": "Close Encounters of the Third Kind",
 "year": "1977",
 "score": 0.548,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5iv4rqzo9gknjzkt1jj90cjsd",
+"netflix": "https://www.netflix.com/title/60010238"
+}
 },
 {
 "kind": "movie",
@@ -3094,7 +4429,10 @@
 "title": "True Spirit",
 "year": "2023",
 "score": 0.547,
-"badge": ""
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/81054619"
+}
 },
 {
 "kind": "movie",
@@ -3102,7 +4440,11 @@
 "title": "The Man Who Knew Too Much",
 "year": "1956",
 "score": 0.546,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2o3uqfxn2p2dj2xuemb31vko0",
+"netflix": "https://www.netflix.com/title/60020329"
+}
 },
 {
 "kind": "movie",
@@ -3110,7 +4452,11 @@
 "title": "The Ron Clark Story",
 "year": "2006",
 "score": 0.546,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5yep1vn0z5c9mee2nnvpv0ddd",
+"netflix": "https://www.netflix.com/title/70058937"
+}
 },
 {
 "kind": "movie",
@@ -3118,7 +4464,10 @@
 "title": "Red Army",
 "year": "2015",
 "score": 0.544,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.a7yx9jvsd03kq1cxqystz5dh"
+}
 },
 {
 "kind": "tv",
@@ -3134,7 +4483,10 @@
 "title": "Storm Boy",
 "year": "2019",
 "score": 0.541,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2vk4bfasmnzz0v78u2hijx40h"
+}
 },
 {
 "kind": "movie",
@@ -3142,7 +4494,11 @@
 "title": "Ballerina",
 "year": "2016",
 "score": 0.54,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6upr26pn5q7qsji7lm5xlwycr",
+"netflix": "https://www.netflix.com/title/80166318"
+}
 },
 {
 "kind": "movie",
@@ -3150,7 +4506,10 @@
 "title": "Skater Girl",
 "year": "2021",
 "score": 0.54,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6f5sl23p2ap87vj3fygod3g5r"
+}
 },
 {
 "kind": "movie",
@@ -3158,7 +4517,13 @@
 "title": "Atlantis: The Lost Empire",
 "year": "2001",
 "score": 0.537,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5yk0vhryf7tclv7etecd15sdk",
+"disney": "https://www.disneyplus.com/movies/wd/20bTDjr36sfj",
+"hotstar": "https://www.hotstar.com/1260018146",
+"netflix": "https://www.netflix.com/title/60021957"
+}
 },
 {
 "kind": "movie",
@@ -3166,7 +4531,11 @@
 "title": "Frankenweenie",
 "year": "2012",
 "score": 0.537,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.ag0j7k7bme8q1yyqllngbudw",
+"disney": "https://www.disneyplus.com/movies/wd/msxVowQvL18k"
+}
 },
 {
 "kind": "movie",
@@ -3175,7 +4544,13 @@
 "year": "2016",
 "score": 0.536,
 "badge": "",
-"famous": true
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4givmnl788an88xihendpuqkc",
+"disney": "https://www.disneyplus.com/movies/wd/6mPifwCWjpbQ",
+"hotstar": "https://www.hotstar.com/1260018310",
+"netflix": "https://www.netflix.com/title/80084660"
+}
 },
 {
 "kind": "movie",
@@ -3183,7 +4558,10 @@
 "title": "The Young and Prodigious T.S. Spivet",
 "year": "2013",
 "score": 0.535,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4qx02z5uhqmh81ye2yhfq339j"
+}
 },
 {
 "kind": "movie",
@@ -3191,7 +4569,10 @@
 "title": "Wicked",
 "year": "2024",
 "score": 0.532,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2y47u72bw6uhh0g4zpgxkvatk"
+}
 },
 {
 "kind": "movie",
@@ -3199,7 +4580,11 @@
 "title": "The Man Who Knew Infinity",
 "year": "2016",
 "score": 0.529,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3nwkz522btg85git7xiwrlip8",
+"netflix": "https://www.netflix.com/title/80084348"
+}
 },
 {
 "kind": "movie",
@@ -3207,7 +4592,11 @@
 "title": "The Social Dilemma",
 "year": "2020",
 "score": 0.527,
-"badge": "learn"
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4ps6g6mobm6ce6rlf497d9asi",
+"netflix": "https://www.netflix.com/title/81254224"
+}
 },
 {
 "kind": "movie",
@@ -3215,7 +4604,11 @@
 "title": "Apollo 10½: A Space Age Childhood",
 "year": "2022",
 "score": 0.516,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.643oqv92wpkvzqc1dg68jlii4",
+"netflix": "https://www.netflix.com/title/81161042"
+}
 },
 {
 "kind": "tv",
@@ -3239,7 +4632,11 @@
 "title": "Mars",
 "year": "2016",
 "score": 0.508,
-"badge": ""
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/25Ft4b30mYhq",
+"netflix": "https://www.netflix.com/title/80144355"
+}
 },
 {
 "kind": "movie",
@@ -3247,7 +4644,11 @@
 "title": "The Journey of Natty Gann",
 "year": "1985",
 "score": 0.505,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1nnvgdwt8tj0axmkm0al2dn8m",
+"disney": "https://www.disneyplus.com/movies/wd/3lDRlEEzIFHP"
+}
 },
 {
 "kind": "movie",
@@ -3255,7 +4656,11 @@
 "title": "The Express",
 "year": "2008",
 "score": 0.503,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2u9ieq7rkdg5fgr5v73avqeh2",
+"netflix": "https://www.netflix.com/title/70104637"
+}
 },
 {
 "kind": "movie",
@@ -3263,7 +4668,10 @@
 "title": "The Man Who Invented Christmas",
 "year": "2017",
 "score": 0.495,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6rajbm49ce4o3b1hwnvrwtldw"
+}
 },
 {
 "kind": "movie",
@@ -3271,7 +4679,10 @@
 "title": "First Man",
 "year": "2018",
 "score": 0.481,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.y65esaxjlrnk6jlq498guzd4"
+}
 },
 {
 "kind": "movie",
@@ -3279,7 +4690,11 @@
 "title": "We Are Marshall",
 "year": "2006",
 "score": 0.466,
-"badge": ""
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5j909qa8kel47pzszud2o6ood",
+"netflix": "https://www.netflix.com/title/70047096"
+}
 },
 {
 "kind": "tv",

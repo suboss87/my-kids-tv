@@ -22,8 +22,9 @@ open source, and nothing about your child ever leaves the TV.
 - **Something new every few seconds, never in their face.** The window moves on every 10 seconds and a fresh set
   arrives every 30. The moment your child picks up the remote, everything holds still so they can choose.
 - **Movies and Shows**, from the catalog for their age: **4-6**, **7-10** or **11-13**.
-- **Only what you can play.** A title appears only if it's on an app you have (Netflix, Prime Video, JioHotstar,
-  Disney+, ...), and opens straight in that app. Once your child opens a title, it isn't suggested again.
+- **Only what you can play, one press away.** A title appears only if it's on an app you have in your country
+  (Netflix, Disney+, Prime Video, Apple TV+, ...), and OK opens that title's page in the app, no searching (for most
+  titles; the rest open the app). Once your child opens a title, it isn't suggested again.
 - **A quiet night sky**, a greeting with their name and the weather, and your apps underneath. Press down for the
   week's weather, your HDMI input and the settings.
 - **A screensaver** after 10 minutes without a key press: the titles' pictures full screen, slowly drifting, with the
@@ -78,8 +79,9 @@ About twenty minutes. You need the TV and a computer on the same Wi-Fi.
    this folder and say:
    > Set up My Kids TV on our TV at 192.168.1.50 for my 8-year-old.
 
-   It asks a few questions (age, first name, city, the streaming apps you pay for, a parent PIN, the YouTube button),
-   builds the app and installs it, asking before anything important.
+   It asks a few questions (age, first name, your country and city, the streaming apps you pay for there, a parent
+   PIN, the YouTube button), builds the app and installs it, asking before anything important. It works in any
+   country: the titles shown are the ones streaming where you live.
 3. **On the TV:** open *My Kids TV* → *Home Screen* → *My Kids TV*, and allow USB debugging when asked.
 
 You'll need a free [TMDB API key](https://www.themoviedb.org/settings/api) for the titles. It stays on your computer
