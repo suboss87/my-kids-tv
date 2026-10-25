@@ -10,12 +10,13 @@ fun to watch, and leaving something behind (curiosity, kindness, courage, scienc
 
 Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen) TVs.
 
-<img src="docs/images/home-day.jpg" width="49%" alt="My Kids TV by day: Good morning, Maya, three picks under a clear blue sky, How to Train Your Dragon focused with a Must-watch badge">
-<img src="docs/images/home-evening.jpg" width="49%" alt="My Kids TV in the evening: the same picks under a deep indigo sky with a few stars">
+<img src="docs/images/home-day.jpg" width="49%" alt="My Kids TV in the afternoon: Good afternoon, Viva, with the weather beside it, three picks under a clear blue sky, Hilda focused with a Kids love it badge">
+<img src="docs/images/home-evening.jpg" width="49%" alt="My Kids TV at night: Good night, Viva, the same picks under a deep indigo sky with a few stars">
 
 ## What your child sees
 
-- **A greeting** with their name: *Good morning, Maya*.
+- **A greeting** with their name and the weather in short: *Good afternoon, Viva · 25° Sunny*, and *Good night* once
+  it's late.
 - **Three picks**, changing every hour, from the catalog for their age: **4-6**, **7-10** or **11-13**.
 - **Why each one is worth it**: a small badge on the card, *Must-watch*, *Learn something* or *Kids love it*.
 - **Only what you can play**: a title appears only when it's on a streaming app you have (Netflix, Prime Video,
@@ -31,8 +32,10 @@ Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen
 - **The YouTube button** on the remote can be made to do nothing (Haier, TCL, Hisense and Sony remotes); the YouTube
   app itself stays.
 - **Apps to hide**: turned off when the TV switches, never uninstalled.
-- **No ads, no tracking, no account.** Nothing about your child leaves the TV. The app only asks TMDB for titles and
+- **No ads, no tracking, no account, no crypto tickers or news.** Nothing about your child leaves the TV. The app only asks TMDB for titles and
   pictures and Open-Meteo for the weather.
+- **A bedtime timer**: the Sleep Timer turns the TV off after 5 minutes to 4 hours, with the minutes left shown on
+  screen.
 - **One button back**: *Original* restores the TV's own home screen and everything that was turned off. No root.
 
 ## The catalogs
