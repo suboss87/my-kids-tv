@@ -1,0 +1,13 @@
+My Kids TV is an open-source, ad-free replacement home screen and screensaver for Google TV, Android TV, Fire TV, LG webOS, and Samsung Tizen designed specifically for children and parents.
+
+Instead of algorithmic rows, autoplaying trailers, and promotional banners, My Kids TV shows one calm, age-graded film or series recommendation at a time from the streaming apps already installed on your TV, alongside a clean app shelf and weather clock.
+
+Key features:
+* Age-graded catalogs (4-6, 7-10, 11-13): 800 curated movies and series (licensed under CC BY 4.0) evaluated for age fit, lasting value, craft, and fun, with badges for Must Watch, Learn Something, and Kids Love It.
+* Works with or without an API key: Works out of the box as a calm app launcher, clock, weather display, and screensaver. Add a free TMDB API key in Settings to unlock poster artwork and regional streaming availability.
+* Parent PIN protection: All settings, age-band switches, app visibility toggles, and mode switches stay behind a 4-digit parent PIN.
+* Clean mode switching: Switch between My Kids TV mode and the TV's original stock launcher from inside the app (via one-time local ADB setup, no root required). Includes an automatic safety watchdog in a separate process that restores the stock launcher if the home process ever crashes.
+* Built-in sleep timer: Set a bedtime countdown overlay that returns the TV to the home screen and sleeps the display when time is up.
+* Optional remote button blocker: Optional Accessibility service to block dedicated YouTube or app buttons on TCL, Haier, Hisense, and Sony remotes while My Kids TV mode is active.
+* 25 languages supported: Full UI localization across 25 languages with RTL support.
+* Privacy first: Zero ads, zero telemetry, zero analytics, no user accounts, and no Google Play Services dependencies. Network requests go only to TMDB (if configured) and Open-Meteo (for local weather).
