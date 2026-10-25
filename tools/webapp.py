@@ -15,8 +15,8 @@ sys.path.insert(0, os.path.join(ROOT, 'tools'))
 import translate  # noqa: E402  (the catalogues and the keys the web app uses)
 
 GENERIC = {'tmdbKey': '', 'tmdbRegion': '', 'latitude': '', 'longitude': '', 'city': '', 'language': 'auto',
-           'currency': '', 'temperature': 'auto', 'theme': 'auto', 'showCrypto': True, 'hideAnimation': False, 'hideApps': [],
-           'shelfApps': [], 'ageBand': '7-10'}
+           'currency': '', 'temperature': 'auto', 'theme': 'auto', 'showCrypto': False, 'hideAnimation': False, 'hideApps': [],
+           'shelfApps': [], 'ageBand': '7-10', 'childName': ''}
 
 AGE_BANDS = ('4-6', '7-10', '11-13')
 
@@ -60,11 +60,12 @@ def read_config(path):
         'currency': values.get('currency', 'USD') or 'USD',
         'temperature': values.get('temperature', 'auto') or 'auto',
         'theme': values.get('theme', 'auto') or 'auto',
-        'showCrypto': values.get('show_crypto', 'true').lower() != 'false',
+        'showCrypto': values.get('show_crypto', 'false').lower() == 'true',
         'hideAnimation': values.get('hide_animation', 'false').lower() == 'true',
         'hideApps': [s.strip() for s in values.get('hide_apps', '').split(',') if s.strip()],
         'shelfApps': [s.strip() for s in values.get('shelf_apps', '').split(',') if s.strip()],
         'ageBand': age_band(values.get('age_band', '')),
+        'childName': values.get('child_name', '').strip(),
     }
 
 
@@ -86,7 +87,7 @@ def catalog(band):
         return []
     with open(path, encoding='utf-8') as f:
         titles = json.load(f).get('titles', [])
-    return [{'kind': t['kind'], 'id': int(t['id']), 'title': t.get('title', '')}
+    return [{'kind': t['kind'], 'id': int(t['id']), 'title': t.get('title', ''), 'badge': t.get('badge', '')}
             for t in titles if t.get('kind') in ('movie', 'tv') and t.get('id')]
 
 

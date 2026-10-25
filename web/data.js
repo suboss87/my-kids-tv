@@ -508,7 +508,7 @@ var Data = (function () {
     (function next() {
       if (out.length >= max || i2 >= order.length) { done(out); return; }
       var t = order[i2++];
-      var p = {id: t.id, kind: kind, title: t.title, backdrop: null, meta: '', app: null, detailed: false};
+      var p = {id: t.id, kind: kind, title: t.title, backdrop: null, meta: '', app: null, detailed: false, badge: t.badge || ''};
       details(p, function (err) {
         if (!err && p.app && p.backdrop && !(CONFIG.hideAnimation && hasGenre(p.genreIds, ANIMATION))) out.push(p);
         next();

@@ -356,8 +356,26 @@
 
   var TAB_KIND = [null, 'movie', 'tv'];
 
+  /** "Good morning" / "Good afternoon" / "Good evening", with the child's name when the parent set one (as on Android). */
+  function greeting() {
+    var hour = new Date().getHours(), name = CONFIG.childName || '';
+    var morning = hour >= 5 && hour < 12, afternoon = hour >= 12 && hour < 17;
+    if (!name) return morning ? tr('Good morning') : afternoon ? tr('Good afternoon') : tr('Good evening');
+    return morning ? trf('Good morning, {name}', {name: name})
+        : afternoon ? trf('Good afternoon, {name}', {name: name}) : trf('Good evening, {name}', {name: name});
+  }
+
+  /** Why the title is worth watching: a frosted pill with a colored dot (gold, teal, pink), or nothing. */
+  function badge(card, kind) {
+    var label = kind === 'must' ? tr('Must-watch') : kind === 'learn' ? tr('Learn something') : kind === 'loved' ? tr('Kids love it') : '';
+    if (!label) return;
+    var pill = el('div', 'badge badge-' + kind, card);
+    el('span', 'dot', pill);
+    el('span', 'label', pill, label);
+  }
+
   function renderTop() {
-    $('title').textContent = tr('For You');
+    $('title').textContent = greeting();
     var tabs = $('tabs');
     tabs.innerHTML = '';
     var names = [tr('Explore'), tr('Movies'), tr('Shows')];
@@ -394,7 +412,7 @@
     var holder = $('cards');
     setClass(body, 'no-picks', !list.length);
     var same = list.length === cards.length;
-    for (var i = 0; same && i < list.length; i++) same = list[i].id === cards[i].id && list[i].backdrop === cards[i].backdrop && list[i].meta === cards[i].meta;
+    for (var i = 0; same && i < list.length; i++) same = list[i].id === cards[i].id && list[i].backdrop === cards[i].backdrop && list[i].meta === cards[i].meta && list[i].badge === cards[i].badge;
     if (same && holder.children.length === list.length) return;
     cards = list;
     holder.innerHTML = '';
@@ -405,6 +423,7 @@
       card.style.width = rects[c][1] + 'px';
       var img = el('div', 'img', card);
       img.style.backgroundImage = 'url(' + Data.image(p.backdrop, c === 0 ? 'w1280' : 'w780') + ')';
+      badge(card, p.badge);
       el('div', 'name', card, p.title);
       if (c === 0 && p.meta) el('div', 'meta', card, p.meta);
       hover(card, Z.CARDS, c);
