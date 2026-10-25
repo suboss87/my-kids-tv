@@ -227,12 +227,17 @@ entries; its system pieces are in `PROTECTED`. USB debugging opens ADB on 5555 t
   Built with `--generic`, the place values are empty and `Place` fills them from the TV's time zone
   (`app/assets/zones.json`, written by `tools/make_zones.py` with `web/zones.js`).
   What the person changes on the TV (`Prefs`: Home Settings, Shelf, Remote Buttons, Sleep Timer) wins over those first values.
+- The settings open behind the parent PIN (`ParentLock`, drawn by `SettingsView` in the list's place; locked again in
+  `onStop`). `Prefs` keeps a salted SHA-256 hash only; `parent_pin` (`Config.PARENT_PIN`) replaces it whenever it
+  differs from the one it last set (`pin_preset`), which is how a forgotten PIN is reset. Wrong tries and the 30 s wait
+  are in `Prefs`, so closing the screen doesn't reset them.
 - Settings rows that need something this TV lacks stay, dimmed as *Unavailable*: `SettingsActivity.need` names what a
   row needs, `Capabilities.missing` says why it's missing (once per screen), and OK on the row shows it in a toast.
 - The remote's app buttons (`RemoteKeys`, `RemoteKeyService`) use each brand's key codes: they run only on TCL,
   Vestel, KTC (NextStar), Sony, Xiaomi and Hisense TVs and Formovie projectors, the service is on only in My Kids TV mode, and *Original* takes it out of the enabled accessibility
   services. The system waits for the service on every key, so it lives alone in the `:keys` process: what it reads is
-  in `remote-keys.txt` (`Prefs.keyApp`), never in SharedPreferences, and `onKeyEvent` does no heavy work.
+  in `remote-keys.txt` (`Prefs.keyApp`, and `Prefs.blockYoutubeButton`, Home Settings' YouTube block), never in
+  SharedPreferences, and `onKeyEvent` does no heavy work.
   Vestel (F&U and other store brands; MediaTek, Android TV 14 tested) maps its Netflix button to `KEYCODE_STEM_1`, a
   global key (`dumpsys window policy` lists them) that the key filter sees first; its YouTube, Prime Video and Google
   Play buttons stay with the system. The stock lists needed no Vestel entries.
