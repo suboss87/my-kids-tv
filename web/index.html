@@ -11,7 +11,7 @@
   // The look the home screen last had, before anything is drawn, so a night start doesn't flash the day one first.
   try {
     if (localStorage.getItem('mykidstv.night') === 'true') {
-      document.documentElement.style.background = '#0B0B0D';
+      document.documentElement.style.background = '#121A43';
       document.body.className = 'night';
     }
   } catch (e) {}
@@ -32,7 +32,6 @@
     <div id="top" class="layer">
       <h1 id="title"></h1>
       <div id="tabs"></div>
-      <div id="quotes"></div>
       <div id="buttons"></div>
       <div id="cards"></div>
       <div id="clock"><span class="time"></span><span class="date"></span></div>
@@ -50,7 +49,6 @@
 </div>
 <script src="config.js"></script>
 <script src="catalog.js"></script>
-<script src="coins.js"></script>
 <script src="i18n.js"></script>
 <script src="strings.js"></script>
 <script src="tv.js"></script>

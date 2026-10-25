@@ -8,18 +8,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Locale;
 import java.util.TimeZone;
-import java.util.regex.Pattern;
 
 /**
  * Where the TV is when config.properties doesn't say (built with --generic, like the APK on GitHub's releases): the
  * TV's time zone gives the weather's city and position (assets/zones.json, the same table as LG and Samsung's
- * web/zones.js), and its country the currency and the TMDB region. A city picked in Home Settings wins over this, and
+ * web/zones.js), and its country the TMDB region. A city picked in Home Settings wins over this, and
  * config.properties over both. A zone the table doesn't know leaves New York's position without a name, as on LG.
  */
 final class Place {
     private Place() {}
-
-    private static final Pattern EURO = Pattern.compile("AT|BE|CY|DE|EE|ES|FI|FR|GR|HR|IE|IT|LT|LU|LV|MT|NL|PT|SI|SK");
 
     private static Context app;
     private static boolean loaded;
@@ -77,14 +74,6 @@ final class Place {
         if (!fromZone()) return Config.LONGITUDE;
         load();
         return longitude;
-    }
-
-    /** Prices in reais in Brazil, in euros in the euro area, else in dollars (as on LG and Samsung). */
-    static String currency() {
-        String v = Config.CURRENCY.trim().toUpperCase(Locale.ROOT);
-        if (!v.isEmpty()) return v;
-        load();
-        return country.equals("BR") ? "BRL" : EURO.matcher(country).matches() ? "EUR" : "USD";
     }
 
     /** The picks' streaming region. */

@@ -459,13 +459,13 @@ public class SettingsActivity extends Activity {
                 lastSky = up;
                 scene.advance(seconds);
             }
-            scene.drawBackground(c);
+            drawEveningSky(c);
 
-            // On the left: big symbol, title, description.
+            // On the left: the app's icon, its name and what it's for.
             float cx = 500 * k;
-            Symbols.draw(getContext(), c, "sparkles", cx, 400 * k, 150 * k, 0xEBFFFFFF);
+            drawIcon(c, cx, 392 * k, 220 * k);
             c.drawText("My Kids TV", cx, 612 * k, title);
-            c.drawText(Ui.tr("Your TV's home screen and screensaver"), cx, 660 * k, subtitle);
+            c.drawText(Ui.tr("Good films and shows, picked for your child"), cx, 660 * k, subtitle);
             c.drawText(versionName(getContext()), cx, 704 * k, version);
 
             if (lock != null) lock.draw(c, k, LIST_X, LIST_R, LIST_TOP, dt);
@@ -532,7 +532,7 @@ public class SettingsActivity extends Activity {
                 c.restore();
                 y += errorLayout.getLineBaseline(errorLayout.getLineCount() - 1) - errorLayout.getLineBaseline(0) + 46 * k;
             }
-            y = drawComparison(c, y);
+            y = drawChildSummary(c, y);
             y = drawRecs(c, y + 26 * k);
             drawNotices(c, y + 40 * k);
         }
@@ -579,26 +579,71 @@ public class SettingsActivity extends Activity {
             return f;
         }
 
-        private float drawComparison(Canvas c, float y) {
-            float x = LIST_X * k + 30 * k, colA = LIST_R * k - 220 * k, colB = LIST_R * k - 30 * k;
-            c.drawText(Ui.tr("COMPARISON"), x, y, header);
-            cellValue.setColor(0x73FFFFFF);
-            c.drawText(Ui.tr("Original"), colA, y, cellValue);
-            c.drawText("My Kids TV", colB, y, cellValue);
+        /** What the parent set up, at a glance: the child's age, how many vetted titles that age has, the YouTube button. */
+        private float drawChildSummary(Canvas c, float y) {
+            float x = LIST_X * k + 30 * k, col = LIST_R * k - 30 * k;
+            c.drawText(Ui.tr("FOR YOUR CHILD"), x, y, header);
             cellValue.setColor(0xD9FFFFFF);
-            JSONObject metrics = state.optJSONObject("metrics");
-            JSONObject a = metrics == null ? null : metrics.optJSONObject(HomeMode.ORIGINAL);
-            JSONObject b = metrics == null ? null : metrics.optJSONObject(HomeMode.FREE);
-            String[][] rows = {{Ui.tr("Home button"), "homeMs"}, {Ui.tr("Free memory"), "memAvailableMB"},
-                    {Ui.tr("Home screen memory"), "homePssMB"}};
+            String band = Prefs.ageBand();
+            String[][] rows = {{Ui.tr("Age"), Ui.trf("{band} years", "band", band)},
+                    {Ui.tr("Catalog"), Ui.trf("{n} titles", "n", catalogSize(band))},
+                    {Ui.tr("Block YouTube button"), onOff(Prefs.blockYoutubeButton())}};
             for (int i = 0; i < rows.length; i++) {
                 float base = y + (46 + 40 * i) * k;
                 c.drawText(rows[i][0], x, base, cellLabel);
-                c.drawText(metric(a, rows[i][1]), colA, base, cellValue);
-                c.drawText(metric(b, rows[i][1]), colB, base, cellValue);
+                c.drawText(rows[i][1], col, base, cellValue);
             }
             return y + (46 + 40 * rows.length) * k;
         }
+
+        private String catalogBand = "";
+        private int catalogCount;
+
+        /** How many vetted titles the age band's catalog has (app/assets/catalog), read once per band. */
+        private int catalogSize(String band) {
+            if (band.equals(catalogBand)) return catalogCount;
+            catalogBand = band;
+            catalogCount = 0;
+            try (java.io.InputStream in = getContext().getAssets().open("catalog/" + band + ".json")) {
+                java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();
+                byte[] buf = new byte[16384];
+                for (int n; (n = in.read(buf)) > 0; ) out.write(buf, 0, n);
+                catalogCount = new JSONObject(out.toString("UTF-8")).getJSONArray("titles").length();
+            } catch (Exception e) {
+                AppLog.w("catalog " + band + ": " + e.getMessage());
+            }
+            return catalogCount;
+        }
+
+        private android.graphics.Bitmap icon;
+        private android.graphics.Shader eveningSky;
+        private float eveningSkyH;
+        private final Paint skyPaint = new Paint(), starPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        /** The parents' screen sits under the evening sky of the app's icon (the home screen's night), with a few stars. */
+        private void drawEveningSky(Canvas c) {
+            if (eveningSky == null || eveningSkyH != h) {
+                eveningSky = new android.graphics.LinearGradient(0, 0, 0, h, new int[] {0xFF121A43, 0xFF232C66, 0xFF463C7C},
+                        new float[] {0, 0.55f, 1}, android.graphics.Shader.TileMode.CLAMP);
+                eveningSkyH = h;
+            }
+            skyPaint.setShader(eveningSky);
+            c.drawRect(0, 0, w, h, skyPaint);
+            starPaint.setColor(0xC8FFFFFF);
+            float[] stars = {140, 120, 1.6f, 420, 60, 1.2f, 690, 170, 2, 905, 92, 1.2f, 1130, 210, 1.6f, 1390, 48, 1.2f,
+                    1660, 140, 2, 1820, 300, 1.2f, 300, 330, 1.4f, 1010, 380, 1.2f, 1540, 420, 1.4f, 560, 520, 1.2f};
+            for (int i = 0; i < stars.length; i += 3) c.drawCircle(stars[i] * k, stars[i + 1] * k, stars[i + 2] * k, starPaint);
+        }
+
+        /** The app's icon (res/drawable-nodpi/icon.png), centered at (cx, cy), `size` wide. */
+        private void drawIcon(Canvas c, float cx, float cy, float size) {
+            if (icon == null) icon = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.icon);
+            if (icon == null) return;
+            tmp.set(cx - size / 2, cy - size / 2, cx + size / 2, cy + size / 2);
+            c.drawBitmap(icon, null, tmp, iconPaint);
+        }
+
+        private final Paint iconPaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG);
 
         private void drawNotices(Canvas c, float y) {
             float x = LIST_X * k + 30 * k;
@@ -748,16 +793,12 @@ public class SettingsActivity extends Activity {
         private static final String[] UNITS = {"auto", "C", "F"}, THEMES = {"auto", "light", "dark"};
         /**
          * Home Settings: the child's age and the YouTube button (a parent's choices, first), language, temperature, theme,
-         * my photos, sounds, weather, city, forecast, quotes, then one row per coin.
+         * my photos, sounds, weather, city and forecast.
          */
         private static final int AGE_ROW = 0, YOUTUBE_ROW = 1, LANGUAGE_ROW = 2, TEMPERATURE_ROW = 3, THEME_ROW = 4,
-                PHOTOS_ROW = 5, SOUNDS_ROW = 6, WEATHER_ROW = 7, CITY_ROW = 8, FORECAST_ROW = 9, QUOTES_ROW = 10, COIN_ROWS = 11;
+                PHOTOS_ROW = 5, SOUNDS_ROW = 6, WEATHER_ROW = 7, CITY_ROW = 8, FORECAST_ROW = 9;
         /** Home Settings rows on screen at once (what fits above the hints at 1080p); a longer list scrolls. */
         private static final int SETTINGS_VISIBLE = 10;
-
-        private boolean dollar() {
-            return "BRL".equals(Place.currency());
-        }
 
         private String[] settingLabels() {
             List<String> l = new ArrayList<>();
@@ -771,11 +812,6 @@ public class SettingsActivity extends Activity {
             l.add(Ui.tr("Weather widget"));
             l.add(Ui.tr("City"));
             l.add(Ui.tr("Forecast"));
-            l.add(Ui.tr("Quotes widget"));
-            l.add("Bitcoin");
-            l.add("Ethereum");
-            l.add("Solana");
-            if (dollar()) l.add(Ui.tr("Dollar"));
             return l.toArray(new String[0]);
         }
 
@@ -797,9 +833,6 @@ public class SettingsActivity extends Activity {
             v[WEATHER_ROW] = onOff(Prefs.weather());
             v[CITY_ROW] = !cityStatus.isEmpty() ? cityStatus : Prefs.city().isEmpty() ? "—" : Prefs.city();
             v[FORECAST_ROW] = Prefs.forecast().equals("days") ? Ui.tr("Next days") : Ui.tr("Next hours");
-            v[QUOTES_ROW] = onOff(Prefs.quotes());
-            // No quotes widget, nowhere to show prices: the coins read as off (and stay locked) until it is back on.
-            for (int i = COIN_ROWS; i < v.length; i++) v[i] = onOff(Prefs.quotes() && Prefs.coin(i - COIN_ROWS));
             return v;
         }
 
@@ -845,9 +878,7 @@ public class SettingsActivity extends Activity {
                 whyScroll = pickScroll;
                 for (int r = 0; r < n; r++) {
                     String need = need(r);
-                    whyRows[r] = screen == HOME_SETTINGS && pickScroll + r >= COIN_ROWS && !Prefs.quotes()
-                            ? Ui.tr("Turn on the Quotes widget to pick its coins.")
-                            : need == null ? null : Capabilities.missing(getContext(), need);
+                    whyRows[r] = need == null ? null : Capabilities.missing(getContext(), need);
                 }
             }
             return whyRows[i];
@@ -1075,11 +1106,8 @@ public class SettingsActivity extends Activity {
                 case FORECAST_ROW:   // both are in memory: nothing to fetch
                     Prefs.setForecast(Prefs.forecast().equals("days") ? "hours" : "days");
                     return;
-                case QUOTES_ROW: Prefs.setQuotes(!Prefs.quotes()); break;
                 default:
-                    if (!Prefs.quotes()) return;
-                    Prefs.setCoin(row - COIN_ROWS, !Prefs.coin(row - COIN_ROWS));
-                    break;
+                    return;
             }
             HomeData.get(getContext()).settingsChanged();
         }

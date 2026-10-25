@@ -27,7 +27,7 @@ before you do it, and let them do the taps on the TV.
    - Linux: OpenJDK 17, Android's command-line tools and adb from the package manager, then the same `sdkmanager` line.
    - Windows: Git Bash (what Claude Code runs there; `build.sh` handles it) or WSL, then as on Linux.
 3. **Settings:** run `./build.sh` once; it creates `config.properties`. Fill in `latitude` and `longitude` (decimal
-   degrees) and `city` for their city, `tmdb_region` (two-letter country), `show_crypto`, `currency` and `temperature` to match.
+   degrees) and `city` for their city, `tmdb_region` (two-letter country) and `temperature` to match.
 4. **The TMDB key is theirs and secret.** Ask them to create one (free: themoviedb.org → Settings → API) and paste it
    after `tmdb_key=` in `config.properties` themselves. Don't ask for it in the chat, never print it, never commit
    it. If they paste it in the chat anyway, put it only in `config.properties`.
@@ -134,7 +134,7 @@ screen stays. Two ways:
 ## Releases
 
 Every release carries `MyKidsTV.apk` for Google TV and Android TV, built with `./build.sh --generic` (no
-config.properties: no key, and `Place` takes the city, the currency and the region from the TV's time zone through
+config.properties: no key, and `Place` takes the city and the region from the TV's time zone through
 `app/assets/zones.json`) and signed with the project's release key, which lives only on the owner's Mac
 (`~/.mykidstv/release.keystore`, its password in the login Keychain as `mykidstv-release-apk`):
 `MYKIDSTV_KEYSTORE=~/.mykidstv/release.keystore MYKIDSTV_KEYSTORE_PASS="$(security find-generic-password -s
@@ -305,7 +305,7 @@ entries; its system pieces are in `PROTECTED`. USB debugging opens ADB on 5555 t
   the keys `web/` uses): `tr('Live TV')`, `trf('{n} min ago', {n: 12})`, `plural('plural|…', n)` and
   `formatDate('format|h:mm a', at)` (the catalogue's SimpleDateFormat pattern, written by `web/strings.js`), and
   `tools/translate.py` reads those calls too. Built without a city (`--generic`), `web/zones.js`
-  (`tools/make_zones.py`, from the tz database) turns the TV's time zone into the city, the currency and the region.
+  (`tools/make_zones.py`, from the tz database) turns the TV's time zone into the city and the region.
   `tools/webapp.py` is what both builds share; it packs the `age_band` catalog (`app/assets/catalog/<band>.json`) as
   `catalog.js`, which `web/data.js` picks from as `Recs` does (a band without a catalog falls back to TMDB's
   age-restricted discover). Preview: `python3 webos/build.py --preview` (or `tizen/build.py`), then

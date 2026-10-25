@@ -1,9 +1,9 @@
 /*
  * The home screen for web-app TVs (LG webOS, Samsung Tizen), with the Android app's design and behavior (HomeView):
- *  - top: the "For You" title and the tabs (Explore, Movies, Shows); icon-only glass buttons at the right (Live TV,
- *    HDMI Inputs, Settings) and the crypto quotes at the end of the tab row;
- *  - three picks for this hour in the selected tab; the background is the first one's photo, blurred and almost white;
- *  - the glass shelf with the apps; ↓ opens the drawer (inputs, shortcuts, weather, prices); ↑ or Back closes it;
+ *  - top: the greeting with the weather in short, and the tabs (Explore, Movies, Shows) in a frosted capsule;
+ *    icon-only glass buttons at the right (Live TV, HDMI Inputs, Settings);
+ *  - three picks for this hour in the selected tab, over a living sky that follows the time of day;
+ *  - the glass shelf with the apps; ↓ opens the drawer (inputs, shortcuts, weather); ↑ or Back closes it;
  *  - a night look from sunset to sunrise; a screensaver after a few idle minutes.
  * The remote's arrows, OK and Back move the focus; a pointer (LG's Magic Remote) focuses what it points at.
  */
@@ -26,21 +26,6 @@
     s.style.maskImage = 'url(symbols/' + name + '.png)';
     if (size) { s.style.width = size + 'px'; s.style.height = size + 'px'; }
     return s;
-  }
-
-  function coin(i, parent) {
-    var c = window.COINS && window.COINS[i];
-    if (!c) return;
-    var ns = 'http://www.w3.org/2000/svg';
-    var svg = document.createElementNS(ns, 'svg');
-    svg.setAttribute('viewBox', '0 0 32 32');
-    for (var k = 0; k < c.length; k++) {
-      var p = document.createElementNS(ns, 'path');
-      p.setAttribute('d', c[k]);
-      p.setAttribute('fill-rule', 'evenodd');
-      svg.appendChild(p);
-    }
-    parent.appendChild(svg);
   }
 
   function hasClass(e, c) { return (' ' + e.className + ' ').indexOf(' ' + c + ' ') >= 0; }
@@ -356,13 +341,27 @@
 
   var TAB_KIND = [null, 'movie', 'tv'];
 
-  /** "Good morning" / "Good afternoon" / "Good evening", with the child's name when the parent set one (as on Android). */
+  /**
+   * "Good morning" (5-12), "Good afternoon" (12-17), "Good evening" (17-20), "Good night" (20-5), with the child's
+   * name when the parent set one (as on Android).
+   */
   function greeting() {
     var hour = new Date().getHours(), name = CONFIG.childName || '';
-    var morning = hour >= 5 && hour < 12, afternoon = hour >= 12 && hour < 17;
-    if (!name) return morning ? tr('Good morning') : afternoon ? tr('Good afternoon') : tr('Good evening');
-    return morning ? trf('Good morning, {name}', {name: name})
-        : afternoon ? trf('Good afternoon, {name}', {name: name}) : trf('Good evening, {name}', {name: name});
+    var part = hour >= 5 && hour < 12 ? 0 : hour >= 12 && hour < 17 ? 1 : hour >= 17 && hour < 20 ? 2 : 3;
+    if (!name) return [tr('Good morning'), tr('Good afternoon'), tr('Good evening'), tr('Good night')][part];
+    return [trf('Good morning, {name}', {name: name}), trf('Good afternoon, {name}', {name: name}),
+      trf('Good evening, {name}', {name: name}), trf('Good night, {name}', {name: name})][part];
+  }
+
+  /** The greeting and, beside it, the weather in short: its symbol, the temperature and the sky ("☀ 28° Sunny"). */
+  function renderGreeting() {
+    var t = $('title'), w = Data.weather;
+    t.textContent = greeting();
+    if (!Prefs.weather() || !w) return;
+    var line = el('span', 'wx', t);
+    sym(Data.symbol(w.code, w.isDay), line);
+    el('span', 'temp', line, Data.degrees(w.temp));
+    el('span', 'sky', line, Data.condition(w.code, w.isDay));
   }
 
   /** Why the title is worth watching: a frosted pill with a colored dot (gold, teal, pink), or nothing. */
@@ -375,7 +374,7 @@
   }
 
   function renderTop() {
-    $('title').textContent = greeting();
+    renderGreeting();
     var tabs = $('tabs');
     tabs.innerHTML = '';
     var names = [tr('Explore'), tr('Movies'), tr('Shows')];
@@ -392,16 +391,6 @@
       sym(defs[b][0], r);
       el('div', 'tip', r, defs[b][1]);
       hover(r, Z.TOP, 3 + b);
-    }
-  }
-
-  function renderQuotes() {
-    var q = $('quotes'), coins = Data.activeCoins();
-    q.innerHTML = '';
-    for (var i = 0; i < coins.length; i++) {
-      var item = el('span', 'q', q);
-      coin(coins[i], item);
-      el('span', '', item, Data.compact(Data.prices[coins[i]]));
     }
   }
 
@@ -467,6 +456,7 @@
   /** On the minute, so the clock never runs late (the 30-second refresh could, by up to 30 s). */
   function tickClock() {
     renderClock();
+    renderGreeting();   // "Good afternoon" turns into "Good evening" on time
     setTimeout(tickClock, 60000 - Date.now() % 60000 + 50);
   }
 
@@ -485,7 +475,6 @@
     platter.style.width = (width + 2 * pad) + 'px';
     platter.style.top = (814 + 126 - th) + 'px';
     platter.style.height = (th + 2 * pad) + 'px';
-    $('quotes').style.right = (1920 - left - width) + 'px';
     var tiles = $('tiles');
     tiles.innerHTML = '';
     tileStep = tw + gap;
@@ -577,22 +566,12 @@
     var d = $('drawer');
     var old = d.querySelectorAll('.panel');
     for (var o = 0; o < old.length; o++) d.removeChild(old[o]);
-    var wx = Prefs.weather(), coins = Data.activeCoins(), qt = coins.length > 0;
-    var split = 80 + 1760 * 0.585;
-    if (wx) {
+    if (Prefs.weather()) {
       var w = el('div', 'panel glass', d);
       w.id = 'weather';
       w.style.left = '80px';
-      w.style.width = ((qt ? split - 16 : 1840) - 80) + 'px';
+      w.style.width = (1840 - 80) + 'px';
       renderWeather(w);
-    }
-    if (qt) {
-      var q = el('div', 'panel glass', d);
-      q.id = 'prices';
-      var left = wx ? split + 16 : 80;
-      q.style.left = left + 'px';
-      q.style.width = (1840 - left) + 'px';
-      renderPrices(q, coins);
     }
   }
 
@@ -624,21 +603,6 @@
     var sun = el('div', 'sun', card);
     if (w.sunrise) { var a = el('span', '', sun); sym('sunrise', a); a.appendChild(document.createTextNode(trf('Sunrise {time}', {time: Data.time(w.sunrise)}))); }
     if (w.sunset) { var b = el('span', '', sun); sym('sunset', b); b.appendChild(document.createTextNode(trf('Sunset {time}', {time: Data.time(w.sunset)}))); }
-  }
-
-  function renderPrices(card, coins) {
-    el('div', 'head', card, tr('Crypto'));
-    var stale = Data.staleness(Data.pricesAt, 5 * 60000);
-    el('div', 'side', card, stale ? trf('quotes|{ago}', {ago: stale}) : tr('24h change'));
-    for (var j = 0; j < coins.length; j++) {
-      var i = coins[j], row = el('div', 'coin', card);
-      row.style.top = (86 + 52 * j) + 'px';
-      coin(i, row);
-      el('span', 'n', row, Data.coinName(i));
-      el('span', 'p', row, Data.money(Data.prices[i]));
-      var ch = Data.changes[i];
-      if (!isNaN(ch)) el('span', 'c ' + (ch >= 0 ? 'up' : 'down'), row, Data.change(ch));
-    }
   }
 
   function openDrawer() {
@@ -706,18 +670,8 @@
       {label: tr('Weather widget'), toggle: Prefs.weather(),
         step: function () { Prefs.set('weather', !Prefs.weather()); renderPanels(); }},
       {label: tr('Forecast'), value: Prefs.forecast() === 'days' ? tr('Next days') : tr('Next hours'),
-        step: function (d) { cycle('forecast', ['hours', 'days'], Prefs.forecast(), d); renderPanels(); }},
-      {label: tr('Quotes widget'), toggle: Prefs.quotes(),
-        step: function () { Prefs.set('quotes', !Prefs.quotes()); Data.settingsChanged(); }}
+        step: function (d) { cycle('forecast', ['hours', 'days'], Prefs.forecast(), d); renderPanels(); }}
     ];
-    var names = ['Bitcoin', 'Ethereum', 'Solana', tr('Dollar')];
-    var count = Data.currency === 'BRL' ? 4 : 3;
-    for (var i = 0; i < count; i++) {
-      (function (i) {
-        rows.push({label: names[i], toggle: Prefs.quotes() && Prefs.coin(i), dim: !Prefs.quotes(),
-          step: function () { if (Prefs.quotes()) { Prefs.setCoin(i, !Prefs.coin(i)); Data.settingsChanged(); } }});
-      })(i);
-    }
     rows.push({label: tr('Shelf'), value: '›', step: function (d) { if (d >= 0) openShelfEdit(); }});
     rows.push({label: tr('TV Settings'), value: '›', step: function (d) { if (d >= 0) tvSettings(); }});
     return rows;
@@ -1036,7 +990,7 @@
     setClass(body, 'morning', !night && hour < 11);   // a peach horizon until late morning
     if (night === lastNight) return;
     lastNight = night;
-    document.documentElement.style.background = night ? '#0B0B0D' : '';
+    document.documentElement.style.background = night ? '#121A43' : '';
     try { localStorage.setItem('mykidstv.night', night ? 'true' : 'false'); } catch (e) {}   // for index.html, next start
   }
 
@@ -1119,7 +1073,6 @@
 
   function renderAll() {
     renderTop();
-    renderQuotes();
     cards = [];
     renderCards();
     renderShelf();
@@ -1161,7 +1114,7 @@
   }
 
   Data.onChange(function () {
-    renderQuotes();
+    renderGreeting();
     renderCards();
     renderPanels();
     checkNight();

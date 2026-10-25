@@ -7,7 +7,7 @@ tz database.
 
 The home screen uses it when it was built without a city (--generic, as in the GitHub release), on LG and Samsung
 (zones.js) and on Google TV (zones.json, read by Place): the TV's time zone ("America/Sao_Paulo") gives the weather's
-city, and its country (BR) the currency and TMDB region.
+city, and its country (BR) the TMDB region.
 zone.tab and tzdata.zi are in the public domain.
 """
 import json

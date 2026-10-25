@@ -185,25 +185,21 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .night .tab.on { color: #F3F5FF; background: rgba(255, 255, 255, 0.16); }
 .night .tab.focus { background: #FFF; color: #121A43; box-shadow: 0 10px 26px rgba(0, 0, 20, 0.45); }
 
-/* Crypto quotes at the right end of the tab row: a quiet detail. */
-#quotes {
-  position: absolute;
-  right: 80px;
-  top: 178px;
-  height: 28px;
-  font-size: 21px;
-  line-height: 28px;
-  color: #8E8E93;
-  white-space: nowrap;
-  -webkit-transition: opacity 0.17s;
-  transition: opacity 0.17s;
-  font-feature-settings: 'tnum';
+/* The weather in short, beside the greeting: symbol, temperature and sky, quieter than the greeting itself. */
+#title .wx {
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 32px;
+  font-weight: 560;
+  letter-spacing: 0;
+  vertical-align: 12px;
+  color: rgba(14, 34, 64, 0.72);
 }
-#quotes .q { display: inline-block; margin-left: 24px; }
-#quotes svg { width: 15px; height: 15px; vertical-align: -1px; margin-right: 6px; fill: rgba(142, 142, 147, 0.7); }
-#quotes.hide { opacity: 0; }
-.night #quotes { color: rgba(245, 245, 247, 0.62); }
-.night #quotes svg { fill: rgba(245, 245, 247, 0.55); }
+#title .wx .sym { width: 36px; height: 36px; margin-right: 10px; vertical-align: -7px; }
+#title .wx .temp { font-weight: 650; color: #0E2240; font-feature-settings: 'tnum'; }
+#title .wx .sky { margin-left: 12px; }
+.night #title .wx { color: rgba(243, 245, 255, 0.72); }
+.night #title .wx .temp { color: #F3F5FF; }
 
 /* Live TV, HDMI Inputs and Settings: glass circles; the focused one turns white, with its name below. */
 .round {
@@ -474,7 +470,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .more.back { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
 .night .more { color: rgba(255, 255, 255, 0.8); }
 
-/* MARK: - Drawer: inputs and shortcuts, weather, prices */
+/* MARK: - Drawer: inputs and shortcuts, weather */
 
 .row-title { position: absolute; top: 494px; font-size: 25px; font-weight: 600; color: #6E6E73; white-space: nowrap; }
 .night .row-title { color: rgba(255, 255, 255, 0.7); }
@@ -485,9 +481,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 .night .glass {
-  background: -webkit-linear-gradient(top, rgba(38, 38, 42, 0.78), rgba(17, 17, 19, 0.64));
-  background: linear-gradient(rgba(38, 38, 42, 0.78), rgba(17, 17, 19, 0.64));
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1.5px 0 rgba(255, 255, 255, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
+  background: linear-gradient(rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
+  box-shadow: 0 10px 30px rgba(0, 0, 20, 0.3), inset 0 1.5px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .key {
@@ -533,21 +529,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .night #weather .range, .night #weather .hour .t, .night #weather .hour .low, .night #weather .sun { color: rgba(255, 255, 255, 0.68); }
 .night #weather .split { background: rgba(255, 255, 255, 0.14); }
 
-#prices .coin { position: absolute; left: 34px; right: 34px; height: 40px; font-size: 29px; font-weight: 500; white-space: nowrap; }
-#prices .coin svg { position: absolute; left: 2px; top: 6px; width: 26px; height: 26px; fill: #6E6E73; }
-#prices .coin .n { position: absolute; left: 50px; top: 0; }
-#prices .coin .p { position: absolute; right: 128px; top: 1px; font-size: 26px; font-feature-settings: 'tnum'; }
-#prices .coin .c { position: absolute; right: 0; top: 2px; width: 108px; height: 34px; line-height: 34px; border-radius: 17px; text-align: center; font-size: 21px; font-weight: 600; font-feature-settings: 'tnum'; }
-#prices .up { color: #248A3D; background: rgba(36, 138, 61, 0.2); }
-#prices .down { color: #D70015; background: rgba(215, 0, 21, 0.2); }
-.night #prices .coin svg { fill: rgba(255, 255, 255, 0.8); }
-.night #prices .up { color: #30D158; background: rgba(48, 209, 88, 0.2); }
-.night #prices .down { color: #FF453A; background: rgba(255, 69, 58, 0.2); }
-
 /* MARK: - Sheets over the home screen: All Apps, Settings, Shelf */
 
 .sheet {
-  background: rgba(0, 0, 0, 0.66);
+  background: rgba(10, 16, 46, 0.7);
   color: #FFF;
   opacity: 0;
   visibility: hidden;
@@ -589,9 +574,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border-radius: 40px;
   padding: 30px 30px 26px;
   box-sizing: border-box;
-  background: -webkit-linear-gradient(top, rgba(34, 36, 44, 0.96), rgba(18, 20, 26, 0.97));
-  background: linear-gradient(rgba(34, 36, 44, 0.96), rgba(18, 20, 26, 0.97));
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background: -webkit-linear-gradient(top, rgba(38, 48, 108, 0.97), rgba(20, 27, 70, 0.98));
+  background: linear-gradient(rgba(38, 48, 108, 0.97), rgba(20, 27, 70, 0.98));
+  box-shadow: 0 40px 90px rgba(0, 0, 30, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 .box .title { font-size: 38px; font-weight: 700; padding: 6px 18px 18px; letter-spacing: -0.01em; }
 .box .title .sym { width: 36px; height: 36px; vertical-align: -5px; margin-right: 14px; color: rgba(255, 255, 255, 0.85); }
@@ -604,9 +589,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .box .row .value .sym { width: 26px; height: 26px; vertical-align: -3px; }
 .box .row.dim { color: rgba(255, 255, 255, 0.4); }
 .box .hint { padding: 14px 18px 0; font-size: 22px; font-weight: 500; color: rgba(255, 255, 255, 0.5); }
-.toggle { position: absolute; right: 24px; top: 13px; width: 78px; height: 44px; border-radius: 22px; background: #3A3D45; -webkit-transition: background-color 0.14s; transition: background-color 0.14s; }
+.toggle { position: absolute; right: 24px; top: 13px; width: 78px; height: 44px; border-radius: 22px; background: rgba(255, 255, 255, 0.18); -webkit-transition: background-color 0.14s; transition: background-color 0.14s; }
 .toggle::after { content: ''; position: absolute; left: 4px; top: 4px; width: 36px; height: 36px; border-radius: 18px; background: #FFF; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); -webkit-transition: -webkit-transform 0.14s; transition: transform 0.14s; }
-.toggle.on { background: #3FD69B; }
+.toggle.on { background: #2BB9A6; }
 .toggle.on::after { -webkit-transform: translateX(34px); transform: translateX(34px); }
 
 /* MARK: - Screensaver: the picks' photos, slowly moving, and a clock */
@@ -647,8 +632,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   font-weight: 500;
   line-height: 1.3;
   color: rgba(255, 255, 255, 0.95);
-  background: rgba(17, 17, 19, 0.86);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  background: rgba(20, 27, 70, 0.9);
+  box-shadow: 0 16px 40px rgba(0, 0, 30, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.16);
   opacity: 0;
   -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
   transition: opacity 0.2s, transform 0.2s;

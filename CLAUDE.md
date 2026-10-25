@@ -24,7 +24,7 @@ Ask these in one or two short batches, in plain words, with the choices shown. E
 | Your TV's brand and model, and its IP address (Settings, Network & Internet) | Install | - |
 
 Geocode the city with `https://geocoding-api.open-meteo.com/v1/search?name=<city>&count=5` and confirm the match with
-them. Temperature: `C` outside the US unless they say otherwise. Leave `show_crypto=false` for a family TV.
+them. Temperature: `C` outside the US unless they say otherwise.
 A `parent_pin` is built into the app file: tell them to keep `MyKidsTV.apk` to themselves.
 
 **The TMDB key is theirs and secret.** Ask them to create a free one (themoviedb.org, Settings, API) and paste it after

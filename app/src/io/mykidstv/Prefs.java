@@ -148,10 +148,11 @@ final class Prefs {
 
     static void setAgeBand(String v) { put("age_band", v); }
 
-    /** The child's first name for the greeting ("Good morning, Maya"), or "" for none. */
+    /** The child's first name for the greeting ("Good morning, Viva"), or "" for none. */
     static String childName() { return sp().getString("child_name", Config.CHILD_NAME.trim()).trim(); }
 
     static void setChildName(String v) { put("child_name", v); }
+
     // MARK: - Parent PIN
 
     // Only a salted SHA-256 hash ("salt:hash", hex) is kept, never the PIN. No version++: nothing on screen shows it.
@@ -239,7 +240,7 @@ final class Prefs {
     static boolean sounds() { return sp().getBoolean("sounds", true); }
     static void setSounds(boolean on) { put("sounds", on); }
 
-    // MARK: - Widgets and coins
+    // MARK: - Widgets
 
     static boolean weather() { return sp().getBoolean("weather", true); }
     static void setWeather(boolean on) { put("weather", on); }
@@ -247,15 +248,9 @@ final class Prefs {
     static String forecast() { return "days".equals(sp().getString("forecast", "hours")) ? "days" : "hours"; }
     static void setForecast(String v) { put("forecast", v); }
 
-    static boolean quotes() { return sp().getBoolean("quotes", Config.SHOW_CRYPTO); }
-    static void setQuotes(boolean on) { put("quotes", on); }
-
     /** Your photos (Photos, sent from a computer) on the screensaver and behind the home screen, once imported. */
     static boolean photos() { return sp().getBoolean("photos", true); }
     static void setPhotos(boolean on) { put("photos", on); }
-
-    static boolean coin(int i) { return sp().getBoolean("coin" + i, true); }
-    static void setCoin(int i, boolean on) { put("coin" + i, on); }
 
     // MARK: - Shelf
 

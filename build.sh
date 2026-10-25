@@ -44,15 +44,13 @@ number() {
   printf '%s' "$v"
 }
 if $GENERIC; then
-  LAT=""; LON=""; REGION=""; CURRENCY=""
+  LAT=""; LON=""; REGION=""
 else
   LAT="$(number latitude 40.7128)"
   LON="$(number longitude -74.0060)"
   REGION="$(prop tmdb_region US)"
-  CURRENCY="$(prop currency USD)"
 fi
 ASSIST=false; [ "$(prop disable_assistant false)" = "true" ] && ASSIST=true
-CRYPTO=false; [ "$(prop show_crypto false)" = "true" ] && CRYPTO=true
 ANIMATION=false; [ "$(prop hide_animation false)" = "true" ] && ANIMATION=true
 BLOCK_YT=false; [ "$(prop block_youtube_button false)" = "true" ] && BLOCK_YT=true
 PARENT_PIN="$(prop parent_pin '')"
@@ -73,12 +71,10 @@ final class Config {
     static final String LONGITUDE = "$LON";
     static final String CITY = "$(prop city '')";
     static final String LANGUAGE = "$(prop language auto)";
-    static final String CURRENCY = "$CURRENCY";
     static final String TEMPERATURE = "$(prop temperature auto)";
     static final String HIDE_SERVICES = "$(prop hide_services '')";
     static final String THEME = "$(prop theme auto)";
     static final boolean DISABLE_ASSISTANT = $ASSIST;
-    static final boolean SHOW_CRYPTO = $CRYPTO;
     static final boolean HIDE_ANIMATION = $ANIMATION;
     static final String AGE_BAND = "$(prop age_band 7-10)";
     static final String CHILD_NAME = "$(prop child_name '')";
