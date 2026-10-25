@@ -1,7 +1,7 @@
 # My Kids TV: technical notes
 
-> Adapted from Free My TV's guide (github.com/simbasjungles/free-my-tv, MIT). The parent setup flow is in
-> ../CLAUDE.md; this file is the deep reference for builds, installs and adapting to other TVs.
+> The parent setup flow is in ../CLAUDE.md; this file is the deep reference for builds, installs and adapting to
+> other TVs.
 
 A home screen for Google TV and Android TV that replaces the stock one, plus a settings app that switches between
 My Kids TV and the TV's original home screen. A plain Android app in Java, built without Gradle by `build.sh`.
@@ -95,7 +95,7 @@ On Samsung it's an app too (2017 and newer, Tizen 3+), installed through Samsung
 screen stays. Two ways:
 
 - **The release, no tools:** TizenBrew Installer (github.com/reisxd/TizenBrewInstaller) installs the latest GitHub
-  release when they type `simbasjungles/free-my-tv`, and on 2023+ TVs signs it with their Samsung account. That build
+  release when they type `suboss87/my-kids-tv`, and on 2023+ TVs signs it with their Samsung account. That build
   has no TMDB key (no picks) and takes the city from the TV's time zone. Walk them through the README's steps.
 - **Their own build** (their city, their TMDB key), below.
 
@@ -137,7 +137,7 @@ Every release carries `MyKidsTV.apk` for Google TV and Android TV, built with `.
 config.properties: no key, and `Place` takes the city, the currency and the region from the TV's time zone through
 `app/assets/zones.json`) and signed with the project's release key, which lives only on the owner's Mac
 (`~/.mykidstv/release.keystore`, its password in the login Keychain as `mykidstv-release-apk`):
-`FREEMYTV_KEYSTORE=~/.mykidstv/release.keystore FREEMYTV_KEYSTORE_PASS="$(security find-generic-password -s
+`MYKIDSTV_KEYSTORE=~/.mykidstv/release.keystore MYKIDSTV_KEYSTORE_PASS="$(security find-generic-password -s
 mykidstv-release-apk -w)" ./build.sh --generic`. Sign every release with that key: Android refuses an update signed
 by another, and people who built their own must uninstall it before installing the release.
 

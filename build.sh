@@ -144,10 +144,10 @@ else "${JAVA_HOME:+$JAVA_HOME/bin/}jar" -u -M -f out/base.apk -C out classes.dex
 "$BT/zipalign" -f -p 4 out/base.apk out/aligned.apk
 
 # --- Sign with your own key (created once; updates need the same key, so keep mykidstv.keystore).
-# Releases sign with the project's key instead: FREEMYTV_KEYSTORE=<its file>, its password in FREEMYTV_KEYSTORE_PASS.
-if [ -n "${FREEMYTV_KEYSTORE:-}" ]; then
-  [ -n "${FREEMYTV_KEYSTORE_PASS:-}" ] || { echo "FREEMYTV_KEYSTORE_PASS is empty"; exit 1; }
-  "$BT/apksigner$BAT" sign --ks "$FREEMYTV_KEYSTORE" --ks-pass env:FREEMYTV_KEYSTORE_PASS --key-pass env:FREEMYTV_KEYSTORE_PASS \
+# Releases sign with the project's key instead: MYKIDSTV_KEYSTORE=<its file>, its password in MYKIDSTV_KEYSTORE_PASS.
+if [ -n "${MYKIDSTV_KEYSTORE:-}" ]; then
+  [ -n "${MYKIDSTV_KEYSTORE_PASS:-}" ] || { echo "MYKIDSTV_KEYSTORE_PASS is empty"; exit 1; }
+  "$BT/apksigner$BAT" sign --ks "$MYKIDSTV_KEYSTORE" --ks-pass env:MYKIDSTV_KEYSTORE_PASS --key-pass env:MYKIDSTV_KEYSTORE_PASS \
     --out MyKidsTV.apk out/aligned.apk
 else
   if [ ! -f mykidstv.keystore ]; then

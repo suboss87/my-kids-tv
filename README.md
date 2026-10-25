@@ -6,8 +6,7 @@ My Kids TV replaces your TV's home screen with one made for kids. Instead of ads
 your child sees three titles at a time, chosen for their age from a catalog where every title earned its place:
 fun to watch, and leaving something behind (curiosity, kindness, courage, science, nature, history, other cultures).
 
-Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen) TVs. A fork of
-[Free My TV](https://github.com/simbasjungles/free-my-tv) (MIT), rebuilt around children and their parents.
+Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen) TVs.
 
 ## What your child sees
 
@@ -87,17 +86,17 @@ rules live in [`catalog/bands.py`](catalog/bands.py).
 ## Status
 
 Built and checked (`tools/check.sh`: the Android build, all 25 translations, the LG and Samsung packages). The kids
-picks were proven on a Haier MatrixTV BE (Google TV 14) while this project grew out of Free My TV; this version, with the
-new design, the parent PIN and the LG and Samsung apps, still needs its own run on real TVs. Issues and pull requests
+picks were proven on a Haier MatrixTV BE (Google TV 14); the new design, the parent PIN and the LG and Samsung apps
+still need their run on real TVs. Issues and pull requests
 are welcome.
 
 ## Credits
 
-- [Free My TV](https://github.com/simbasjungles/free-my-tv) and its contributors: the home screen, the switch, the
-  LG and Samsung apps and most of the code (MIT).
 - Titles, images and availability: [TMDB](https://www.themoviedb.org). *This product uses the TMDB API but is not
   endorsed or certified by TMDB.*
 - Title judgments: Jev by [TypeSafe](https://typesafe.ai).
 - Weather: [Open-Meteo](https://open-meteo.com).
 
 MIT License, see [LICENSE](LICENSE).
+
+Thanks to [Free My TV](https://github.com/simbasjungles/free-my-tv) for the inspiration and the open-source code My Kids TV grew from.

@@ -3,7 +3,7 @@
     <tizen:application id="MyKidsTVio.MyKidsTV" package="MyKidsTVio" required_version="3.0"/>
     <name>My Kids TV</name>
     <author href="https://github.com/suboss87/my-kids-tv">My Kids TV</author>
-    <description>A kids-first home screen: picks from a vetted catalog for the child's age. Based on Free My TV (MIT).</description>
+    <description>A kids-first home screen: picks from a vetted catalog for the child's age.</description>
     <content src="index.html"/>
     <icon src="icon.png"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>

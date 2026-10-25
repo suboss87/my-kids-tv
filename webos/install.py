@@ -11,7 +11,7 @@ The app shows the TV's IP address and a passphrase.
 The first time, this downloads the TV's key from its Key Server and asks for that passphrase (type it here; it is
 not stored). The unlocked key is kept in ~/.ssh/mykidstv_webos_<IP>, so updates need neither. The app is copied over
 SSH (port 9922) and installed with the TV's own installer (com.webos.appInstallService), the way LG's tools do it.
-Install flow based on FreeMyTvWebOS by danielthejoker18 (MIT). Needs Python 3 and OpenSSH (ssh, ssh-keygen).
+Install flow adapted from danielthejoker18's webOS installer (MIT). Needs Python 3 and OpenSSH (ssh, ssh-keygen).
 """
 import getpass
 import json
