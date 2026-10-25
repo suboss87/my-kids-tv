@@ -33,7 +33,7 @@ var TV = (function () {
     bridge.call(uri, JSON.stringify(params || {}));
   }
 
-  // LG's own screensaver asks every subscribed app first. While Free My TV is on screen and its own screensaver will
+  // LG's own screensaver asks every subscribed app first. While My Kids TV is on screen and its own screensaver will
   // take over (`hold`, from home.js), it says no; otherwise, and in the background, the TV's runs as before.
   var saverBridge = null;
 
@@ -54,7 +54,7 @@ var TV = (function () {
   // webOS 6 gives Developer Mode apps only the "public" group, which leaves out listLaunchPoints. There the list comes
   // from the TV's remote control API on 127.0.0.1:3000 (the one LG's phone app uses), which takes file:// pages.
   // The TV asks once to allow it; the key it gives back is kept.
-  var SSAP_KEY = 'fmtv.ssapKey', SSAP_REFUSED = 'fmtv.ssapRefused';
+  var SSAP_KEY = 'mykidstv.ssapKey', SSAP_REFUSED = 'mykidstv.ssapRefused';
 
   /** One call to the remote control API; done(result) with null on failure. */
   function ssap(uri, done) {
@@ -190,7 +190,7 @@ var TV = (function () {
     });
   }
 
-  var self = 'io.freemytv';
+  var self = 'io.mykidstv';
   if (webos && window.PalmSystem && window.PalmSystem.identifier) self = window.PalmSystem.identifier.split(' ')[0];
   if (samsung) {
     try { self = window.tizen.application.getCurrentApplication().appInfo.id; } catch (e) {}

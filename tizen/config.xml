@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://freemytv.io/tizen" version="1.2.0" viewmodes="maximized">
-    <tizen:application id="FreeMyTVio.FreeMyTV" package="FreeMyTVio" required_version="3.0"/>
-    <name>Free My TV</name>
-    <author href="https://freemytv.io">Free My TV</author>
-    <description>A fast, ad-free home screen.</description>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://github.com/suboss87/my-kids-tv/tizen" version="1.2.0" viewmodes="maximized">
+    <tizen:application id="MyKidsTVio.MyKidsTV" package="MyKidsTVio" required_version="3.0"/>
+    <name>My Kids TV</name>
+    <author href="https://github.com/suboss87/my-kids-tv">My Kids TV</author>
+    <description>A kids-first home screen: picks from a vetted catalog for the child's age. Based on Free My TV (MIT).</description>
     <content src="index.html"/>
     <icon src="icon.png"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>

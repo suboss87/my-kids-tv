@@ -1,10 +1,10 @@
 {
-  "id": "io.freemytv",
+  "id": "io.mykidstv",
   "version": "1.2.0",
-  "vendor": "Free My TV",
+  "vendor": "My Kids TV",
   "type": "web",
   "main": "index.html",
-  "title": "Free My TV",
+  "title": "My Kids TV",
   "icon": "icon.png",
   "largeIcon": "largeIcon.png",
   "iconColor": "#FF7A9E",

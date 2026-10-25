@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Builds Free My TV for LG webOS: FreeMyTV-webos.ipk, the app package the TV's Developer Mode installs.
+"""Builds My Kids TV for LG webOS: MyKidsTV-webos.ipk, the app package the TV's Developer Mode installs.
 
-    python3 webos/build.py            # → FreeMyTV-webos.ipk
+    python3 webos/build.py            # → MyKidsTV-webos.ipk
     python3 webos/build.py --preview  # also leaves the files in out/webos/ to open index.html in a browser
     python3 webos/build.py --config other.properties
     python3 webos/build.py --generic  # without config.properties: the TV's time zone picks the city (releases)
@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.join(ROOT, 'tools'))
 import webapp  # noqa: E402
 
 OUT = os.path.join(ROOT, 'out', 'webos')
-IPK = os.path.join(ROOT, 'FreeMyTV-webos.ipk')
+IPK = os.path.join(ROOT, 'MyKidsTV-webos.ipk')
 
 
 def tar_gz(entries):
@@ -81,7 +81,7 @@ def build(preview, config):
 
     size = sum(len(d) for d in app.values()) + len(package)
     control = ('Package: %s\nVersion: %s\nSection: misc\nPriority: optional\nArchitecture: all\nInstalled-Size: %d\n'
-               'Maintainer: Free My TV <https://freemytv.io>\nDescription: A fast, ad-free home screen.\n'
+               'Maintainer: My Kids TV <https://github.com/suboss87/my-kids-tv>\nDescription: A kids-first home screen.\n'
                'webOS-Package-Format-Version: 2\nwebOS-Packager-Version: 1.0.0\n' % (app_id, version, size))
     data = ar([('debian-binary', b'2.0\n'), ('control.tar.gz', tar_gz([('control', control.encode('utf-8'))])),
                ('data.tar.gz', tar_gz(entries))])

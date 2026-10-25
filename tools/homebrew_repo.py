@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Writes docs/webos/apps.json, the repository the webOS Homebrew Channel reads (https://freemytv.io/webos/apps.json).
+"""Writes docs/webos/apps.json, the repository the webOS Homebrew Channel reads (SITE + apps.json).
 
-    python3 tools/homebrew_repo.py FreeMyTV-webos.ipk
+    python3 tools/homebrew_repo.py MyKidsTV-webos.ipk
 
 Run it at release time, on the exact .ipk uploaded to the GitHub release (built with `webos/build.py --generic`), and
 commit what it writes with the release: the JSON and a copy of the .ipk in docs/webos/. The Channel downloads `ipkUrl`,
 checks this SHA-256 and size, and installs it with the same Developer Mode installer webos/install.py uses.
 
-Everything the TV fetches comes from freemytv.io. The Channel's service runs on the TV's own Node, whose HTTP parser
-takes at most 8 KB of headers, and GitHub's release download answers with a redirect carrying about 10 KB (most of it a
+Everything the TV fetches comes from SITE: this repository's GitHub Pages by default (docs/ published), or
+MYKIDSTV_SITE=https://.../webos/ for another host. The icon is webos/largeIcon.png, copied beside the .ipk.
+The Channel's service runs on the TV's own Node, whose HTTP parser takes at most 8 KB of headers, and GitHub's release download answers with a redirect carrying about 10 KB (most of it a
 Content-Security-Policy): the install stops at "Parse Error: Header overflow" (#234). GitHub Pages answers with under
 1 KB. The manifest goes inline, and full_description.html is what the Channel shows on the app's page.
 """
@@ -16,14 +17,15 @@ import glob
 import hashlib
 import json
 import os
+import shutil
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'docs', 'webos')
 OUT = os.path.join(DIR, 'apps.json')
-SITE = 'https://freemytv.io/webos/'
-ICON = 'https://freemytv.io/assets/icon-512.png'
-SOURCE = 'https://github.com/simbasjungles/free-my-tv'
+SITE = os.environ.get('MYKIDSTV_SITE', 'https://suboss87.github.io/my-kids-tv/webos/').rstrip('/') + '/'
+ICON = SITE + 'icon.png'
+SOURCE = 'https://github.com/suboss87/my-kids-tv'
 
 
 def write(sha256, size, ipk):
@@ -36,7 +38,7 @@ def write(sha256, size, ipk):
         'version': version,
         'type': 'web',
         'title': app['title'],
-        'appDescription': 'A fast, ad-free home screen: your apps on a glass shelf, the weather and prices, day and night.',
+        'appDescription': 'A kids-first home screen: picks from a vetted catalog for the child\'s age, the TV\'s apps on a glass shelf, the weather.',
         'iconUri': ICON,
         'sourceUrl': SOURCE,
         'rootRequired': False,
@@ -69,13 +71,14 @@ def main():
         return 2
     data = open(sys.argv[1], 'rb').read()
     version = json.load(open(os.path.join(ROOT, 'webos', 'appinfo.json'), encoding='utf-8'))['version']
-    ipk = f'FreeMyTV-webos-{version}.ipk'
+    ipk = f'MyKidsTV-webos-{version}.ipk'
     # Only the current release is served: older copies go.
-    for old in glob.glob(os.path.join(DIR, 'FreeMyTV-webos-*.ipk')):
+    for old in glob.glob(os.path.join(DIR, 'MyKidsTV-webos-*.ipk')):
         if os.path.basename(old) != ipk:
             os.remove(old)
     with open(os.path.join(DIR, ipk), 'wb') as f:
         f.write(data)
+    shutil.copy(os.path.join(ROOT, 'webos', 'largeIcon.png'), os.path.join(DIR, 'icon.png'))
     write(hashlib.sha256(data).hexdigest(), len(data), ipk)
     return 0
 

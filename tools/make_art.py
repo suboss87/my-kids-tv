@@ -88,7 +88,7 @@ def banner(w=640, h=360):
     m = mark(int(h * 0.5 * s), bg=False)
     d = ImageDraw.Draw(img)
     f = font(int(h * 0.15 * s), 650)
-    text = "Free My TV"
+    text = "My Kids TV"
     box = d.textbbox((0, 0), text, font=f)
     gap = int(w * 0.02 * s)
     total = m.width + gap + (box[2] - box[0])
