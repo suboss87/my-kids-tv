@@ -60,7 +60,21 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 #sky .grad { position: absolute; left: 0; top: 0; width: 100%; height: 100%; -webkit-transition: opacity 2s; transition: opacity 2s; }
 #sky .day { background: -webkit-linear-gradient(top, #86BDEE, #BFDCF6 48%, #EEF5FC); background: linear-gradient(#86BDEE, #BFDCF6 48%, #EEF5FC); }
 #sky .dawn { background: -webkit-linear-gradient(top, #A7CFF2, #DCEAF7 52%, #FBE3D3); background: linear-gradient(#A7CFF2, #DCEAF7 52%, #FBE3D3); opacity: 0; }
-#sky .night { background: -webkit-linear-gradient(top, #121A43, #232C66 55%, #463C7C); background: linear-gradient(#121A43, #232C66 55%, #463C7C); opacity: 0; }
+/* The dark sky, as on Android (SpaceSky): deep indigo rising to a violet horizon, three huge faint clouds of color
+   (violet high on the right, blue on the left, rose low in the middle). */
+#sky .night {
+  background:
+    -webkit-radial-gradient(1520px 160px, circle, rgba(123, 92, 255, 0.13), rgba(123, 92, 255, 0.05) 490px, rgba(123, 92, 255, 0) 980px),
+    -webkit-radial-gradient(200px 640px, circle, rgba(58, 123, 255, 0.09), rgba(58, 123, 255, 0.035) 450px, rgba(58, 123, 255, 0) 900px),
+    -webkit-radial-gradient(1100px 1180px, circle, rgba(255, 111, 168, 0.07), rgba(255, 111, 168, 0.03) 430px, rgba(255, 111, 168, 0) 860px),
+    -webkit-linear-gradient(top, #03040C, #070918 55%, #0D0B22);
+  background:
+    radial-gradient(circle 980px at 1520px 160px, rgba(123, 92, 255, 0.13), rgba(123, 92, 255, 0.05) 50%, rgba(123, 92, 255, 0)),
+    radial-gradient(circle 900px at 200px 640px, rgba(58, 123, 255, 0.09), rgba(58, 123, 255, 0.035) 50%, rgba(58, 123, 255, 0)),
+    radial-gradient(circle 860px at 1100px 1180px, rgba(255, 111, 168, 0.07), rgba(255, 111, 168, 0.03) 50%, rgba(255, 111, 168, 0)),
+    linear-gradient(#03040C, #070918 55%, #0D0B22);
+  opacity: 0;
+}
 .morning #sky .dawn { opacity: 1; }
 /* The sun (by day) or the moon (at night): one soft light high on the right. */
 #sky .sun {
@@ -74,7 +88,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: radial-gradient(circle, rgba(255, 252, 240, 0.85), rgba(255, 252, 240, 0) 62%);
   -webkit-transition: opacity 2s; transition: opacity 2s;
 }
-.night #sky .sun { opacity: 0.32; }
+.night #sky .sun { opacity: 0; }   /* the space sky has its own light */
 #sky .stars {
   position: absolute;
   left: 0;
@@ -97,10 +111,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     radial-gradient(1.2px 1.2px at 560px 520px, #FFF, rgba(255, 255, 255, 0));
   -webkit-transition: opacity 2s; transition: opacity 2s;
 }
-.night #sky .stars { opacity: 0.85; }
+.night #sky .stars { opacity: 0.6; }
 #sky canvas { position: absolute; left: -4%; top: -4%; width: 108%; height: 108%; opacity: 0; -webkit-transition: opacity 0.8s; transition: opacity 0.8s; }
 #sky canvas.on { opacity: 0.2; }
-.night #sky canvas.on { opacity: 0.14; }
+.night #sky canvas.on { opacity: 0.07; }
 #sky .veil { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0); -webkit-transition: background-color 2s; transition: background-color 2s; }
 #sky .lift { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #FFF; opacity: 0; -webkit-transition: opacity 0.45s, background-color 2s; transition: opacity 0.45s, background-color 2s; }
 .night #sky .day, .night #sky .dawn { opacity: 0; }
@@ -508,7 +522,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .night .tile::before { background: rgba(0, 0, 0, 0.36); }
 #tiles.on .tile::before { opacity: 1; }
 #tiles.on .tile.focus::before { opacity: 0; }
-.night .tile { box-shadow: 0 18px 36px rgba(0, 0, 20, 0.42), inset 0 0 0 1px rgba(255, 255, 255, 0.14); }
+.night .tile { box-shadow: 0 18px 36px rgba(0, 0, 20, 0.42), inset 0 0 0 1.4px rgba(255, 255, 255, 0.16), inset 0 1.4px 0 rgba(255, 255, 255, 0.3); }
 .night .tile.focus { box-shadow: 0 28px 54px rgba(0, 0, 20, 0.62); }
 .more { position: absolute; width: 17px; height: 17px; color: rgba(0, 0, 0, 0.6); }
 .more.back { -webkit-transform: scaleX(-1); transform: scaleX(-1); }

@@ -1,6 +1,6 @@
 /*
  * The home screen for web-app TVs (LG webOS, Samsung Tizen), with the Android app's design and behavior (HomeView):
- *  - top: the greeting with the weather in short, and the tabs (Explore, Movies, Shows) in a frosted capsule;
+ *  - top: the greeting with the weather in short, and the tabs (Movies, Shows) in a frosted capsule;
  *    icon-only glass buttons at the right (Live TV, HDMI Inputs, Settings);
  *  - three picks for this hour in the selected tab, over a living sky that follows the time of day;
  *  - the glass shelf with the apps; ↓ opens the drawer (inputs, shortcuts, weather); ↑ or Back closes it;
@@ -291,8 +291,8 @@
       setClass(list[i], 'focus', st.zone === Z.TOP && st.top === i);
     }
     list = $('buttons').children;
-    for (i = 0; i < list.length; i++) setClass(list[i], 'focus', st.zone === Z.TOP && st.top === 3 + i);
-    setClass($('quotes'), 'hide', st.zone === Z.TOP && st.top >= 3);
+    for (i = 0; i < list.length; i++) setClass(list[i], 'focus', st.zone === Z.TOP && st.top === NT + i);
+    setClass($('quotes'), 'hide', st.zone === Z.TOP && st.top >= NT);
     list = $('cards').children;
     for (i = 0; i < list.length; i++) setClass(list[i], 'focus', st.zone === Z.CARDS && st.card === i);
     setClass(body, 'browsing', st.zone === Z.CARDS);
@@ -341,7 +341,7 @@
 
   // MARK: - Top: title, tabs, buttons, quotes
 
-  var TAB_KIND = [null, 'movie', 'tv'];
+  var TAB_KIND = ['movie', 'tv'], NT = TAB_KIND.length;   // Movies and Shows (no mixed tab)
 
   /**
    * "Good morning" (5-12), "Good afternoon" (12-17), "Good evening" (17-20), "Good night" (20-5), with the child's
@@ -379,8 +379,8 @@
     renderGreeting();
     var tabs = $('tabs');
     tabs.innerHTML = '';
-    var names = [tr('Explore'), tr('Movies'), tr('Shows')];
-    for (var i = 0; i < 3; i++) {
+    var names = [tr('Movies'), tr('Shows')];
+    for (var i = 0; i < NT; i++) {
       var t = el('button', 'tab', tabs, names[i]);
       hover(t, Z.TOP, i);
     }
@@ -392,7 +392,7 @@
       r.style.left = (1596 + 88 * b) + 'px';
       sym(defs[b][0], r);
       el('div', 'tip', r, defs[b][1]);
-      hover(r, Z.TOP, 3 + b);
+      hover(r, Z.TOP, NT + b);
     }
   }
 
@@ -902,9 +902,9 @@
   function activate() {
     switch (st.zone) {
       case Z.TOP:
-        if (st.top < 3) return;
-        if (st.top === 3) { var live = liveTV(); if (live) launcher(live.id, tr('Live TV'))(); }
-        else if (st.top === 4) { st.zone = Z.SHELF; openDrawer(); st.drawer = 1 < drawerInputs ? 1 : 0; updateFocus(); }
+        if (st.top < NT) return;
+        if (st.top === NT) { var live = liveTV(); if (live) launcher(live.id, tr('Live TV'))(); }
+        else if (st.top === NT + 1) { st.zone = Z.SHELF; openDrawer(); st.drawer = 1 < drawerInputs ? 1 : 0; updateFocus(); }
         else openSettings();
         return;
       case Z.CARDS:
@@ -956,10 +956,10 @@
         break;
       case Z.TOP:
         if (dx) {
-          st.top = Math.max(0, Math.min(5, st.top + dx));
-          if (st.top < 3) selectTab(st.top);   // as on Apple TV: focusing a tab selects it
+          st.top = Math.max(0, Math.min(NT + 2, st.top + dx));
+          if (st.top < NT) selectTab(st.top);   // as on Apple TV: focusing a tab selects it
         } else if (dy > 0) {
-          if (cards.length) { st.zone = Z.CARDS; st.card = Math.min(cards.length - 1, st.top < 3 ? 0 : cards.length - 1); }
+          if (cards.length) { st.zone = Z.CARDS; st.card = Math.min(cards.length - 1, st.top < NT ? 0 : cards.length - 1); }
           else st.zone = Z.SHELF;
         }
         break;
@@ -1006,7 +1006,7 @@
       if (zone !== Z.DRAWER && st.zone === Z.DRAWER && zone !== Z.SHELF) return;
       if (zone === Z.SHELF && st.zone === Z.DRAWER) closeDrawer();
       st.zone = zone;
-      if (zone === Z.TOP) { st.top = index; if (index < 3) selectTab(index); }
+      if (zone === Z.TOP) { st.top = index; if (index < NT) selectTab(index); }
       else if (zone === Z.CARDS) st.card = index;
       else if (zone === Z.SHELF) st.shelf = index;
       else if (zone === Z.DRAWER) st.drawer = index;

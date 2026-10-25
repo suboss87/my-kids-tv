@@ -61,9 +61,9 @@ final class Recs {
     /** TMDB's Animation genre (movies and shows: cartoons and anime), left out with hide_animation=true. */
     private static final int ANIMATION = 16;
     private static final long LIST_EVERY = 3600_000L;   // a new set of 60 titles from the catalog every hour
-    static final long SPOT_EVERY = 15_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 15 s; a new set after all 3
+    static final long SPOT_EVERY = 10_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 10 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 11;   // 11 = the refined catalog (craft, language, audience rating)
+    private static final int CACHE_VERSION = 12;   // 12 = vetted titles only (the unvetted fallback is gone)
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -431,13 +431,13 @@ final class Recs {
         });
     }
 
-    /** This set's picks for the three tabs (Explore, Movies, Shows) and the next set's, without repeats. */
+    /** This set's picks for the two tabs (Movies, Shows) and the next set's, without repeats. */
     List<Pick> wanted() {
         List<Pick> out = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
         long slot = System.currentTimeMillis() / ROTATE_EVERY;
         for (long s = slot; s <= slot + 1; s++) {
-            for (String kind : new String[] {null, "movie", "tv"}) {
+            for (String kind : new String[] {"movie", "tv"}) {
                 for (Pick p : at(kind, s)) if (seen.add(key(p))) out.add(p);
             }
         }
@@ -469,40 +469,20 @@ final class Recs {
             if (s != null && installed(s[2])) services.put(o.getInt("provider_id"), s);
         }
         if (services.isEmpty()) throw new IOException(NO_APPS);
-        StringBuilder ids = new StringBuilder();
-        for (int id : services.keySet()) ids.append(ids.length() == 0 ? "" : "|").append(id);
-        String common = "&language=" + lang() + "&watch_region=" + REGION + "&with_watch_monetization_types=flatrate&include_adult=false"
-                + "&sort_by=popularity.desc&with_watch_providers=" + URLEncoder.encode(ids.toString(), "UTF-8")
-                + (Config.HIDE_ANIMATION ? "&without_genres=" + ANIMATION : "");
-        // Kids only: the age band's vetted catalog first; an unvetted pool of highly rated titles for that age only
-        // fills in when too few catalog titles are on the TV's services. Recently shown titles (history) are skipped.
-        java.util.Random rnd = new java.util.Random();
+        // Kids only: the age band's vetted catalog, the titles not shown lately first.
         java.util.Set<String> history = history();
-        String top = common.replace("&sort_by=popularity.desc", "&sort_by=vote_average.desc");
         loadCatalog();
         List<Pick> handMovies = handPicked(catalogMovies, "movie", history, 40);
         List<Pick> handShows = handPicked(catalogShows, "tv", history, 20);
         String band = Prefs.ageBand();
-        String movieAge = band.equals("4-6") ? "&with_genres=16%7C10751&certification.lte=G"
-                : band.equals("11-13") ? "&certification.lte=PG-13" : "&with_genres=16&certification.lte=PG";
-        String showGenres = band.equals("11-13") ? "10759%7C10765%7C99" : band.equals("4-6") ? "10762" : "10762";
-        JSONArray movies = get("/discover/movie?vote_count.gte=300&vote_average.gte=7&without_genres=27,53,80,10749"
-                + "&certification_country=US" + movieAge + "&page=" + (1 + rnd.nextInt(4)) + top).getJSONArray("results");
-        JSONArray shows = get("/discover/tv?vote_count.gte=30&vote_average.gte=7&with_genres=" + showGenres
-                + "&without_genres=80,10768&page=" + (1 + rnd.nextInt(2)) + top).getJSONArray("results");
-        List<Pick> poolMovies = new ArrayList<>(), poolShows = new ArrayList<>();
-        for (int i = 0; i < movies.length(); i++) add(poolMovies, movies.getJSONObject(i), "movie");
-        for (int i = 0; i < shows.length(); i++) add(poolShows, shows.getJSONObject(i), "tv");
-        java.util.Collections.shuffle(poolMovies, rnd);
-        java.util.Collections.shuffle(poolShows, rnd);
-        List<Pick> freshMovies = unseen(poolMovies, history), freshShows = unseen(poolShows, history);
-        // Vetted titles (tools/kids_catalog in tv-vibehack: TMDB filters + Jev judgments + review) first.
+        // Only vetted titles, ever: no "highly rated" fallback from TMDB at large (it once let an R-rated anime in).
         List<Pick> list = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
         alternate(list, seen, handMovies, handShows, 60);
-        // The unvetted pool only fills in when too few vetted titles are on the TV's services right now.
-        if (list.size() < 12) alternate(list, seen, freshMovies, freshShows, 12);
-        if (list.size() < 12) alternate(list, seen, poolMovies, poolShows, 12);
+        AppLog.w("picks: " + handMovies.size() + " movies and " + handShows.size() + " shows from the " + band + " catalog");
+        // A bad moment for TMDB (rate limits, an ISP resetting connections): keep the list we have and try again later
+        // rather than show a thin one.
+        if (list.size() < 9 && !picks.isEmpty()) throw new IOException("only " + list.size() + " titles came back from TMDB");
         remember(list);
         if (list.isEmpty()) throw new IOException("TMDB returned no recommendations");
         picks = list;
@@ -564,14 +544,40 @@ final class Recs {
     private static final int HISTORY_MAX = 240;
 
     /**
+     * Titles the child opened from a card: never recommended again (kept on the TV only). Only when the catalog runs
+     * nearly dry do they come back.
+     */
+    void markWatched(Pick p) {
+        if (p == null || p.kind == null) return;
+        android.content.SharedPreferences prefs = context.getSharedPreferences("recs_history", Context.MODE_PRIVATE);
+        java.util.Set<String> all = new java.util.HashSet<>(prefs.getStringSet("watched", new java.util.HashSet<>()));
+        if (!all.add(key(p))) return;
+        prefs.edit().putStringSet("watched", all).apply();
+        // Out of the list now, so the cards move on to something new.
+        List<Pick> left = new ArrayList<>(picks);
+        left.remove(p);
+        picks = left;
+        save();
+        notifyListeners();
+    }
+
+    private java.util.Set<String> watched() {
+        return context.getSharedPreferences("recs_history", Context.MODE_PRIVATE).getStringSet("watched", new java.util.HashSet<>());
+    }
+
+    /**
      * Up to `max` unseen hand-picked titles that are on one of the TV's services (looked up one by one): the less known
      * ones in a new order each time, with at most a couple of the famous ones mixed in at random places.
      */
     private List<Pick> handPicked(int[] ids, String kind, java.util.Set<String> history, int max) {
         List<Integer> gems = new ArrayList<>(), famous = new ArrayList<>();
-        for (int id : ids) if (!history.contains(kind + ":" + id)) (catalogFamous.contains(kind + ":" + id) ? famous : gems).add(id);
-        if (gems.size() < max) {   // all seen: start over
-            for (int id : ids) if (!gems.contains(id) && !catalogFamous.contains(kind + ":" + id)) gems.add(id);
+        java.util.Set<String> watched = watched();
+        List<Integer> fresh = new ArrayList<>();
+        for (int id : ids) if (!watched.contains(kind + ":" + id)) fresh.add(id);
+        if (fresh.size() < 12) for (int id : ids) if (!fresh.contains(id)) fresh.add(id);   // nearly all watched
+        for (int id : fresh) if (!history.contains(kind + ":" + id)) (catalogFamous.contains(kind + ":" + id) ? famous : gems).add(id);
+        if (gems.size() < max) {   // all seen lately: start over (still without the watched ones)
+            for (int id : fresh) if (!gems.contains(id) && !catalogFamous.contains(kind + ":" + id)) gems.add(id);
         }
         weightedShuffle(gems, kind);
         weightedShuffle(famous, kind);
@@ -580,19 +586,36 @@ final class Recs {
         java.util.Random rnd = new java.util.Random();
         for (int i = 0; i < Math.min(few, famous.size()); i++) order.add(rnd.nextInt(Math.min(order.size(), max) + 1), famous.get(i));
         if (order.size() < max) for (int id : famous) if (!order.contains(id)) order.add(id);   // a small catalog
+        // Looked up six at a time (on a connection that drops half the requests, one by one took minutes), in batches,
+        // keeping the order, until there are enough.
         List<Pick> out = new ArrayList<>();
-        for (int i = 0; i < order.size() && out.size() < max && i < max * 6; i++) {
-            Pick p = new Pick();
-            p.id = order.get(i);
-            p.kind = kind;
-            String badge = catalogBadges.get(kind + ":" + p.id);
-            if (badge != null) p.badge = badge;
-            try {
-                fetchDetails(p);
-            } catch (Exception e) {
-                continue;
+        java.util.concurrent.ExecutorService pool = Executors.newFixedThreadPool(6);
+        try {
+            int limit = Math.min(order.size(), max * 6);
+            for (int from = 0; from < limit && out.size() < max; from += 12) {
+                List<java.util.concurrent.Future<Pick>> batch = new ArrayList<>();
+                for (int i = from; i < Math.min(limit, from + 12); i++) {
+                    final Pick p = new Pick();
+                    p.id = order.get(i);
+                    p.kind = kind;
+                    String badge = catalogBadges.get(kind + ":" + p.id);
+                    if (badge != null) p.badge = badge;
+                    batch.add(pool.submit(() -> {
+                        fetchDetails(p);
+                        return p;
+                    }));
+                }
+                for (java.util.concurrent.Future<Pick> f : batch) {
+                    try {
+                        Pick p = f.get();
+                        if (p.pkg != null && p.backdrop != null && out.size() < max) out.add(p);
+                    } catch (Exception e) {
+                        // this one didn't come back: the others still count
+                    }
+                }
             }
-            if (p.pkg != null && p.backdrop != null) out.add(p);
+        } finally {
+            pool.shutdownNow();
         }
         return out;
     }
@@ -876,15 +899,20 @@ final class Recs {
         }
     }
 
-    /** Some ISPs (India) reset about half of the connections to TMDB, so retry those a few times. */
+    /**
+     * Some ISPs (India) reset half or more of the connections to TMDB, and on Android a reset shows up as several kinds
+     * of IOException; so any network failure is retried a few times. TMDB's own answers (a refused key, a missing
+     * title) are not.
+     */
     private JSONObject get(String path) throws IOException, org.json.JSONException {
         for (int attempt = 1; ; attempt++) {
             try {
                 return getOnce(path);
-            } catch (java.net.SocketException | javax.net.ssl.SSLException | java.net.SocketTimeoutException e) {
-                if (attempt >= 6) throw e;
+            } catch (IOException e) {
+                String m = e.getMessage() == null ? "" : e.getMessage();
+                if (attempt >= 8 || m.startsWith("TMDB rejected") || m.startsWith("TMDB returned HTTP") || m.equals("no TMDB key")) throw e;
                 try {
-                    Thread.sleep(300L * attempt);
+                    Thread.sleep(250L * attempt);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw e;
@@ -906,6 +934,7 @@ final class Recs {
         try {
             int code = c.getResponseCode();
             if (code == 401) throw new IOException("TMDB rejected the key");
+            if (code == 429) throw new java.net.SocketTimeoutException("TMDB rate limit");   // retried, with a pause
             if (code != 200) throw new IOException("TMDB returned HTTP " + code);
             return new JSONObject(read(c.getInputStream()));
         } finally {
@@ -977,9 +1006,9 @@ final class Recs {
     }
 
     void trim() {
-        // Explore's picks stay: the home screen opens on that tab, so its cards are never gray when you come back.
+        // Movies' picks stay: the home screen opens on that tab, so its cards are never gray when you come back.
         java.util.Set<String> keep = new java.util.HashSet<>();
-        for (Pick p : now(null)) if (p.backdrop != null) keep.add(p.backdrop);
+        for (Pick p : now("movie")) if (p.backdrop != null) keep.add(p.backdrop);
         synchronized (images) {
             images.keySet().retainAll(keep);
         }

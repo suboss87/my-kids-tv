@@ -12,8 +12,9 @@ import java.nio.ByteOrder;
 
 /**
  * The home screen's sounds, synthesized by the app and written once as WAVs in the cache, played quietly through
- * SoundPool, only on the home screen (never inside apps): moving the focus is a crisp glass tick, a few milliseconds
- * long; opening something is a soft two-note marimba bloom, rising a fifth.
+ * SoundPool, only on the home screen (never inside apps). In the spirit of Apple TV's: moving the focus is a soft,
+ * rounded "tok", felt more than heard (a short low note whose pitch drops as it fades, like a finger on wood);
+ * opening something is a gentle bubble "pop" that rises, friendly for a child and never shrill.
  */
 final class Click {
     private static final int RATE = 48_000;
@@ -25,8 +26,8 @@ final class Click {
             pool = new SoundPool.Builder().setMaxStreams(3).setAudioAttributes(new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()).build();
-            move = pool.load(wav(c, "tick-v2.wav", 0.035f, Click::tick), 1);
-            open = pool.load(wav(c, "bloom-v2.wav", 0.32f, Click::bloom), 1);
+            move = pool.load(wav(c, "tok-v3.wav", 0.05f, Click::tok), 1);
+            open = pool.load(wav(c, "pop-v3.wav", 0.16f, Click::pop), 1);
         } catch (IOException | RuntimeException e) {
             AppLog.w("click sound unavailable: " + e.getMessage());
             release();
@@ -48,23 +49,19 @@ final class Click {
 
     interface Synth { double at(double t); }
 
-    /** Glass tick: a bright 2.4 kHz ping that dies in a few milliseconds over a short, rounder 1.2 kHz body. */
-    private static double tick(double t) {
-        double attack = Math.min(1, t / 0.0006);
-        return attack * (0.55 * Math.sin(2 * Math.PI * 2400 * t) * Math.exp(-t / 0.0035)
-                + 0.45 * Math.sin(2 * Math.PI * 1200 * t) * Math.exp(-t / 0.009));
+    /** Soft tok: 620 Hz falling to 430 Hz in a few ms, a rounded body at half that, gone in ~40 ms. */
+    private static double tok(double t) {
+        double attack = Math.min(1, t / 0.0012);
+        double f = 430 + 190 * Math.exp(-t / 0.006);
+        double phase = 2 * Math.PI * (430 * t + 190 * 0.006 * (1 - Math.exp(-t / 0.006)));   // the integral of f
+        return attack * Math.exp(-t / 0.011) * (0.8 * Math.sin(phase) + 0.2 * Math.sin(0.5 * phase)) * (f > 0 ? 1 : 0);
     }
 
-    /** Marimba bloom: E5 then B5 45 ms later, each a soft mallet (fundamental and its 3.93× overtone, which fades first). */
-    private static double bloom(double t) {
-        return 0.55 * mallet(t, 659.25) + 0.45 * mallet(t - 0.045, 987.77);
-    }
-
-    private static double mallet(double t, double f) {
-        if (t < 0) return 0;
+    /** Bubble pop: 520 Hz gliding up to 880 Hz in ~25 ms with a quick fade, and a quiet octave that sparkles. */
+    private static double pop(double t) {
         double attack = Math.min(1, t / 0.002);
-        return attack * (Math.sin(2 * Math.PI * f * t) * Math.exp(-t / 0.075)
-                + 0.18 * Math.sin(2 * Math.PI * f * 3.93 * t) * Math.exp(-t / 0.012));
+        double phase = 2 * Math.PI * (880 * t - 360 * 0.012 * (1 - Math.exp(-t / 0.012)));   // 520 → 880 Hz
+        return attack * Math.exp(-t / 0.045) * (0.85 * Math.sin(phase) + 0.15 * Math.sin(2 * phase) * Math.exp(-t / 0.015));
     }
 
     private static String wav(Context c, String name, float seconds, Synth synth) throws IOException {

@@ -43,7 +43,7 @@ var Prefs = (function () {
     version: 0,
     language: function () { return pick('language', CONFIG.language || 'auto'); },
     temperature: function () { return pick('temperature', CONFIG.temperature || 'auto'); },
-    theme: function () { return pick('theme', CONFIG.theme || 'auto'); },
+    theme: function () { return pick('theme', CONFIG.theme || 'dark'); },
     weather: function () { return pick('weather', true); },
     /** The weather card's forecast: 'hours' (the next 6 hours) or 'days' (the next 5 days). */
     forecast: function () { return pick('forecast', 'days') === 'hours' ? 'hours' : 'days'; },   // the week by default
@@ -237,7 +237,7 @@ var Data = (function () {
     return (cut > 0 ? t.slice(0, cut) : t).replace(/^\s+|\s+$/g, '');
   }
 
-  var SPOT_EVERY = 15000, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 15 s; a new set after all 3
+  var SPOT_EVERY = 10000, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 10 s; a new set after all 3
 
   /** This set's 3 picks (a new set every ROTATE_EVERY): movies ("movie"), shows ("tv") or both (null). */
   function now(kind) {
@@ -494,29 +494,6 @@ var Data = (function () {
     })();
   }
 
-  /**
-   * Only when too few catalog titles are on the TV's apps: highly rated titles for the age band on those apps (US
-   * certifications; TMDB's Kids genre for shows), never the general trending lists. done(movies, shows), shuffled.
-   */
-  function agePool(common, done) {
-    // One without_genres each: the animation one (hide_animation) joins the age band's.
-    var noAnimation = CONFIG.hideAnimation ? ',' + ANIMATION : '';
-    var top = common.replace('&sort_by=popularity.desc', '&sort_by=vote_average.desc').replace('&without_genres=' + ANIMATION, '');
-    var movieAge = BAND === '4-6' ? '&with_genres=16%7C10751&certification.lte=G'
-        : BAND === '11-13' ? '&certification.lte=PG-13' : '&with_genres=16&certification.lte=PG';
-    var showGenres = BAND === '11-13' ? '10759%7C10765%7C99' : '10762';
-    var movies = [], shows = [];
-    tmdb('/discover/movie?vote_count.gte=300&vote_average.gte=7&without_genres=27,53,80,10749' + noAnimation
-        + '&certification_country=US' + movieAge + '&page=' + (1 + Math.floor(Math.random() * 4)) + top, function (e1, r1) {
-      for (var j = 0; !e1 && r1.results && j < r1.results.length; j++) addPick(movies, r1.results[j], 'movie');
-      tmdb('/discover/tv?vote_count.gte=30&vote_average.gte=7&with_genres=' + showGenres + '&without_genres=80,10768' + noAnimation
-          + '&page=' + (1 + Math.floor(Math.random() * 2)) + top, function (e2, r2) {
-        for (var k = 0; !e2 && r2.results && k < r2.results.length; k++) addPick(shows, r2.results[k], 'tv');
-        done(shuffle(movies), shuffle(shows));
-      });
-    });
-  }
-
   function unseen(list, shown) {
     return list.filter(function (p) { return !shown[keyOf(p)]; });
   }
@@ -530,27 +507,18 @@ var Data = (function () {
         if (s && appFor(s[1])) ids.push(res.results[i].provider_id);
       }
       if (!ids.length) { done(new Error("none of the TV's streaming apps are on TMDB")); return; }
-      var common = '&language=' + lang() + '&watch_region=' + REGION + '&with_watch_monetization_types=flatrate&include_adult=false'
-          + '&sort_by=popularity.desc&with_watch_providers=' + encodeURIComponent(ids.join('|'))
-          + (CONFIG.hideAnimation ? '&without_genres=' + ANIMATION : '');
       var h = history(), shown = {};
       for (var k = 0; k < h.length; k++) shown[h[k]] = true;
       handPicked('movie', MOVIES, shown, function (movies) {
         handPicked('tv', SHOWS, shown, function (shows) {
           var list = [], seen = {};
           alternate(list, seen, movies, shows, MOVIES + SHOWS);
-          function finish() {
-            if (!list.length) { done(new Error('TMDB returned no recommendations')); return; }
-            remember(list);
-            picks = list;
-            done(null);
-          }
-          if (list.length >= ENOUGH) { finish(); return; }
-          agePool(common, function (poolMovies, poolShows) {
-            alternate(list, seen, unseen(poolMovies, shown), unseen(poolShows, shown), ENOUGH);
-            alternate(list, seen, poolMovies, poolShows, ENOUGH);
-            finish();
-          });
+          // Only vetted titles, ever (no fallback from TMDB at large). A bad moment for TMDB: keep the list we have.
+          if (!list.length) { done(new Error('TMDB returned no recommendations')); return; }
+          if (list.length < ENOUGH && picks.length) { done(new Error('only ' + list.length + ' titles came back from TMDB')); return; }
+          remember(list);
+          picks = list;
+          done(null);
         });
       });
     });
@@ -592,7 +560,7 @@ var Data = (function () {
 
   /** This minute's picks for the three tabs and the next minute's, without repeats (the screensaver shows them too). */
   function all() {
-    var out = [], seen = {}, kinds = [null, 'movie', 'tv'], slot = Math.floor(Date.now() / ROTATE_EVERY);
+    var out = [], seen = {}, kinds = ['movie', 'tv'], slot = Math.floor(Date.now() / ROTATE_EVERY);
     for (var s = slot; s <= slot + 1; s++) {
       for (var k = 0; k < kinds.length; k++) {
         var list = at(kinds[k], s);

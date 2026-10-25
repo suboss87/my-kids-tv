@@ -575,7 +575,32 @@ public class SettingsActivity extends Activity {
         private void drawIdentity(Canvas c) {
             float x = 80 * k, top = 96 * k, size = 104 * k, width = 540 * k;
             String name = Prefs.childName(), band = Prefs.ageBand();
-            if (name.isEmpty()) {
+            android.graphics.Bitmap photo = childPhoto();
+            if (photo != null) {
+                // The child's own picture (child-photo.png at build time), in a circle with a soft light rim.
+                tmp.set(x, top, x + size, top + size);
+                tmp.offset(0, 14 * k);
+                shadow.setColor(0x66000014);
+                c.drawOval(tmp, shadow);
+                tmp.offset(0, -14 * k);
+                if (photoPaint == null) {
+                    photoPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+                    android.graphics.BitmapShader sh = new android.graphics.BitmapShader(photo,
+                            android.graphics.Shader.TileMode.CLAMP, android.graphics.Shader.TileMode.CLAMP);
+                    android.graphics.Matrix m = new android.graphics.Matrix();
+                    float sc = size / Math.min(photo.getWidth(), photo.getHeight());
+                    m.setScale(sc, sc);
+                    m.postTranslate(x - (photo.getWidth() * sc - size) / 2, top - (photo.getHeight() * sc - size) / 2);
+                    sh.setLocalMatrix(m);
+                    photoPaint.setShader(sh);
+                }
+                c.drawOval(tmp, photoPaint);
+                Paint ring = new Paint(Paint.ANTI_ALIAS_FLAG);
+                ring.setStyle(Paint.Style.STROKE);
+                ring.setStrokeWidth(2 * k);
+                ring.setColor(0x4DFFFFFF);
+                c.drawOval(tmp, ring);
+            } else if (name.isEmpty()) {
                 drawIcon(c, x + size / 2, top + size / 2, size);
             } else {
                 tmp.set(x, top, x + size, top + size);
@@ -625,7 +650,21 @@ public class SettingsActivity extends Activity {
             c.restore();
         }
 
-        private Paint avatarFill, initial, who, whoSub, panelFill, panelRim, headingPaint;
+        private Paint avatarFill, initial, who, whoSub, panelFill, panelRim, headingPaint, photoPaint;
+        private android.graphics.Bitmap photo;
+        private boolean photoTried;
+
+        /** The child's photo, if this build has one (assets/child-photo.png, from child-photo.png at build time). */
+        private android.graphics.Bitmap childPhoto() {
+            if (photoTried) return photo;
+            photoTried = true;
+            try (java.io.InputStream in = getContext().getAssets().open("child-photo.png")) {
+                photo = android.graphics.BitmapFactory.decodeStream(in);
+            } catch (java.io.IOException e) {
+                photo = null;   // none: the initial or the app's icon
+            }
+            return photo;
+        }
         private StaticLayout creditLayout;
         private String creditFor;
 
@@ -683,19 +722,11 @@ public class SettingsActivity extends Activity {
         private float eveningSkyH;
         private final Paint skyPaint = new Paint(), starPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        /** The parents' screen sits under the evening sky of the app's icon (the home screen's night), with a few stars. */
+        private final SpaceSky space = new SpaceSky();
+
+        /** The parents' screen sits under the home screen's dark sky. */
         private void drawEveningSky(Canvas c) {
-            if (eveningSky == null || eveningSkyH != h) {
-                eveningSky = new android.graphics.LinearGradient(0, 0, 0, h, new int[] {0xFF121A43, 0xFF232C66, 0xFF463C7C},
-                        new float[] {0, 0.55f, 1}, android.graphics.Shader.TileMode.CLAMP);
-                eveningSkyH = h;
-            }
-            skyPaint.setShader(eveningSky);
-            c.drawRect(0, 0, w, h, skyPaint);
-            starPaint.setColor(0xC8FFFFFF);
-            float[] stars = {140, 120, 1.6f, 420, 60, 1.2f, 690, 170, 2, 905, 92, 1.2f, 1130, 210, 1.6f, 1390, 48, 1.2f,
-                    1660, 140, 2, 1820, 300, 1.2f, 300, 330, 1.4f, 1010, 380, 1.2f, 1540, 420, 1.4f, 560, 520, 1.2f};
-            for (int i = 0; i < stars.length; i += 3) c.drawCircle(stars[i] * k, stars[i + 1] * k, stars[i + 2] * k, starPaint);
+            space.draw(c, w, h, 1);
         }
 
         /** The app's icon (res/drawable-nodpi/icon.png), centered at (cx, cy), `size` wide. */
@@ -855,10 +886,10 @@ public class SettingsActivity extends Activity {
         private static final String[] UNITS = {"auto", "C", "F"}, THEMES = {"auto", "light", "dark"};
         /**
          * Home Settings: the child's age and the YouTube button (a parent's choices, first), language, temperature, theme,
-         * my photos, sounds, weather, city and forecast.
+         * sounds, weather, city and forecast. (My Photos is gone from here: the picks fill the home screen.)
          */
         private static final int AGE_ROW = 0, YOUTUBE_ROW = 1, LANGUAGE_ROW = 2, TEMPERATURE_ROW = 3, THEME_ROW = 4,
-                PHOTOS_ROW = 5, SOUNDS_ROW = 6, WEATHER_ROW = 7, CITY_ROW = 8, FORECAST_ROW = 9;
+                PHOTOS_ROW = -1, SOUNDS_ROW = 5, WEATHER_ROW = 6, CITY_ROW = 7, FORECAST_ROW = 8;
         /** Home Settings rows on screen at once (what fits above the hints at 1080p); a longer list scrolls. */
         private static final int SETTINGS_VISIBLE = 10;
 
@@ -869,7 +900,6 @@ public class SettingsActivity extends Activity {
             l.add(Ui.tr("Language"));
             l.add(Ui.tr("Temperature"));
             l.add(Ui.tr("Theme"));
-            l.add(Ui.tr("My Photos"));
             l.add(Ui.tr("Navigation sounds"));
             l.add(Ui.tr("Weather widget"));
             l.add(Ui.tr("City"));
@@ -888,9 +918,6 @@ public class SettingsActivity extends Activity {
             v[TEMPERATURE_ROW] = unit.equals("C") ? "°C" : unit.equals("F") ? "°F" : Ui.tr("unit|Automatic");
             String theme = Prefs.theme();
             v[THEME_ROW] = theme.equals("light") ? Ui.tr("Light") : theme.equals("dark") ? Ui.tr("Dark") : Ui.tr("Automatic");
-            int photos = Photos.files(getContext()).size();
-            v[PHOTOS_ROW] = photos == 0 ? Ui.tr("photos|None")
-                    : Prefs.photos() ? Ui.plural("plural|one:{n} photo|other:{n} photos", photos) : Ui.tr("Off");
             v[SOUNDS_ROW] = onOff(Prefs.sounds());
             v[WEATHER_ROW] = onOff(Prefs.weather());
             v[CITY_ROW] = !cityStatus.isEmpty() ? cityStatus : Prefs.city().isEmpty() ? "—" : Prefs.city();

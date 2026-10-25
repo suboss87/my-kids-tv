@@ -21,3 +21,6 @@ catalog/work/cache/
 # Local tooling and pipeline logs
 .claude/
 catalog/work/*.log
+
+# Your child's photo for the settings (optional; build.sh packs it in, it never goes to GitHub)
+child-photo.png

@@ -73,7 +73,7 @@ final class Config {
     static final String LANGUAGE = "$(prop language auto)";
     static final String TEMPERATURE = "$(prop temperature auto)";
     static final String HIDE_SERVICES = "$(prop hide_services '')";
-    static final String THEME = "$(prop theme auto)";
+    static final String THEME = "$(prop theme dark)";
     static final boolean DISABLE_ASSISTANT = $ASSIST;
     static final boolean HIDE_ANIMATION = $ANIMATION;
     static final String AGE_BAND = "$(prop age_band 7-10)";
@@ -84,10 +84,17 @@ final class Config {
 EOF
 
 # --- Build
+# Your child's photo for the settings (child-photo.png next to this script, never committed): packed only into your build.
+rm -rf out/private-assets
+PRIVATE_ASSETS=""
+if [ -f child-photo.png ]; then
+  mkdir -p out/private-assets && cp child-photo.png out/private-assets/child-photo.png
+  PRIVATE_ASSETS="-A out/private-assets"
+fi
 "$BT/aapt2" compile --dir app/res -o out/res.zip
 # Fonts uncompressed: Android reads them straight from the APK.
 "$BT/aapt2" link -o out/base.apk -I "$AJ" --manifest app/AndroidManifest.xml --java out/gen out/res.zip \
-  --min-sdk-version 26 --target-sdk-version 33 -A app/assets -0 ttf
+  --min-sdk-version 26 --target-sdk-version 33 -A app/assets $PRIVATE_ASSETS -0 ttf
 # Windows aapt2 packs assets with backslash separators ("assets/symbols\x.png") and Android
 # cannot find them: the home screen loses its icons and fonts. Rename the zip entries to "/".
 case "$(uname -s 2>/dev/null)" in

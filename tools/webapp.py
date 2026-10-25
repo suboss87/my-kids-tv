@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.join(ROOT, 'tools'))
 import translate  # noqa: E402  (the catalogues and the keys the web app uses)
 
 GENERIC = {'tmdbKey': '', 'tmdbRegion': '', 'latitude': '', 'longitude': '', 'city': '', 'language': 'auto',
-           'temperature': 'auto', 'theme': 'auto', 'hideAnimation': False, 'hideApps': [],
+           'temperature': 'auto', 'theme': 'dark', 'hideAnimation': False, 'hideApps': [],
            'shelfApps': [], 'ageBand': '7-10', 'childName': ''}
 
 AGE_BANDS = ('4-6', '7-10', '11-13')
@@ -58,7 +58,7 @@ def read_config(path):
         'city': values.get('city', ''),
         'language': values.get('language', 'auto') or 'auto',
         'temperature': values.get('temperature', 'auto') or 'auto',
-        'theme': values.get('theme', 'auto') or 'auto',
+        'theme': values.get('theme', 'dark') or 'dark',
         'hideAnimation': values.get('hide_animation', 'false').lower() == 'true',
         'hideApps': [s.strip() for s in values.get('hide_apps', '').split(',') if s.strip()],
         'shelfApps': [s.strip() for s in values.get('shelf_apps', '').split(',') if s.strip()],
