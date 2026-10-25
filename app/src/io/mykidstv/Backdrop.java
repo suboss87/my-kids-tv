@@ -26,8 +26,8 @@ final class Backdrop {
     /** The UI's size against 1920×1080 (at most 1): nothing is built bigger than the screen can show. */
     private static final float UI_SCALE = uiScale();
     static final int W = ui(1920), H = ui(1080), FW = 192, FH = 108, GW = 480, GH = 270;
-    /** The cards at their focused size (1.05×): the wide one and the two tall ones. */
-    static final int WIDE_W = ui(1092), WIDE_H = ui(464), TALL_W = ui(336), TALL_H = ui(464);
+    /** The story window's picture (wide) and a thumbnail at its focused size, 1.08× (tall, for history's sake). */
+    static final int WIDE_W = ui(1760), WIDE_H = ui(540), TALL_W = ui(279), TALL_H = ui(157);
 
     private static float uiScale() {
         android.util.DisplayMetrics m = android.content.res.Resources.getSystem().getDisplayMetrics();
@@ -40,6 +40,27 @@ final class Backdrop {
     }
     final Bitmap image;
     final int[] frost;      // heavily blurred (frosted glass, bottom drawer)
+    private int ambient;    // 0 until worked out: the picture's light, for the glow around the story window
+
+    /**
+     * The picture's main color as light: the average of its frosted pixels, made more vivid and kept mid-bright, so it
+     * glows softly on the sky by day and by night.
+     */
+    int ambient() {
+        if (ambient != 0 || frost == null || frost.length == 0) return ambient;
+        long r = 0, g = 0, b = 0;
+        for (int px : frost) {
+            r += (px >> 16) & 0xFF;
+            g += (px >> 8) & 0xFF;
+            b += px & 0xFF;
+        }
+        float[] hsv = new float[3];
+        android.graphics.Color.RGBToHSV((int) (r / frost.length), (int) (g / frost.length), (int) (b / frost.length), hsv);
+        hsv[1] = Math.min(1, hsv[1] * 1.5f + 0.15f);
+        hsv[2] = Math.max(0.55f, Math.min(0.85f, hsv[2] * 1.2f));
+        ambient = android.graphics.Color.HSVToColor(hsv) | 0xFF000000;
+        return ambient;
+    }
     final int[] glass;      // lightly blurred (Liquid Glass: the photo shows through the glass)
     final Bitmap wide, tall;            // the photo on the cards
     final BitmapShader wideShader, tallShader;   // theirs, for the rounded cards: they go away with the backdrop

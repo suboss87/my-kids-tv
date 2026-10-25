@@ -48,6 +48,7 @@ final class Recs {
         String title, backdrop, meta = "", app, pkg;
         String link;            // opens the title in its app (looked up with Watchmode), or null: the app's home
         String badge = "";      // why it's worth watching, from the catalog: "must", "learn", "loved" or ""
+        String tagline = "";    // the story in a line, for the window (TMDB's tagline, or a short synopsis)
         boolean detailed;
         java.io.File photo;     // one of your own photos (Photos): no title, no caption
     }
@@ -60,9 +61,9 @@ final class Recs {
     /** TMDB's Animation genre (movies and shows: cartoons and anime), left out with hide_animation=true. */
     private static final int ANIMATION = 16;
     private static final long LIST_EVERY = 3600_000L;   // a new set of 60 titles from the catalog every hour
-    static final long ROTATE_EVERY = 60_000L;   // new cards on every tab each minute
+    static final long SPOT_EVERY = 15_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 15 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 9;   // 9 = bigger list each minute, gems first, famous ones rare
+    private static final int CACHE_VERSION = 10;   // 10 = the story window: story lines, a new set every 45 s
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -206,7 +207,17 @@ final class Recs {
         return now(null);
     }
 
-    /** This minute's 3, movies only ("movie") or shows only ("tv"); null = both (the home screen tabs). */
+    /** Which of the 3 the window shows while nobody is browsing (0 to 2). */
+    static int spot() {
+        return (int) ((System.currentTimeMillis() % ROTATE_EVERY) / SPOT_EVERY);
+    }
+
+    /** The tab's next set, so its pictures are ready before it comes in. */
+    List<Pick> next(String kind) {
+        return at(kind, System.currentTimeMillis() / ROTATE_EVERY + 1);
+    }
+
+    /** This set's 3 (a new set every ROTATE_EVERY), movies only ("movie") or shows only ("tv"); null = both (the tabs). */
     List<Pick> now(String kind) {
         return at(kind, System.currentTimeMillis() / ROTATE_EVERY);
     }
@@ -420,7 +431,7 @@ final class Recs {
         });
     }
 
-    /** This minute's picks for the three tabs (Explore, Movies, Shows) and the next minute's, without repeats. */
+    /** This set's picks for the three tabs (Explore, Movies, Shows) and the next set's, without repeats. */
     List<Pick> wanted() {
         List<Pick> out = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
@@ -660,6 +671,14 @@ final class Recs {
         return false;
     }
 
+    /** The story in one line: TMDB's tagline, or the synopsis's first sentence when it's short. */
+    private static String storyLine(JSONObject o) {
+        String t = o.optString("tagline").trim();
+        if (!t.isEmpty()) return t;
+        String first = o.optString("overview").split("(?<=[.!?。])\\s", 2)[0].trim();
+        return first.length() <= 120 ? first : "";
+    }
+
     /** Genre, runtime (or seasons) and the service it's on, among the ones the TV has. */
     private void fetchDetails(Pick p) throws Exception {
         JSONObject o = get("/" + p.kind + "/" + p.id
@@ -693,6 +712,7 @@ final class Recs {
         }
         if (p.app != null) parts.add(SERVICE_NAME.get(p.app));
         p.meta = String.join(" · ", parts);
+        p.tagline = storyLine(o);
         p.detailed = true;
     }
 
@@ -946,7 +966,7 @@ final class Recs {
             if (forLight != light) return;   // the design changed midway: this one is stale
             synchronized (images) {
                 images.put(p.backdrop, backdrop);
-                while (images.size() > (forLight ? 10 : 4)) images.remove(images.keySet().iterator().next());
+                while (images.size() > (forLight ? 12 : 4)) images.remove(images.keySet().iterator().next());
             }
             notifyListeners();
         } catch (IOException | RuntimeException | OutOfMemoryError e) {
@@ -989,7 +1009,7 @@ final class Recs {
             JSONArray a = new JSONArray();
             for (Pick p : picks) {
                 a.put(new JSONObject().put("id", p.id).put("kind", p.kind).put("title", p.title).put("backdrop", p.backdrop).put("link", p.link == null ? "" : p.link)
-                        .put("meta", p.meta).put("badge", p.badge).put("app", p.app == null ? "" : p.app).put("pkg", p.pkg == null ? "" : p.pkg)
+                        .put("meta", p.meta).put("badge", p.badge).put("tagline", p.tagline).put("app", p.app == null ? "" : p.app).put("pkg", p.pkg == null ? "" : p.pkg)
                         .put("detailed", p.detailed));
             }
             SharedPreferences.Editor e = cache.edit().putString("picks", a.toString()).putInt("period", period).putLong("listAt", listAt)
@@ -1017,6 +1037,7 @@ final class Recs {
             p.link = o.optString("link").isEmpty() ? null : o.optString("link");
             p.meta = o.optString("meta");
             p.badge = o.optString("badge");
+            p.tagline = o.optString("tagline");
             p.app = o.optString("app").isEmpty() ? null : o.optString("app");
             p.pkg = o.optString("pkg").isEmpty() ? null : o.optString("pkg");
             p.detailed = o.optBoolean("detailed");

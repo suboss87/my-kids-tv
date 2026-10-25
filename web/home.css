@@ -249,9 +249,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 #window {
   position: absolute;
   left: 80px;
-  top: 248px;
+  top: 262px;
   width: 1760px;
-  height: 540px;
+  height: 530px;
   border-radius: 44px;
   overflow: hidden;
   background: #1E2660;

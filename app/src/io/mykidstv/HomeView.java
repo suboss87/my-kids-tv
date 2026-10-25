@@ -72,7 +72,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     // padding (the focused icon grows 20% without touching its edge). The icons are 16:9, the shape of the apps' TV
     // banners, so those are never stretched: up to 224 × 126, 178 × 100 with eight apps, 133 × 75 with ten
     // (HomeApps.shelfVisible; past that the shelf scrolls).
-    private static final float SHELF_PAD = 40, TILE_GAP = 48;
+    private static final float SHELF_PAD = 40, TILE_GAP = 40;
     private static final float TILE_RADIUS = 22;
     // Tile focus (Apple TV style): it grows from the center and its shadow drops (it "rises" toward the viewer).
     private static final float FOCUS_GROW = 0.2f;
@@ -96,7 +96,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     // The tab bar is a 68 px capsule; the cards sit on the 5-column grid (the wide one spans 3).
     private static final float L_TITLE_BASE = 130, L_TABBAR_TOP = 164, L_TABBAR_H = 64, L_CARDS_TOP = 280, L_CARD_H = 426;
     private static final float L_TALL_W = 320, L_CARD_GAP = 40, L_BUTTON = 68, L_BUTTON_GAP = 20, L_BUTTON_CY = 103;
-    private static final float L_PLATTER_TOP = 814, L_TILE_H = 126;
+    private static final float L_PLATTER_TOP = 814, L_TILE_H = 108, L_SHELF_Y = 846;   // smaller apps, under the window
     private static final float L_DATE_BASE = 330, L_CLOCK_BASE = 540, L_WEATHER_BASE = 626, L_QUOTES_BASE = 694;
     /** Deep navy ink (never gray on the sky): full, 72% and 55%. */
     private static final int L_INK = 0xFF0E2240, L_DIM = 0xB80E2240, L_FAINT = 0x8C0E2240, L_NIGHT_DIM = 0xB8F3F5FF;
@@ -149,6 +149,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private final RectF[] cardRects = new RectF[3];
     private final List<HomeApps.Item> lightButtons = new ArrayList<>();
     private Paint lTitle, lTab, lTabOn, lCardTitle, lCardMeta, lQuote, lTip, lDate, lClock, lWeather, lClockQuote, lBadge;
+    private Paint lWinTitle, lWinMeta, lWinCta, lThumb;
+    private android.text.TextPaint lWinTag;
     private Paint lGreetTemp, lGreetSky;
     /** The greeting over the picks ("Good morning, Viva"), made again only when the hour or the settings change. */
     private String greeting = "";
@@ -160,6 +162,18 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private int greetWeatherPrefs = -1;
     /** Card corners: rounder than a grown-up's TV, the way toys and children's books are. */
     private static final float L_CARD_RADIUS = 32;
+    // The story window: one title large, and the set's 3 as thumbnails along its lower edge.
+    private static final float L_WIN_TOP = 262, L_WIN_H = 530, L_WIN_RADIUS = 44, L_STORY_X = 72, L_STORY_W = 780;
+    private static final float L_THUMB_W = 258, L_THUMB_H = 145, L_THUMB_GAP = 24, L_THUMB_RADIUS = 22;
+    private final RectF windowRect = new RectF();
+    private Recs.Pick spotPick, spotFrom;   // the title in the window, and the one fading out under it
+    private long spotAt;                    // when the window last changed title (0: not changing)
+    private int spotIndex = -1;
+    private LinearGradient scrimLeft, scrimBottom;
+    private float scrimFor;
+    private android.text.StaticLayout tagLayout;
+    private String tagFor = "";
+    private final android.graphics.Path playPath = new android.graphics.Path();
     /** The tabs sit in one frosted capsule; the chosen tab is a white pill inside it. */
     private static final float L_CAPSULE_LEFT = 70, L_CAPSULE_PAD = 6;
     private Shader lightGradient, sunShader;
@@ -573,7 +587,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         int width = MeasureSpec.getSize(widthSpec), height = MeasureSpec.getSize(heightSpec);
         float kk = width / 1920f;
         measure(sky, width, height);
-        measure(heroLayer, width, Math.round(790 * kk));
+        measure(heroLayer, width, Math.round(840 * kk));   // the window and its shadow
         measure(status, Math.round(1160 * kk), Math.round(240 * kk));
         // Sized to what they draw (the glass and its shadow; the grown tiles and their shadows): smaller layers are
         // cheaper for the GPU to composite on every frame of the drawer animation.
@@ -649,6 +663,13 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         lCardTitle.setLetterSpacing(0.012f);
         lCardMeta = Ui.text(Ui.medium, 25 * k, L_DIM);
         lBadge = Ui.text(Ui.semibold, 22 * k, L_INK);
+        lWinTitle = Ui.text(Ui.displaySemibold, 80 * k, 0xFFFFFFFF);
+        lWinTitle.setLetterSpacing(-0.02f);
+        lWinTitle.setFakeBoldText(false);
+        lWinMeta = Ui.text(Ui.medium, 26 * k, 0xBDF3F5FF);
+        lWinTag = new android.text.TextPaint(Ui.text(Ui.medium, 32 * k, 0xFFFFFFFF));
+        lWinCta = Ui.text(Ui.semibold, 26 * k, 0xFFFFFFFF);
+        lThumb = Ui.text(Ui.semibold, 22 * k, 0xC7F3F5FF);
         lBadge.setLetterSpacing(0.02f);
         lGreetTemp = Ui.numbers(Ui.semibold, 32 * k, L_INK);
         lGreetSky = Ui.text(Ui.medium, 32 * k, L_DIM);
@@ -725,7 +746,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         boolean drawerMoving = drawer.step(dt);
         boolean sheetMoving = sheet.step(dt);
         boolean toastFading = tickToast(up);
-        boolean heroFading = tickHeroFade(up) | tickCardSwap(up);
+        checkSpot();
+        boolean heroFading = tickHeroFade(up) | tickCardSwap(up) | tickSpot(up);
         boolean bgFading = tickBackgroundFade(up);
         boolean nightMoving = tickNight(up);
 
@@ -1073,6 +1095,38 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         return true;
     }
 
+    /**
+     * The title in the window: the focused thumbnail while the child browses, otherwise the next one every 15 s (the
+     * window crossfades to it and the sky takes a little of its color).
+     */
+    private void checkSpot() {
+        if (cards.isEmpty()) {
+            spotPick = null;
+            spotIndex = -1;
+            return;
+        }
+        int i = Math.min(cards.size() - 1, zone == Z_CARDS ? cardIndex : Recs.spot());
+        Recs.Pick p = cards.get(i);
+        if (p == spotPick) return;
+        boolean same = spotPick != null && Recs.key(spotPick).equals(Recs.key(p));   // only its details changed
+        spotFrom = same ? null : spotPick;
+        spotAt = spotFrom == null ? 0 : SystemClock.uptimeMillis();
+        spotPick = p;
+        spotIndex = i;
+        Backdrop b = recs.backdrop(p);
+        if (b != null) showBackdrop(b);
+        heroDirty = true;
+    }
+
+    private boolean tickSpot(long up) {
+        if (spotAt == 0) return false;
+        if (up - spotAt > 1100) {
+            spotAt = 0;
+            spotFrom = null;
+        }
+        return true;
+    }
+
     private boolean tickCardSwap(long up) {
         if (cardSwapAt == 0) return false;
         if (up - cardSwapAt > SWAP_MS + 2 * SWAP_STAGGER) {
@@ -1236,8 +1290,9 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         // keeps its bottom edge, so with more apps it only gets lower.
         float tw = Math.min(L_TILE_H * 16f / 9 * k, (full - Math.max(0, n - 1) * gap) / Math.max(1, n));
         float th = tw * 9f / 16;
-        float width = n * tw + Math.max(0, n - 1) * gap, left = (w - width) / 2f;
-        float top = (L_PLATTER_TOP + L_TILE_H) * k - th;
+        // Left-aligned with the greeting and the window: one clean edge down the screen.
+        float width = n * tw + Math.max(0, n - 1) * gap, left = MARGIN * k;
+        float top = L_SHELF_Y * k - pad;
         platterRect.set(left - pad, top, left + width + pad, top + th + 2 * pad);
         snap(platterRect);
         shelfFirst = Math.max(0, Math.min(shelfFirst, shelf.size() - n));
@@ -1267,9 +1322,13 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         wake();
     }
 
-    /** Shelf layer: the glass bar and its shadow (it only changes with the background). */
+    /**
+     * Shelf layer: nothing now. The apps float on the sky, each with its own shadow (a box around them read as
+     * clutter); the glass bar below stays for reference.
+     */
+    @SuppressWarnings("unused")
     private void drawPlatter(Canvas c) {
-        if (shelf.isEmpty()) return;
+        if (true) return;
         float radius = (TILE_RADIUS + SHELF_PAD) * k;
         tmp.set(platterRect);
         tmp.offset(0, 18 * k);
@@ -1363,8 +1422,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         c.translate(cx, cy);
         c.scale(s, s);
         tmp.set(-bw / 2, -bh / 2, bw / 2, bh / 2);
-        tmp.offset(0, (4 + 14 * f + 6 * l) * k);
-        shadowDeep.setColor(Ui.alpha(0xFF000000, tone(0.14f, 0.3f) + tone(0.18f, 0.3f) * fc + 0.14f * Ui.clamp(l)));
+        tmp.offset(0, (12 + 10 * f + 6 * l) * k);   // floating: a soft shadow well below, even at rest
+        shadowDeep.setColor(Ui.alpha(tone(0xFF0E2240, 0xFF000014), tone(0.22f, 0.42f) + tone(0.14f, 0.2f) * fc + 0.14f * Ui.clamp(l)));
         shadows.draw(c, tmp, r0, DEEP_BLUR * k, shadowDeep);
         c.restore();
         int[] style = TILE_STYLE.get(it.key);
@@ -2770,12 +2829,17 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             topRects[3 + i].set(right - b, cy - b / 2, right, cy + b / 2);
             right -= b + L_BUTTON_GAP * k;
         }
-        float top = L_CARDS_TOP * k, ch = L_CARD_H * k, g = L_CARD_GAP * k, left = MARGIN * k, tall = L_TALL_W * k;
-        float wide = (CONTENT_R - MARGIN) * k - 2 * tall - 2 * g;
-        cardRects[0].set(left, top, left + wide, top + ch);
-        cardRects[1].set(cardRects[0].right + g, top, cardRects[0].right + g + tall, top + ch);
-        cardRects[2].set(cardRects[1].right + g, top, cardRects[1].right + g + tall, top + ch);
+        windowRect.set(MARGIN * k, L_WIN_TOP * k, CONTENT_R * k, (L_WIN_TOP + L_WIN_H) * k);
+        snap(windowRect);
+        // The thumbnails sit at the window's lower right, their names under them, inside the window.
+        float tw = L_THUMB_W * k, th = L_THUMB_H * k, tg = L_THUMB_GAP * k;
+        float tRight = windowRect.right - 48 * k, tTop = windowRect.bottom - (44 + 34) * k - th;
+        for (int i = 2; i >= 0; i--) {
+            cardRects[i].set(tRight - tw, tTop, tRight, tTop + th);
+            tRight -= tw + tg;
+        }
         for (RectF r : cardRects) snap(r);
+        scrimLeft = null;
         for (HomeApps.Item it : lightButtons) {
             Symbols.warm(getContext(), it.symbol, 27 * k);
             Symbols.warm(getContext(), it.symbol, 27 * k * 1.1f);
@@ -2810,11 +2874,15 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 retarget(false);
             }
         }
-        for (Recs.Pick p : recs.wanted()) recs.backdrop(p);   // all three tabs preloaded: switching tabs is instant
-        // Picks bring their own background; without them (no TMDB key), your photo if there is one.
+        // Ready ahead: all three tabs' sets (switching tabs is instant) and this tab's next set.
+        for (String kind : TAB_KIND) for (Recs.Pick p : recs.now(kind)) recs.backdrop(p);
+        for (Recs.Pick p : recs.next(TAB_KIND[tab])) recs.backdrop(p);
+        // Picks bring their own background (the window's title tints the sky); without them, your photo if there is one.
         boolean own = !picksOn() && Photos.on(getContext());
-        Backdrop b = own ? Photos.backdrop(getContext(), ownReady) : cards.isEmpty() ? null : recs.backdrop(cards.get(0));
-        if (b != null || (cards.isEmpty() && !own)) showBackdrop(b);
+        spotPick = null;   // checkSpot picks the window's title again for the new cards
+        if (own) showBackdrop(Photos.backdrop(getContext(), ownReady));
+        else if (cards.isEmpty()) showBackdrop(null);
+        else checkSpot();
         heroDirty = true;
         spoken.focusMoved();    // new picks under the focused card
     }
@@ -2956,6 +3024,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         }
         int top = -1;
         for (int i = 0; i < 3; i++) if (cardFocus[i].value > 0.02f && (top < 0 || cardFocus[i].value > cardFocus[top].value)) top = i;
+        drawWindow(c);
         for (int i = 0; i < 3; i++) if (i != top) drawLightCard(c, i);
         if (top >= 0) drawLightCard(c, top);
     }
@@ -3031,136 +3100,262 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     }
 
     /**
-     * Recommendation card: the title's photo (already at the focused card size, so it stays sharp), rounded corners and
-     * a soft shadow; when focused, it grows 5%, rises and lights up its border. Below it, the title (and on the large
-     * card, genre · runtime · service).
+     * The story window: the title's picture across the window, a deep-indigo scrim on its left and lower edge, and on it
+     * why it's worth watching, the name, genre · length · service, the story in a line and where OK takes you. A new
+     * title crossfades in over the old one and its text rises gently into place.
      */
-    private void drawLightCard(Canvas c, int i) {
-        RectF base = cardRects[i];
-        Recs.Pick p = i < cards.size() ? cards.get(i) : null;
-        float v = Ui.clamp(cardFocus[i].value), f = v, s = 1 + 0.06f * v;   // a calm lift, no bounce
-        float bw = base.width(), bh = base.height(), r0 = L_CARD_RADIUS * k;
-        float cx = base.centerX(), cy = base.centerY() - 14 * k * v;
-        cell.set(cx - bw * s / 2, cy - bh * s / 2, cx + bw * s / 2, cy + bh * s / 2);
-        float r = r0 * s;
-        c.save();
-        c.translate(cx, cy);
-        c.scale(s, s);
-        tmp.set(-bw / 2, -bh / 2, bw / 2, bh / 2);
-        tmp.offset(0, (10 + 14 * f) * k);
-        shadowDeep.setColor(Ui.alpha(tone(0xFF0E2240, 0xFF000014), tone(0.2f, 0.4f) + tone(0.16f, 0.15f) * f));
-        shadows.draw(c, tmp, r0, DEEP_BLUR * k, shadowDeep);
-        c.restore();
-        float t = cardSwap(i);
-        Recs.Pick old = t < 1 && i < prevCards.size() ? prevCards.get(i) : null;
-        if (old != null && (p == null || !Recs.key(old).equals(Recs.key(p)))) {
-            // The new title fades in over the old one; only this card's area is a layer (the TV's GPU is small).
-            tmp.set(cell.left - 2 * k, cell.top - 2 * k, Math.max(cell.right, base.right) + 2 * k, base.bottom + 100 * k);
-            drawCardImage(c, i, old, r);   // the old photo stays solid under the new one: no dip in between
-            int sc = c.saveLayerAlpha(tmp, Math.round(255 * t));
-            drawCardImage(c, i, p, r);
-            c.restoreToCount(sc);
-        } else {
-            drawCardImage(c, i, p, r);
-        }
-        if (f > 0.01f) {
-            if (lightSheens.length != cardRects.length) {
-                lightSheens = new LinearGradient[cardRects.length];
-                lightRims = new LinearGradient[cardRects.length];
-                lightShaderW = new float[cardRects.length];
-            }
-            if (lightSheens[i] == null || lightShaderW[i] != bw) {
-                lightSheens[i] = new LinearGradient(-bw / 2, -bh / 2, 0, bh / 2, 0x38FFFFFF, 0x00FFFFFF, Shader.TileMode.CLAMP);
-                lightRims[i] = new LinearGradient(0, -bh / 2, 0, bh / 2, 0xE6FFFFFF, 0x59FFFFFF, Shader.TileMode.CLAMP);
-                lightShaderW[i] = bw;
-            }
-            int alpha = Math.round(255 * f);
-            c.save();
-            c.translate(cx, cy);
-            c.scale(s, s);
-            tmp.set(-bw / 2, -bh / 2, bw / 2, bh / 2);
-            sheen.setShader(lightSheens[i]);
-            sheen.setAlpha(alpha);
-            c.drawRoundRect(tmp, r0, r0, sheen);
-            sheen.setAlpha(255);
-            rim.setShader(lightRims[i]);
-            rim.setAlpha(alpha);
-            rim.setStrokeWidth(2.5f * k / s);
-            c.drawRoundRect(tmp, r0, r0, rim);
-            rim.setStrokeWidth(2.5f * k);
-            rim.setAlpha(255);
-            c.restore();
-        }
-        if (old != null && (p == null || !Recs.key(old).equals(Recs.key(p)))) {
-            tmp.set(base.left - 2 * k, cell.top - 2 * k, Math.max(cell.right, base.right) + 2 * k, base.bottom + 100 * k);
-            int sc = c.saveLayerAlpha(tmp, Math.round(255 * (1 - t)));
-            drawCardText(c, i, old, base, s, f);
-            c.restoreToCount(sc);
-            sc = c.saveLayerAlpha(tmp, Math.round(255 * t));
-            drawCardText(c, i, p, base, s, f);
-            c.restoreToCount(sc);
-        } else {
-            drawCardText(c, i, p, base, s, f);
-        }
-    }
-
-    /** The card's photo in `cell` (its focused size and place), or a soft glass placeholder while it loads. */
-    private void drawCardImage(Canvas c, int i, Recs.Pick p, float r) {
-        Backdrop b = p == null ? null : recs.backdrop(p);
-        Bitmap img = b == null ? null : (i == 0 ? b.wide : b.tall);
-        if (img != null) {
-            roundImage(c, img, i == 0 ? b.wideShader : b.tallShader, cell, r);
-        } else {
+    private void drawWindow(Canvas c) {
+        RectF w = windowRect;
+        float r = L_WIN_RADIUS * k;
+        if (cards.isEmpty() || spotPick == null) {
+            // Titles still coming: the window's place as quiet glass, so nothing jumps when they arrive.
+            if (!picksOn()) return;
             fill.setShader(null);
-            fill.setColor(Ui.alpha(0xFFFFFFFF, tone(0.4f, 0.08f)));
-            c.drawRoundRect(cell, r, r, fill);
+            fill.setColor(Ui.alpha(0xFFFFFFFF, tone(0.3f, 0.06f)));
+            c.drawRoundRect(w, r, r, fill);
+            rim.setShader(null);
+            rim.setColor(Ui.alpha(0xFFFFFFFF, tone(0.5f, 0.1f)));
+            rim.setStrokeWidth(1.5f * k);
+            c.drawRoundRect(w, r, r, rim);
+            rim.setStrokeWidth(2.5f * k);
+            return;
+        }
+        long up = SystemClock.uptimeMillis();
+        drawAmbient(c, w, t(up));
+        tmp.set(w);
+        tmp.offset(0, 24 * k);
+        shadowDeep.setColor(Ui.alpha(tone(0xFF0E2240, 0xFF000014), tone(0.3f, 0.5f)));
+        shadows.draw(c, tmp, r, DEEP_BLUR * k, shadowDeep);
+        fill.setShader(null);
+        fill.setColor(0xFF1E2660);
+        c.drawRoundRect(w, r, r, fill);
+        float t = t(up);
+        if (spotFrom != null && t < 1) drawWindowArt(c, spotFrom, r, 255);
+        drawWindowArt(c, spotPick, r, Math.round(255 * t));
+        if (scrimLeft == null || scrimFor != w.width()) {
+            scrimLeft = new LinearGradient(w.left, 0, w.left + w.width() * 0.62f, 0, new int[] {0xEB0E1234, 0xB80E1234, 0x000E1234},
+                    new float[] {0, 0.48f, 1}, Shader.TileMode.CLAMP);
+            scrimBottom = new LinearGradient(0, w.bottom, 0, w.bottom - w.height() * 0.45f, 0xCC0E1234, 0x000E1234, Shader.TileMode.CLAMP);
+            scrimFor = w.width();
+        }
+        fill.setShader(scrimLeft);
+        c.drawRoundRect(w, r, r, fill);
+        fill.setShader(scrimBottom);
+        c.drawRoundRect(w, r, r, fill);
+        fill.setShader(null);
+        rim.setShader(null);
+        rim.setColor(0x33FFFFFF);
+        rim.setStrokeWidth(1.5f * k);
+        c.drawRoundRect(w, r, r, rim);
+        rim.setStrokeWidth(2.5f * k);
+        float st = spotAt == 0 ? 1 : fadeEase(spotAt + 120, up, 800);
+        c.save();
+        c.translate(0, 12 * k * (1 - st));
+        drawStory(c, spotPick, w, st);
+        c.restore();
+        // Which of the 3 is in the window.
+        float dx = w.left + L_STORY_X * k, dy = w.bottom - 51 * k, dot = 10 * k;
+        for (int i = 0; i < cards.size(); i++) {
+            float dw = i == spotIndex ? 40 * k : dot;
+            tmp.set(dx, dy - dot / 2, dx + dw, dy + dot / 2);
+            fill.setColor(i == spotIndex ? 0xFFFFFFFF : 0x59FFFFFF);
+            c.drawRoundRect(tmp, dot / 2, dot / 2, fill);
+            dx += dw + 10 * k;
         }
     }
 
-    /** The badge on the card and the title (and on the large card, genre · runtime · service) below it. */
-    private void drawCardText(Canvas c, int i, Recs.Pick p, RectF base, float s, float f) {
-        if (p == null) return;
-        float bw = base.width();
-        drawBadge(c, p.badge, cell, s, f);
-        fitPaint.set(lCardTitle);
-        c.drawText(TextUtils.ellipsize(p.title, fitPaint, bw, TextUtils.TruncateAt.END).toString(), base.left, base.bottom + 46 * k, lCardTitle);
-        if (i == 0 && p.meta != null && !p.meta.isEmpty()) {
-            fitPaint.set(lCardMeta);
-            c.drawText(TextUtils.ellipsize(p.meta, fitPaint, bw, TextUtils.TruncateAt.END).toString(), base.left, base.bottom + 80 * k, lCardMeta);
-        }
+    private float t(long up) {
+        return spotAt == 0 ? 1 : fadeEase(spotAt, up, 900);
     }
 
     /**
-     * Why the title is worth watching, on the focused card only: a dark frosted pill in its top-left corner with a
-     * colored dot (gold: must-watch, teal: learn something, pink: kids love it). Nothing when there's no reason.
+     * Ambient light: the window's picture glows onto the sky around it in its own main color, like a lamp behind a TV.
+     * One soft ellipse, wider than the window; it crossfades with the picture.
      */
-    private void drawBadge(Canvas c, String badge, RectF card, float s, float f) {
-        if (badge == null || badge.isEmpty() || f < 0.01f) return;
+    private void drawAmbient(Canvas c, RectF w, float t) {
+        int to = ambientOf(spotPick), from = spotFrom == null ? to : ambientOf(spotFrom);
+        int color = blend(from, to, t);
+        if (android.graphics.Color.alpha(color) == 0) return;
+        // Centered a little above the window and flat enough to fade out before this layer's lower edge (840).
+        float cy = w.centerY() - 80 * k, rad = w.width() * 0.62f;
+        if (ambientShader == null || ambientColor != color || ambientFor != w.width()) {
+            float a = tone(0.28f, 0.42f);
+            ambientShader = new RadialGradient(w.centerX(), cy, rad,
+                    new int[] {Ui.alpha(color, a), Ui.alpha(color, a * 0.45f), Ui.alpha(color, 0)},
+                    new float[] {0, 0.55f, 1}, Shader.TileMode.CLAMP);
+            ambientColor = color;
+            ambientFor = w.width();
+        }
+        c.save();
+        c.scale(1, 0.34f, w.centerX(), cy);   // an ellipse: the light spreads sideways
+        fill.setShader(ambientShader);
+        c.drawCircle(w.centerX(), cy, rad, fill);
+        fill.setShader(null);
+        c.restore();
+    }
+
+    private int ambientOf(Recs.Pick p) {
+        Backdrop b = p == null ? null : recs.backdrop(p);
+        return b == null ? 0 : b.ambient();
+    }
+
+    private RadialGradient ambientShader;
+    private int ambientColor;
+    private float ambientFor;
+
+    private void drawWindowArt(Canvas c, Recs.Pick p, float r, int alpha) {
+        Backdrop b = p == null ? null : recs.backdrop(p);
+        if (b == null || b.wide == null) return;
+        imageFill.setAlpha(alpha);
+        roundImage(c, b.wide, b.wideShader, windowRect, r);
+        imageFill.setAlpha(255);
+    }
+
+    private void drawStory(Canvas c, Recs.Pick p, RectF w, float a) {
+        float x = w.left + L_STORY_X * k, y = w.top + 60 * k, maxW = L_STORY_W * k;
+        if (drawChip(c, p.badge, x, y, a)) y += 44 * k + 26 * k;
+        // The name: as large as fits in one line (80 down to 56), then cut with "…".
+        lWinTitle.setTextSize(80 * k);
+        float tw = lWinTitle.measureText(p.title);
+        if (tw > maxW) lWinTitle.setTextSize(Math.max(56 * k, 80 * k * maxW / tw));
+        lWinTitle.setAlpha(Math.round(255 * a));
+        fitPaint.set(lWinTitle);
+        float base = y + lWinTitle.getTextSize() * 0.78f;
+        c.drawText(TextUtils.ellipsize(p.title, fitPaint, maxW, TextUtils.TruncateAt.END).toString(), x - Ui.leftBearing(lWinTitle, p.title), base, lWinTitle);
+        y = base;
+        if (p.meta != null && !p.meta.isEmpty()) {
+            lWinMeta.setAlpha(Math.round(0xBD * a));
+            fitPaint.set(lWinMeta);
+            y += 48 * k;
+            c.drawText(TextUtils.ellipsize(p.meta, fitPaint, maxW, TextUtils.TruncateAt.END).toString(), x, y, lWinMeta);
+        }
+        y += 22 * k;
+        if (p.tagline != null && !p.tagline.isEmpty()) {
+            int width = Math.round(660 * k);
+            if (tagLayout == null || !tagFor.equals(p.tagline + width)) {
+                tagLayout = android.text.StaticLayout.Builder.obtain(p.tagline, 0, p.tagline.length(), lWinTag, width)
+                        .setMaxLines(2).setEllipsize(TextUtils.TruncateAt.END).setLineSpacing(0, 1.12f).build();
+                tagFor = p.tagline + width;
+            }
+            lWinTag.setAlpha(Math.round(255 * a));
+            c.save();
+            c.translate(x, y);
+            tagLayout.draw(c);
+            c.restore();
+            y += tagLayout.getHeight();
+        }
+        if (p.pkg == null) return;
+        // Where OK takes you: a glass pill with the service's name, white while the child is choosing.
+        String where = Recs.serviceName(p);
+        if (where == null || where.isEmpty()) return;
+        y += 30 * k;
+        boolean on = zone == Z_CARDS;
+        float h = 64 * k, tri = 18 * k, pw = 28 * k + tri + 14 * k + lWinCta.measureText(where) + 32 * k;
+        tmp.set(x, y, x + pw, y + h);
+        fill.setShader(null);
+        fill.setColor(on ? Ui.alpha(0xFFFFFFFF, a) : Ui.alpha(0xFFFFFFFF, 0.16f * a));
+        c.drawRoundRect(tmp, h / 2, h / 2, fill);
+        if (!on) {
+            rim.setShader(null);
+            rim.setColor(Ui.alpha(0xFFFFFFFF, 0.24f * a));
+            rim.setStrokeWidth(1.2f * k);
+            c.drawRoundRect(tmp, h / 2, h / 2, rim);
+            rim.setStrokeWidth(2.5f * k);
+        }
+        int ink = on ? Ui.alpha(0xFF121A43, a) : Ui.alpha(0xFFFFFFFF, a);
+        float tx = x + 28 * k, cy = tmp.centerY();
+        playPath.reset();
+        playPath.moveTo(tx, cy - 11 * k);
+        playPath.lineTo(tx + tri, cy);
+        playPath.lineTo(tx, cy + 11 * k);
+        playPath.close();
+        fill.setColor(ink);
+        c.drawPath(playPath, fill);
+        lWinCta.setColor(ink);
+        c.drawText(where, tx + tri + 14 * k, cy + Ui.halfCap(lWinCta), lWinCta);
+    }
+
+    /**
+     * Why the title is worth watching: a frosted pill with a colored dot (gold: must-watch, teal: learn something,
+     * pink: kids love it). False when there's no reason to show.
+     */
+    private boolean drawChip(Canvas c, String badge, float left, float top, float a) {
+        if (badge == null || badge.isEmpty()) return false;
         String label;
         int dot;
         switch (badge) {
             case "must": label = Ui.tr("Must-watch"); dot = 0xFFFFB020; break;
             case "learn": label = Ui.tr("Learn something"); dot = 0xFF14B8A6; break;
             case "loved": label = Ui.tr("Kids love it"); dot = 0xFFFF5C8A; break;
-            default: return;
+            default: return false;
         }
-        float h = 42 * k * s, pad = 16 * k * s, dr = 6 * k * s, gap = 10 * k * s;
-        lBadge.setTextSize(22 * k * s);
+        float h = 44 * k, pad = 20 * k, dr = 6 * k, gap = 12 * k;
+        lBadge.setTextSize(23 * k);
         float w = pad + 2 * dr + gap + lBadge.measureText(label) + pad;
-        float left = card.left + 20 * k * s, top = card.top + (20 - 6 * (1 - f)) * k * s;
         tmp.set(left, top, left + w, top + h);
         fill.setShader(null);
-        fill.setColor(Ui.alpha(0xFF0A122C, 0.64f * f));
+        fill.setColor(Ui.alpha(0xFFFFFFFF, 0.12f * a));
         c.drawRoundRect(tmp, h / 2, h / 2, fill);
         rim.setShader(null);
-        rim.setColor(Ui.alpha(0xFFFFFFFF, 0.18f * f));
+        rim.setColor(Ui.alpha(0xFFFFFFFF, 0.2f * a));
         rim.setStrokeWidth(1.2f * k);
         c.drawRoundRect(tmp, h / 2, h / 2, rim);
         rim.setStrokeWidth(2.5f * k);
-        fill.setColor(Ui.alpha(dot, f));
+        fill.setColor(Ui.alpha(dot, a));
         c.drawCircle(left + pad + dr, tmp.centerY(), dr, fill);
-        lBadge.setColor(Ui.alpha(0xFFFFFFFF, f));
+        lBadge.setColor(Ui.alpha(0xFFFFFFFF, a));
         c.drawText(label, left + pad + 2 * dr + gap, tmp.centerY() + Ui.halfCap(lBadge), lBadge);
+        return true;
+    }
+
+    /**
+     * A thumbnail along the window's edge: its picture with a hairline edge (a white outline on the one in the window);
+     * focused, it rises and grows 8%, no bounce. Its name below it. A new set fades in one thumbnail after another.
+     */
+    private void drawLightCard(Canvas c, int i) {
+        RectF base = cardRects[i];
+        Recs.Pick p = i < cards.size() ? cards.get(i) : null;
+        float f = Ui.clamp(cardFocus[i].value), s = 1 + 0.08f * f;
+        float bw = base.width(), bh = base.height(), r0 = L_THUMB_RADIUS * k, r = r0 * s;
+        float cx = base.centerX(), cy = base.centerY() - 10 * k * f;
+        cell.set(cx - bw * s / 2, cy - bh * s / 2, cx + bw * s / 2, cy + bh * s / 2);
+        tmp.set(cell);
+        tmp.offset(0, (10 + 12 * f) * k);
+        shadowDeep.setColor(Ui.alpha(0xFF000014, 0.42f + 0.18f * f));
+        shadows.draw(c, tmp, r, DEEP_BLUR * k * 0.6f, shadowDeep);
+        float t = cardSwap(i);
+        Recs.Pick old = t < 1 && i < prevCards.size() ? prevCards.get(i) : null;
+        boolean swapping = old != null && (p == null || !Recs.key(old).equals(Recs.key(p)));
+        if (swapping) drawCardImage(c, old, r, 255);   // the old picture stays solid under the new one
+        drawCardImage(c, p, r, swapping ? Math.round(255 * t) : 255);
+        boolean spot = i == spotIndex;
+        rim.setShader(null);
+        rim.setColor(spot ? 0xE6FFFFFF : 0x2EFFFFFF);
+        rim.setStrokeWidth((spot ? 3 : 1) * k);
+        float in = rim.getStrokeWidth() / 2;
+        tmp.set(cell.left + in, cell.top + in, cell.right - in, cell.bottom - in);
+        c.drawRoundRect(tmp, r - in, r - in, rim);
+        rim.setStrokeWidth(2.5f * k);
+        if (p == null) return;
+        lThumb.setColor(spot || f > 0.5f ? 0xFFFFFFFF : 0xC7F3F5FF);
+        lThumb.setAlpha(Math.round(lThumb.getAlpha() * (swapping ? t : 1)));
+        fitPaint.set(lThumb);
+        c.drawText(TextUtils.ellipsize(p.title, fitPaint, bw, TextUtils.TruncateAt.END).toString(), base.left, base.bottom + 34 * k, lThumb);
+    }
+
+    /** A thumbnail's picture in `cell`, or a soft glass placeholder while it loads. */
+    private void drawCardImage(Canvas c, Recs.Pick p, float r, int alpha) {
+        Backdrop b = p == null ? null : recs.backdrop(p);
+        Bitmap img = b == null ? null : b.tall;
+        if (img != null) {
+            imageFill.setAlpha(alpha);
+            roundImage(c, img, b.tallShader, cell, r);
+            imageFill.setAlpha(255);
+        } else {
+            fill.setShader(null);
+            fill.setColor(Ui.alpha(0xFFFFFFFF, 0.1f * alpha / 255f));
+            c.drawRoundRect(cell, r, r, fill);
+        }
     }
 
     /**
