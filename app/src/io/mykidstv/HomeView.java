@@ -11,6 +11,7 @@ import android.graphics.BitmapShader;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
+import android.graphics.RadialGradient;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -83,7 +84,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     // "All Apps" sheet.
     private static final int COLUMNS = 5, VISIBLE_ROWS = 3;
     private static final float GRID_W = 300, GRID_H = 169, GRID_GAP = 40, GRID_ROW = 239, GRID_TOP = 196, GRID_RADIUS = 22;
-    private static final int SMOKE = 0xFF111113, INK = 0xFF1C1C1E, WHITE = 0xFFF5F5F7;
+    private static final int SMOKE = 0xFF1E2660, INK = 0xFF1C1C1E, WHITE = 0xFFF3F5FF;   // smoke: indigo glass under the evening sky
     private static final int UP_COLOR = 0xFF30D158, DOWN_COLOR = 0xFFFF453A;
     private static final long TOAST_MS = 6000, FADE_MS = 800;
     /** Blur radii of the shadow and shadowDeep paints (Shadows needs them to draw the same blur on older TVs). */
@@ -93,11 +94,12 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private static final ExecutorService LOADER = Executors.newSingleThreadExecutor();
     // Light design (the L_ constants): title, tab bar, three recommendation cards and the shelf.
     // The tab bar is a 68 px capsule; the cards sit on the 5-column grid (the wide one spans 3).
-    private static final float L_TITLE_BASE = 130, L_TABBAR_TOP = 158, L_TABBAR_H = 68, L_CARDS_TOP = 262, L_CARD_H = 442;
+    private static final float L_TITLE_BASE = 130, L_TABBAR_TOP = 164, L_TABBAR_H = 64, L_CARDS_TOP = 280, L_CARD_H = 426;
     private static final float L_TALL_W = 320, L_CARD_GAP = 40, L_BUTTON = 68, L_BUTTON_GAP = 20, L_BUTTON_CY = 103;
     private static final float L_PLATTER_TOP = 814, L_TILE_H = 126;
     private static final float L_DATE_BASE = 330, L_CLOCK_BASE = 540, L_WEATHER_BASE = 626, L_QUOTES_BASE = 694;
-    private static final int L_INK = 0xFF1D1D1F, L_DIM = 0xFF6E6E73, L_FAINT = 0xFF8E8E93;
+    /** Deep navy ink (never gray on the sky): full, 72% and 55%. */
+    private static final int L_INK = 0xFF0E2240, L_DIM = 0xB80E2240, L_FAINT = 0x8C0E2240, L_NIGHT_DIM = 0xB8F3F5FF;
     private static String[] tabs;
     private static int tabsGeneration = -1;
     private static final String[] TAB_KIND = {null, "movie", "tv"};
@@ -152,8 +154,15 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private int greetingHour = -1, greetingPrefs = -1;
     private String greetingLanguage = "";
     /** Card corners: rounder than a grown-up's TV, the way toys and children's books are. */
-    private static final float L_CARD_RADIUS = 30;
-    private Shader lightGradient;
+    private static final float L_CARD_RADIUS = 32;
+    /** The tabs sit in one frosted capsule; the chosen tab is a white pill inside it. */
+    private static final float L_CAPSULE_LEFT = 70, L_CAPSULE_PAD = 6;
+    private Shader lightGradient, sunShader;
+    private boolean skyMorning;
+    private float sunShaderK;
+    /** Stars: x, y, radius at 1080p. */
+    private static final float[] STARS = {140, 120, 1.6f, 420, 60, 1.2f, 690, 170, 2, 905, 92, 1.2f, 1130, 210, 1.6f,
+            1390, 48, 1.2f, 1660, 140, 2, 1820, 300, 1.2f, 300, 330, 1.4f, 1010, 380, 1.2f, 1540, 420, 1.4f, 560, 520, 1.2f};
 
     // Shelf
     private List<HomeApps.Item> shelf = new ArrayList<>();
@@ -641,7 +650,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         lClock.setLetterSpacing(-0.01f);
         lWeather = Ui.text(Ui.medium, 34 * k, L_DIM);
         lClockQuote = Ui.numbers(Ui.medium, 28 * k, L_DIM);
-        lightGradient = null;
+        lightGradient = nightGradient = sunShader = null;
         buttonPaint = Ui.text(Ui.semibold, 29 * k, INK);
         capsuleText = Ui.numbers(Ui.medium, 29 * k, 0xF2FFFFFF);
         tipPaint = Ui.text(Ui.semibold, 25 * k, 0xF2FFFFFF);
@@ -1008,16 +1017,16 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     /** Text colors for the current night value (dark by day, white at night). */
     private void applyTone() {
         lTitle.setColor(tone(L_INK, WHITE));
-        lTab.setColor(tone(L_DIM, 0xFF8E8E93));
+        lTab.setColor(tone(L_DIM, L_NIGHT_DIM));
         lTabOn.setColor(tone(L_INK, WHITE));
         lCardTitle.setColor(tone(L_INK, WHITE));
-        lCardMeta.setColor(tone(L_DIM, 0xFF98989D));
+        lCardMeta.setColor(tone(L_DIM, L_NIGHT_DIM));
         lQuote.setColor(tone(L_FAINT, 0xB8FFFFFF));
         lTip.setColor(tone(L_INK, WHITE));
-        lDate.setColor(tone(L_DIM, 0xFF98989D));
+        lDate.setColor(tone(L_DIM, L_NIGHT_DIM));
         lClock.setColor(tone(L_INK, WHITE));
-        lWeather.setColor(tone(L_DIM, 0xFF98989D));
-        lClockQuote.setColor(tone(L_DIM, 0xFF98989D));
+        lWeather.setColor(tone(L_DIM, L_NIGHT_DIM));
+        lClockQuote.setColor(tone(L_DIM, L_NIGHT_DIM));
         staleQuote.setColor(tone(L_FAINT, 0x99FFFFFF));
     }
 
@@ -1239,9 +1248,9 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float radius = (TILE_RADIUS + SHELF_PAD) * k;
         tmp.set(platterRect);
         tmp.offset(0, 18 * k);
-        shadow.setColor(tone(0x1F000000, 0x52000000));
+        shadow.setColor(tone(0x290E2240, 0x59000014));
         shadows.draw(c, tmp, radius, SHADOW_BLUR * k, shadow);
-        // White glass by day; smoked glass at night.
+        // White glass by day; indigo glass at night.
         scene.liquid(c, platterRect, radius, tone(0xFFFFFFFF, SMOKE), tone(0.42f, 0.12f), tone(0.03f, 0.08f),
                 tone(30, 34) * k, tone(22, 28) * k, tone(0.65f, 0.95f), 1);
     }
@@ -2873,13 +2882,13 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private void layoutLight() {
         if (lTab == null) return;
         // Text tabs; the focus pill extends 26 px past the text (the first tab's text starts at the margin).
-        float pad = 26 * k, tabTop = L_TABBAR_TOP * k, tabBottom = (L_TABBAR_TOP + L_TABBAR_H) * k;
-        float x = MARGIN * k - pad;
+        float pad = 30 * k, tabTop = L_TABBAR_TOP * k, tabBottom = (L_TABBAR_TOP + L_TABBAR_H) * k;
+        float x = (L_CAPSULE_LEFT + L_CAPSULE_PAD) * k;
         for (int i = 0; i < 3; i++) {
             float tw = Math.max(lTabOn.measureText(tabs()[i]), lTab.measureText(tabs()[i]));
             topRects[i].set(x, tabTop, x + tw + 2 * pad, tabBottom);
             snap(topRects[i]);
-            x = topRects[i].right + 4 * k;
+            x = topRects[i].right;
         }
         float b = L_BUTTON * k, right = CONTENT_R * k, cy = L_BUTTON_CY * k;
         for (int i = lightButtons.size() - 1; i >= 0; i--) {
@@ -2942,9 +2951,18 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         boolean fading = bgFadeAt != 0;
         // Drawer open: the background lightens (by day) or darkens (at night), as a filter on the drawing itself.
         android.graphics.ColorFilter v = veil(tone(0.32f, 0.42f) * Ui.clamp(drawer.value), blend(0xFFFFFFFF, 0xFF000000, night));
-        if (bgTo == null || (fading && bgFrom == null)) {
-            if (lightGradient == null) lightGradient = Ui.gradient(h, 0xFFF5F5F7, 0xFFE2E2E7);
-            if (nightGradient == null) nightGradient = Ui.gradient(h, 0xFF1C1C1E, 0xFF0B0B0D);
+        // A living sky under everything: clear blue, a peach horizon in the morning, deep indigo with stars at night.
+        // The first pick's blurred photo only tints it.
+        {
+            int hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY);
+            boolean morning = hour >= 5 && hour < 11;
+            if (lightGradient == null || morning != skyMorning) {
+                skyMorning = morning;
+                lightGradient = new LinearGradient(0, 0, 0, h, morning ? new int[] {0xFFA7CFF2, 0xFFDCEAF7, 0xFFFBE3D3}
+                        : new int[] {0xFF86BDEE, 0xFFBFDCF6, 0xFFEEF5FC}, new float[] {0, 0.5f, 1}, Shader.TileMode.CLAMP);
+            }
+            if (nightGradient == null) nightGradient = new LinearGradient(0, 0, 0, h,
+                    new int[] {0xFF121A43, 0xFF232C66, 0xFF463C7C}, new float[] {0, 0.55f, 1}, Shader.TileMode.CLAMP);
             fill.setColorFilter(v);
             fill.setColor(0xFF000000);
             if (night < 0.999f) {
@@ -2957,6 +2975,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 c.drawRect(screen, fill);
                 fill.setAlpha(255);
             }
+            drawSun(c);
+            drawStars(c);
             fill.setShader(null);
             fill.setColorFilter(null);
         }
@@ -2967,8 +2987,31 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     }
 
     private void drawLightImage(Canvas c, Backdrop b, float alpha) {
+        alpha *= tone(0.2f, 0.14f);   // a tint of the artwork, not a photo: the sky stays a sky
         if (night < 0.999f || b.nightImage == null) drawImage(c, b.lightImage, alpha);
         if (night > 0.001f) drawImage(c, b.nightImage, alpha * night);
+    }
+
+    /** One soft light high on the right: the sun by day, the moon (dimmer) at night. */
+    private void drawSun(Canvas c) {
+        float r = 550 * k, cx = 1730 * k, cy = 30 * k;
+        if (sunShader == null || sunShaderK != k) {
+            sunShader = new RadialGradient(cx, cy, r * 0.62f, 0xD9FFFCF0, 0x00FFFCF0, Shader.TileMode.CLAMP);
+            sunShaderK = k;
+        }
+        fill.setShader(sunShader);
+        fill.setAlpha(Math.round(255 * tone(1f, 0.32f)));
+        c.drawCircle(cx, cy, r, fill);
+        fill.setAlpha(255);
+        fill.setShader(null);
+    }
+
+    /** A few quiet stars in the upper sky, only at night. */
+    private void drawStars(Canvas c) {
+        if (night < 0.01f) return;
+        fill.setShader(null);
+        fill.setColor(Ui.alpha(0xFFFFFFFF, 0.85f * night));
+        for (int i = 0; i < STARS.length; i += 3) c.drawCircle(STARS[i] * k, STARS[i + 1] * k, STARS[i + 2] * k, fill);
     }
 
     private void drawLightTop(Canvas c) {
@@ -2983,6 +3026,22 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         // Text tabs (the selected one in bold, in the main text color); with focus on the tabs, the selected one gets
         // the white pill with a shadow and grows a little (the tvOS focus).
         float focus = Ui.clamp(topFocus[tab].value);
+        float cp = L_CAPSULE_PAD * k;
+        tmp.set(topRects[0].left - cp, topRects[0].top - cp, topRects[2].right + cp, topRects[0].bottom + cp);
+        float cr = tmp.height() / 2;
+        fill.setShader(null);
+        fill.setColor(Ui.alpha(0xFFFFFFFF, tone(0.38f, 0.1f)));
+        c.drawRoundRect(tmp, cr, cr, fill);
+        rim.setShader(null);
+        rim.setColor(Ui.alpha(0xFFFFFFFF, tone(0.6f, 0.12f)));
+        rim.setStrokeWidth(1.5f * k);
+        c.drawRoundRect(tmp, cr, cr, rim);
+        rim.setStrokeWidth(2.5f * k);
+        if (focus < 0.99f) {   // the chosen tab's pill, under the focus pill
+            RectF r = topRects[tab];
+            fill.setColor(Ui.alpha(0xFFFFFFFF, tone(0.72f, 0.16f) * (1 - focus)));
+            c.drawRoundRect(r, r.height() / 2, r.height() / 2, fill);
+        }
         for (int i = 0; i < 3; i++) {
             RectF r = topRects[i];
             if (i == tab && focus > 0.01f) {
@@ -3001,7 +3060,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 c.drawRoundRect(cell, rr, rr, fill);
             }
             Paint p = i == tab ? lTabOn : lTab;
-            if (i == tab) lTabOn.setColor(blend(tone(L_INK, WHITE), L_INK, focus));   // always dark on the white pill
+            if (i == tab) lTabOn.setColor(blend(tone(L_INK, WHITE), tone(L_INK, 0xFF121A43), focus));   // dark on the white pill
             c.drawText(tabs()[i], r.centerX() - p.measureText(tabs()[i]) / 2, r.centerY() + Ui.halfCap(p), p);
         }
         int top = -1;
@@ -3062,9 +3121,9 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private void drawLightCard(Canvas c, int i) {
         RectF base = cardRects[i];
         Recs.Pick p = i < cards.size() ? cards.get(i) : null;
-        float v = cardFocus[i].value, f = Ui.clamp(v), s = 1 + 0.07f * v;   // the spring's overshoot gives a small bounce
+        float v = Ui.clamp(cardFocus[i].value), f = v, s = 1 + 0.06f * v;   // a calm lift, no bounce
         float bw = base.width(), bh = base.height(), r0 = L_CARD_RADIUS * k;
-        float cx = base.centerX(), cy = base.centerY() - 10 * k * v;
+        float cx = base.centerX(), cy = base.centerY() - 14 * k * v;
         cell.set(cx - bw * s / 2, cy - bh * s / 2, cx + bw * s / 2, cy + bh * s / 2);
         float r = r0 * s;
         c.save();
@@ -3072,7 +3131,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         c.scale(s, s);
         tmp.set(-bw / 2, -bh / 2, bw / 2, bh / 2);
         tmp.offset(0, (10 + 14 * f) * k);
-        shadowDeep.setColor(Ui.alpha(0xFF000000, tone(0.14f, 0.32f) + tone(0.2f, 0.28f) * f));
+        shadowDeep.setColor(Ui.alpha(tone(0xFF0E2240, 0xFF000014), tone(0.2f, 0.4f) + tone(0.16f, 0.15f) * f));
         shadows.draw(c, tmp, r0, DEEP_BLUR * k, shadowDeep);
         c.restore();
         Backdrop b = p == null ? null : recs.backdrop(p);
@@ -3081,7 +3140,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             roundImage(c, img, i == 0 ? b.wideShader : b.tallShader, cell, r);
         } else {
             fill.setShader(null);
-            fill.setColor(tone(0xFFDADADF, 0xFF2C2C2E));
+            fill.setColor(Ui.alpha(0xFFFFFFFF, tone(0.4f, 0.08f)));
             c.drawRoundRect(cell, r, r, fill);
         }
         if (f > 0.01f) {
@@ -3113,7 +3172,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             c.restore();
         }
         if (p == null) return;
-        drawBadge(c, p.badge, cell, s);
+        drawBadge(c, p.badge, cell, s, f);
         fitPaint.set(lCardTitle);
         c.drawText(TextUtils.ellipsize(p.title, fitPaint, bw, TextUtils.TruncateAt.END).toString(), base.left, base.bottom + 46 * k, lCardTitle);
         if (i == 0 && p.meta != null && !p.meta.isEmpty()) {
@@ -3123,11 +3182,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     }
 
     /**
-     * Why the title is worth watching, as a small frosted pill in the card's top-left corner with a colored dot:
-     * gold for a must-watch, teal for learning something, pink for one children love. Nothing when there's no reason.
+     * Why the title is worth watching, on the focused card only: a dark frosted pill in its top-left corner with a
+     * colored dot (gold: must-watch, teal: learn something, pink: kids love it). Nothing when there's no reason.
      */
-    private void drawBadge(Canvas c, String badge, RectF card, float s) {
-        if (badge == null || badge.isEmpty()) return;
+    private void drawBadge(Canvas c, String badge, RectF card, float s, float f) {
+        if (badge == null || badge.isEmpty() || f < 0.01f) return;
         String label;
         int dot;
         switch (badge) {
@@ -3139,14 +3198,19 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float h = 42 * k * s, pad = 16 * k * s, dr = 6 * k * s, gap = 10 * k * s;
         lBadge.setTextSize(22 * k * s);
         float w = pad + 2 * dr + gap + lBadge.measureText(label) + pad;
-        float left = card.left + 18 * k * s, top = card.top + 18 * k * s;
+        float left = card.left + 20 * k * s, top = card.top + (20 - 6 * (1 - f)) * k * s;
         tmp.set(left, top, left + w, top + h);
         fill.setShader(null);
-        fill.setColor(tone(0xE6FFFFFF, 0xCC1C1C1E));
+        fill.setColor(Ui.alpha(0xFF0A122C, 0.64f * f));
         c.drawRoundRect(tmp, h / 2, h / 2, fill);
-        fill.setColor(dot);
+        rim.setShader(null);
+        rim.setColor(Ui.alpha(0xFFFFFFFF, 0.18f * f));
+        rim.setStrokeWidth(1.2f * k);
+        c.drawRoundRect(tmp, h / 2, h / 2, rim);
+        rim.setStrokeWidth(2.5f * k);
+        fill.setColor(Ui.alpha(dot, f));
         c.drawCircle(left + pad + dr, tmp.centerY(), dr, fill);
-        lBadge.setColor(tone(L_INK, WHITE));
+        lBadge.setColor(Ui.alpha(0xFFFFFFFF, f));
         c.drawText(label, left + pad + 2 * dr + gap, tmp.centerY() + Ui.halfCap(lBadge), lBadge);
     }
 

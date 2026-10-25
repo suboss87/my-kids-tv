@@ -51,20 +51,61 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background-color: currentColor;
 }
 
-/* MARK: - Background: the first pick's photo, very blurred and almost white (almost black at night). */
+/*
+ * MARK: - Background: a living sky. Clear blue in the afternoon, a peach horizon in the morning, deep indigo with a
+ * few stars from sunset to sunrise (never black). The first pick's photo, very blurred, tints it only slightly.
+ */
 
-#sky { background: #EBEBEF; }
+#sky { background: #BFDDF7; }
 #sky .grad { position: absolute; left: 0; top: 0; width: 100%; height: 100%; -webkit-transition: opacity 2s; transition: opacity 2s; }
-#sky .day { background: -webkit-linear-gradient(top, #F5F5F7, #E2E2E7); background: linear-gradient(#F5F5F7, #E2E2E7); }
-#sky .night { background: -webkit-linear-gradient(top, #1C1C1E, #0B0B0D); background: linear-gradient(#1C1C1E, #0B0B0D); opacity: 0; }
+#sky .day { background: -webkit-linear-gradient(top, #86BDEE, #BFDCF6 48%, #EEF5FC); background: linear-gradient(#86BDEE, #BFDCF6 48%, #EEF5FC); }
+#sky .dawn { background: -webkit-linear-gradient(top, #A7CFF2, #DCEAF7 52%, #FBE3D3); background: linear-gradient(#A7CFF2, #DCEAF7 52%, #FBE3D3); opacity: 0; }
+#sky .night { background: -webkit-linear-gradient(top, #121A43, #232C66 55%, #463C7C); background: linear-gradient(#121A43, #232C66 55%, #463C7C); opacity: 0; }
+.morning #sky .dawn { opacity: 1; }
+/* The sun (by day) or the moon (at night): one soft light high on the right. */
+#sky .sun {
+  position: absolute;
+  left: 1180px;
+  top: -520px;
+  width: 1100px;
+  height: 1100px;
+  border-radius: 550px;
+  background: -webkit-radial-gradient(center, circle, rgba(255, 252, 240, 0.85), rgba(255, 252, 240, 0) 62%);
+  background: radial-gradient(circle, rgba(255, 252, 240, 0.85), rgba(255, 252, 240, 0) 62%);
+  -webkit-transition: opacity 2s; transition: opacity 2s;
+}
+.night #sky .sun { opacity: 0.32; }
+#sky .stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 62%;
+  opacity: 0;
+  background-image:
+    radial-gradient(1.6px 1.6px at 140px 120px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.2px 1.2px at 420px 60px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(2px 2px at 690px 170px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.2px 1.2px at 905px 92px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.6px 1.6px at 1130px 210px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.2px 1.2px at 1390px 48px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(2px 2px at 1660px 140px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.2px 1.2px at 1820px 300px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.4px 1.4px at 300px 330px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.2px 1.2px at 1010px 380px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.4px 1.4px at 1540px 420px, #FFF, rgba(255, 255, 255, 0)),
+    radial-gradient(1.2px 1.2px at 560px 520px, #FFF, rgba(255, 255, 255, 0));
+  -webkit-transition: opacity 2s; transition: opacity 2s;
+}
+.night #sky .stars { opacity: 0.85; }
 #sky canvas { position: absolute; left: -4%; top: -4%; width: 108%; height: 108%; opacity: 0; -webkit-transition: opacity 0.8s; transition: opacity 0.8s; }
-#sky canvas.on { opacity: 1; }
-#sky .veil { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(245, 245, 247, 0.74); -webkit-transition: background-color 2s; transition: background-color 2s; }
+#sky canvas.on { opacity: 0.2; }
+.night #sky canvas.on { opacity: 0.14; }
+#sky .veil { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0); -webkit-transition: background-color 2s; transition: background-color 2s; }
 #sky .lift { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #FFF; opacity: 0; -webkit-transition: opacity 0.45s, background-color 2s; transition: opacity 0.45s, background-color 2s; }
-.night #sky .day { opacity: 0; }
+.night #sky .day, .night #sky .dawn { opacity: 0; }
 .night #sky .night { opacity: 1; }
-.night #sky .veil { background: rgba(11, 11, 13, 0.78); }
-.night #sky .lift { background: #000; }
+.night #sky .lift { background: #0B1033; }
 .drawer-open #sky .lift { opacity: 0.32; }
 .night.drawer-open #sky .lift { opacity: 0.42; }
 
@@ -96,42 +137,53 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   left: 76px;
   top: 52px;
   margin: 0;
-  font-size: 76px;
-  font-weight: 600;
-  letter-spacing: 0.004em;
+  font-size: 80px;
+  font-weight: 650;
+  letter-spacing: -0.012em;
   line-height: 1;
   white-space: nowrap;
-  color: #1D1D1F;
+  color: #0E2240;
   -webkit-transition: color 2s;
   transition: color 2s;
 }
 
-#tabs { position: absolute; left: 54px; top: 158px; height: 68px; white-space: nowrap; }
+#tabs {
+  position: absolute;
+  left: 70px;
+  top: 158px;
+  height: 64px;
+  padding: 6px;
+  border-radius: 38px;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.45), 0 10px 30px rgba(14, 34, 64, 0.08);
+}
 .tab {
   position: relative;
   display: inline-block;
-  height: 68px;
-  padding: 0 26px;
-  margin-right: 4px;
-  border-radius: 34px;
+  height: 64px;
+  padding: 0 30px;
+  border-radius: 32px;
   font-size: 30px;
-  font-weight: 500;
-  line-height: 68px;
-  color: #6E6E73;
-  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2), background-color 0.17s, box-shadow 0.2s, color 0.17s;
-  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2), background-color 0.17s, box-shadow 0.2s, color 0.17s;
+  font-weight: 560;
+  line-height: 64px;
+  color: rgba(14, 34, 64, 0.72);
+  -webkit-transition: -webkit-transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s, box-shadow 0.24s, color 0.2s;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s, box-shadow 0.24s, color 0.2s;
 }
-.tab.on { font-weight: 600; color: #1D1D1F; }
+.tab.on { font-weight: 650; color: #0E2240; background: rgba(255, 255, 255, 0.72); }
 .tab.focus {
   background: #FFF;
-  color: #1D1D1F;
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.22);
+  color: #0E2240;
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06);
+  box-shadow: 0 10px 26px rgba(14, 34, 64, 0.24);
 }
-.night #title, .night .tab.on { color: #F5F5F7; }
-.night .tab { color: rgba(245, 245, 247, 0.62); }
-.night .tab.focus { color: #1D1D1F; box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4); }
+.night #title { color: #F3F5FF; }
+.night #tabs { background: rgba(255, 255, 255, 0.1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
+.night .tab { color: rgba(243, 245, 255, 0.7); }
+.night .tab.on { color: #F3F5FF; background: rgba(255, 255, 255, 0.16); }
+.night .tab.focus { background: #FFF; color: #121A43; box-shadow: 0 10px 26px rgba(0, 0, 20, 0.45); }
 
 /* Crypto quotes at the right end of the tab row: a quiet detail. */
 #quotes {
@@ -160,15 +212,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   width: 68px;
   height: 68px;
   border-radius: 34px;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5));
-  background: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5));
-  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-  color: #1D1D1F;
-  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.2s, background-color 0.17s;
-  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.2s, background-color 0.17s;
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 10px 30px rgba(14, 34, 64, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  color: #0E2240;
+  -webkit-transition: -webkit-transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s, background-color 0.2s;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s, background-color 0.2s;
 }
 .round .sym { position: absolute; left: 20px; top: 20px; width: 28px; height: 28px; }
-.round.focus { background: #FFF; -webkit-transform: scale(1.1); transform: scale(1.1); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24); }
+.round.focus { background: #FFF; -webkit-transform: scale(1.1); transform: scale(1.1); box-shadow: 0 14px 30px rgba(14, 34, 64, 0.26); }
 .round .tip {
   position: absolute;
   top: 88px;
@@ -186,22 +237,21 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .round.last .tip { left: auto; right: -10px; margin-left: 0; text-align: right; }
 .round.focus .tip { opacity: 1; }
 .night .round {
-  background: -webkit-linear-gradient(top, rgba(40, 40, 44, 0.8), rgba(17, 17, 19, 0.62));
-  background: linear-gradient(rgba(40, 40, 44, 0.8), rgba(17, 17, 19, 0.62));
-  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 20, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  color: rgba(243, 245, 255, 0.95);
 }
-.night .round.focus { background: #FFF; color: #1D1D1F; }
-.night .round.focus .tip { color: #F5F5F7; }
+.night .round.focus { background: #FFF; color: #121A43; }
+.night .round.focus .tip { color: #F3F5FF; }
 
-/* MARK: - Picks: a wide card and two tall ones; focused, a card grows 5%, rises and its edge lights up. */
+/* MARK: - Picks: a wide card and two tall ones; focused, a card rises, grows 6% and its edge lights up. */
 
 .card {
   position: absolute;
-  top: 262px;
-  height: 442px;
-  -webkit-transition: -webkit-transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.15);
-  transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.15);
+  top: 280px;
+  height: 426px;
+  -webkit-transition: -webkit-transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .card .img {
   position: absolute;
@@ -209,14 +259,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 32px;
   overflow: hidden;
-  background-color: #DADADF;
+  background-color: rgba(255, 255, 255, 0.4);
   background-size: cover;
   background-position: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
-  -webkit-transition: box-shadow 0.22s;
-  transition: box-shadow 0.22s;
+  box-shadow: 0 16px 40px rgba(14, 34, 64, 0.2);
+  -webkit-transition: box-shadow 0.28s;
+  transition: box-shadow 0.28s;
 }
 .card .img::after {
   content: '';
@@ -225,68 +275,76 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  border-radius: 30px;
-  box-shadow: inset 0 0 0 2.5px rgba(255, 255, 255, 0.85);
+  border-radius: 32px;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.9);
   background: -webkit-linear-gradient(-60deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%);
   background: linear-gradient(150deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%);
   opacity: 0;
   -webkit-transition: opacity 0.17s;
   transition: opacity 0.17s;
 }
-.card.focus { -webkit-transform: translateY(-10px) scale(1.07); transform: translateY(-10px) scale(1.07); z-index: 2; }
-.card.focus .img { box-shadow: 0 24px 46px rgba(0, 0, 0, 0.34); }
+.card.focus { -webkit-transform: translateY(-14px) scale(1.06); transform: translateY(-14px) scale(1.06); z-index: 2; }
+.card.focus .img { box-shadow: 0 34px 64px rgba(14, 34, 64, 0.36); }
 .card.focus .img::after { opacity: 1; }
 .card .name {
   position: absolute;
   left: 0;
-  top: 464px;
+  top: 446px;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 31px;
-  font-weight: 600;
-  letter-spacing: 0.012em;
-  color: #1D1D1F;
+  font-size: 32px;
+  font-weight: 650;
+  letter-spacing: 0.004em;
+  color: #0E2240;
   -webkit-transition: color 2s;
   transition: color 2s;
 }
 .card .meta {
   position: absolute;
   left: 0;
-  top: 506px;
+  top: 488px;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 500;
-  color: #6E6E73;
+  color: rgba(14, 34, 64, 0.7);
 }
-.night .card .img { background-color: #2C2C2E; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32); }
-.night .card .name { color: #F5F5F7; }
-.night .card .meta { color: rgba(245, 245, 247, 0.62); }
-/* Why it's worth watching: a frosted pill in the card's top-left corner. */
+.night .card .img { background-color: rgba(255, 255, 255, 0.08); box-shadow: 0 16px 40px rgba(0, 0, 20, 0.4); }
+.night .card.focus .img { box-shadow: 0 34px 64px rgba(0, 0, 20, 0.55); }
+.night .card .name { color: #F3F5FF; }
+.night .card .meta { color: rgba(243, 245, 255, 0.72); }
+/* Why it's worth watching: shown only on the focused card, a dark frosted pill over the picture's corner. */
 .card .badge {
   position: absolute;
-  left: 18px;
-  top: 18px;
-  height: 42px;
-  padding: 0 16px;
-  border-radius: 21px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #1D1D1F;
-  font-size: 22px;
+  left: 20px;
+  top: 20px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 22px;
+  background: rgba(10, 18, 44, 0.64);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  color: #FFF;
+  font-size: 23px;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  line-height: 42px;
+  letter-spacing: 0.01em;
+  line-height: 44px;
   white-space: nowrap;
+  opacity: 0;
+  -webkit-transform: translateY(-6px);
+  transform: translateY(-6px);
+  -webkit-transition: opacity 0.24s, -webkit-transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.24s, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.card.focus .badge { opacity: 1; -webkit-transform: none; transform: none; }
 .card .badge .dot { display: inline-block; width: 12px; height: 12px; margin-right: 10px; border-radius: 6px; vertical-align: 1px; }
 .badge-must .dot { background: #FFB020; }
 .badge-learn .dot { background: #14B8A6; }
 .badge-loved .dot { background: #FF5C8A; }
-.night .card .badge { background: rgba(28, 28, 30, 0.8); color: #F5F5F7; }
+.badge-must .dot { box-shadow: 0 0 10px rgba(255, 176, 32, 0.8); }
 
 /* Without a TMDB key (or picks yet): the date and the time instead of the cards. */
 #clock {
@@ -312,14 +370,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   top: 814px;
   height: 206px;
   border-radius: 62px;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.4));
-  background: linear-gradient(rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.4));
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12), inset 0 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  box-shadow: 0 24px 50px rgba(14, 34, 64, 0.16), inset 0 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 .night #platter {
-  background: -webkit-linear-gradient(top, rgba(34, 34, 38, 0.72), rgba(17, 17, 19, 0.6));
-  background: linear-gradient(rgba(34, 34, 38, 0.72), rgba(17, 17, 19, 0.6));
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32), inset 0 1.5px 0 rgba(255, 255, 255, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
+  background: linear-gradient(rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
+  box-shadow: 0 24px 50px rgba(0, 0, 20, 0.35), inset 0 1.5px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 /* The shelf has the focus: a rim just outside the glass (dark by day: white wouldn't show on it). */
 #platter::before {
@@ -330,7 +388,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   right: -9px;
   bottom: -9px;
   border-radius: 71px;
-  border: 3px solid rgba(58, 58, 60, 0.45);
+  border: 3px solid rgba(14, 34, 64, 0.4);
   opacity: 0;
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
@@ -600,3 +658,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* The Magic Remote's pointer: no text selection, no outlines. */
 * { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+
+/* Reduced motion: things still change, without moving. */
+@media (prefers-reduced-motion: reduce) {
+  .card, .tab, .round, .card .badge, #home, #drawer, #tiles { -webkit-transition-duration: 0.01s !important; transition-duration: 0.01s !important; }
+}

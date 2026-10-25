@@ -1031,8 +1031,9 @@
   var lastNight = null;
 
   function checkNight() {
-    var night = Data.isNight(Date.now());
+    var night = Data.isNight(Date.now()), hour = new Date().getHours();
     setClass(body, 'night', night);
+    setClass(body, 'morning', !night && hour < 11);   // a peach horizon until late morning
     if (night === lastNight) return;
     lastNight = night;
     document.documentElement.style.background = night ? '#0B0B0D' : '';
