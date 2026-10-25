@@ -63,7 +63,7 @@ final class Recs {
     private static final long LIST_EVERY = 3600_000L;   // a new set of 60 titles from the catalog every hour
     static final long SPOT_EVERY = 10_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 10 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 12;   // 12 = vetted titles only (the unvetted fallback is gone)
+    private static final int CACHE_VERSION = 14;   // 14 = vetted titles only, looked up in parallel, history no longer hiding what's available
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -321,7 +321,7 @@ final class Recs {
         long sinceFail = now - failedAt;    // negative = the clock went back: don't wait
         if (!newKey && failedAt != 0 && sinceFail >= 0 && sinceFail < 10 * 60_000L) return;
         int p = period(now);
-        boolean stale = newKey || p != period || now - listAt > LIST_EVERY || now < listAt || picks.isEmpty()
+        boolean stale = newKey || p != period || now - listAt > LIST_EVERY || now < listAt || picks.size() < 9   // a thin list: again
                 || !listLanguage.equals(Ui.language);
         boolean missing = false;
         for (Pick pick : wanted()) missing |= !pick.detailed || !hasImage(pick) || needsLink(pick);
@@ -561,6 +561,30 @@ final class Recs {
         notifyListeners();
     }
 
+    /** Catalog titles none of the TV's apps had when last looked up, for a week ("movie:12"). */
+    private java.util.Set<String> unavailable() {
+        long today = System.currentTimeMillis() / 86_400_000L;
+        java.util.Set<String> out = new java.util.HashSet<>();
+        for (String e : context.getSharedPreferences("recs_history", Context.MODE_PRIVATE).getStringSet("away", new java.util.HashSet<>())) {
+            int at = e.lastIndexOf('@');
+            if (at > 0 && today - Long.parseLong(e.substring(at + 1)) < 7) out.add(e.substring(0, at));
+        }
+        return out;
+    }
+
+    private void rememberUnavailable(java.util.Set<String> keys) {
+        if (keys.isEmpty()) return;
+        long today = System.currentTimeMillis() / 86_400_000L;
+        android.content.SharedPreferences prefs = context.getSharedPreferences("recs_history", Context.MODE_PRIVATE);
+        java.util.Set<String> all = new java.util.HashSet<>();
+        for (String e : prefs.getStringSet("away", new java.util.HashSet<>())) {   // the expired ones go
+            int at = e.lastIndexOf('@');
+            if (at > 0 && today - Long.parseLong(e.substring(at + 1)) < 7) all.add(e);
+        }
+        for (String k : keys) all.add(k + "@" + today);
+        prefs.edit().putStringSet("away", all).apply();
+    }
+
     private java.util.Set<String> watched() {
         return context.getSharedPreferences("recs_history", Context.MODE_PRIVATE).getStringSet("watched", new java.util.HashSet<>());
     }
@@ -575,20 +599,35 @@ final class Recs {
         List<Integer> fresh = new ArrayList<>();
         for (int id : ids) if (!watched.contains(kind + ":" + id)) fresh.add(id);
         if (fresh.size() < 12) for (int id : ids) if (!fresh.contains(id)) fresh.add(id);   // nearly all watched
-        for (int id : fresh) if (!history.contains(kind + ":" + id)) (catalogFamous.contains(kind + ":" + id) ? famous : gems).add(id);
-        if (gems.size() < max) {   // all seen lately: start over (still without the watched ones)
-            for (int id : fresh) if (!gems.contains(id) && !catalogFamous.contains(kind + ":" + id)) gems.add(id);
+        // Not on the TV's apps when last looked up (within a week): skipped, no need to ask TMDB again.
+        java.util.Set<String> away = unavailable();
+        List<Integer> seenLately = new ArrayList<>();
+        for (int id : fresh) {
+            String k = kind + ":" + id;
+            if (away.contains(k)) continue;
+            if (history.contains(k)) {
+                if (!catalogFamous.contains(k)) seenLately.add(id);
+            } else {
+                (catalogFamous.contains(k) ? famous : gems).add(id);
+            }
         }
         weightedShuffle(gems, kind);
         weightedShuffle(famous, kind);
+        weightedShuffle(seenLately, kind);
+        // Not shown lately first; then the ones shown lately, so the list still fills (the history must never hide
+        // everything the TV's apps actually have).
         List<Integer> order = new ArrayList<>(gems);
         int few = "movie".equals(kind) ? FAMOUS_MOVIES : FAMOUS_SHOWS;
         java.util.Random rnd = new java.util.Random();
         for (int i = 0; i < Math.min(few, famous.size()); i++) order.add(rnd.nextInt(Math.min(order.size(), max) + 1), famous.get(i));
+        order.addAll(seenLately);
         if (order.size() < max) for (int id : famous) if (!order.contains(id)) order.add(id);   // a small catalog
         // Looked up six at a time (on a connection that drops half the requests, one by one took minutes), in batches,
         // keeping the order, until there are enough.
         List<Pick> out = new ArrayList<>();
+        int tried = 0, notHere = 0, noImage = 0, failed = 0;
+        java.util.Set<String> nowAway = new java.util.HashSet<>();
+        String lastError = "";
         java.util.concurrent.ExecutorService pool = Executors.newFixedThreadPool(6);
         try {
             int limit = Math.min(order.size(), max * 6);
@@ -606,17 +645,28 @@ final class Recs {
                     }));
                 }
                 for (java.util.concurrent.Future<Pick> f : batch) {
+                    tried++;
                     try {
                         Pick p = f.get();
-                        if (p.pkg != null && p.backdrop != null && out.size() < max) out.add(p);
+                        if (p.pkg == null) {
+                            notHere++;
+                            nowAway.add(kind + ":" + p.id);
+                        }
+                        else if (p.backdrop == null) noImage++;
+                        else if (out.size() < max) out.add(p);
                     } catch (Exception e) {
-                        // this one didn't come back: the others still count
+                        failed++;   // this one didn't come back: the others still count
+                        Throwable t = e.getCause() == null ? e : e.getCause();
+                        lastError = t.getClass().getSimpleName() + ": " + t.getMessage();
                     }
                 }
             }
         } finally {
             pool.shutdownNow();
         }
+        rememberUnavailable(nowAway);
+        AppLog.w(kind + ": " + order.size() + " to look up, " + tried + " looked up, " + out.size() + " kept, " + notHere
+                + " not on the TV's apps, " + noImage + " without a picture, " + failed + " failed" + (failed > 0 ? " (" + lastError + ")" : ""));
         return out;
     }
 

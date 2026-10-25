@@ -656,7 +656,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 #saver { background: #000; opacity: 0; visibility: hidden; -webkit-transition: opacity 1.2s, visibility 0s 1.2s; transition: opacity 1.2s, visibility 0s 1.2s; }
 #saver.on { opacity: 1; visibility: visible; -webkit-transition-delay: 0s; transition-delay: 0s; }
-#saver .photo { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background-size: cover; background-position: center; opacity: 0; -webkit-transition: opacity 2.4s, -webkit-transform 24s linear; transition: opacity 2.4s, transform 24s linear; }
+#saver .photo { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background-size: cover; background-position: center; opacity: 0; -webkit-transition: opacity 2.4s, -webkit-transform 18s linear; transition: opacity 2.4s, transform 18s linear; }
 #saver .photo.on { opacity: 1; }
 #saver .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 520px; background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55)); background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55)); }
 #saver .clock {

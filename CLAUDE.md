@@ -16,6 +16,7 @@ Ask these in one or two short batches, in plain words, with the choices shown. E
 |---|---|---|
 | How old is your child? (several children: the youngest) Show the bands: **4-6**, **7-10**, **11-13**. | Picks the vetted catalog | `age_band` |
 | Your child's first name? (optional) | The home screen greets them: "Good morning, Viva" | `child_name` |
+| A photo of your child for the settings? (optional) | Shown on the parents' screen only | save it as `child-photo.png` next to `build.sh` (git-ignored; never commit it) |
 | Which country and city do you live in? | Which titles are on which app in their country; weather and the evening dark theme | `tmdb_region`, `latitude`, `longitude`, `city` |
 | Which streaming apps do you pay for? (Netflix, Prime Video, JioHotstar, Disney+, ...) | Apps on the TV they don't subscribe to are left out of the picks | `hide_services` |
 | Should the remote's **YouTube button** do nothing? | Children can't jump into YouTube with one press (the YouTube app stays) | `block_youtube_button` |
@@ -77,7 +78,8 @@ home screen choice and the photos too.
 
 1. candidates from seed lists, research lists and TMDB sweeps;
 2. hard filters in code: age ratings (US and India), enough votes, a good average;
-3. **Jev** (TypeSafe's System One model) judges each title for that age: age fit, lasting value, must-watch, fun;
+3. **Jev** (TypeSafe's System One model) judges each title for that age: age fit, lasting value, must-watch, fun and,
+   from age 7, craft (`python3 catalog/pipeline.py --band <band> craft`);
 4. a policy in code keeps the strong ones, and a person reviews the borderline ones (`catalog/overrides/<band>.json`).
 
 Parents don't need to run it: the catalogs ship with the app. To refresh or build one:

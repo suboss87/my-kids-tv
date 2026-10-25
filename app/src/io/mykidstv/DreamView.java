@@ -30,7 +30,7 @@ import java.util.concurrent.Executors;
 
 /**
  * The screensaver, in the same style as the home screen:
- *  - the recommendations' photos in full screen, one every 30 s, with a slow zoom and pan (the "Ken Burns" effect of
+ *  - the recommendations' photos in full screen, one every 15 s, with a slow zoom and pan (the "Ken Burns" effect of
  *    the Apple TV photos) and a crossfade between them; each photo is loaded 10% larger than the screen, so the zoom
  *    never upscales it;
  *  - top right, like the iPhone lock screen: the date with the weather, the big Liquid Glass clock (the photo shows
@@ -41,7 +41,7 @@ import java.util.concurrent.Executors;
  * Without photos (no TMDB key, or before the first fetch): the big clock over the night aurora.
  */
 final class DreamView extends View implements Choreographer.FrameCallback, HomeData.Listener, Recs.Listener {
-    private static final long SHOW_MS = 30_000, FADE_MS = 3_000, FIRST_MS = 1_600;
+    private static final long SHOW_MS = 15_000, FADE_MS = 2_400, FIRST_MS = 1_600;
     private static final float ZOOM = 0.1f;
     /** Photos 10% larger than the screen (the zoom goes up to 1.1 without upscaling). */
     private static final int PW = 2112, PH = 1188;

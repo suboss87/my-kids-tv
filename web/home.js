@@ -909,7 +909,7 @@
         return;
       case Z.CARDS:
         var p = cards[st.card], app = p && Data.appFor(p.app);
-        if (app) launcher(app.id, app.title)();
+        if (app) { Data.watched(p); launcher(app.id, app.title)(); }   // opened: not suggested again
         return;
       case Z.SHELF:
         if (shelf[st.shelf]) launcher(shelf[st.shelf].id, shelf[st.shelf].title)();
@@ -1044,7 +1044,7 @@
     try { localStorage.setItem('mykidstv.night', night ? 'true' : 'false'); } catch (e) {}   // for index.html, next start
   }
 
-  var saverOn = false, idleAt = Date.now(), saverIndex = 0, saverTimer = 0, SAVER_AFTER = 5 * 60000;
+  var saverOn = false, idleAt = Date.now(), saverIndex = 0, saverTimer = 0, SAVER_AFTER = 10 * 60000;   // after 10 minutes without a key
 
   /** The screensaver's photos: picks with an app on the TV. */
   function saverPhotos() {
@@ -1074,12 +1074,12 @@
         setTimeout(function () {
           setClass(back, 'on', true);
           setClass(front, 'on', false);
-          back.style.webkitTransform = back.style.transform = 'scale(1.08) translateX(-1.5%)';
+          back.style.webkitTransform = back.style.transform = saverIndex % 2 ? 'scale(1.08) translateX(-1.5%)' : 'scale(1.08) translate(1.5%, -1%)';   // slow zoom, toward alternating corners
           front = back;
         }, 60);
       }
       tickSaverClock(clock);
-      saverTimer = setTimeout(next, 12000);
+      saverTimer = setTimeout(next, 15000);   // a new title every 15 s, as on Android
     }
     setClass(s, 'on', true);
     next();

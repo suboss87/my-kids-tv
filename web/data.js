@@ -466,16 +466,18 @@ var Data = (function () {
    */
   function handPicked(kind, max, shown, done) {
     var fresh = [], old = [], famous = [], out = [];
+    var watched = stored('watched') || [];
     for (var i = 0; i < CATALOG.length; i++) {
       var t = CATALOG[i];
-      if (t.kind !== kind) continue;
+      if (t.kind !== kind || watched.indexOf(kind + ':' + t.id) >= 0) continue;
       if (t.famous) { if (!shown[kind + ':' + t.id]) famous.push(t); continue; }
       (shown[kind + ':' + t.id] ? old : fresh).push(t);
     }
     weightedShuffle(fresh);
     weightedShuffle(famous);
-    // All of them seen lately: the others come after, so the list still fills.
-    var order = fresh.length < max ? fresh.concat(weightedShuffle(old)) : fresh;
+    // Not shown lately first, then the ones shown lately, so the list still fills (the history must never hide
+    // everything the TV's apps actually have).
+    var order = fresh.concat(weightedShuffle(old));
     var few = kind === 'movie' ? 2 : 1;
     for (var f = 0; f < Math.min(few, famous.length); f++) {
       order.splice(Math.floor(Math.random() * (Math.min(order.length, max) + 1)), 0, famous[f]);
@@ -529,7 +531,7 @@ var Data = (function () {
     if (!KEY || fetchingRecs || !installed.length) return;
     var t = Date.now(), p = hourPeriod(new Date()), st = sourceStamp();
     if (st === stamp && failedAt && t - failedAt < 10 * 60000 && t >= failedAt) return;
-    var stale = st !== stamp || p !== period || t - listAt > 3600000 || t < listAt || !picks.length || listLang !== I18N.lang;
+    var stale = st !== stamp || p !== period || t - listAt > 3600000 || t < listAt || picks.length < 9 || listLang !== I18N.lang;
     var wanted = all(), missing = false;
     for (var i = 0; i < wanted.length; i++) missing = missing || !wanted[i].detailed || wanted[i].tagline === undefined;
     if (!stale && !missing) return;
@@ -582,6 +584,13 @@ var Data = (function () {
     hasKey: function () { return !!KEY; },
     recsError: function () { return recsError; },
     picks: now,
+    /** The child opened this title from a card: never suggested again (remembered on the TV only). */
+    watched: function (p) {
+      var w = stored('watched') || [], k = keyOf(p);
+      if (w.indexOf(k) < 0) { w.push(k); store('watched', w); }
+      picks = picks.filter(function (q) { return keyOf(q) !== k; });
+      saveRecs();
+    },
     /** Which of the 3 the window shows while nobody is browsing (0-2), and when it moves on next. */
     spot: function () { return Math.floor((Date.now() % ROTATE_EVERY) / SPOT_EVERY); },
     showcase: all,
