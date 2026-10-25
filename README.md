@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/images/icon.png" width="112" alt="My Kids TV icon: a crescent moon and a star inside a TV, on an evening sky"></p>
+
 # My Kids TV
 
 **A calm, ad-free TV home screen for children, with only the films and shows worth their time.**
@@ -8,6 +10,9 @@ fun to watch, and leaving something behind (curiosity, kindness, courage, scienc
 
 Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen) TVs.
 
+<img src="docs/images/home-day.jpg" width="49%" alt="My Kids TV by day: Good morning, Maya, three picks under a clear blue sky, How to Train Your Dragon focused with a Must-watch badge">
+<img src="docs/images/home-evening.jpg" width="49%" alt="My Kids TV in the evening: the same picks under a deep indigo sky with a few stars">
+
 ## What your child sees
 
 - **A greeting** with their name: *Good morning, Maya*.
@@ -16,8 +21,8 @@ Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen
 - **Only what you can play**: a title appears only when it's on a streaming app you have (Netflix, Prime Video,
   JioHotstar, Disney+, ...), and opens straight in that app.
 - **Nothing on repeat**: what was shown lately stays away for days.
-- **Your apps on a glass shelf**, big soft cards, a gentle bounce when something is picked, light by day and dark at
-  night.
+- **A living sky** that follows the day: clear blue, a peach morning, deep indigo with a few stars in the evening. Big
+  soft cards rise calmly when picked; your apps sit on a glass shelf.
 
 ## What you control
 

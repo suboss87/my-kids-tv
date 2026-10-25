@@ -6,11 +6,11 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONT = os.path.join(ROOT, "app/assets/fonts/InterVariable.ttf")
-STOPS = [(0.0, (255, 194, 122)), (0.5, (255, 122, 158)), (1.0, (154, 140, 255))]   # sunrise -> pink -> dusk
+STOPS = [(0.0, (30, 40, 98)), (0.62, (58, 52, 120)), (1.0, (122, 84, 150))]   # the evening sky: indigo -> violet
 
 
-def gradient(w, h, angle=35):
-    """Diagonal three-color gradient."""
+def gradient(w, h, angle=90):
+    """Three-color gradient (90: top to bottom, like the sky)."""
     img = Image.new("RGB", (w, h))
     px = img.load()
     a = math.radians(angle)
@@ -40,10 +40,29 @@ def sparkle(draw, cx, cy, r, fill):
     draw.polygon(pts, fill=fill)
 
 
+def glow(img, cx, cy, r, color, alpha):
+    """A soft round light (the horizon's warmth) composited onto img."""
+    s = img.width
+    light = Image.new("RGBA", img.size, color + (0,))
+    m = Image.new("L", img.size, 0)
+    ImageDraw.Draw(m).ellipse((cx - r, cy - r, cx + r, cy + r), fill=int(255 * alpha))
+    light.putalpha(m.filter(ImageFilter.GaussianBlur(r * 0.45)))
+    img.alpha_composite(light)
+
+
+def moon(draw, cx, cy, r, fill, cut):
+    """A crescent: a full disc with a disc of `cut` color taken out up and to the right."""
+    draw.ellipse((cx - r, cy - r, cx + r, cy + r), fill=fill)
+    o = r * 0.42
+    draw.ellipse((cx - r + o, cy - r - o * 0.55, cx + r + o, cy + r - o * 0.55), fill=cut)
+
+
 def mark(size, bg=True):
-    """The mark: a TV with a sparkle, on the gradient squircle (bg) or alone (white)."""
+    """The mark: a TV whose screen holds a crescent moon and a star, on the evening-sky squircle (bg) or alone."""
     s = size * 4
     img = gradient(s, s).convert("RGBA") if bg else Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    if bg:
+        glow(img, s * 0.5, s * 1.08, s * 0.62, (255, 178, 128), 0.75)   # warm light at the horizon
     if bg:
         mask = Image.new("L", (s, s), 0)
         ImageDraw.Draw(mask).rounded_rectangle((0, 0, s - 1, s - 1), radius=int(s * 0.23), fill=255)
@@ -56,12 +75,12 @@ def mark(size, bg=True):
     d.rounded_rectangle((x0, y0, x1, y1), radius=int(s * 0.07), outline=white, width=int(s * 0.055))
     # stand
     d.rounded_rectangle((s * 0.36, s * 0.715, s * 0.64, s * 0.765), radius=int(s * 0.025), fill=white)
-    # sparkle inside the screen
-    sparkle(d, s * 0.5, s * 0.465, s * 0.12, white)
-    sparkle(d, s * 0.655, s * 0.355, s * 0.045, white)
+    # the evening inside the screen: a crescent moon and one star
+    moon(d, s * 0.45, s * 0.47, s * 0.105, white, (0, 0, 0, 0))
+    sparkle(d, s * 0.64, s * 0.37, s * 0.05, white)
     if bg:
         shadow = layer.copy().filter(ImageFilter.GaussianBlur(s * 0.02))
-        tint = Image.new("RGBA", (s, s), (120, 40, 80, 0))
+        tint = Image.new("RGBA", (s, s), (8, 10, 40, 0))
         tint.putalpha(shadow.getchannel("A").point(lambda v: int(v * 0.22)))
         img.alpha_composite(tint, (0, int(s * 0.012)))
     img.alpha_composite(layer)
@@ -84,7 +103,8 @@ def font(px, weight=600):
 
 def banner(w=640, h=360):
     s = 4
-    img = gradient(w * s, h * s, angle=20).convert("RGBA")
+    img = gradient(w * s, h * s).convert("RGBA")
+    glow(img, w * s * 0.5, h * s * 1.25, h * s * 0.8, (255, 178, 128), 0.7)
     m = mark(int(h * 0.5 * s), bg=False)
     d = ImageDraw.Draw(img)
     f = font(int(h * 0.15 * s), 650)
@@ -104,9 +124,6 @@ if __name__ == "__main__":
     os.makedirs(res, exist_ok=True)
     mark(192).save(os.path.join(res, "icon.png"))
     banner().save(os.path.join(res, "banner.png"))
-    site = os.path.join(ROOT, "docs/assets")
-    os.makedirs(site, exist_ok=True)
-    mark(512).save(os.path.join(site, "icon-512.png"))
-    mark(180).save(os.path.join(site, "apple-touch-icon.png"))
-    mark(64).save(os.path.join(site, "favicon-64.png"))
+    for path, px in (("webos/icon.png", 80), ("webos/largeIcon.png", 130), ("tizen/icon.png", 512), ("docs/images/icon.png", 512)):
+        mark(px).save(os.path.join(ROOT, path))
     print("ok")
