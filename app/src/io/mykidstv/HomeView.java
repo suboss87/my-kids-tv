@@ -244,6 +244,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private boolean sheetOpen, shelfEdited;
     private int gridIndex;
     private long toggledAt;
+    private List<Recs.Pick> prevCards = new ArrayList<>();   // the set fading out while a new one comes in
+    private long cardSwapAt;   // when the new set started coming in (0: none)
+    private static final float SWAP_MS = 900, SWAP_STAGGER = 160;   // each card a beat after the one before
+    private long keyAt;        // last remote key: the cards hold still while the child is choosing among them
+    private int cardsTab = -1;  // the tab `cards` were chosen for
 
     // Toasts
     private final ArrayDeque<String> toasts = new ArrayDeque<>();
@@ -374,7 +379,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             checkNotices();
             updatePalette();
             checkNight(true);
-            updatePicks();      // three new ones every hour
+            updatePicks();      // three new ones every minute
             updateSleep();
             handler.postDelayed(this, 15_000);
         }
@@ -720,7 +725,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         boolean drawerMoving = drawer.step(dt);
         boolean sheetMoving = sheet.step(dt);
         boolean toastFading = tickToast(up);
-        boolean heroFading = tickHeroFade(up);
+        boolean heroFading = tickHeroFade(up) | tickCardSwap(up);
         boolean bgFading = tickBackgroundFade(up);
         boolean nightMoving = tickNight(up);
 
@@ -1068,6 +1073,21 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         return true;
     }
 
+    private boolean tickCardSwap(long up) {
+        if (cardSwapAt == 0) return false;
+        if (up - cardSwapAt > SWAP_MS + 2 * SWAP_STAGGER) {
+            cardSwapAt = 0;
+            prevCards = new ArrayList<>();
+        }
+        return true;
+    }
+
+    /** 0 to 1: how far card i's new title has come in (1 when no change is under way). */
+    private float cardSwap(int i) {
+        if (cardSwapAt == 0) return 1;
+        return fadeEase(cardSwapAt + (long) (i * SWAP_STAGGER), SystemClock.uptimeMillis(), SWAP_MS);
+    }
+
     private float fadeEase(long start, long up) {
         return fadeEase(start, up, FADE_MS);
     }
@@ -1280,17 +1300,6 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float on = 0;
         for (int i = 0; i < shelf.size(); i++) on += Math.max(0, tileFocus[i].value);
         shelfOn = Math.min(1, on);
-        // The whole shelf shows it has the focus too: a rim just outside its glass (dark by day: white wouldn't show on
-        // white glass). Here and not on the glass's layer, which only changes with the background.
-        if (shelfOn > 0.01f && !shelf.isEmpty()) {
-            float out = 6 * k, radius = (TILE_RADIUS + SHELF_PAD) * k + out;
-            tmp.set(platterRect.left - out, platterRect.top - out, platterRect.right + out, platterRect.bottom + out);
-            rim.setShader(null);
-            rim.setColor(Ui.alpha(tone(0xFF3A3A3C, 0xFFFFFFFF), tone(0.45f, 0.8f) * shelfOn));
-            rim.setStrokeWidth(3 * k);
-            c.drawRoundRect(tmp, radius, radius, rim);
-            rim.setStrokeWidth(2.5f * k);
-        }
         int last = Math.min(shelf.size(), shelfFirst + shelfVisible);
         // Scrolling, tiles slide in and out through the glass's sides (only those that show any part are drawn). Only
         // then: on a shelf that fits, the clip would cut the end tiles' shadows in a straight line.
@@ -2033,6 +2042,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     boolean onKey(KeyEvent e) {
         wake();
+        keyAt = SystemClock.uptimeMillis();
         boolean down = e.getAction() == KeyEvent.ACTION_DOWN;
         if (reordering) return reorderKey(e, down);
         int code = e.getKeyCode();
@@ -2777,7 +2787,22 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     /** The three cards of the current tab (Explore, Movies, Shows) and the background taken from the first one. */
     private void updateCards() {
         List<Recs.Pick> list = recs.now(TAB_KIND[tab]);
-        if (!samePicks(list, cards)) {
+        // A new set every minute, but not under the child's eyes: while they browse the cards, the old ones stay.
+        boolean browsing = zone == Z_CARDS && tab == cardsTab && !cards.isEmpty()
+                && SystemClock.uptimeMillis() - keyAt < 20_000;
+        // And only once the new images are ready, so no card turns blank on the way.
+        boolean ready = true;
+        if (!cards.isEmpty() && tab == cardsTab) for (Recs.Pick p : list) ready &= p.backdrop == null || recs.backdrop(p) != null;
+        if (!browsing && ready && !samePicks(list, cards)) {
+            // The minute's new set fades in card by card on the same tab; a tab change shows its cards at once.
+            if (tab == cardsTab && !cards.isEmpty()) {
+                prevCards = cards;
+                cardSwapAt = SystemClock.uptimeMillis();
+            } else {
+                prevCards = new ArrayList<>();
+                cardSwapAt = 0;
+            }
+            cardsTab = tab;
             cards = list;
             cardIndex = Math.min(cardIndex, Math.max(0, list.size() - 1));
             if (zone == Z_CARDS && list.isEmpty()) {
@@ -3026,14 +3051,17 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         shadowDeep.setColor(Ui.alpha(tone(0xFF0E2240, 0xFF000014), tone(0.2f, 0.4f) + tone(0.16f, 0.15f) * f));
         shadows.draw(c, tmp, r0, DEEP_BLUR * k, shadowDeep);
         c.restore();
-        Backdrop b = p == null ? null : recs.backdrop(p);
-        Bitmap img = b == null ? null : (i == 0 ? b.wide : b.tall);
-        if (img != null) {
-            roundImage(c, img, i == 0 ? b.wideShader : b.tallShader, cell, r);
+        float t = cardSwap(i);
+        Recs.Pick old = t < 1 && i < prevCards.size() ? prevCards.get(i) : null;
+        if (old != null && (p == null || !Recs.key(old).equals(Recs.key(p)))) {
+            // The new title fades in over the old one; only this card's area is a layer (the TV's GPU is small).
+            tmp.set(cell.left - 2 * k, cell.top - 2 * k, Math.max(cell.right, base.right) + 2 * k, base.bottom + 100 * k);
+            drawCardImage(c, i, old, r);   // the old photo stays solid under the new one: no dip in between
+            int sc = c.saveLayerAlpha(tmp, Math.round(255 * t));
+            drawCardImage(c, i, p, r);
+            c.restoreToCount(sc);
         } else {
-            fill.setShader(null);
-            fill.setColor(Ui.alpha(0xFFFFFFFF, tone(0.4f, 0.08f)));
-            c.drawRoundRect(cell, r, r, fill);
+            drawCardImage(c, i, p, r);
         }
         if (f > 0.01f) {
             if (lightSheens.length != cardRects.length) {
@@ -3063,7 +3091,36 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             rim.setAlpha(255);
             c.restore();
         }
+        if (old != null && (p == null || !Recs.key(old).equals(Recs.key(p)))) {
+            tmp.set(base.left - 2 * k, cell.top - 2 * k, Math.max(cell.right, base.right) + 2 * k, base.bottom + 100 * k);
+            int sc = c.saveLayerAlpha(tmp, Math.round(255 * (1 - t)));
+            drawCardText(c, i, old, base, s, f);
+            c.restoreToCount(sc);
+            sc = c.saveLayerAlpha(tmp, Math.round(255 * t));
+            drawCardText(c, i, p, base, s, f);
+            c.restoreToCount(sc);
+        } else {
+            drawCardText(c, i, p, base, s, f);
+        }
+    }
+
+    /** The card's photo in `cell` (its focused size and place), or a soft glass placeholder while it loads. */
+    private void drawCardImage(Canvas c, int i, Recs.Pick p, float r) {
+        Backdrop b = p == null ? null : recs.backdrop(p);
+        Bitmap img = b == null ? null : (i == 0 ? b.wide : b.tall);
+        if (img != null) {
+            roundImage(c, img, i == 0 ? b.wideShader : b.tallShader, cell, r);
+        } else {
+            fill.setShader(null);
+            fill.setColor(Ui.alpha(0xFFFFFFFF, tone(0.4f, 0.08f)));
+            c.drawRoundRect(cell, r, r, fill);
+        }
+    }
+
+    /** The badge on the card and the title (and on the large card, genre · runtime · service) below it. */
+    private void drawCardText(Canvas c, int i, Recs.Pick p, RectF base, float s, float f) {
         if (p == null) return;
+        float bw = base.width();
         drawBadge(c, p.badge, cell, s, f);
         fitPaint.set(lCardTitle);
         c.drawText(TextUtils.ellipsize(p.title, fitPaint, bw, TextUtils.TruncateAt.END).toString(), base.left, base.bottom + 46 * k, lCardTitle);

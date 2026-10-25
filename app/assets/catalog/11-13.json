@@ -7,7 +7,8 @@
 "title": "Avatar: The Last Airbender",
 "year": "2005",
 "score": 0.977,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -15,7 +16,8 @@
 "title": "Spirited Away",
 "year": "2001",
 "score": 0.962,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -23,7 +25,8 @@
 "title": "Coco",
 "year": "2017",
 "score": 0.954,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -31,7 +34,8 @@
 "title": "How to Train Your Dragon",
 "year": "2010",
 "score": 0.919,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -47,7 +51,8 @@
 "title": "Harry Potter and the Philosopher's Stone",
 "year": "2001",
 "score": 0.918,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -79,7 +84,8 @@
 "title": "WALL·E",
 "year": "2008",
 "score": 0.906,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -87,7 +93,8 @@
 "title": "Gravity Falls",
 "year": "2012",
 "score": 0.899,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -95,7 +102,8 @@
 "title": "Princess Mononoke",
 "year": "1997",
 "score": 0.897,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -111,7 +119,8 @@
 "title": "The Lion King",
 "year": "1994",
 "score": 0.89,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -119,7 +128,8 @@
 "title": "Inside Out",
 "year": "2015",
 "score": 0.887,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -135,7 +145,8 @@
 "title": "Mulan",
 "year": "1998",
 "score": 0.886,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -143,7 +154,8 @@
 "title": "Star Wars",
 "year": "1977",
 "score": 0.883,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -151,7 +163,8 @@
 "title": "Spider-Man: Into the Spider-Verse",
 "year": "2018",
 "score": 0.88,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -159,7 +172,8 @@
 "title": "The Lord of the Rings: The Fellowship of the Ring",
 "year": "2001",
 "score": 0.87,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -167,7 +181,8 @@
 "title": "Howl's Moving Castle",
 "year": "2004",
 "score": 0.87,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -191,7 +206,8 @@
 "title": "Moana",
 "year": "2016",
 "score": 0.866,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -199,7 +215,8 @@
 "title": "My Neighbor Totoro",
 "year": "1988",
 "score": 0.865,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -215,7 +232,8 @@
 "title": "Up",
 "year": "2009",
 "score": 0.862,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -223,7 +241,8 @@
 "title": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
 "year": "2005",
 "score": 0.862,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -239,7 +258,8 @@
 "title": "Black Panther",
 "year": "2018",
 "score": 0.859,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -247,7 +267,8 @@
 "title": "Harry Potter and the Deathly Hallows: Part 2",
 "year": "2011",
 "score": 0.858,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -271,7 +292,8 @@
 "title": "The Empire Strikes Back",
 "year": "1980",
 "score": 0.855,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -295,7 +317,8 @@
 "title": "Spider-Man: Across the Spider-Verse",
 "year": "2023",
 "score": 0.851,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -319,7 +342,8 @@
 "title": "Harry Potter and the Prisoner of Azkaban",
 "year": "2004",
 "score": 0.848,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -359,7 +383,8 @@
 "title": "Back to the Future",
 "year": "1985",
 "score": 0.838,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -375,7 +400,8 @@
 "title": "E.T. the Extra-Terrestrial",
 "year": "1982",
 "score": 0.834,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -383,7 +409,8 @@
 "title": "Beauty and the Beast",
 "year": "1991",
 "score": 0.834,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -391,7 +418,8 @@
 "title": "The Legend of Korra",
 "year": "2012",
 "score": 0.833,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -407,7 +435,8 @@
 "title": "Cosmos",
 "year": "2014",
 "score": 0.83,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -415,7 +444,8 @@
 "title": "Hidden Figures",
 "year": "2016",
 "score": 0.828,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -431,7 +461,8 @@
 "title": "Over the Garden Wall",
 "year": "2014",
 "score": 0.825,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -447,7 +478,8 @@
 "title": "Harry Potter and the Chamber of Secrets",
 "year": "2002",
 "score": 0.824,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -463,7 +495,8 @@
 "title": "Soul",
 "year": "2020",
 "score": 0.821,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -495,7 +528,8 @@
 "title": "The Owl House",
 "year": "2020",
 "score": 0.819,
-"badge": "loved"
+"badge": "loved",
+"famous": true
 },
 {
 "kind": "movie",
@@ -503,7 +537,8 @@
 "title": "Raiders of the Lost Ark",
 "year": "1981",
 "score": 0.818,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -511,7 +546,8 @@
 "title": "How to Train Your Dragon 2",
 "year": "2014",
 "score": 0.815,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -559,7 +595,8 @@
 "title": "Harry Potter and the Goblet of Fire",
 "year": "2005",
 "score": 0.81,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -567,7 +604,8 @@
 "title": "Encanto",
 "year": "2021",
 "score": 0.81,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -583,7 +621,8 @@
 "title": "Batman: The Animated Series",
 "year": "1992",
 "score": 0.807,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -591,7 +630,8 @@
 "title": "Anne with an E",
 "year": "2017",
 "score": 0.807,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -615,7 +655,8 @@
 "title": "Jurassic Park",
 "year": "1993",
 "score": 0.805,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -631,7 +672,8 @@
 "title": "Wonder",
 "year": "2017",
 "score": 0.804,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -711,7 +753,8 @@
 "title": "Doctor Who",
 "year": "2005",
 "score": 0.792,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -767,7 +810,8 @@
 "title": "Harry Potter and the Half-Blood Prince",
 "year": "2009",
 "score": 0.787,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -783,7 +827,8 @@
 "title": "Return of the Jedi",
 "year": "1983",
 "score": 0.786,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -799,7 +844,8 @@
 "title": "The Hobbit: An Unexpected Journey",
 "year": "2012",
 "score": 0.786,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -807,7 +853,8 @@
 "title": "Harry Potter and the Order of the Phoenix",
 "year": "2007",
 "score": 0.785,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -831,7 +878,8 @@
 "title": "The Nightmare Before Christmas",
 "year": "1993",
 "score": 0.783,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -855,7 +903,8 @@
 "title": "Dr. STONE",
 "year": "2019",
 "score": 0.781,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -871,7 +920,8 @@
 "title": "Indiana Jones and the Last Crusade",
 "year": "1989",
 "score": 0.779,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -879,7 +929,8 @@
 "title": "The Incredibles",
 "year": "2004",
 "score": 0.777,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -935,7 +986,8 @@
 "title": "Puss in Boots: The Last Wish",
 "year": "2022",
 "score": 0.773,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -975,7 +1027,8 @@
 "title": "Coraline",
 "year": "2009",
 "score": 0.767,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -991,7 +1044,8 @@
 "title": "Project Hail Mary",
 "year": "2026",
 "score": 0.766,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1007,7 +1061,8 @@
 "title": "Ratatouille",
 "year": "2007",
 "score": 0.765,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1023,7 +1078,8 @@
 "title": "Life of Pi",
 "year": "2012",
 "score": 0.765,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1031,7 +1087,8 @@
 "title": "Avatar",
 "year": "2009",
 "score": 0.764,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1087,7 +1144,8 @@
 "title": "The Martian",
 "year": "2015",
 "score": 0.761,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1119,7 +1177,8 @@
 "title": "Star Trek: The Next Generation",
 "year": "1987",
 "score": 0.76,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1255,7 +1314,8 @@
 "title": "Star Wars: The Clone Wars",
 "year": "2008",
 "score": 0.744,
-"badge": "loved"
+"badge": "loved",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1263,7 +1323,8 @@
 "title": "Naruto",
 "year": "2002",
 "score": 0.744,
-"badge": "loved"
+"badge": "loved",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1343,7 +1404,8 @@
 "title": "Zootopia",
 "year": "2016",
 "score": 0.736,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1367,7 +1429,8 @@
 "title": "Your Name.",
 "year": "2016",
 "score": 0.735,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1447,7 +1510,8 @@
 "title": "Interstellar",
 "year": "2014",
 "score": 0.731,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1559,7 +1623,8 @@
 "title": "Harry Potter and the Deathly Hallows: Part 1",
 "year": "2010",
 "score": 0.721,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1639,7 +1704,8 @@
 "title": "Toy Story 3",
 "year": "2010",
 "score": 0.711,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1647,7 +1713,8 @@
 "title": "Adventure Time",
 "year": "2010",
 "score": 0.711,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1735,7 +1802,8 @@
 "title": "Rocky",
 "year": "1976",
 "score": 0.703,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1783,7 +1851,8 @@
 "title": "Frozen",
 "year": "2013",
 "score": 0.7,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1839,7 +1908,8 @@
 "title": "Shrek",
 "year": "2001",
 "score": 0.694,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -1871,7 +1941,8 @@
 "title": "The Truman Show",
 "year": "1998",
 "score": 0.693,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1903,7 +1974,8 @@
 "title": "Naruto Shippūden",
 "year": "2007",
 "score": 0.691,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -1975,7 +2047,8 @@
 "title": "12 Angry Men",
 "year": "1957",
 "score": 0.687,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -2015,7 +2088,8 @@
 "title": "The Lion King",
 "year": "2019",
 "score": 0.685,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2047,7 +2121,8 @@
 "title": "Big Hero 6",
 "year": "2014",
 "score": 0.68,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2183,7 +2258,8 @@
 "title": "Kung Fu Panda",
 "year": "2008",
 "score": 0.671,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2191,7 +2267,8 @@
 "title": "Luca",
 "year": "2021",
 "score": 0.669,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2311,7 +2388,8 @@
 "title": "Spider-Man",
 "year": "2002",
 "score": 0.665,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2335,7 +2413,8 @@
 "title": "Spider-Man 2",
 "year": "2004",
 "score": 0.661,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2351,7 +2430,8 @@
 "title": "Wreck-It Ralph",
 "year": "2012",
 "score": 0.661,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2431,7 +2511,8 @@
 "title": "Groundhog Day",
 "year": "1993",
 "score": 0.655,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -2511,7 +2592,8 @@
 "title": "Wonder Woman",
 "year": "2017",
 "score": 0.651,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -2607,7 +2689,8 @@
 "title": "Charlie and the Chocolate Factory",
 "year": "2005",
 "score": 0.647,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2623,7 +2706,8 @@
 "title": "Gravity",
 "year": "2013",
 "score": 0.646,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -2743,7 +2827,8 @@
 "title": "Kung Fu Panda 2",
 "year": "2011",
 "score": 0.639,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -2759,7 +2844,8 @@
 "title": "Hercules",
 "year": "1997",
 "score": 0.635,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -3015,7 +3101,8 @@
 "title": "Ford v Ferrari",
 "year": "2019",
 "score": 0.617,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -3095,7 +3182,8 @@
 "title": "Toy Story 4",
 "year": "2019",
 "score": 0.613,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -3279,7 +3367,8 @@
 "title": "The Jungle Book",
 "year": "2016",
 "score": 0.595,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",

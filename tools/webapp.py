@@ -85,7 +85,8 @@ def catalog(band):
         return []
     with open(path, encoding='utf-8') as f:
         titles = json.load(f).get('titles', [])
-    return [{'kind': t['kind'], 'id': int(t['id']), 'title': t.get('title', ''), 'badge': t.get('badge', '')}
+    return [{'kind': t['kind'], 'id': int(t['id']), 'title': t.get('title', ''), 'badge': t.get('badge', ''),
+             'score': t.get('score', 0.7), 'famous': bool(t.get('famous'))}
             for t in titles if t.get('kind') in ('movie', 'tv') and t.get('id')]
 
 

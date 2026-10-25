@@ -279,7 +279,7 @@
 
   var Z = {TOP: 'top', CARDS: 'cards', SHELF: 'shelf', DRAWER: 'drawer', APPS: 'apps', SETTINGS: 'settings', EDIT: 'edit', LANG: 'lang'};
   var st = {zone: Z.SHELF, top: 0, tab: 0, card: 0, shelf: 0, drawer: 0, grid: 0, row: 0, edit: 0, lang: 0};
-  var cards = [];
+  var cards = [], cardsTab = -1, keyAt = 0;   // keyAt: the last remote key (the cards hold still while browsing)
 
   function sheetOpen() { return st.zone === Z.APPS || st.zone === Z.SETTINGS || st.zone === Z.EDIT || st.zone === Z.LANG; }
 
@@ -403,8 +403,15 @@
     var same = list.length === cards.length;
     for (var i = 0; same && i < list.length; i++) same = list[i].id === cards[i].id && list[i].backdrop === cards[i].backdrop && list[i].meta === cards[i].meta && list[i].badge === cards[i].badge;
     if (same && holder.children.length === list.length) return;
+    // A new set every minute, but not under the child's eyes: while they browse the cards, the old ones stay.
+    if (st.zone === Z.CARDS && st.tab === cardsTab && cards.length && Date.now() - keyAt < 20000) return;
+    // The minute's new set fades in card by card on the same tab; a tab change shows its cards at once.
+    var swap = st.tab === cardsTab && cards.length > 0;
     cards = list;
+    cardsTab = st.tab;
     holder.innerHTML = '';
+    setClass(holder, 'swap', false);
+    if (swap) { void holder.offsetWidth; setClass(holder, 'swap', true); }
     var rects = [[80, 1040], [1160, 320], [1520, 320]];
     for (var c = 0; c < list.length; c++) {
       var p = list[c], card = el('div', 'card', holder);
@@ -1057,6 +1064,7 @@
 
   document.addEventListener('keydown', function (e) {
     var k = e.keyCode;
+    keyAt = Date.now();
     if (poke()) { e.preventDefault(); return; }   // the first press only wakes the screen
     if (k === TV.keys.left) move(-1, 0);
     else if (k === TV.keys.right) move(1, 0);
@@ -1150,9 +1158,10 @@
   setInterval(function () {
     checkNight();
     Data.refresh();
+    renderCards();   // new ones every minute
     if (!saverOn && !sheetOpen() && Date.now() - idleAt > SAVER_AFTER) showSaver();
     if (saverOn) tickSaverClock($('saver').querySelector('.clock'));
-  }, 30000);
+  }, 15000);
 
   // For the browser preview and tests.
   window.MyKidsTV = {state: st, move: move, activate: activate, back: back, showSaver: showSaver, hideSaver: hideSaver, toast: toast};

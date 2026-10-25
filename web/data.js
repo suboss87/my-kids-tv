@@ -1,7 +1,7 @@
 /*
  * What the home screen shows, kept in localStorage so it opens with numbers:
  *  - the picks: titles from the age band's vetted kids catalog (catalog.js, from app/assets/catalog), only those on
- *    the streaming apps on this TV (TMDB, with the person's own free key from config.properties), three per hour;
+ *    the streaming apps on this TV (TMDB, with the person's own free key from config.properties), three per tab each minute;
  *  - weather, sunrise and sunset (Open-Meteo, every 30 min).
  * Settings changed on the TV (Prefs) win over config.properties, as on Android. Built without a city (--generic), the
  * TV's time zone gives the city, and its country the region (zones.js).
@@ -237,21 +237,54 @@ var Data = (function () {
     return (cut > 0 ? t.slice(0, cut) : t).replace(/^\s+|\s+$/g, '');
   }
 
-  /** This hour's 3 picks: movies ("movie"), shows ("tv") or both (null). */
+  var ROTATE_EVERY = 60000;   // new cards on every tab each minute
+
+  /** This minute's 3 picks: movies ("movie"), shows ("tv") or both (null). */
   function now(kind) {
-    var list = [];
-    if (!KEY) return list;
+    return at(kind, Math.floor(Date.now() / ROTATE_EVERY));
+  }
+
+  /**
+   * The 3 for one tab in rotation slot `slot`, as on Android. The tabs never share a title: in each slot Movies takes
+   * the next 3 movies, Shows the next 3 shows and Explore the 2 movies and 1 show after those.
+   */
+  function at(kind, slot) {
+    var movies = [], shows = [], out = [], seen = {};
+    if (!KEY) return out;
     for (var i = 0; i < picks.length; i++) {
       var p = picks[i];
-      if ((kind === null || kind === p.kind) && (!p.detailed || (p.app && appFor(p.app)))) list.push(p);
+      if (!p.detailed || (p.app && appFor(p.app))) (p.kind === 'movie' ? movies : shows).push(p);
     }
-    if (!list.length) return list;
-    var hour = Math.floor(Date.now() / 3600000), out = [], seen = {};
-    for (var j = 0; j < list.length && out.length < 3; j++) {
-      var q = list[(hour * 3 + j) % list.length], f = franchise(q.title);
-      if (!seen[f]) { seen[f] = true; out.push(q); }
+    if (kind === 'movie') take(out, seen, movies, slot * 3, 3);
+    else if (kind === 'tv') take(out, seen, shows, slot * 3, 3);
+    else {
+      // What Movies and Shows show this slot, so Explore skips them (and their franchises).
+      take([], seen, movies, slot * 3, 3);
+      take([], seen, shows, slot * 3, 3);
+      var mixed = [];
+      take(mixed, copy(seen), movies, slot * 3 + 3, 2);
+      take(mixed, copy(seen), shows, slot * 3 + 3, 1);
+      for (var j = 0; j < mixed.length && out.length < 3; j++) {
+        var f = franchise(mixed[j].title);
+        if (!seen[f]) { seen[f] = true; out.push(mixed[j]); }
+      }
+      if (out.length < 3) take(out, seen, movies.concat(shows), slot * 3, 3 - out.length);   // a small list
     }
     return out;
+  }
+
+  /** Adds up to n from list, starting at `from` (wrapping), never two from the same franchise or one in `seen`. */
+  function take(out, seen, list, from, n) {
+    for (var i = 0, added = 0; i < list.length && added < n; i++) {
+      var q = list[(from + i) % list.length], f = franchise(q.title);
+      if (!seen[f]) { seen[f] = true; out.push(q); added++; }
+    }
+  }
+
+  function copy(o) {
+    var c = {};
+    for (var k in o) if (o.hasOwnProperty(k)) c[k] = true;
+    return c;
   }
 
   /** TMDB's language, as on Android: Latin American Spanish unless the TV is in Spain, and Germany's German. */
@@ -379,7 +412,7 @@ var Data = (function () {
    */
   var BAND = /^(4-6|7-10|11-13)$/.test(CONFIG.ageBand || '') ? CONFIG.ageBand : '7-10';
   var CATALOG = (window.CATALOG && window.CATALOG.band === BAND && window.CATALOG.titles) || [];
-  var MOVIES = 16, SHOWS = 8, ENOUGH = 12, HISTORY_MAX = 150;
+  var MOVIES = 40, SHOWS = 20, ENOUGH = 12, HISTORY_MAX = 240;
 
   /** The titles shown lately ("movie:123"), oldest first, so a new list starts with others. */
   function history() {
@@ -405,6 +438,13 @@ var Data = (function () {
     return a;
   }
 
+  /** A new order each time, the best (Jev's score) early more often: random^(1/score^4), highest first. */
+  function weightedShuffle(a) {
+    for (var i = 0; i < a.length; i++) a[i]._draw = Math.pow(Math.random(), 1 / Math.pow(Math.max(0.05, a[i].score || 0.7), 4));
+    a.sort(function (x, y) { return y._draw - x._draw; });
+    return a;
+  }
+
   function hasGenre(ids, genre) {
     for (var i = 0; ids && i < ids.length; i++) if (ids[i] === genre) return true;
     return false;
@@ -412,18 +452,26 @@ var Data = (function () {
 
   /**
    * Up to `max` catalog titles of this kind that are on one of the TV's apps (the details say where), the ones not
-   * shown lately first, in a new order each time. Looks at most max * 6 of them up.
+   * shown lately first, in a new order each time that favors the best (Jev's score), with at most a couple of the
+   * famous ones (nearly every family has seen them) mixed in. Looks at most max * 6 of them up.
    */
   function handPicked(kind, max, shown, done) {
-    var fresh = [], old = [], out = [];
+    var fresh = [], old = [], famous = [], out = [];
     for (var i = 0; i < CATALOG.length; i++) {
       var t = CATALOG[i];
       if (t.kind !== kind) continue;
+      if (t.famous) { if (!shown[kind + ':' + t.id]) famous.push(t); continue; }
       (shown[kind + ':' + t.id] ? old : fresh).push(t);
     }
-    shuffle(fresh);
+    weightedShuffle(fresh);
+    weightedShuffle(famous);
     // All of them seen lately: the others come after, so the list still fills.
-    var order = fresh.length < max ? fresh.concat(shuffle(old)) : fresh;
+    var order = fresh.length < max ? fresh.concat(weightedShuffle(old)) : fresh;
+    var few = kind === 'movie' ? 2 : 1;
+    for (var f = 0; f < Math.min(few, famous.length); f++) {
+      order.splice(Math.floor(Math.random() * (Math.min(order.length, max) + 1)), 0, famous[f]);
+    }
+    if (order.length < max) order = order.concat(famous.slice(few));   // a small catalog
     order = order.slice(0, max * 6);
     var i2 = 0;
     (function next() {
@@ -499,12 +547,12 @@ var Data = (function () {
     });
   }
 
-  /** Fetches the list when stale (6 h, a new period of the day, language, key or apps), then this hour's details. */
+  /** Fetches the list when stale (1 h, a new period of the day, language, key or apps), then this hour's details. */
   function refreshRecs() {
     if (!KEY || fetchingRecs || !installed.length) return;
     var t = Date.now(), p = hourPeriod(new Date()), st = sourceStamp();
     if (st === stamp && failedAt && t - failedAt < 10 * 60000 && t >= failedAt) return;
-    var stale = st !== stamp || p !== period || t - listAt > 6 * 3600000 || t < listAt || !picks.length || listLang !== I18N.lang;
+    var stale = st !== stamp || p !== period || t - listAt > 3600000 || t < listAt || !picks.length || listLang !== I18N.lang;
     var wanted = all(), missing = false;
     for (var i = 0; i < wanted.length; i++) missing = missing || !wanted[i].detailed;
     if (!stale && !missing) return;
@@ -533,12 +581,14 @@ var Data = (function () {
     }
   }
 
-  /** This hour's picks for the three tabs, without repeats (the screensaver shows them too). */
+  /** This minute's picks for the three tabs and the next minute's, without repeats (the screensaver shows them too). */
   function all() {
-    var out = [], seen = {}, kinds = [null, 'movie', 'tv'];
-    for (var k = 0; k < kinds.length; k++) {
-      var list = now(kinds[k]);
-      for (var i = 0; i < list.length; i++) if (!seen[keyOf(list[i])]) { seen[keyOf(list[i])] = true; out.push(list[i]); }
+    var out = [], seen = {}, kinds = [null, 'movie', 'tv'], slot = Math.floor(Date.now() / ROTATE_EVERY);
+    for (var s = slot; s <= slot + 1; s++) {
+      for (var k = 0; k < kinds.length; k++) {
+        var list = at(kinds[k], s);
+        for (var i = 0; i < list.length; i++) if (!seen[keyOf(list[i])]) { seen[keyOf(list[i])] = true; out.push(list[i]); }
+      }
     }
     return out;
   }

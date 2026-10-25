@@ -207,12 +207,20 @@ def badge(r, genres):
     if r['fun'] >= 2.75: return 'loved'
     return ''
 
+# Titles nearly every family has already seen (TMDB vote counts this high): the app shows them only now and then.
+FAMOUS_VOTES = {'movie': 8000, 'tv': 1600}
+
+def famous(c):
+    return bool(c) and c.get('vote_count', 0) >= FAMOUS_VOTES[c['kind']]
+
 def stage_emit(band):
     keep = load(work(band, 'selected.json'), {}).get('keep', [])
-    genres = {'%s:%d' % (c['kind'], c['id']): c['genres'] for c in load(work(band, 'candidates.json'), [])}
+    cands = {'%s:%d' % (c['kind'], c['id']): c for c in load(work(band, 'candidates.json'), [])}
+    genres = {k: c['genres'] for k, c in cands.items()}
     out = os.path.join(HERE, '..', 'app', 'assets', 'catalog'); os.makedirs(out, exist_ok=True)
     rows = [{'kind': r['kind'], 'id': r['id'], 'title': r['title'], 'year': r['year'], 'score': r['score'],
-             'badge': badge(r, genres.get('%s:%d' % (r['kind'], r['id']), []))} for r in keep]
+             'badge': badge(r, genres.get('%s:%d' % (r['kind'], r['id']), [])),
+             **({'famous': True} if famous(cands.get('%s:%d' % (r['kind'], r['id']))) else {})} for r in keep]
     json.dump({'band': band, 'titles': rows}, open(os.path.join(out, band + '.json'), 'w'), indent=0, ensure_ascii=False)
     print('[%s] wrote app/assets/catalog/%s.json (%d titles)' % (band, band, len(rows)))
     export_dataset.export()  # keep the open dataset in data/ in step with the app's catalogs

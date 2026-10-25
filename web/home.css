@@ -375,22 +375,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: linear-gradient(rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
   box-shadow: 0 24px 50px rgba(0, 0, 20, 0.35), inset 0 1.5px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
-/* The shelf has the focus: a rim just outside the glass (dark by day: white wouldn't show on it). */
-#platter::before {
-  content: '';
-  position: absolute;
-  left: -9px;
-  top: -9px;
-  right: -9px;
-  bottom: -9px;
-  border-radius: 71px;
-  border: 3px solid rgba(14, 34, 64, 0.4);
-  opacity: 0;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-.night #platter::before { border-color: rgba(255, 255, 255, 0.8); }
-#platter.on::before { opacity: 1; }
 
 #tiles {
   position: absolute;
@@ -647,4 +631,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* Reduced motion: things still change, without moving. */
 @media (prefers-reduced-motion: reduce) {
   .card, .tab, .round, .card .badge, #home, #drawer, #tiles { -webkit-transition-duration: 0.01s !important; transition-duration: 0.01s !important; }
+}
+
+/* The minute's new cards come in one after another: a soft fade with a slight settle, no bounce. */
+@-webkit-keyframes cardIn { from { opacity: 0; -webkit-transform: translateY(10px); } to { opacity: 1; -webkit-transform: none; } }
+@keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+#cards.swap .card { -webkit-animation: cardIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards; animation: cardIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+#cards.swap .card:nth-child(2) { -webkit-animation-delay: 0.16s; animation-delay: 0.16s; }
+#cards.swap .card:nth-child(3) { -webkit-animation-delay: 0.32s; animation-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  #cards.swap .card { -webkit-animation-duration: 0.01s; animation-duration: 0.01s; -webkit-animation-delay: 0s; animation-delay: 0s; }
 }

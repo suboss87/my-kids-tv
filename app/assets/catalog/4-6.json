@@ -7,7 +7,8 @@
 "title": "My Neighbor Totoro",
 "year": "1988",
 "score": 0.912,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "tv",
@@ -39,7 +40,8 @@
 "title": "Finding Nemo",
 "year": "2003",
 "score": 0.882,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -47,7 +49,8 @@
 "title": "Moana",
 "year": "2016",
 "score": 0.856,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -63,7 +66,8 @@
 "title": "Toy Story",
 "year": "1995",
 "score": 0.845,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -79,7 +83,8 @@
 "title": "Encanto",
 "year": "2021",
 "score": 0.804,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -103,7 +108,8 @@
 "title": "Beauty and the Beast",
 "year": "1991",
 "score": 0.797,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -111,7 +117,8 @@
 "title": "WALL·E",
 "year": "2008",
 "score": 0.795,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -159,7 +166,8 @@
 "title": "Frozen",
 "year": "2013",
 "score": 0.774,
-"badge": "loved"
+"badge": "loved",
+"famous": true
 },
 {
 "kind": "movie",
@@ -167,7 +175,8 @@
 "title": "Monsters, Inc.",
 "year": "2001",
 "score": 0.768,
-"badge": "must"
+"badge": "must",
+"famous": true
 },
 {
 "kind": "movie",
@@ -191,7 +200,8 @@
 "title": "Toy Story 2",
 "year": "1999",
 "score": 0.762,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",
@@ -207,7 +217,8 @@
 "title": "Ratatouille",
 "year": "2007",
 "score": 0.747,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -255,7 +266,8 @@
 "title": "The Little Mermaid",
 "year": "1989",
 "score": 0.726,
-"badge": "loved"
+"badge": "loved",
+"famous": true
 },
 {
 "kind": "movie",
@@ -295,7 +307,8 @@
 "title": "Aladdin",
 "year": "1992",
 "score": 0.711,
-"badge": "loved"
+"badge": "loved",
+"famous": true
 },
 {
 "kind": "movie",
@@ -343,7 +356,8 @@
 "title": "Finding Dory",
 "year": "2016",
 "score": 0.689,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -375,7 +389,8 @@
 "title": "Toy Story 4",
 "year": "2019",
 "score": 0.679,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -439,7 +454,8 @@
 "title": "A Bug's Life",
 "year": "1998",
 "score": 0.662,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "movie",
@@ -471,7 +487,8 @@
 "title": "Cars",
 "year": "2006",
 "score": 0.654,
-"badge": ""
+"badge": "",
+"famous": true
 },
 {
 "kind": "tv",

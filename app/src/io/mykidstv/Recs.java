@@ -59,9 +59,10 @@ final class Recs {
     private static final String IMAGES = "https://image.tmdb.org/t/p/" + (Backdrop.W <= 1280 ? "w1280" : "original");
     /** TMDB's Animation genre (movies and shows: cartoons and anime), left out with hide_animation=true. */
     private static final int ANIMATION = 16;
-    private static final long LIST_EVERY = 6 * 3600_000L;
+    private static final long LIST_EVERY = 3600_000L;   // a new set of 60 titles from the catalog every hour
+    static final long ROTATE_EVERY = 60_000L;   // new cards on every tab each minute
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 7;   // local: 7 = vetted kids 7+ catalog
+    private static final int CACHE_VERSION = 9;   // 9 = bigger list each minute, gems first, famous ones rare
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -205,25 +206,54 @@ final class Recs {
         return now(null);
     }
 
-    /** This hour's 3, movies only ("movie") or shows only ("tv"); null = both (the home screen tabs). */
+    /** This minute's 3, movies only ("movie") or shows only ("tv"); null = both (the home screen tabs). */
     List<Pick> now(String kind) {
-        List<Pick> list = new ArrayList<>();
-        if (!hasKey(context)) return list;    // no TMDB key: no recommendations
+        return at(kind, System.currentTimeMillis() / ROTATE_EVERY);
+    }
+
+    /**
+     * The 3 for one tab in rotation slot `slot` (a new one every ROTATE_EVERY). The tabs never share a title: in each
+     * slot Movies takes the next 3 movies, Shows the next 3 shows and Explore the 2 movies and 1 show after those.
+     */
+    private List<Pick> at(String kind, long slot) {
+        List<Pick> movies = new ArrayList<>(), shows = new ArrayList<>();
+        if (!hasKey(context)) return movies;    // no TMDB key: no recommendations
         Map<String, Boolean> have = new HashMap<>();   // one look per app, not per title (this runs every 15 s)
         for (Pick p : picks) {
-            if ((kind == null || kind.equals(p.kind))
-                    && (!p.detailed || (p.pkg != null && have.computeIfAbsent(p.pkg, this::installed)))) list.add(p);   // app missing: skip
+            if (!p.detailed || (p.pkg != null && have.computeIfAbsent(p.pkg, this::installed)))   // app missing: skip
+                ("movie".equals(p.kind) ? movies : shows).add(p);
         }
-        if (list.isEmpty()) return list;
-        long hour = System.currentTimeMillis() / 3600_000L;
-        // Three per hour, never two from the same franchise ("Law & Order" and "Law & Order: Special…").
         List<Pick> out = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
-        for (int i = 0; i < list.size() && out.size() < 3; i++) {
-            Pick p = list.get((int) ((hour * 3 + i) % list.size()));
-            if (seen.add(franchise(p.title))) out.add(p);
+        if ("movie".equals(kind)) take(out, seen, movies, slot * 3, 3);
+        else if ("tv".equals(kind)) take(out, seen, shows, slot * 3, 3);
+        else {
+            // What Movies and Shows show this slot, so Explore skips them (and their franchises).
+            take(new ArrayList<>(), seen, movies, slot * 3, 3);
+            take(new ArrayList<>(), seen, shows, slot * 3, 3);
+            List<Pick> mixed = new ArrayList<>();
+            take(mixed, new java.util.HashSet<>(seen), movies, slot * 3 + 3, 2);
+            take(mixed, new java.util.HashSet<>(seen), shows, slot * 3 + 3, 1);
+            for (Pick p : mixed) if (out.size() < 3 && seen.add(franchise(p.title))) out.add(p);
+            if (out.size() < 3) {   // a small list: whatever's left
+                List<Pick> all = new ArrayList<>(movies);
+                all.addAll(shows);
+                take(out, seen, all, slot * 3, 3 - out.size());
+            }
         }
         return out;
+    }
+
+    /** Adds up to `n` from `list`, starting at `from` (wrapping), never two from the same franchise or one in `seen`. */
+    private static void take(List<Pick> out, java.util.Set<String> seen, List<Pick> list, long from, int n) {
+        int added = 0;
+        for (int i = 0; i < list.size() && added < n; i++) {
+            Pick p = list.get((int) ((from + i) % list.size()));
+            if (seen.add(franchise(p.title))) {
+                out.add(p);
+                added++;
+            }
+        }
     }
 
     /** "Law & Order: Special Victims Unit" → "law & order" (what comes before ":" or " - "). */
@@ -390,12 +420,15 @@ final class Recs {
         });
     }
 
-    /** This hour's picks for the three tabs (Explore, Movies, Shows), without repeats. */
+    /** This minute's picks for the three tabs (Explore, Movies, Shows) and the next minute's, without repeats. */
     List<Pick> wanted() {
         List<Pick> out = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
-        for (String kind : new String[] {null, "movie", "tv"}) {
-            for (Pick p : now(kind)) if (seen.add(key(p))) out.add(p);
+        long slot = System.currentTimeMillis() / ROTATE_EVERY;
+        for (long s = slot; s <= slot + 1; s++) {
+            for (String kind : new String[] {null, "movie", "tv"}) {
+                for (Pick p : at(kind, s)) if (seen.add(key(p))) out.add(p);
+            }
         }
         return out;
     }
@@ -436,8 +469,8 @@ final class Recs {
         java.util.Set<String> history = history();
         String top = common.replace("&sort_by=popularity.desc", "&sort_by=vote_average.desc");
         loadCatalog();
-        List<Pick> handMovies = handPicked(catalogMovies, "movie", history, 16);
-        List<Pick> handShows = handPicked(catalogShows, "tv", history, 8);
+        List<Pick> handMovies = handPicked(catalogMovies, "movie", history, 40);
+        List<Pick> handShows = handPicked(catalogShows, "tv", history, 20);
         String band = Prefs.ageBand();
         String movieAge = band.equals("4-6") ? "&with_genres=16%7C10751&certification.lte=G"
                 : band.equals("11-13") ? "&certification.lte=PG-13" : "&with_genres=16&certification.lte=PG";
@@ -455,7 +488,7 @@ final class Recs {
         // Vetted titles (tools/kids_catalog in tv-vibehack: TMDB filters + Jev judgments + review) first.
         List<Pick> list = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
-        alternate(list, seen, handMovies, handShows, 24);
+        alternate(list, seen, handMovies, handShows, 60);
         // The unvetted pool only fills in when too few vetted titles are on the TV's services right now.
         if (list.size() < 12) alternate(list, seen, freshMovies, freshShows, 12);
         if (list.size() < 12) alternate(list, seen, poolMovies, poolShows, 12);
@@ -486,6 +519,11 @@ final class Recs {
      */
     private static int[] catalogMovies, catalogShows;
     private static final Map<String, String> catalogBadges = new HashMap<>();   // "movie:12" -> "must"
+    // Titles nearly every family has seen already (The Lion King, Frozen): only a few per list, so the less known
+    // gems of the catalog make most of what the child sees.
+    private static final java.util.Set<String> catalogFamous = new java.util.HashSet<>();
+    private static final int FAMOUS_MOVIES = 2, FAMOUS_SHOWS = 1;
+    private static final Map<String, Double> catalogScores = new HashMap<>();   // Jev's 0-1 score: higher shows up more
     private static String catalogBand;
 
     private void loadCatalog() {
@@ -493,6 +531,8 @@ final class Recs {
         if (catalogMovies != null && band.equals(catalogBand)) return;
         catalogBand = band;
         catalogBadges.clear();
+        catalogFamous.clear();
+        catalogScores.clear();
         List<Integer> movies = new ArrayList<>(), shows = new ArrayList<>();
         try (java.io.InputStream in = context.getAssets().open("catalog/" + band + ".json")) {
             JSONArray titles = new JSONObject(read(in)).getJSONArray("titles");
@@ -500,6 +540,8 @@ final class Recs {
                 JSONObject t = titles.getJSONObject(i);
                 ("movie".equals(t.optString("kind")) ? movies : shows).add(t.getInt("id"));
                 if (!t.optString("badge").isEmpty()) catalogBadges.put(t.optString("kind") + ":" + t.getInt("id"), t.optString("badge"));
+                if (t.optBoolean("famous")) catalogFamous.add(t.optString("kind") + ":" + t.getInt("id"));
+                catalogScores.put(t.optString("kind") + ":" + t.getInt("id"), t.optDouble("score", 0.7));
             }
         } catch (Exception e) {
             AppLog.w("catalog " + band + ": " + e.getMessage());
@@ -508,14 +550,25 @@ final class Recs {
         catalogShows = shows.stream().mapToInt(Integer::intValue).toArray();
     }
 
-    private static final int HISTORY_MAX = 150;
+    private static final int HISTORY_MAX = 240;
 
-    /** Up to `max` unseen hand-picked titles that are on one of the TV's services (looked up one by one). */
+    /**
+     * Up to `max` unseen hand-picked titles that are on one of the TV's services (looked up one by one): the less known
+     * ones in a new order each time, with at most a couple of the famous ones mixed in at random places.
+     */
     private List<Pick> handPicked(int[] ids, String kind, java.util.Set<String> history, int max) {
-        List<Integer> order = new ArrayList<>();
-        for (int id : ids) if (!history.contains(kind + ":" + id)) order.add(id);
-        if (order.size() < max) for (int id : ids) if (!order.contains(id)) order.add(id);   // all seen: start over
-        java.util.Collections.shuffle(order);
+        List<Integer> gems = new ArrayList<>(), famous = new ArrayList<>();
+        for (int id : ids) if (!history.contains(kind + ":" + id)) (catalogFamous.contains(kind + ":" + id) ? famous : gems).add(id);
+        if (gems.size() < max) {   // all seen: start over
+            for (int id : ids) if (!gems.contains(id) && !catalogFamous.contains(kind + ":" + id)) gems.add(id);
+        }
+        weightedShuffle(gems, kind);
+        weightedShuffle(famous, kind);
+        List<Integer> order = new ArrayList<>(gems);
+        int few = "movie".equals(kind) ? FAMOUS_MOVIES : FAMOUS_SHOWS;
+        java.util.Random rnd = new java.util.Random();
+        for (int i = 0; i < Math.min(few, famous.size()); i++) order.add(rnd.nextInt(Math.min(order.size(), max) + 1), famous.get(i));
+        if (order.size() < max) for (int id : famous) if (!order.contains(id)) order.add(id);   // a small catalog
         List<Pick> out = new ArrayList<>();
         for (int i = 0; i < order.size() && out.size() < max && i < max * 6; i++) {
             Pick p = new Pick();
@@ -531,6 +584,21 @@ final class Recs {
             if (p.pkg != null && p.backdrop != null) out.add(p);
         }
         return out;
+    }
+
+    /**
+     * A new order each time, but the best (Jev's score: lasting value, must-watch, fun) come early more often: each id
+     * draws random^(1/weight), weight = score^4 (Efraimidis-Spirakis), and the highest draws go first.
+     */
+    private static void weightedShuffle(List<Integer> ids, String kind) {
+        java.util.Random rnd = new java.util.Random();
+        final Map<Integer, Double> draw = new HashMap<>();
+        for (int id : ids) {
+            Double score = catalogScores.get(kind + ":" + id);
+            double w = Math.pow(Math.max(0.05, score == null ? 0.7 : score), 4);
+            draw.put(id, Math.pow(rnd.nextDouble(), 1 / w));
+        }
+        java.util.Collections.sort(ids, (a, b) -> Double.compare(draw.get(b), draw.get(a)));
     }
 
     private static List<Pick> unseen(List<Pick> picks, java.util.Set<String> history) {
