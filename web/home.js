@@ -513,14 +513,14 @@
 
   function renderShelf() {
     var n = Math.min(shelf.length, SHELF_VISIBLE), gap = 40, pad = 40;
-    // 16:9 tiles, as on Android: never taller than 108, left-aligned with the greeting and the window.
-    var tw = Math.min(108 * 16 / 9, (1760 - Math.max(0, n - 1) * gap) / Math.max(1, n)), th = tw * 9 / 16;
-    var width = n * tw + Math.max(0, n - 1) * gap, left = 80;
+    // 16:9 tiles, as on Android: never taller than 117, centered under the window.
+    var tw = Math.min(117 * 16 / 9, (1760 - Math.max(0, n - 1) * gap) / Math.max(1, n)), th = tw * 9 / 16;
+    var width = n * tw + Math.max(0, n - 1) * gap, left = (1920 - width) / 2;
     var platter = $('platter');
     platter.style.display = n ? '' : 'none';
     platter.style.left = (left - pad) + 'px';
     platter.style.width = (width + 2 * pad) + 'px';
-    platter.style.top = (846 - pad) + 'px';
+    platter.style.top = (850 - pad) + 'px';
     platter.style.height = (th + 2 * pad) + 'px';
     var tiles = $('tiles');
     tiles.innerHTML = '';
@@ -529,7 +529,7 @@
     shelfFirst = Math.max(0, Math.min(shelfFirst, shelf.length - n));
     for (var i = 0; i < shelf.length; i++) {
       var t = el('div', 'tile', tiles);
-      t.style.top = '846px';
+      t.style.top = '850px';
       t.style.width = tw + 'px';
       t.style.height = th + 'px';
       face(shelf[i], t, wordFit(shelf[i].title, tw, 30));

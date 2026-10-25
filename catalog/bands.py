@@ -68,6 +68,18 @@ def questions(band):
                 "Delightful: children that age typically love it and want to watch it again."]},
     }
 
+def craft_question(band):
+    """How well made the title is as a film or series: parents want solid storytelling and craft, not filler cartoons."""
+    child = BANDS[band]['child']
+    return {'craft': {'type': 'score',
+        'instructions': "As filmmaking for %s, how well crafted is the title in `title`: its storytelling, writing, "
+                        "animation or acting, and production quality?" % child,
+        'criteria': [
+            "Cheap filler: simplistic, repetitive cartoon or low-effort production made to fill airtime or sell toys.",
+            "Ordinary: watchable but generic in story and look; forgettable.",
+            "Well made: a real story, good writing and solid animation or acting.",
+            "Outstanding craft: rich storytelling and beautiful animation or filmmaking that adults admire too."]}}
+
 def audience(band):
     return ("A parent is choosing titles for %s. They want every title to earn its place: genuinely fun for a child "
             "that age AND leaving real value (character, courage, kindness, curiosity, knowledge of science, history, "

@@ -16,10 +16,10 @@ A title can appear in more than one band; each row is that title judged for that
 
 | Age band | Movies | Series | Total |
 |---|---|---|---|
-| 4-6 | 57 | 30 | 87 |
-| 7-10 | 241 | 103 | 344 |
-| 11-13 | 337 | 124 | 461 |
-| All | 635 | 257 | 892 |
+| 4-6 | 57 | 29 | 86 |
+| 7-10 | 227 | 87 | 314 |
+| 11-13 | 287 | 113 | 400 |
+| All | 571 | 229 | 800 |
 
 ## How titles were chosen
 

@@ -1,0 +1,946 @@
+{
+ "movies": [
+  {
+   "title": "Hedgehog in the Fog",
+   "year": 1975
+  },
+  {
+   "title": "White Mane",
+   "year": 1953
+  },
+  {
+   "title": "Raining Cats and Frogs",
+   "year": 2003
+  },
+  {
+   "title": "Miffy the Movie",
+   "year": 2013
+  },
+  {
+   "title": "Moomins and the Comet Chase",
+   "year": 2010
+  },
+  {
+   "title": "Moomins on the Riviera",
+   "year": 2014
+  },
+  {
+   "title": "Moomins and the Winter Wonderland",
+   "year": 2017
+  },
+  {
+   "title": "Lotte from Gadgetville",
+   "year": 2006
+  },
+  {
+   "title": "Lotte and the Moonstone Secret",
+   "year": 2011
+  },
+  {
+   "title": "Laura's Star",
+   "year": 2004
+  },
+  {
+   "title": "The Little Polar Bear",
+   "year": 2001
+  },
+  {
+   "title": "Rabbit School: Guardians of the Golden Egg",
+   "year": 2017
+  },
+  {
+   "title": "Molly Monster: The Movie",
+   "year": 2016
+  },
+  {
+   "title": "Gordon & Paddy",
+   "year": 2017
+  },
+  {
+   "title": "Mei and the Kittenbus",
+   "year": 2002
+  },
+  {
+   "title": "Big Bird in China",
+   "year": 1983
+  },
+  {
+   "title": "Big Bird in Japan",
+   "year": 1988
+  },
+  {
+   "title": "Christmas Eve on Sesame Street",
+   "year": 1978
+  },
+  {
+   "title": "Emmet Otter's Jug-Band Christmas",
+   "year": 1977
+  },
+  {
+   "title": "Dot and the Kangaroo",
+   "year": 1977
+  },
+  {
+   "title": "The Velveteen Rabbit",
+   "year": 2023
+  },
+  {
+   "title": "Shaun the Sheep: The Farmer's Llamas",
+   "year": 2015
+  },
+  {
+   "title": "Babies",
+   "year": 2010
+  },
+  {
+   "title": "Mune: Guardian of the Moon",
+   "year": 2014
+  },
+  {
+   "title": "The Fox and the Child",
+   "year": 2007
+  },
+  {
+   "title": "Ooops! Noah Is Gone...",
+   "year": 2015
+  },
+  {
+   "title": "Peter and the Wolf",
+   "year": 2006
+  },
+  {
+   "title": "Kirikou and the Men and Women",
+   "year": 2012
+  },
+  {
+   "title": "The Incredible Journey",
+   "year": 1963
+  },
+  {
+   "title": "The Great Muppet Caper",
+   "year": 1981
+  },
+  {
+   "title": "Harold and the Purple Crayon",
+   "year": 1959
+  },
+  {
+   "title": "Lambert the Sheepish Lion",
+   "year": 1952
+  },
+  {
+   "title": "Ferdinand the Bull",
+   "year": 1938
+  },
+  {
+   "title": "The Ugly Duckling",
+   "year": 1939
+  },
+  {
+   "title": "Pip",
+   "year": 2018
+  },
+  {
+   "title": "The Cat in the Hat",
+   "year": 1971
+  },
+  {
+   "title": "Horton Hatches the Egg",
+   "year": 1942
+  },
+  {
+   "title": "The Bears' Famous Invasion of Sicily",
+   "year": 2019
+  },
+  {
+   "title": "The Crimson Wing: Mystery of the Flamingos",
+   "year": 2008
+  },
+  {
+   "title": "Flight of the Butterflies",
+   "year": 2012
+  },
+  {
+   "title": "Island of Lemurs: Madagascar",
+   "year": 2014
+  },
+  {
+   "title": "Under the Sea 3D",
+   "year": 2009
+  },
+  {
+   "title": "Puff: Wonders of the Reef",
+   "year": 2021
+  },
+  {
+   "title": "Snowtime!",
+   "year": 2015
+  },
+  {
+   "title": "The Dam Keeper",
+   "year": 2014
+  },
+  {
+   "title": "Moon Man",
+   "year": 2012
+  },
+  {
+   "title": "The Three Robbers",
+   "year": 2007
+  },
+  {
+   "title": "The Little Bear Movie",
+   "year": 2001
+  },
+  {
+   "title": "The Snowy Day",
+   "year": 2016
+  },
+  {
+   "title": "The Selfish Giant",
+   "year": 1971
+  },
+  {
+   "title": "Panda! Go, Panda!: Rainy Day Circus",
+   "year": 1973
+  },
+  {
+   "title": "Marnie's World",
+   "year": 2018
+  },
+  {
+   "title": "Fox and Hare Save the Forest",
+   "year": 2020
+  },
+  {
+   "title": "Ella Bella Bingo",
+   "year": 2020
+  },
+  {
+   "title": "A Muppet Family Christmas",
+   "year": 1987
+  },
+  {
+   "title": "The Christmas Toy",
+   "year": 1986
+  },
+  {
+   "title": "Elmo Saves Christmas",
+   "year": 1996
+  },
+  {
+   "title": "So Dear to My Heart",
+   "year": 1948
+  },
+  {
+   "title": "Fun and Fancy Free",
+   "year": 1947
+  },
+  {
+   "title": "Melody Time",
+   "year": 1948
+  },
+  {
+   "title": "Winnie the Pooh and a Day for Eeyore",
+   "year": 1983
+  },
+  {
+   "title": "You're Not Elected, Charlie Brown",
+   "year": 1972
+  },
+  {
+   "title": "Be My Valentine, Charlie Brown",
+   "year": 1975
+  },
+  {
+   "title": "It's the Easter Beagle, Charlie Brown",
+   "year": 1974
+  },
+  {
+   "title": "He's Your Dog, Charlie Brown",
+   "year": 1968
+  },
+  {
+   "title": "Charlie Brown's All-Stars!",
+   "year": 1966
+  },
+  {
+   "title": "It Was a Short Summer, Charlie Brown",
+   "year": 1969
+  },
+  {
+   "title": "Bon Voyage, Charlie Brown (and Don't Come Back!!)",
+   "year": 1980
+  },
+  {
+   "title": "Snoopy Presents: For Auld Lang Syne",
+   "year": 2021
+  },
+  {
+   "title": "Snoopy Presents: Lucy's School",
+   "year": 2022
+  },
+  {
+   "title": "Snoopy Presents: To Mom (and Dad), with Love",
+   "year": 2022
+  },
+  {
+   "title": "Snoopy Presents: It's the Small Things, Charlie Brown",
+   "year": 2022
+  },
+  {
+   "title": "Snoopy Presents: One-of-a-Kind Marcie",
+   "year": 2023
+  },
+  {
+   "title": "Snoopy Presents: Welcome Home, Franklin",
+   "year": 2024
+  },
+  {
+   "title": "Rudolph's Shiny New Year",
+   "year": 1976
+  },
+  {
+   "title": "The Little Drummer Boy",
+   "year": 1968
+  },
+  {
+   "title": "'Twas the Night Before Christmas",
+   "year": 1974
+  },
+  {
+   "title": "Nestor, the Long-Eared Christmas Donkey",
+   "year": 1977
+  },
+  {
+   "title": "Here Comes Peter Cottontail",
+   "year": 1971
+  },
+  {
+   "title": "The Easter Bunny Is Comin' to Town",
+   "year": 1977
+  },
+  {
+   "title": "The Grinch Grinches the Cat in the Hat",
+   "year": 1982
+  },
+  {
+   "title": "Dr. Seuss on the Loose",
+   "year": 1973
+  },
+  {
+   "title": "Turtle: The Incredible Journey",
+   "year": 2009
+  },
+  {
+   "title": "Dolphins",
+   "year": 2000
+  },
+  {
+   "title": "Great Bear Rainforest",
+   "year": 2019
+  },
+  {
+   "title": "Humpback Whales",
+   "year": 2015
+  },
+  {
+   "title": "Pandas",
+   "year": 2018
+  },
+  {
+   "title": "Superpower Dogs",
+   "year": 2019
+  },
+  {
+   "title": "Growing Up Wild",
+   "year": 2016
+  },
+  {
+   "title": "The Tortoise and the Hare",
+   "year": 1935
+  },
+  {
+   "title": "Three Little Pigs",
+   "year": 1933
+  },
+  {
+   "title": "The Old Mill",
+   "year": 1937
+  },
+  {
+   "title": "Toot, Whistle, Plunk and Boom",
+   "year": 1953
+  },
+  {
+   "title": "Boundin'",
+   "year": 2003
+  },
+  {
+   "title": "Luxo Jr.",
+   "year": 1986
+  },
+  {
+   "title": "Sanjay's Super Team",
+   "year": 2015
+  },
+  {
+   "title": "Lava",
+   "year": 2014
+  },
+  {
+   "title": "It's Arbor Day, Charlie Brown",
+   "year": 1976
+  },
+  {
+   "title": "Happy New Year, Charlie Brown",
+   "year": 1986
+  },
+  {
+   "title": "It's Flashbeagle, Charlie Brown",
+   "year": 1984
+  },
+  {
+   "title": "Snoopy's Getting Married, Charlie Brown",
+   "year": 1985
+  },
+  {
+   "title": "It's Christmastime Again, Charlie Brown",
+   "year": 1992
+  },
+  {
+   "title": "I Want a Dog for Christmas, Charlie Brown",
+   "year": 2003
+  },
+  {
+   "title": "He's a Bully, Charlie Brown",
+   "year": 2006
+  },
+  {
+   "title": "Lucy Must Be Traded, Charlie Brown",
+   "year": 2003
+  },
+  {
+   "title": "Play It Again, Charlie Brown",
+   "year": 1971
+  },
+  {
+   "title": "It's a Mystery, Charlie Brown",
+   "year": 1974
+  },
+  {
+   "title": "A Charlie Brown Celebration",
+   "year": 1982
+  },
+  {
+   "title": "The Hoober-Bloob Highway",
+   "year": 1975
+  },
+  {
+   "title": "Daisy-Head Mayzie",
+   "year": 1995
+  },
+  {
+   "title": "Boo to You Too! Winnie the Pooh",
+   "year": 1996
+  },
+  {
+   "title": "Jack Frost",
+   "year": 1979
+  },
+  {
+   "title": "A Garfield Christmas",
+   "year": 1987
+  },
+  {
+   "title": "Paulie",
+   "year": 1998
+  },
+  {
+   "title": "Benji the Hunted",
+   "year": 1987
+  },
+  {
+   "title": "For the Love of Benji",
+   "year": 1977
+  },
+  {
+   "title": "Napoleon",
+   "year": 1995
+  },
+  {
+   "title": "Misty",
+   "year": 1961
+  },
+  {
+   "title": "The Little Polar Bear 2: The Mysterious Island",
+   "year": 2005
+  },
+  {
+   "title": "The Meerkats",
+   "year": 2008
+  },
+  {
+   "title": "Deep Sea 3D",
+   "year": 2006
+  },
+  {
+   "title": "Inner Workings",
+   "year": 2016
+  },
+  {
+   "title": "Tangled Ever After",
+   "year": 2012
+  },
+  {
+   "title": "The Small One",
+   "year": 1978
+  },
+  {
+   "title": "Peter and the Wolf",
+   "year": 1946
+  },
+  {
+   "title": "The Little House",
+   "year": 1952
+  },
+  {
+   "title": "Ben and Me",
+   "year": 1953
+  },
+  {
+   "title": "Susie the Little Blue Coupe",
+   "year": 1952
+  },
+  {
+   "title": "Lend a Paw",
+   "year": 1941
+  },
+  {
+   "title": "The Country Cousin",
+   "year": 1936
+  },
+  {
+   "title": "The Band Concert",
+   "year": 1935
+  },
+  {
+   "title": "Brave Little Tailor",
+   "year": 1938
+  },
+  {
+   "title": "Clock Cleaners",
+   "year": 1937
+  },
+  {
+   "title": "Mickey's Trailer",
+   "year": 1938
+  },
+  {
+   "title": "Steamboat Willie",
+   "year": 1928
+  },
+  {
+   "title": "Creature Comforts",
+   "year": 1989
+  },
+  {
+   "title": "One Small Step",
+   "year": 2018
+  },
+  {
+   "title": "The Muppet Musicians of Bremen",
+   "year": 1972
+  },
+  {
+   "title": "Frosty's Winter Wonderland",
+   "year": 1976
+  },
+  {
+   "title": "Santa's Workshop",
+   "year": 1932
+  },
+  {
+   "title": "Music Land",
+   "year": 1935
+  },
+  {
+   "title": "Elmer Elephant",
+   "year": 1936
+  },
+  {
+   "title": "Wynken, Blynken and Nod",
+   "year": 1938
+  },
+  {
+   "title": "Farmyard Symphony",
+   "year": 1938
+  },
+  {
+   "title": "The Mouse and the Motorcycle",
+   "year": 1986
+  },
+  {
+   "title": "Runaway Ralph",
+   "year": 1988
+  },
+  {
+   "title": "Moomin and Midsummer Madness",
+   "year": 2008
+  },
+  {
+   "title": "The Ugly Dachshund",
+   "year": 1966
+  },
+  {
+   "title": "That Darn Cat!",
+   "year": 1965
+  },
+  {
+   "title": "Big Red",
+   "year": 1962
+  },
+  {
+   "title": "Toby Tyler, or Ten Weeks with a Circus",
+   "year": 1960
+  },
+  {
+   "title": "The Shaggy Dog",
+   "year": 1959
+  }
+ ],
+ "shows": [
+  {
+   "title": "Mr Benn",
+   "year": 1971
+  },
+  {
+   "title": "Pablo",
+   "year": 2017
+  },
+  {
+   "title": "Waffle the Wonder Dog",
+   "year": 2018
+  },
+  {
+   "title": "Ben & Holly's Little Kingdom",
+   "year": 2009
+  },
+  {
+   "title": "Tilly and Friends",
+   "year": 2012
+  },
+  {
+   "title": "Q Pootle 5",
+   "year": 2013
+  },
+  {
+   "title": "The Adventures of Abney & Teal",
+   "year": 2011
+  },
+  {
+   "title": "Maggie and the Ferocious Beast",
+   "year": 2000
+  },
+  {
+   "title": "Timothy Goes to School",
+   "year": 2000
+  },
+  {
+   "title": "Olivia",
+   "year": 2009
+  },
+  {
+   "title": "Babar",
+   "year": 1989
+  },
+  {
+   "title": "Angelina Ballerina",
+   "year": 2001
+  },
+  {
+   "title": "George Shrinks",
+   "year": 2000
+  },
+  {
+   "title": "Pete the Cat",
+   "year": 2017
+  },
+  {
+   "title": "Pinecone & Pony",
+   "year": 2022
+  },
+  {
+   "title": "Eureka!",
+   "year": 2022
+  },
+  {
+   "title": "Mira, Royal Detective",
+   "year": 2020
+  },
+  {
+   "title": "Leo the Wildlife Ranger",
+   "year": 2013
+  },
+  {
+   "title": "Pip and Posy",
+   "year": 2021
+  },
+  {
+   "title": "64 Zoo Lane",
+   "year": 1999
+  },
+  {
+   "title": "Brambly Hedge",
+   "year": 1996
+  },
+  {
+   "title": "The World of Peter Rabbit and Friends",
+   "year": 1992
+  },
+  {
+   "title": "Kazoops!",
+   "year": 2016
+  },
+  {
+   "title": "Luo Bao Bei",
+   "year": 2018
+  },
+  {
+   "title": "City Island",
+   "year": 2022
+  },
+  {
+   "title": "Love Monster",
+   "year": 2020
+  },
+  {
+   "title": "Mr. Dressup",
+   "year": 1967
+  },
+  {
+   "title": "Dragon Tales",
+   "year": 1999
+  },
+  {
+   "title": "Numberjacks",
+   "year": 2006
+  },
+  {
+   "title": "Bitz & Bob",
+   "year": 2018
+  },
+  {
+   "title": "Something Special",
+   "year": 2003
+  },
+  {
+   "title": "JoJo & Gran Gran",
+   "year": 2020
+  },
+  {
+   "title": "Yakka Dee!",
+   "year": 2017
+  },
+  {
+   "title": "Moon and Me",
+   "year": 2019
+  },
+  {
+   "title": "Becca's Bunch",
+   "year": 2018
+  },
+  {
+   "title": "Ready Jet Go!",
+   "year": 2016
+  },
+  {
+   "title": "Little J & Big Cuz",
+   "year": 2017
+  },
+  {
+   "title": "Beat Bugs",
+   "year": 2016
+  },
+  {
+   "title": "Pui Pui Molcar",
+   "year": 2021
+  },
+  {
+   "title": "Chi's Sweet Home",
+   "year": 2008
+  },
+  {
+   "title": "Upin & Ipin",
+   "year": 2007
+  },
+  {
+   "title": "Shape Island",
+   "year": 2023
+  },
+  {
+   "title": "Star Wars: Young Jedi Adventures",
+   "year": 2023
+  },
+  {
+   "title": "The Snoopy Show",
+   "year": 2021
+  },
+  {
+   "title": "Rita and Crocodile",
+   "year": 2018
+  },
+  {
+   "title": "Fox and Hare",
+   "year": 2019
+  },
+  {
+   "title": "The Wombles",
+   "year": 1973
+  },
+  {
+   "title": "Ivor the Engine",
+   "year": 1959
+  },
+  {
+   "title": "Camberwick Green",
+   "year": 1966
+  },
+  {
+   "title": "Trumpton",
+   "year": 1967
+  },
+  {
+   "title": "Roobarb",
+   "year": 1974
+  },
+  {
+   "title": "The Magic Roundabout",
+   "year": 1965
+  },
+  {
+   "title": "Bananas in Pyjamas",
+   "year": 1992
+  },
+  {
+   "title": "Play School",
+   "year": 1966
+  },
+  {
+   "title": "PB&J Otter",
+   "year": 1998
+  },
+  {
+   "title": "Stanley",
+   "year": 2001
+  },
+  {
+   "title": "JoJo's Circus",
+   "year": 2003
+  },
+  {
+   "title": "Rolie Polie Olie",
+   "year": 1998
+  },
+  {
+   "title": "The Book of Pooh",
+   "year": 2001
+  },
+  {
+   "title": "My Friends Tigger & Pooh",
+   "year": 2007
+  },
+  {
+   "title": "Out of the Box",
+   "year": 1998
+  },
+  {
+   "title": "Ni Hao, Kai-Lan",
+   "year": 2008
+  },
+  {
+   "title": "Miffy and Friends",
+   "year": 2003
+  },
+  {
+   "title": "Miffy's Adventures Big and Small",
+   "year": 2015
+  },
+  {
+   "title": "Poppy Cat",
+   "year": 2011
+  },
+  {
+   "title": "Dinopaws",
+   "year": 2014
+  },
+  {
+   "title": "Tee and Mo",
+   "year": 2018
+  },
+  {
+   "title": "Hilltop Hospital",
+   "year": 1999
+  },
+  {
+   "title": "Little Robots",
+   "year": 2003
+  },
+  {
+   "title": "Woolly and Tig",
+   "year": 2012
+  },
+  {
+   "title": "Topsy and Tim",
+   "year": 2013
+  },
+  {
+   "title": "Old Jack's Boat",
+   "year": 2013
+  },
+  {
+   "title": "Teacup Travels",
+   "year": 2015
+  },
+  {
+   "title": "Apple Tree House",
+   "year": 2016
+  },
+  {
+   "title": "Hamtaro",
+   "year": 2000
+  },
+  {
+   "title": "Mush-Mush & the Mushables",
+   "year": 2020
+  },
+  {
+   "title": "Pokémon Concierge",
+   "year": 2023
+  },
+  {
+   "title": "Hero Elementary",
+   "year": 2020
+  },
+  {
+   "title": "Button Moon",
+   "year": 1980
+  },
+  {
+   "title": "Jamie and the Magic Torch",
+   "year": 1976
+  },
+  {
+   "title": "Spider!",
+   "year": 1991
+  },
+  {
+   "title": "Brum",
+   "year": 1991
+  },
+  {
+   "title": "Old Bear Stories",
+   "year": 1993
+  }
+ ]
+}

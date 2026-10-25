@@ -42,9 +42,9 @@ Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen
 
 | Age | Titles | For example |
 |---|---|---|
-| 4-6 | 87 | *My Neighbor Totoro*, *Bluey*, *Paddington 2*, *The Magic School Bus*, *Finding Nemo* |
-| 7-10 | 344 | *Coco*, *The Iron Giant*, *Planet Earth*, *Avatar: The Last Airbender*, *Taare Zameen Par*, *Sonar Kella* |
-| 11-13 | 461 | *Princess Mononoke*, *Interstellar*, *To Kill a Mockingbird*, *The Man Who Knew Infinity*, *Dangal* |
+| 4-6 | 86 | *My Neighbor Totoro*, *Bluey*, *Paddington 2*, *The Magic School Bus*, *Finding Nemo* |
+| 7-10 | 314 | *Coco*, *The Iron Giant*, *Planet Earth*, *Avatar: The Last Airbender*, *Wolfwalkers*, *Taare Zameen Par* |
+| 11-13 | 400 | *Princess Mononoke*, *Interstellar*, *To Kill a Mockingbird*, *The Man Who Knew Infinity*, *Dangal* |
 
 How a title gets in:
 
@@ -53,8 +53,12 @@ How a title gets in:
    kept. About 4,800 titles across the three ages.
 2. **Hard rules in code**: official age ratings (US and India), enough votes, a good average.
 3. **Jev**, [TypeSafe](https://typesafe.ai)'s System One model, judges every title for that age: right for the age
-   (not babyish, not too mature), lasting value, must-watch, and whether a child that age will actually enjoy it.
-4. **A person reviews** every borderline title, and anything that slipped through, before it ships.
+   (not babyish, not too mature), lasting value, must-watch, whether a child that age will actually enjoy it and,
+   from age 7, its craft (real storytelling and filmmaking, not filler cartoons).
+4. **Policy in code** weighs those with what audiences think of it (TMDB's rating), keeps mostly English-language
+   titles plus the outstanding few from elsewhere, and on the TV the best-scored titles come up most often while the
+   famous ones everyone has seen come up only now and then.
+5. **A person reviews** every borderline title, and anything that slipped through, before it ships.
 
 Everything is in [`catalog/`](catalog/): the pipeline, each band's candidates, Jev's judgments and the review
 decisions (`catalog/overrides/`), so every choice can be read, questioned and changed.

@@ -63,7 +63,7 @@ final class Recs {
     private static final long LIST_EVERY = 3600_000L;   // a new set of 60 titles from the catalog every hour
     static final long SPOT_EVERY = 15_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 15 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 10;   // 10 = the story window: story lines, a new set every 45 s
+    private static final int CACHE_VERSION = 11;   // 11 = the refined catalog (craft, language, audience rating)
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {

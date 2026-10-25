@@ -1,1 +1,44 @@
-[]
+[
+ {
+  "kind": "tv",
+  "id": 67575,
+  "title": "Moomin",
+  "year": "1990",
+  "rating": "NR",
+  "lang": "ja",
+  "jr": 0.78,
+  "value": 2.28,
+  "must": 0.45,
+  "fun": 2.16,
+  "score": 0.709,
+  "craft": null
+ },
+ {
+  "kind": "movie",
+  "id": 34463,
+  "title": "Three Little Pigs",
+  "year": "1933",
+  "rating": "NR",
+  "lang": "en",
+  "jr": 0.93,
+  "value": 1.89,
+  "must": 0.54,
+  "fun": 2.47,
+  "score": 0.591,
+  "craft": null
+ },
+ {
+  "kind": "tv",
+  "id": 2849,
+  "title": "The World of David the Gnome",
+  "year": "1985",
+  "rating": "TV-Y",
+  "lang": "es",
+  "jr": 0.86,
+  "value": 2.02,
+  "must": 0.24,
+  "fun": 2.13,
+  "score": 0.533,
+  "craft": null
+ }
+]

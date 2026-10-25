@@ -96,7 +96,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     // The tab bar is a 68 px capsule; the cards sit on the 5-column grid (the wide one spans 3).
     private static final float L_TITLE_BASE = 130, L_TABBAR_TOP = 164, L_TABBAR_H = 64, L_CARDS_TOP = 280, L_CARD_H = 426;
     private static final float L_TALL_W = 320, L_CARD_GAP = 40, L_BUTTON = 68, L_BUTTON_GAP = 20, L_BUTTON_CY = 103;
-    private static final float L_PLATTER_TOP = 814, L_TILE_H = 108, L_SHELF_Y = 846;   // smaller apps, under the window
+    private static final float L_PLATTER_TOP = 814, L_TILE_H = 117, L_SHELF_Y = 850;   // apps a little smaller, centered under the window
     private static final float L_DATE_BASE = 330, L_CLOCK_BASE = 540, L_WEATHER_BASE = 626, L_QUOTES_BASE = 694;
     /** Deep navy ink (never gray on the sky): full, 72% and 55%. */
     private static final int L_INK = 0xFF0E2240, L_DIM = 0xB80E2240, L_FAINT = 0x8C0E2240, L_NIGHT_DIM = 0xB8F3F5FF;
@@ -431,11 +431,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         setContentDescription("My Kids TV");
         drawerLayer.setVisibility(INVISIBLE);
         for (int i = 0; i < topFocus.length; i++) {
-            topFocus[i] = new Spring(0.26f, 0.85f, 0);
+            topFocus[i] = new Spring(0.26f, 0.92f, 0);
             topRects[i] = new RectF();
         }
         for (int i = 0; i < 3; i++) {
-            cardFocus[i] = new Spring(0.32f, 0.78f, 0);
+            cardFocus[i] = new Spring(0.3f, 0.94f, 0);   // calm: no overshoot
             cardRects[i] = new RectF();
         }
         setLightButtons(HomeApps.topButtons());
@@ -1270,7 +1270,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             tileSlide = new Spring[list.size()];
             tileRects = new RectF[list.size()];
             for (int i = 0; i < tileFocus.length; i++) {
-                tileFocus[i] = new Spring(0.34f, 0.74f, 0);
+                tileFocus[i] = new Spring(0.3f, 0.92f, 0);
                 tileSlide[i] = new Spring(0.32f, 0.86f, 0);
                 tileRects[i] = new RectF();
             }
@@ -1290,8 +1290,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         // keeps its bottom edge, so with more apps it only gets lower.
         float tw = Math.min(L_TILE_H * 16f / 9 * k, (full - Math.max(0, n - 1) * gap) / Math.max(1, n));
         float th = tw * 9f / 16;
-        // Left-aligned with the greeting and the window: one clean edge down the screen.
-        float width = n * tw + Math.max(0, n - 1) * gap, left = MARGIN * k;
+        // Centered under the window, on the same axis as it.
+        float width = n * tw + Math.max(0, n - 1) * gap, left = (w - width) / 2f;
         float top = L_SHELF_Y * k - pad;
         platterRect.set(left - pad, top, left + width + pad, top + th + 2 * pad);
         snap(platterRect);
@@ -1413,7 +1413,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float f = tileFocus[i].value, fc = Ui.clamp(f), s = 1 + FOCUS_GROW * f + LIFT_GROW * l;
         RectF base = tileRects[i];
         float bw = base.width(), bh = base.height(), r0 = TILE_RADIUS * k;
-        float cx = base.centerX(), cy = base.centerY();
+        float cx = base.centerX(), cy = base.centerY() - 8 * k * fc;   // focused, it rises a little toward you
         cell.set(cx - bw * s / 2, cy - bh * s / 2, cx + bw * s / 2, cy + bh * s / 2);
         float r = r0 * s;
         // Shadow at the resting icon size, enlarged by the transform (so the blur stays cached): short at rest, deep
@@ -1460,21 +1460,33 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         } else {
             if (it.tile != null) roundImage(c, it.tile, it.tileShader, cell, r);
         }
-        // Which one has the focus, at a glance: a light rim on it (as on the focused card) and a shade on the others.
+        // Which one has the focus, softly: no outline. It rises and grows, light falls on its top half, and the
+        // others dim a little.
         float shade = shelfOn * (1 - fc) * (1 - Ui.clamp(l));
         if (shade > 0.01f) {
             tileFill.setShader(null);
-            tileFill.setColor(Ui.alpha(0xFF000000, tone(0.34f, 0.48f) * shade));
+            tileFill.setColor(Ui.alpha(0xFF000000, tone(0.22f, 0.36f) * shade));
             c.drawRoundRect(cell, r, r, tileFill);
         }
         if (fc > 0.01f) {
-            float inset = 1.25f * k;
-            tmp.set(cell.left + inset, cell.top + inset, cell.right - inset, cell.bottom - inset);
-            rim.setShader(null);
-            rim.setColor(Ui.alpha(0xFFFFFFFF, 0.85f * fc));
-            c.drawRoundRect(tmp, r - inset, r - inset, rim);
+            if (tileSheen == null || tileSheenH != bh) {
+                tileSheen = new LinearGradient(0, -bh / 2, 0, bh * 0.1f, 0x40FFFFFF, 0x00FFFFFF, Shader.TileMode.CLAMP);
+                tileSheenH = bh;
+            }
+            c.save();
+            c.translate(cx, cy);
+            c.scale(s, s);
+            tmp.set(-bw / 2, -bh / 2, bw / 2, bh / 2);
+            sheen.setShader(tileSheen);
+            sheen.setAlpha(Math.round(255 * fc));
+            c.drawRoundRect(tmp, r0, r0, sheen);
+            sheen.setAlpha(255);
+            c.restore();
         }
     }
+
+    private LinearGradient tileSheen;
+    private float tileSheenH;
 
     /**
      * `image` stretched over `cell`, with corners of radius `r`: the shader of an anti-aliased rounded rectangle. A

@@ -1,0 +1,938 @@
+{
+ "movies": [
+  {
+   "title": "The Painting",
+   "year": 2011
+  },
+  {
+   "title": "A Cat in Paris",
+   "year": 2010
+  },
+  {
+   "title": "Zarafa",
+   "year": 2012
+  },
+  {
+   "title": "Calamity, a Childhood of Martha Jane Cannary",
+   "year": 2020
+  },
+  {
+   "title": "Dilili in Paris",
+   "year": 2018
+  },
+  {
+   "title": "Tales of the Night",
+   "year": 2011
+  },
+  {
+   "title": "The Black Pharaoh, the Savage and the Princess",
+   "year": 2022
+  },
+  {
+   "title": "Princes and Princesses",
+   "year": 2000
+  },
+  {
+   "title": "The Prince's Voyage",
+   "year": 2019
+  },
+  {
+   "title": "Sirocco and the Kingdom of the Winds",
+   "year": 2023
+  },
+  {
+   "title": "Chicken for Linda!",
+   "year": 2023
+  },
+  {
+   "title": "The Inventor",
+   "year": 2023
+  },
+  {
+   "title": "Savages",
+   "year": 2024
+  },
+  {
+   "title": "Ghost Cat Anzu",
+   "year": 2024
+  },
+  {
+   "title": "Kensuke's Kingdom",
+   "year": 2023
+  },
+  {
+   "title": "Pachamama",
+   "year": 2018
+  },
+  {
+   "title": "The Boy and the World",
+   "year": 2013
+  },
+  {
+   "title": "Anina",
+   "year": 2013
+  },
+  {
+   "title": "Underdogs",
+   "year": 2013
+  },
+  {
+   "title": "Nahuel and the Magic Book",
+   "year": 2020
+  },
+  {
+   "title": "Perlimps",
+   "year": 2022
+  },
+  {
+   "title": "Tito and the Birds",
+   "year": 2018
+  },
+  {
+   "title": "Modest Heroes",
+   "year": 2018
+  },
+  {
+   "title": "The Imaginary",
+   "year": 2023
+  },
+  {
+   "title": "Poupelle of Chimney Town",
+   "year": 2020
+  },
+  {
+   "title": "The Wonderland",
+   "year": 2019
+  },
+  {
+   "title": "Penguin Highway",
+   "year": 2018
+  },
+  {
+   "title": "Mai Mai Miracle",
+   "year": 2009
+  },
+  {
+   "title": "Horus: Prince of the Sun",
+   "year": 1968
+  },
+  {
+   "title": "Taro the Dragon Boy",
+   "year": 1979
+  },
+  {
+   "title": "The Castle of Cagliostro",
+   "year": 1979
+  },
+  {
+   "title": "Leafie, A Hen into the Wild",
+   "year": 2011
+  },
+  {
+   "title": "The Pirates! In an Adventure with Scientists!",
+   "year": 2012
+  },
+  {
+   "title": "Revolting Rhymes",
+   "year": 2016
+  },
+  {
+   "title": "The Wind in the Willows",
+   "year": 1983
+  },
+  {
+   "title": "The Man Who Planted Trees",
+   "year": 1987
+  },
+  {
+   "title": "Ivan Tsarevich and the Gray Wolf",
+   "year": 2011
+  },
+  {
+   "title": "The Snow Queen",
+   "year": 1957
+  },
+  {
+   "title": "Even Mice Belong in Heaven",
+   "year": 2021
+  },
+  {
+   "title": "Toys in the Attic",
+   "year": 2009
+  },
+  {
+   "title": "Help! I'm a Fish",
+   "year": 2000
+  },
+  {
+   "title": "The Ape Star",
+   "year": 2021
+  },
+  {
+   "title": "Pinchcliffe Grand Prix",
+   "year": 1975
+  },
+  {
+   "title": "Fritzi: A Revolutionary Tale",
+   "year": 2019
+  },
+  {
+   "title": "Asterix the Gaul",
+   "year": 1967
+  },
+  {
+   "title": "Asterix and Cleopatra",
+   "year": 1968
+  },
+  {
+   "title": "Asterix: The Secret of the Magic Potion",
+   "year": 2018
+  },
+  {
+   "title": "Little Nicholas: Happy as Can Be",
+   "year": 2022
+  },
+  {
+   "title": "The Phantom Tollbooth",
+   "year": 1970
+  },
+  {
+   "title": "Ejen Ali: The Movie",
+   "year": 2019
+  },
+  {
+   "title": "Upin & Ipin: Keris Siamang Tunggal",
+   "year": 2019
+  },
+  {
+   "title": "Window Horses",
+   "year": 2016
+  },
+  {
+   "title": "Where the Wild Things Are",
+   "year": 2009
+  },
+  {
+   "title": "Haridas",
+   "year": 2013
+  },
+  {
+   "title": "Valatty",
+   "year": 2023
+  },
+  {
+   "title": "Patalghar",
+   "year": 2003
+  },
+  {
+   "title": "Chintoo",
+   "year": 2012
+  },
+  {
+   "title": "Taryanche Bait",
+   "year": 2011
+  },
+  {
+   "title": "Kitaab",
+   "year": 1977
+  },
+  {
+   "title": "Ondalla Eradalla",
+   "year": 2018
+  },
+  {
+   "title": "Jagga Jasoos",
+   "year": 2017
+  },
+  {
+   "title": "Sherina's Adventure",
+   "year": 2000
+  },
+  {
+   "title": "The Cave of the Yellow Dog",
+   "year": 2005
+  },
+  {
+   "title": "The Story of the Weeping Camel",
+   "year": 2003
+  },
+  {
+   "title": "Hachiko Monogatari",
+   "year": 1987
+  },
+  {
+   "title": "Mongolian Ping Pong",
+   "year": 2005
+  },
+  {
+   "title": "The Dog Who Stopped the War",
+   "year": 1984
+  },
+  {
+   "title": "Bach and Broccoli",
+   "year": 1986
+  },
+  {
+   "title": "Danny the Champion of the World",
+   "year": 1989
+  },
+  {
+   "title": "The Railway Children Return",
+   "year": 2022
+  },
+  {
+   "title": "The Water Horse",
+   "year": 2007
+  },
+  {
+   "title": "The Secret of Moonacre",
+   "year": 2008
+  },
+  {
+   "title": "Esio Trot",
+   "year": 2015
+  },
+  {
+   "title": "Ballet Shoes",
+   "year": 2007
+  },
+  {
+   "title": "Harriet the Spy",
+   "year": 1996
+  },
+  {
+   "title": "Explorers",
+   "year": 1985
+  },
+  {
+   "title": "*batteries not included",
+   "year": 1987
+  },
+  {
+   "title": "Mr. Magorium's Wonder Emporium",
+   "year": 2007
+  },
+  {
+   "title": "Lassie",
+   "year": 2005
+  },
+  {
+   "title": "Ring of Bright Water",
+   "year": 1969
+  },
+  {
+   "title": "White Fang",
+   "year": 2018
+  },
+  {
+   "title": "Cheetah",
+   "year": 1989
+  },
+  {
+   "title": "Shiloh",
+   "year": 1996
+  },
+  {
+   "title": "Where the Red Fern Grows",
+   "year": 1974
+  },
+  {
+   "title": "My Side of the Mountain",
+   "year": 1969
+  },
+  {
+   "title": "Island of the Blue Dolphins",
+   "year": 1964
+  },
+  {
+   "title": "The 5,000 Fingers of Dr. T.",
+   "year": 1953
+  },
+  {
+   "title": "The Yearling",
+   "year": 1946
+  },
+  {
+   "title": "Mon Oncle",
+   "year": 1958
+  },
+  {
+   "title": "Meet Me in St. Louis",
+   "year": 1944
+  },
+  {
+   "title": "The Music Man",
+   "year": 1962
+  },
+  {
+   "title": "Hans Christian Andersen",
+   "year": 1952
+  },
+  {
+   "title": "The Court Jester",
+   "year": 1955
+  },
+  {
+   "title": "The Secret of Roan Inish",
+   "year": 1994
+  },
+  {
+   "title": "Paper Planes",
+   "year": 2014
+  },
+  {
+   "title": "Kit Kittredge: An American Girl",
+   "year": 2008
+  },
+  {
+   "title": "The Indian in the Cupboard",
+   "year": 1995
+  },
+  {
+   "title": "Harry and the Hendersons",
+   "year": 1987
+  },
+  {
+   "title": "Angels in the Outfield",
+   "year": 1994
+  },
+  {
+   "title": "Andre",
+   "year": 1994
+  },
+  {
+   "title": "The Adventures of Huck Finn",
+   "year": 1993
+  },
+  {
+   "title": "Iron Will",
+   "year": 1994
+  },
+  {
+   "title": "City of Ember",
+   "year": 2008
+  },
+  {
+   "title": "Inkheart",
+   "year": 2008
+  },
+  {
+   "title": "Emil and the Detectives",
+   "year": 1931
+  },
+  {
+   "title": "Emil and the Detectives",
+   "year": 2001
+  },
+  {
+   "title": "Momo",
+   "year": 1986
+  },
+  {
+   "title": "Rico, Oskar & the Deepshadows",
+   "year": 2014
+  },
+  {
+   "title": "Miss Minoes",
+   "year": 2001
+  },
+  {
+   "title": "Little Crumb",
+   "year": 1999
+  },
+  {
+   "title": "My Extraordinary Summer with Tess",
+   "year": 2019
+  },
+  {
+   "title": "Antboy",
+   "year": 2013
+  },
+  {
+   "title": "Nicholas on Holiday",
+   "year": 2014
+  },
+  {
+   "title": "War of the Buttons",
+   "year": 1962
+  },
+  {
+   "title": "My Mother's Castle",
+   "year": 1990
+  },
+  {
+   "title": "Mio in the Land of Faraway",
+   "year": 1987
+  },
+  {
+   "title": "The Children of Noisy Village",
+   "year": 1986
+  },
+  {
+   "title": "Totto-chan: The Little Girl at the Window",
+   "year": 2023
+  },
+  {
+   "title": "Stand by Me Doraemon 2",
+   "year": 2020
+  },
+  {
+   "title": "To the Arctic",
+   "year": 2012
+  },
+  {
+   "title": "Mysterious Island",
+   "year": 1961
+  },
+  {
+   "title": "Petite Maman",
+   "year": 2021
+  },
+  {
+   "title": "Stowaway in the Sky",
+   "year": 1960
+  },
+  {
+   "title": "Eleanor's Secret",
+   "year": 2009
+  },
+  {
+   "title": "The Secret of the Magic Gourd",
+   "year": 2007
+  },
+  {
+   "title": "Niko & the Way to the Stars",
+   "year": 2008
+  },
+  {
+   "title": "Louis & Luca - The Big Cheese Race",
+   "year": 2015
+  },
+  {
+   "title": "Kooky",
+   "year": 2010
+  },
+  {
+   "title": "Doraemon: Nobita's Dinosaur 2006",
+   "year": 2006
+  },
+  {
+   "title": "Ghatothkach",
+   "year": 2008
+  },
+  {
+   "title": "Sniff",
+   "year": 2017
+  },
+  {
+   "title": "Ferrari Ki Sawaari",
+   "year": 2012
+  },
+  {
+   "title": "Hope Aur Hum",
+   "year": 2018
+  },
+  {
+   "title": "Haami",
+   "year": 2018
+  },
+  {
+   "title": "Rainbow Jelly",
+   "year": 2018
+  },
+  {
+   "title": "Ramdhanu",
+   "year": 2014
+  },
+  {
+   "title": "Neymar",
+   "year": 2023
+  },
+  {
+   "title": "Ekda Kaay Zala",
+   "year": 2022
+  },
+  {
+   "title": "Shyamchi Aai",
+   "year": 2023
+  },
+  {
+   "title": "Bettada Hoovu",
+   "year": 1985
+  },
+  {
+   "title": "Pathala Bhairavi",
+   "year": 1951
+  },
+  {
+   "title": "The Mirror",
+   "year": 1997
+  },
+  {
+   "title": "Dreamer",
+   "year": 2005
+  },
+  {
+   "title": "Good Night Oppy",
+   "year": 2022
+  },
+  {
+   "title": "The Year Earth Changed",
+   "year": 2021
+  },
+  {
+   "title": "Dragonkeeper",
+   "year": 2024
+  },
+  {
+   "title": "Napping Princess",
+   "year": 2017
+  },
+  {
+   "title": "The Concierge",
+   "year": 2023
+  },
+  {
+   "title": "Dream Big: Engineering Our World",
+   "year": 2017
+  },
+  {
+   "title": "A Beautiful Planet",
+   "year": 2016
+  },
+  {
+   "title": "Space Station 3D",
+   "year": 2002
+  },
+  {
+   "title": "Arctic Tale",
+   "year": 2007
+  },
+  {
+   "title": "Amazon Adventure",
+   "year": 2017
+  },
+  {
+   "title": "Living in the Age of Airplanes",
+   "year": 2015
+  },
+  {
+   "title": "The Adventures of Ichabod and Mr. Toad",
+   "year": 1949
+  },
+  {
+   "title": "The Butter Battle Book",
+   "year": 1989
+  },
+  {
+   "title": "Tom Thumb",
+   "year": 1958
+  },
+  {
+   "title": "The Wonderful World of the Brothers Grimm",
+   "year": 1962
+  },
+  {
+   "title": "Darby O'Gill and the Little People",
+   "year": 1959
+  },
+  {
+   "title": "The Gnome-Mobile",
+   "year": 1967
+  },
+  {
+   "title": "Candleshoe",
+   "year": 1977
+  },
+  {
+   "title": "The Cat from Outer Space",
+   "year": 1978
+  },
+  {
+   "title": "The Apple Dumpling Gang",
+   "year": 1975
+  },
+  {
+   "title": "Napoleon and Samantha",
+   "year": 1972
+  },
+  {
+   "title": "Greyfriars Bobby",
+   "year": 1961
+  },
+  {
+   "title": "Ride a Wild Pony",
+   "year": 1975
+  },
+  {
+   "title": "Third Man on the Mountain",
+   "year": 1959
+  },
+  {
+   "title": "Mia and the Migoo",
+   "year": 2008
+  },
+  {
+   "title": "Gauche the Cellist",
+   "year": 1982
+  },
+  {
+   "title": "Animal Treasure Island",
+   "year": 1971
+  },
+  {
+   "title": "Stand by Me Doraemon",
+   "year": 2014
+  },
+  {
+   "title": "The Tale of the White Serpent",
+   "year": 1958
+  },
+  {
+   "title": "My Garden of a Thousand Bees",
+   "year": 2021
+  }
+ ],
+ "shows": [
+  {
+   "title": "The Amazing Adventures of Morph",
+   "year": 1980
+  },
+  {
+   "title": "Wallace & Gromit's World of Invention",
+   "year": 2010
+  },
+  {
+   "title": "Creature Comforts",
+   "year": 2003
+  },
+  {
+   "title": "Around the World with Willy Fog",
+   "year": 1983
+  },
+  {
+   "title": "Dogtanian and the Three Muskehounds",
+   "year": 1981
+  },
+  {
+   "title": "Chibi Maruko-chan",
+   "year": 1990
+  },
+  {
+   "title": "Shirokuma Cafe",
+   "year": 2012
+  },
+  {
+   "title": "Pat & Mat",
+   "year": 1976
+  },
+  {
+   "title": "Nu, pogodi!",
+   "year": 1969
+  },
+  {
+   "title": "Simsala Grimm",
+   "year": 1999
+  },
+  {
+   "title": "Histeria!",
+   "year": 1998
+  },
+  {
+   "title": "Schoolhouse Rock!",
+   "year": 1973
+  },
+  {
+   "title": "Junior Bake Off",
+   "year": 2011
+  },
+  {
+   "title": "Snoopy in Space",
+   "year": 2019
+  },
+  {
+   "title": "Camp Snoopy",
+   "year": 2024
+  },
+  {
+   "title": "City of Ghosts",
+   "year": 2021
+  },
+  {
+   "title": "Karma's World",
+   "year": 2021
+  },
+  {
+   "title": "Chip 'n Dale Rescue Rangers",
+   "year": 1989
+  },
+  {
+   "title": "The Adventures of Rocky and Bullwinkle and Friends",
+   "year": 1959
+  },
+  {
+   "title": "The Raccoons",
+   "year": 1985
+  },
+  {
+   "title": "Hetty Feather",
+   "year": 2015
+  },
+  {
+   "title": "The Box of Delights",
+   "year": 1984
+  },
+  {
+   "title": "Mortified",
+   "year": 2006
+  },
+  {
+   "title": "Shaktimaan",
+   "year": 1997
+  },
+  {
+   "title": "Hidden Kingdoms",
+   "year": 2014
+  },
+  {
+   "title": "Animals Up Close with Bertie Gregory",
+   "year": 2023
+  },
+  {
+   "title": "Victor and Valentino",
+   "year": 2019
+  },
+  {
+   "title": "Harvey Beaks",
+   "year": 2015
+  },
+  {
+   "title": "Welcome to the Wayne",
+   "year": 2017
+  },
+  {
+   "title": "Dinosaurs",
+   "year": 1991
+  },
+  {
+   "title": "Garfield and Friends",
+   "year": 1988
+  },
+  {
+   "title": "Goof Troop",
+   "year": 1992
+  },
+  {
+   "title": "Fillmore!",
+   "year": 2002
+  },
+  {
+   "title": "Milo Murphy's Law",
+   "year": 2016
+  },
+  {
+   "title": "Dragons: Riders of Berk",
+   "year": 2012
+  },
+  {
+   "title": "DragonflyTV",
+   "year": 2002
+  },
+  {
+   "title": "Newton's Apple",
+   "year": 1983
+  },
+  {
+   "title": "Weird But True!",
+   "year": 2016
+  },
+  {
+   "title": "Absolute Genius with Dick and Dom",
+   "year": 2014
+  },
+  {
+   "title": "Officially Amazing",
+   "year": 2013
+  },
+  {
+   "title": "Rilakkuma and Kaoru",
+   "year": 2019
+  },
+  {
+   "title": "M.I. High",
+   "year": 2007
+  },
+  {
+   "title": "Wizards vs Aliens",
+   "year": 2012
+  },
+  {
+   "title": "The Queen's Nose",
+   "year": 1995
+  },
+  {
+   "title": "The Saddle Club",
+   "year": 2001
+  },
+  {
+   "title": "MythBusters Jr.",
+   "year": 2019
+  },
+  {
+   "title": "Rascal the Raccoon",
+   "year": 1977
+  },
+  {
+   "title": "The Wonderful Adventures of Nils",
+   "year": 1980
+  },
+  {
+   "title": "Kimba the White Lion",
+   "year": 1965
+  },
+  {
+   "title": "The Penguins of Madagascar",
+   "year": 2008
+  },
+  {
+   "title": "ChalkZone",
+   "year": 2002
+  },
+  {
+   "title": "My Life as a Teenage Robot",
+   "year": 2003
+  },
+  {
+   "title": "Clarence",
+   "year": 2014
+  },
+  {
+   "title": "Apple & Onion",
+   "year": 2018
+  },
+  {
+   "title": "Shri Krishna",
+   "year": 1993
+  },
+  {
+   "title": "Jai Hanuman",
+   "year": 1997
+  },
+  {
+   "title": "Bananaman",
+   "year": 1983
+  },
+  {
+   "title": "SuperTed",
+   "year": 1983
+  },
+  {
+   "title": "Henry's Cat",
+   "year": 1983
+  },
+  {
+   "title": "The Family-Ness",
+   "year": 1984
+  }
+ ]
+}

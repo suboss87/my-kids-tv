@@ -1,0 +1,850 @@
+{
+ "movies": [
+  {
+   "title": "Marona's Fantastic Tale",
+   "year": 2019
+  },
+  {
+   "title": "Ethel & Ernest",
+   "year": 2016
+  },
+  {
+   "title": "The Glassworker",
+   "year": 2024
+  },
+  {
+   "title": "Where Is Anne Frank",
+   "year": 2021
+  },
+  {
+   "title": "Ocean Waves",
+   "year": 1993
+  },
+  {
+   "title": "Ride Your Wave",
+   "year": 2019
+  },
+  {
+   "title": "Inu-Oh",
+   "year": 2021
+  },
+  {
+   "title": "Princess Arete",
+   "year": 2001
+  },
+  {
+   "title": "A Silent Voice",
+   "year": 2016
+  },
+  {
+   "title": "Words Bubble Up Like Soda Pop",
+   "year": 2021
+  },
+  {
+   "title": "Goodbye, Don Glees!",
+   "year": 2022
+  },
+  {
+   "title": "The Colors Within",
+   "year": 2024
+  },
+  {
+   "title": "My Oni Girl",
+   "year": 2024
+  },
+  {
+   "title": "Lonely Castle in the Mirror",
+   "year": 2022
+  },
+  {
+   "title": "Pompo: The Cinéphile",
+   "year": 2021
+  },
+  {
+   "title": "Sing a Bit of Harmony",
+   "year": 2021
+  },
+  {
+   "title": "Night on the Galactic Railroad",
+   "year": 1985
+  },
+  {
+   "title": "Big Fish & Begonia",
+   "year": 2016
+  },
+  {
+   "title": "Deep Sea",
+   "year": 2023
+  },
+  {
+   "title": "Chang'an",
+   "year": 2023
+  },
+  {
+   "title": "I Am What I Am",
+   "year": 2021
+  },
+  {
+   "title": "Blue Giant",
+   "year": 2023
+  },
+  {
+   "title": "Return to Oz",
+   "year": 1985
+  },
+  {
+   "title": "The Last Starfighter",
+   "year": 1984
+  },
+  {
+   "title": "Breaking Away",
+   "year": 1979
+  },
+  {
+   "title": "The Gods Must Be Crazy",
+   "year": 1980
+  },
+  {
+   "title": "Strictly Ballroom",
+   "year": 1992
+  },
+  {
+   "title": "The Man from Snowy River",
+   "year": 1982
+  },
+  {
+   "title": "Son of Rambow",
+   "year": 2007
+  },
+  {
+   "title": "Wonderstruck",
+   "year": 2017
+  },
+  {
+   "title": "Penelope",
+   "year": 2006
+  },
+  {
+   "title": "Ender's Game",
+   "year": 2013
+  },
+  {
+   "title": "Beasts of the Southern Wild",
+   "year": 2012
+  },
+  {
+   "title": "The Straight Story",
+   "year": 1999
+  },
+  {
+   "title": "Emma.",
+   "year": 2020
+  },
+  {
+   "title": "Miss Potter",
+   "year": 2006
+  },
+  {
+   "title": "Finding Neverland",
+   "year": 2004
+  },
+  {
+   "title": "Mr. Holland's Opus",
+   "year": 1995
+  },
+  {
+   "title": "The Mighty",
+   "year": 1998
+  },
+  {
+   "title": "Sounder",
+   "year": 1972
+  },
+  {
+   "title": "The Brothers Lionheart",
+   "year": 1977
+  },
+  {
+   "title": "Kauwboy",
+   "year": 2012
+  },
+  {
+   "title": "The Kid with a Bike",
+   "year": 2011
+  },
+  {
+   "title": "Bashu, the Little Stranger",
+   "year": 1989
+  },
+  {
+   "title": "The Song of Sparrows",
+   "year": 2008
+  },
+  {
+   "title": "The King of Masks",
+   "year": 1996
+  },
+  {
+   "title": "I Wish",
+   "year": 2011
+  },
+  {
+   "title": "Our Little Sister",
+   "year": 2015
+  },
+  {
+   "title": "Little Forest",
+   "year": 2018
+  },
+  {
+   "title": "Miracle in Cell No. 7",
+   "year": 2013
+  },
+  {
+   "title": "Marathon",
+   "year": 2005
+  },
+  {
+   "title": "Waterboys",
+   "year": 2001
+  },
+  {
+   "title": "Swing Girls",
+   "year": 2004
+  },
+  {
+   "title": "Linda Linda Linda",
+   "year": 2005
+  },
+  {
+   "title": "Kano",
+   "year": 2014
+  },
+  {
+   "title": "Supa Modo",
+   "year": 2018
+  },
+  {
+   "title": "The First Grader",
+   "year": 2010
+  },
+  {
+   "title": "Liyana",
+   "year": 2017
+  },
+  {
+   "title": "Valentín",
+   "year": 2002
+  },
+  {
+   "title": "The Rainbow Troops",
+   "year": 2008
+  },
+  {
+   "title": "Gippi",
+   "year": 2013
+  },
+  {
+   "title": "Kastoori",
+   "year": 2019
+  },
+  {
+   "title": "Last Film Show",
+   "year": 2021
+  },
+  {
+   "title": "Baboo Band Baaja",
+   "year": 2010
+  },
+  {
+   "title": "Kannathil Muthamittal",
+   "year": 2002
+  },
+  {
+   "title": "Saattai",
+   "year": 2012
+  },
+  {
+   "title": "Thanga Meengal",
+   "year": 2013
+  },
+  {
+   "title": "Android Kunjappan Version 5.25",
+   "year": 2019
+  },
+  {
+   "title": "Balagam",
+   "year": 2023
+  },
+  {
+   "title": "Bombaiyer Bombete",
+   "year": 2003
+  },
+  {
+   "title": "Mishawr Rawhoshyo",
+   "year": 2013
+  },
+  {
+   "title": "Honeyland",
+   "year": 2019
+  },
+  {
+   "title": "Becoming Cousteau",
+   "year": 2021
+  },
+  {
+   "title": "Particle Fever",
+   "year": 2013
+  },
+  {
+   "title": "The Farthest",
+   "year": 2017
+  },
+  {
+   "title": "The Mole Agent",
+   "year": 2020
+  },
+  {
+   "title": "All That Breathes",
+   "year": 2022
+  },
+  {
+   "title": "Hello World",
+   "year": 2019
+  },
+  {
+   "title": "Fortune Favors Lady Nikuko",
+   "year": 2021
+  },
+  {
+   "title": "5 Centimeters per Second",
+   "year": 2007
+  },
+  {
+   "title": "Ne Zha 2",
+   "year": 2025
+  },
+  {
+   "title": "The Satellite Girl and Milk Cow",
+   "year": 2014
+  },
+  {
+   "title": "No Dogs or Italians Allowed",
+   "year": 2022
+  },
+  {
+   "title": "The Dish",
+   "year": 2000
+  },
+  {
+   "title": "The Castle",
+   "year": 1997
+  },
+  {
+   "title": "Blueback",
+   "year": 2022
+  },
+  {
+   "title": "Baran",
+   "year": 2001
+  },
+  {
+   "title": "Offside",
+   "year": 2006
+  },
+  {
+   "title": "Barfi!",
+   "year": 2012
+  },
+  {
+   "title": "Shabaash Mithu",
+   "year": 2022
+  },
+  {
+   "title": "Saina",
+   "year": 2021
+  },
+  {
+   "title": "Jhund",
+   "year": 2022
+  },
+  {
+   "title": "Kadvi Hawa",
+   "year": 2017
+  },
+  {
+   "title": "Newton",
+   "year": 2017
+  },
+  {
+   "title": "Lakshya",
+   "year": 2004
+  },
+  {
+   "title": "Andaz Apna Apna",
+   "year": 1994
+  },
+  {
+   "title": "Padosan",
+   "year": 1968
+  },
+  {
+   "title": "Chhoti Si Baat",
+   "year": 1976
+  },
+  {
+   "title": "Do Bigha Zamin",
+   "year": 1953
+  },
+  {
+   "title": "Jagte Raho",
+   "year": 1956
+  },
+  {
+   "title": "Shree 420",
+   "year": 1955
+  },
+  {
+   "title": "Naya Daur",
+   "year": 1957
+  },
+  {
+   "title": "Michael Madana Kama Rajan",
+   "year": 1990
+  },
+  {
+   "title": "Pushpaka Vimana",
+   "year": 1987
+  },
+  {
+   "title": "Lubber Pandhu",
+   "year": 2024
+  },
+  {
+   "title": "Mandela",
+   "year": 2021
+  },
+  {
+   "title": "Kuttram Kadithal",
+   "year": 2015
+  },
+  {
+   "title": "Good Night",
+   "year": 2023
+  },
+  {
+   "title": "Maheshinte Prathikaaram",
+   "year": 2016
+  },
+  {
+   "title": "How Old Are You?",
+   "year": 2014
+  },
+  {
+   "title": "Jacobinte Swargarajyam",
+   "year": 2016
+  },
+  {
+   "title": "Falimy",
+   "year": 2023
+  },
+  {
+   "title": "Jersey",
+   "year": 2019
+  },
+  {
+   "title": "Sankarabharanam",
+   "year": 1980
+  },
+  {
+   "title": "Gundamma Katha",
+   "year": 1962
+  },
+  {
+   "title": "Missamma",
+   "year": 1955
+  },
+  {
+   "title": "Ondu Motteya Kathe",
+   "year": 2017
+  },
+  {
+   "title": "Daredevil Musthafa",
+   "year": 2023
+  },
+  {
+   "title": "Sonar Pahar",
+   "year": 2018
+  },
+  {
+   "title": "Posto",
+   "year": 2017
+  },
+  {
+   "title": "Badshahi Angti",
+   "year": 2014
+  },
+  {
+   "title": "Yeti Obhijaan",
+   "year": 2017
+  },
+  {
+   "title": "Sabuj Dwiper Raja",
+   "year": 2014
+  },
+  {
+   "title": "Ventilator",
+   "year": 2016
+  },
+  {
+   "title": "Aatmapamphlet",
+   "year": 2023
+  },
+  {
+   "title": "Bey Yaar",
+   "year": 2014
+  },
+  {
+   "title": "Village Rockstars",
+   "year": 2017
+  },
+  {
+   "title": "Pareeksha",
+   "year": 2020
+  },
+  {
+   "title": "Sachin: A Billion Dreams",
+   "year": 2017
+  },
+  {
+   "title": "Panga",
+   "year": 2020
+  },
+  {
+   "title": "Chandu Champion",
+   "year": 2024
+  },
+  {
+   "title": "Under the Same Moon",
+   "year": 2007
+  },
+  {
+   "title": "Inventing Tomorrow",
+   "year": 2018
+  },
+  {
+   "title": "Girl Rising",
+   "year": 2013
+  },
+  {
+   "title": "Maiden",
+   "year": 2018
+  },
+  {
+   "title": "Life, Animated",
+   "year": 2016
+  },
+  {
+   "title": "Brooklyn Castle",
+   "year": 2012
+  },
+  {
+   "title": "Chasing Ice",
+   "year": 2012
+  },
+  {
+   "title": "Mission Blue",
+   "year": 2014
+  },
+  {
+   "title": "Kiss the Ground",
+   "year": 2020
+  },
+  {
+   "title": "For All Mankind",
+   "year": 1989
+  },
+  {
+   "title": "In the Shadow of the Moon",
+   "year": 2007
+  },
+  {
+   "title": "Fantastic Voyage",
+   "year": 1966
+  },
+  {
+   "title": "Tron",
+   "year": 1982
+  },
+  {
+   "title": "Sister Act",
+   "year": 1992
+  },
+  {
+   "title": "Sister Act 2: Back in the Habit",
+   "year": 1993
+  },
+  {
+   "title": "Music of the Heart",
+   "year": 1999
+  },
+  {
+   "title": "Goodbye, Mr. Chips",
+   "year": 1939
+  },
+  {
+   "title": "The Emperor's Club",
+   "year": 2002
+  },
+  {
+   "title": "The Terminal",
+   "year": 2004
+  },
+  {
+   "title": "The Natural",
+   "year": 1984
+  }
+ ],
+ "shows": [
+  {
+   "title": "Jurassic World: Camp Cretaceous",
+   "year": 2020
+  },
+  {
+   "title": "Natsume's Book of Friends",
+   "year": 2008
+  },
+  {
+   "title": "Silver Spoon",
+   "year": 2013
+  },
+  {
+   "title": "Barakamon",
+   "year": 2014
+  },
+  {
+   "title": "Ranking of Kings",
+   "year": 2021
+  },
+  {
+   "title": "Delicious in Dungeon",
+   "year": 2024
+  },
+  {
+   "title": "Space Brothers",
+   "year": 2012
+  },
+  {
+   "title": "A Place Further Than the Universe",
+   "year": 2018
+  },
+  {
+   "title": "Laid-Back Camp",
+   "year": 2018
+  },
+  {
+   "title": "Aria the Animation",
+   "year": 2005
+  },
+  {
+   "title": "Ascendance of a Bookworm",
+   "year": 2019
+  },
+  {
+   "title": "Bocchi the Rock!",
+   "year": 2022
+  },
+  {
+   "title": "The Adventures of Pete & Pete",
+   "year": 1993
+  },
+  {
+   "title": "Connections",
+   "year": 1978
+  },
+  {
+   "title": "Our Great National Parks",
+   "year": 2022
+  },
+  {
+   "title": "The Sarah Jane Adventures",
+   "year": 2007
+  },
+  {
+   "title": "Wolfblood",
+   "year": 2012
+  },
+  {
+   "title": "Jamie Johnson",
+   "year": 2016
+  },
+  {
+   "title": "The Girl from Tomorrow",
+   "year": 1991
+  },
+  {
+   "title": "Nowhere Boys",
+   "year": 2013
+  },
+  {
+   "title": "First Day",
+   "year": 2020
+  },
+  {
+   "title": "The Unlisted",
+   "year": 2019
+  },
+  {
+   "title": "Itch",
+   "year": 2020
+  },
+  {
+   "title": "The Healing Powers of Dude",
+   "year": 2020
+  },
+  {
+   "title": "Diary of a Future President",
+   "year": 2020
+  },
+  {
+   "title": "Young Sheldon",
+   "year": 2017
+  },
+  {
+   "title": "Fresh Off the Boat",
+   "year": 2015
+  },
+  {
+   "title": "Kim's Convenience",
+   "year": 2016
+  },
+  {
+   "title": "The Legend of Hanuman",
+   "year": 2021
+  },
+  {
+   "title": "Somebody Feed Phil",
+   "year": 2018
+  },
+  {
+   "title": "The Great Pottery Throw Down",
+   "year": 2015
+  },
+  {
+   "title": "Top Chef Junior",
+   "year": 2017
+  },
+  {
+   "title": "Our Planet II",
+   "year": 2023
+  },
+  {
+   "title": "The Bureau of Magical Things",
+   "year": 2018
+  },
+  {
+   "title": "Leonardo",
+   "year": 2011
+  },
+  {
+   "title": "Life with Derek",
+   "year": 2005
+  },
+  {
+   "title": "Find Me in Paris",
+   "year": 2018
+  },
+  {
+   "title": "The Hardy Boys",
+   "year": 2020
+  },
+  {
+   "title": "Endlings",
+   "year": 2020
+  },
+  {
+   "title": "Detention Adventure",
+   "year": 2019
+  },
+  {
+   "title": "Kids on the Slope",
+   "year": 2012
+  },
+  {
+   "title": "Sound! Euphonium",
+   "year": 2015
+  },
+  {
+   "title": "Hyouka",
+   "year": 2012
+  },
+  {
+   "title": "K-On!",
+   "year": 2009
+  },
+  {
+   "title": "Flying Witch",
+   "year": 2016
+  },
+  {
+   "title": "Bunny Drop",
+   "year": 2011
+  },
+  {
+   "title": "Sweetness and Lightning",
+   "year": 2016
+  },
+  {
+   "title": "My Roommate Is a Cat",
+   "year": 2023
+  },
+  {
+   "title": "Encouragement of Climb",
+   "year": 2013
+  },
+  {
+   "title": "Kotaro Lives Alone",
+   "year": 2022
+  },
+  {
+   "title": "Komi Can't Communicate",
+   "year": 2021
+  },
+  {
+   "title": "Blue Period",
+   "year": 2021
+  },
+  {
+   "title": "Insomniacs After School",
+   "year": 2023
+  },
+  {
+   "title": "Kuroko's Basketball",
+   "year": 2012
+  },
+  {
+   "title": "Planetes",
+   "year": 2003
+  },
+  {
+   "title": "Moribito: Guardian of the Spirit",
+   "year": 2007
+  },
+  {
+   "title": "Arte",
+   "year": 2020
+  },
+  {
+   "title": "Bakuman.",
+   "year": 2010
+  },
+  {
+   "title": "Sakura Quest",
+   "year": 2017
+  },
+  {
+   "title": "Shirobako",
+   "year": 2014
+  }
+ ]
+}

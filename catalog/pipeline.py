@@ -11,7 +11,7 @@ Stages: 1) candidates from seeds, research lists and TMDB sweeps; 2) hard age-ra
 import argparse, concurrent.futures as cf, json, os, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tmdb import get
-from bands import BANDS, questions, audience, policy
+from bands import BANDS, questions, craft_question, audience, policy
 import export_dataset
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -37,7 +37,7 @@ def search(kind, title, year):
 
 def seeds(band):
     named = []
-    for f in ('seeds/%s.json' % band, 'seeds/research-%s.json' % band):
+    for f in ('seeds/%s.json' % band, 'seeds/research-%s.json' % band, 'seeds/deep-%s.json' % band):
         d = load(os.path.join(HERE, f), {})
         named += [('movie', m['title'], m.get('year')) for m in d.get('movies', [])]
         named += [('tv', m['title'], m.get('year')) for m in d.get('shows', [])]
@@ -136,13 +136,13 @@ def stage_expand(band):
 
 # --- Stage 3: Jev -------------------------------------------------------------------------------------------------
 
-def ask(band, c, key):
+def ask(band, c, key, qs=None):
     state = {'audience': audience(band), 'title': c['title'], 'year': c['year'],
              'type': 'movie' if c['kind'] == 'movie' else 'TV series', 'genres': c['genres'],
              'age_rating': c['rating'] or 'unknown', 'original_language': c['lang'],
              'tmdb_rating': '%.1f/10 from %d votes' % (c['vote_average'], c['vote_count']),
              'synopsis': c['overview'], 'keywords': c['keywords']}
-    body = json.dumps({'model': 'jev-latest', 'state': state, 'questions': questions(band)}).encode()
+    body = json.dumps({'model': 'jev-latest', 'state': state, 'questions': qs or questions(band)}).encode()
     err = None
     for i in range(6):
         try:
@@ -167,12 +167,29 @@ def stage_judge(band):
             if n % 100 == 0: json.dump(done, open(path, 'w')); print('  %d judged' % n, flush=True)
     json.dump(done, open(path, 'w'))
 
+def stage_craft(band):
+    """Jev's craft score, only for titles that could make the cut (the rest never needs it)."""
+    key = os.environ.get('TYPESAFE_API_KEY')
+    if not key: raise SystemExit('Set TYPESAFE_API_KEY to judge titles with Jev (or use the shipped catalogs).')
+    cands = {'%s:%d' % (c['kind'], c['id']): c for c in load(work(band, 'candidates.json'), [])}
+    judg = load(work(band, 'judgments.json'), {})
+    path = work(band, 'craft.json'); done = load(path, {})
+    todo = [cands[k] for k, a in judg.items() if k in cands and k not in done
+            and a['age_fit']['probabilities'].get('just_right', 0) >= 0.4 and a['value']['score'] >= 1.8]
+    print('[%s] craft: judging %d (cached %d)' % (band, len(todo), len(done)), flush=True)
+    with cf.ThreadPoolExecutor(8) as ex:
+        for c, r in zip(todo, ex.map(lambda c: ask(band, c, key, craft_question(band)), todo)):
+            if 'answers' in r: done['%s:%d' % (c['kind'], c['id'])] = r['answers']['craft']['score']
+            else: print('  error:', c['title'], r.get('error'), flush=True)
+    json.dump(done, open(path, 'w'))
+
 # --- Stage 4: policy ----------------------------------------------------------------------------------------------
 
 def stage_select(band):
     cands = {'%s:%d' % (c['kind'], c['id']): c for c in load(work(band, 'candidates.json'), [])}
     judg = load(work(band, 'judgments.json'), {})
     over = load(os.path.join(HERE, 'overrides', band + '.json'), {})
+    craft = load(work(band, 'craft.json'), {})
     keep, review = [], []
     for k, a in judg.items():
         if k not in cands: continue
@@ -180,7 +197,10 @@ def stage_select(band):
         s = dict(jr=a['age_fit']['probabilities'].get('just_right', 0), value=a['value']['score'],
                  must=a['must_watch']['noul'], fun=a['fun']['score'])
         row = {**{x: c[x] for x in ('kind', 'id', 'title', 'year', 'rating', 'lang')}, **{x: round(v, 2) for x, v in s.items()}}
-        row['score'] = round(0.45 * s['value'] / 3 + 0.30 * s['must'] + 0.25 * s['fun'] / 3, 3)
+        # Jev's judgments plus what audiences think of it (TMDB's rating, close to IMDb's): 6.5 counts 0, 8.5 and up 1.
+        quality = min(1, max(0, (c.get('vote_average', 7) - 6.5) / 2))
+        row['score'] = round(0.35 * s['value'] / 3 + 0.25 * s['must'] + 0.25 * s['fun'] / 3 + 0.15 * quality, 3)
+        row['craft'] = round(craft[k], 2) if k in craft else None
         if k in over:
             if over[k] == 'keep': keep.append(row)
             continue
@@ -190,8 +210,15 @@ def stage_select(band):
         solid = s['jr'] >= 0.75 and s['value'] >= 2.1 and s['fun'] >= 2.0
         near = (0.4 <= s['jr'] < 0.6 and s['value'] >= 2.2) or \
                (s['jr'] >= 0.6 and s['fun'] >= 1.2 and ((1.8 <= s['value'] < 2.0 and s['must'] >= 0.5) or (2.0 <= s['value'] < 2.4 and 0.35 <= s['must'] < 0.5)))
-        if core or solid: keep.append(row)
-        elif near: review.append(row)
+        # Ages 7 and up: well-made films and series, not filler cartoons (missing craft judgment: no say).
+        crafted = band == '4-6' or k not in craft or craft[k] >= 1.9 or s['must'] >= 0.8
+        # Mostly English-language titles; others only when they're outstanding (Ghibli, the best of world cinema),
+        # Indian ones only exceptionally (the family's own picks come from overrides).
+        lang = c.get('lang', 'en')
+        foreign_ok = lang == 'en' or (s['must'] >= 0.85 and c.get('vote_average', 0) >= 7.8 if lang in INDIAN
+                                       else s['must'] >= 0.7 or (quality >= 0.6 and s['fun'] >= 2.4))
+        if (core or solid) and crafted and foreign_ok: keep.append(row)
+        elif (core or solid or near) and crafted: review.append(row)
     keep.sort(key=lambda r: -r['score']); review.sort(key=lambda r: -r['score'])
     json.dump({'keep': keep}, open(work(band, 'selected.json'), 'w'), indent=1)
     json.dump(review, open(work(band, 'review.json'), 'w'), indent=1)
@@ -228,11 +255,11 @@ def stage_emit(band):
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--band', required=True, choices=sorted(BANDS))
-    ap.add_argument('stage', choices=['all', 'candidates', 'judge', 'select', 'expand', 'emit'])
+    ap.add_argument('stage', choices=['all', 'candidates', 'judge', 'craft', 'select', 'expand', 'emit'])
     a = ap.parse_args()
     if a.stage == 'all':
         stage_candidates(a.band); stage_judge(a.band); stage_select(a.band)
-        stage_expand(a.band); stage_judge(a.band); stage_select(a.band); stage_emit(a.band)
+        stage_expand(a.band); stage_judge(a.band); stage_craft(a.band); stage_select(a.band); stage_emit(a.band)
     else:
-        {'candidates': stage_candidates, 'judge': stage_judge, 'select': stage_select,
+        {'candidates': stage_candidates, 'judge': stage_judge, 'craft': stage_craft, 'select': stage_select,
          'expand': stage_expand, 'emit': stage_emit}[a.stage](a.band)

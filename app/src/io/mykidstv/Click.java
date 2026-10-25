@@ -11,9 +11,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 /**
- * Soft click for the home screen (moving focus and opening). The app synthesizes the sound itself (a short, low
- * "tock"), writes it once as a WAV in the cache and plays it quietly through SoundPool. It only plays on the home
- * screen, never inside apps.
+ * The home screen's sounds, synthesized by the app and written once as WAVs in the cache, played quietly through
+ * SoundPool, only on the home screen (never inside apps): moving the focus is a crisp glass tick, a few milliseconds
+ * long; opening something is a soft two-note marimba bloom, rising a fifth.
  */
 final class Click {
     private static final int RATE = 48_000;
@@ -25,8 +25,8 @@ final class Click {
             pool = new SoundPool.Builder().setMaxStreams(3).setAudioAttributes(new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()).build();
-            move = pool.load(wav(c, "click-move.wav", 1450f, 0.009f, 0.030f), 1);
-            open = pool.load(wav(c, "click-open.wav", 880f, 0.022f, 0.090f), 1);
+            move = pool.load(wav(c, "tick-v2.wav", 0.035f, Click::tick), 1);
+            open = pool.load(wav(c, "bloom-v2.wav", 0.32f, Click::bloom), 1);
         } catch (IOException | RuntimeException e) {
             AppLog.w("click sound unavailable: " + e.getMessage());
             release();
@@ -34,11 +34,11 @@ final class Click {
     }
 
     void move() {
-        if (pool != null && Prefs.sounds()) pool.play(move, 0.14f, 0.14f, 1, 0, 1f);
+        if (pool != null && Prefs.sounds()) pool.play(move, 0.16f, 0.16f, 1, 0, 1f);
     }
 
     void open() {
-        if (pool != null && Prefs.sounds()) pool.play(open, 0.18f, 0.18f, 1, 0, 1f);
+        if (pool != null && Prefs.sounds()) pool.play(open, 0.2f, 0.2f, 1, 0, 1f);
     }
 
     void release() {
@@ -46,8 +46,28 @@ final class Click {
         pool = null;
     }
 
-    /** Sine wave plus one harmonic, 1.5 ms attack (no pop) and exponential decay. */
-    private static String wav(Context c, String name, float freq, float decay, float seconds) throws IOException {
+    interface Synth { double at(double t); }
+
+    /** Glass tick: a bright 2.4 kHz ping that dies in a few milliseconds over a short, rounder 1.2 kHz body. */
+    private static double tick(double t) {
+        double attack = Math.min(1, t / 0.0006);
+        return attack * (0.55 * Math.sin(2 * Math.PI * 2400 * t) * Math.exp(-t / 0.0035)
+                + 0.45 * Math.sin(2 * Math.PI * 1200 * t) * Math.exp(-t / 0.009));
+    }
+
+    /** Marimba bloom: E5 then B5 45 ms later, each a soft mallet (fundamental and its 3.93× overtone, which fades first). */
+    private static double bloom(double t) {
+        return 0.55 * mallet(t, 659.25) + 0.45 * mallet(t - 0.045, 987.77);
+    }
+
+    private static double mallet(double t, double f) {
+        if (t < 0) return 0;
+        double attack = Math.min(1, t / 0.002);
+        return attack * (Math.sin(2 * Math.PI * f * t) * Math.exp(-t / 0.075)
+                + 0.18 * Math.sin(2 * Math.PI * f * 3.93 * t) * Math.exp(-t / 0.012));
+    }
+
+    private static String wav(Context c, String name, float seconds, Synth synth) throws IOException {
         File f = new File(c.getCacheDir(), name);
         if (f.exists() && f.length() > 44) return f.getPath();
         int n = Math.round(RATE * seconds);
@@ -57,10 +77,8 @@ final class Click {
                 .putInt(RATE).putInt(RATE * 2).putShort((short) 2).putShort((short) 16);
         b.put("data".getBytes("US-ASCII")).putInt(n * 2);
         for (int i = 0; i < n; i++) {
-            double t = (double) i / RATE;
-            double env = Math.min(1, t / 0.0015) * Math.exp(-t / decay);
-            double s = 0.75 * Math.sin(2 * Math.PI * freq * t) + 0.25 * Math.sin(2 * Math.PI * freq * 2.01 * t);
-            b.putShort((short) Math.round(s * env * 0.7 * Short.MAX_VALUE));
+            double t = (double) i / RATE, fade = Math.min(1, (seconds - t) / 0.004);   // no click at the very end
+            b.putShort((short) Math.round(Math.max(-1, Math.min(1, synth.at(t) * fade * 0.8)) * Short.MAX_VALUE));
         }
         try (FileOutputStream out = new FileOutputStream(f)) {
             out.write(b.array());
