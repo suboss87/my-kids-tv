@@ -2,67 +2,99 @@
 
 **A calm, ad-free TV home screen for children, with only the films and shows worth their time.**
 
-My Kids TV replaces your Google TV or Android TV home screen with one made for kids. Instead of ads and whatever is
-trending, it shows a rotating handful of titles chosen for your child's age: films and series that are fun *and*
-leave something behind (curiosity, kindness, courage, science, nature, history, other cultures).
+My Kids TV replaces your TV's home screen with one made for kids. Instead of ads, autoplay and whatever is trending,
+your child sees three titles at a time, chosen for their age from a catalog where every title earned its place:
+fun to watch, and leaving something behind (curiosity, kindness, courage, science, nature, history, other cultures).
 
-It is a fork of [Free My TV](https://github.com/simbasjungles/free-my-tv) (MIT), rebuilt around children.
+Runs on Google TV and Android TV, and as an app on LG (webOS) and Samsung (Tizen) TVs. A fork of
+[Free My TV](https://github.com/simbasjungles/free-my-tv) (MIT), rebuilt around children and their parents.
 
-## For parents
+## What your child sees
 
-- **Picks for your child's age.** Ages 4-6, 7-10 or 11-13. Every title in the catalog earned its place (see below).
-- **Only what you can watch.** A title appears only when it's on a streaming app you have (Netflix, Prime Video,
-  JioHotstar, ...), and opens straight in that app.
-- **Always fresh.** Three picks at a time, new ones every hour, and nothing shown recently comes back for days.
-- **No ads, no tracking.** Nothing about your child leaves the TV. No account, no analytics.
-- **Fewer distractions.** Promo apps are turned off, and on supported remotes (Haier so far) the YouTube button can be
-  made to do nothing.
-- **Safe.** No root. Nothing is uninstalled. One button brings the TV's original home screen back.
+- **A greeting** with their name: *Good morning, Maya*.
+- **Three picks**, changing every hour, from the catalog for their age: **4-6**, **7-10** or **11-13**.
+- **Why each one is worth it**: a small badge on the card, *Must-watch*, *Learn something* or *Kids love it*.
+- **Only what you can play**: a title appears only when it's on a streaming app you have (Netflix, Prime Video,
+  JioHotstar, Disney+, ...), and opens straight in that app.
+- **Nothing on repeat**: what was shown lately stays away for days.
+- **Your apps on a glass shelf**, big soft cards, a gentle bounce when something is picked, light by day and dark at
+  night.
 
-## How the catalog is chosen
+## What you control
 
-For each age band:
+- **A parent PIN** guards the settings and the way back to the TV's own home screen.
+- **The age band**, switchable any time in the settings.
+- **The YouTube button** on the remote can be made to do nothing (Haier, TCL, Hisense and Sony remotes); the YouTube
+  app itself stays.
+- **Apps to hide**: turned off when the TV switches, never uninstalled.
+- **No ads, no tracking, no account.** Nothing about your child leaves the TV. The app only asks TMDB for titles and
+  pictures and Open-Meteo for the weather.
+- **One button back**: *Original* restores the TV's own home screen and everything that was turned off. No root.
 
-1. **Candidates** from research into best-of lists (Common Sense Media, BFI, national children's film awards, Indian
-   children's cinema), wide sweeps of [TMDB](https://www.themoviedb.org), and TMDB's recommendations for every title kept.
-2. **Hard rules in code:** the official age ratings (US and India), enough votes, a good average.
-3. **Jev**, [TypeSafe](https://typesafe.ai)'s System One model, judges every title for that age: is it right for the
-   age (not babyish, not too mature), how much lasting value it has, is it a must-watch, and will a child that age
-   actually enjoy it.
-4. **A person reviews** everything borderline before it ships.
+## The catalogs
 
-The 7-10 catalog: 344 titles (241 films, 103 series) kept from 1,647 candidates, from *My Neighbor Totoro*, *Coco* and
-*The Iron Giant* to *Planet Earth*, *Avatar: The Last Airbender*, *Taare Zameen Par* and Satyajit Ray's *Sonar Kella*.
-The pipeline is in [`catalog/`](catalog/pipeline.py); the 4-6 and 11-13 catalogs are being built the same way.
+| Age | Titles | For example |
+|---|---|---|
+| 4-6 | 87 | *My Neighbor Totoro*, *Bluey*, *Paddington 2*, *The Magic School Bus*, *Finding Nemo* |
+| 7-10 | 344 | *Coco*, *The Iron Giant*, *Planet Earth*, *Avatar: The Last Airbender*, *Taare Zameen Par*, *Sonar Kella* |
+| 11-13 | 461 | *Princess Mononoke*, *Interstellar*, *To Kill a Mockingbird*, *The Man Who Knew Infinity*, *Dangal* |
+
+How a title gets in:
+
+1. **Candidates**: research into best-of lists (Common Sense Media, BFI, national children's film awards, Indian
+   children's cinema), wide sweeps of [TMDB](https://www.themoviedb.org), and TMDB's recommendations for every title
+   kept. About 4,800 titles across the three ages.
+2. **Hard rules in code**: official age ratings (US and India), enough votes, a good average.
+3. **Jev**, [TypeSafe](https://typesafe.ai)'s System One model, judges every title for that age: right for the age
+   (not babyish, not too mature), lasting value, must-watch, and whether a child that age will actually enjoy it.
+4. **A person reviews** every borderline title, and anything that slipped through, before it ships.
+
+Everything is in [`catalog/`](catalog/): the pipeline, each band's candidates, Jev's judgments and the review
+decisions (`catalog/overrides/`), so every choice can be read, questioned and changed.
 
 ## Set it up
 
-About twenty minutes. You need a Google TV or Android TV (Android 8 or newer) and a computer on the same Wi-Fi.
+About twenty minutes, guided by an AI assistant. You need the TV and a computer on the same Wi-Fi.
 
 1. **On the TV**, turn on developer mode: Settings, System, About, press *Build* 7 times. Then Developer options,
-   **USB debugging** on. Note the TV's IP address (Settings, Network & Internet).
+   **USB debugging** on. Note the TV's IP address (Settings, Network & Internet). On LG or Samsung, the assistant
+   walks you through their developer mode instead.
 2. **On your computer**, open an AI coding assistant ([Claude Code](https://claude.com/claude-code), Codex, ...) in
    this folder and say:
    > Set up My Kids TV on our TV at 192.168.1.50 for my 8-year-old.
 
-   It asks you a few questions (your child's age, your country and city, the streaming apps you pay for, whether to
-   block the YouTube button), installs what it needs, builds the app and puts it on your TV. It asks before anything
-   important.
+   It asks a few questions (your child's age and name, your city, the streaming apps you pay for, a parent PIN,
+   whether to block the YouTube button, apps to hide), then installs what it needs, builds the app and puts it on your
+   TV, asking before anything important.
 3. **On the TV**, open *My Kids TV*, *Home Screen*, *My Kids TV*, and allow USB debugging when asked.
 
 You'll need a free [TMDB API key](https://www.themoviedb.org/settings/api) for the picks; the assistant tells you
-where to paste it.
+where to paste it, and it never leaves your computer and TV.
+
+## Make your own catalog
+
+The catalogs ship with the app. To refresh one, or build one for another age or culture, you need a TMDB key and a
+TypeSafe key:
+
+```bash
+TYPESAFE_API_KEY=... python3 catalog/pipeline.py --band 7-10 all
+```
+
+Then review `catalog/work/<band>/review.json`, record decisions in `catalog/overrides/<band>.json`, and run
+`python3 catalog/pipeline.py --band 7-10 select && python3 catalog/pipeline.py --band 7-10 emit`. Age bands and their
+rules live in [`catalog/bands.py`](catalog/bands.py).
 
 ## Status
 
-Working and in daily use on a Haier MatrixTV BE (Google TV 14) with the 7-10 catalog. Next: the 4-6 and 11-13
-catalogs, a parent PIN for settings and a new glass design. The LG (webOS) and Samsung (Tizen) versions use the same
-kids catalogs but are not yet tested on a TV.
+Built and checked (`tools/check.sh`: the Android build, all 25 translations, the LG and Samsung packages). The kids
+picks were proven on a Haier MatrixTV BE (Google TV 14) while this project grew out of Free My TV; this version, with the
+new design, the parent PIN and the LG and Samsung apps, still needs its own run on real TVs. Issues and pull requests
+are welcome.
 
 ## Credits
 
-- [Free My TV](https://github.com/simbasjungles/free-my-tv) by its contributors: the home screen, the switch and most
-  of the code (MIT).
+- [Free My TV](https://github.com/simbasjungles/free-my-tv) and its contributors: the home screen, the switch, the
+  LG and Samsung apps and most of the code (MIT).
 - Titles, images and availability: [TMDB](https://www.themoviedb.org). *This product uses the TMDB API but is not
   endorsed or certified by TMDB.*
 - Title judgments: Jev by [TypeSafe](https://typesafe.ai).

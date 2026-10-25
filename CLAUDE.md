@@ -15,15 +15,17 @@ Ask these in one or two short batches, in plain words, with the choices shown. E
 | Ask | Why | Goes to |
 |---|---|---|
 | How old is your child? (several children: the youngest) Show the bands: **4-6**, **7-10**, **11-13**. | Picks the vetted catalog | `age_band` |
+| Your child's first name? (optional) | The home screen greets them: "Good morning, Maya" | `child_name` |
 | Which country and city do you live in? | Which titles are on which app in their country; weather and the evening dark theme | `tmdb_region`, `latitude`, `longitude`, `city` |
 | Which streaming apps do you pay for? (Netflix, Prime Video, JioHotstar, Disney+, ...) | Apps on the TV they don't subscribe to are left out of the picks | `hide_services` |
 | Should the remote's **YouTube button** do nothing? | Children can't jump into YouTube with one press (the YouTube app stays) | `block_youtube_button` |
-| A 4-digit **parent PIN** for the settings (or skip: the TV asks for one the first time the settings open) | Children can't change the settings or switch back to the TV's own home screen | `parent_pin` |
+| A 4-digit **parent PIN** for the settings (recommended: otherwise whoever opens the settings first creates it) | Children can't change the settings or switch back to the TV's own home screen | `parent_pin` |
 | Are there apps on the TV your child shouldn't see at all? | Turned off (never uninstalled) when the TV switches to My Kids TV | ask, then see step 4 |
 | Your TV's brand and model, and its IP address (Settings, Network & Internet) | Install | - |
 
 Geocode the city with `https://geocoding-api.open-meteo.com/v1/search?name=<city>&count=5` and confirm the match with
 them. Temperature: `C` outside the US unless they say otherwise. Leave `show_crypto=false` for a family TV.
+A `parent_pin` is built into the app file: tell them to keep `MyKidsTV.apk` to themselves.
 
 **The TMDB key is theirs and secret.** Ask them to create a free one (themoviedb.org, Settings, API) and paste it after
 `tmdb_key=` in `config.properties` themselves. Never print it, never commit it. If they paste it in the chat anyway,
