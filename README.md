@@ -56,8 +56,8 @@ where to paste it.
 ## Status
 
 Working and in daily use on a Haier MatrixTV BE (Google TV 14) with the 7-10 catalog. Next: the 4-6 and 11-13
-catalogs, a parent PIN for settings, a new glass design, and the LG (webOS) and Samsung (Tizen) versions, which still
-show Free My TV's general picks.
+catalogs, a parent PIN for settings and a new glass design. The LG (webOS) and Samsung (Tizen) versions use the same
+kids catalogs but are not yet tested on a TV.
 
 ## Credits
 

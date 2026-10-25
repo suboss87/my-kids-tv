@@ -1,7 +1,7 @@
 /*
  * What the home screen shows, kept in localStorage so it opens with numbers:
- *  - the picks: what's trending this week and recent releases, only from the streaming apps on this TV (TMDB, with
- *    the person's own free key from config.properties), three per hour;
+ *  - the picks: titles from the age band's vetted kids catalog (catalog.js, from app/assets/catalog), only those on
+ *    the streaming apps on this TV (TMDB, with the person's own free key from config.properties), three per hour;
  *  - weather, sunrise and sunset (Open-Meteo, every 30 min) and optional crypto prices (Binance, every 5 min).
  * Settings changed on the TV (Prefs) win over config.properties, as on Android. Built without a city (--generic), the
  * TV's time zone gives the city, and its country the currency and the region (zones.js).
@@ -36,7 +36,7 @@ var Place = (function () {
 
 var Prefs = (function () {
   'use strict';
-  var KEY = 'fmtv.prefs';
+  var KEY = 'mykidstv.prefs';
   var v = {};
   try { v = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
@@ -66,8 +66,8 @@ var Prefs = (function () {
 var Data = (function () {
   'use strict';
 
-  function store(key, value) { try { localStorage.setItem('fmtv.' + key, JSON.stringify(value)); } catch (e) {} }
-  function stored(key) { try { return JSON.parse(localStorage.getItem('fmtv.' + key)); } catch (e) { return null; } }
+  function store(key, value) { try { localStorage.setItem('mykidstv.' + key, JSON.stringify(value)); } catch (e) {} }
+  function stored(key) { try { return JSON.parse(localStorage.getItem('mykidstv.' + key)); } catch (e) { return null; } }
 
   /** GET a JSON document; done(error, json). */
   function get(url, headers, done) {
@@ -79,13 +79,21 @@ var Data = (function () {
     x.onreadystatechange = function () {
       if (x.readyState !== 4 || over) return;
       over = true;
+      if (x.status === 0) { done(offline()); return; }   // reset or refused before an answer
       if (x.status !== 200) { done(new Error(x.status === 401 ? 'TMDB rejected the key' : 'HTTP ' + x.status)); return; }
       var json;
       try { json = JSON.parse(x.responseText); } catch (e) { done(e); return; }
       done(null, json);
     };
-    x.ontimeout = x.onerror = function () { if (!over) { over = true; done(new Error('no connection')); } };
+    x.ontimeout = x.onerror = function () { if (!over) { over = true; done(offline()); } };
     x.send();
+  }
+
+  /** A network error (no answer at all), which tmdb() retries. */
+  function offline() {
+    var e = new Error('no connection');
+    e.network = true;
+    return e;
   }
 
   var listeners = [];
@@ -269,10 +277,19 @@ var Data = (function () {
     return null;
   }
 
+  /** Some ISPs (India's among them) reset about half of the connections to TMDB: network errors are retried. */
+  var TRIES = 6;
+
   function tmdb(path, done) {
     var bearer = KEY.indexOf('eyJ') === 0;   // read access token (v4) or API key (v3)
     var url = API + path + (bearer ? '' : (path.indexOf('?') >= 0 ? '&' : '?') + 'api_key=' + encodeURIComponent(KEY));
-    get(url, bearer ? {Authorization: 'Bearer ' + KEY, Accept: 'application/json'} : {Accept: 'application/json'}, done);
+    var headers = bearer ? {Authorization: 'Bearer ' + KEY, Accept: 'application/json'} : {Accept: 'application/json'};
+    (function attempt(n) {
+      get(url, headers, function (err, json) {
+        if (err && err.network && n < TRIES) { setTimeout(function () { attempt(n + 1); }, 300 * n); return; }
+        done(err, json);
+      });
+    })(1);
   }
 
   var cache = stored('recs') || {};
@@ -287,7 +304,8 @@ var Data = (function () {
   }
 
   function sourceStamp() {
-    var s = KEY.length + ':' + KEY.slice(-6) + ':' + REGION + (CONFIG.hideAnimation ? ':no-animation' : '');
+    var s = KEY.length + ':' + KEY.slice(-6) + ':' + REGION + ':' + BAND + ':' + CATALOG.length
+        + (CONFIG.hideAnimation ? ':no-animation' : '');
     for (var i = 0; i < SERVICES.length; i++) s += appFor(SERVICES[i][1]) ? '1' : '0';
     return s;
   }
@@ -320,12 +338,6 @@ var Data = (function () {
     if (I18N.lang === 'es') return /-ES\b/i.test(navigator.language || '') ? 'es-ES' : 'es-MX';
     if (I18N.lang === 'de') return 'de-DE';   // TMDB's de-AT and de-CH have few translations of their own
     return I18N.locale();
-  }
-
-  function day(offset) {
-    var d = new Date(Date.now() + offset * 86400000);
-    function two(n) { return (n < 10 ? '0' : '') + n; }
-    return d.getFullYear() + '-' + two(d.getMonth() + 1) + '-' + two(d.getDate());
   }
 
   /** TMDB's genres that it leaves in English in some languages. */
@@ -361,6 +373,9 @@ var Data = (function () {
       if (err) { done(err); return; }
       var best = bestBackdrop(o.images);
       if (best) p.backdrop = best;
+      else if (!p.backdrop && o.backdrop_path) p.backdrop = o.backdrop_path;
+      p.genreIds = [];
+      for (var g = 0; o.genres && g < o.genres.length; g++) p.genreIds.push(o.genres[g].id);
       var parts = [];
       if (p.kind === 'tv') parts.push(tr('Series'));
       if (o.genres && o.genres.length) {
@@ -434,6 +449,100 @@ var Data = (function () {
     })();
   }
 
+  // MARK: - Kids catalog
+
+  /**
+   * The child's age band (age_band in config.properties) and its vetted titles (catalog.js, from
+   * app/assets/catalog/<band>.json: TMDB age ratings, Jev's judgments and a person's review). A band without a catalog
+   * yet has none: the age-restricted fallback below fills the list then.
+   */
+  var BAND = /^(4-6|7-10|11-13)$/.test(CONFIG.ageBand || '') ? CONFIG.ageBand : '7-10';
+  var CATALOG = (window.CATALOG && window.CATALOG.band === BAND && window.CATALOG.titles) || [];
+  var MOVIES = 16, SHOWS = 8, ENOUGH = 12, HISTORY_MAX = 150;
+
+  /** The titles shown lately ("movie:123"), oldest first, so a new list starts with others. */
+  function history() {
+    var h = stored('history');
+    return h && h.length !== undefined ? h : [];
+  }
+
+  /** Remembers the newest HISTORY_MAX titles shown, the oldest dropped first. */
+  function remember(list) {
+    var h = history(), out = [], seen = {}, i;
+    for (i = 0; i < list.length; i++) seen[keyOf(list[i])] = true;
+    for (i = 0; i < h.length; i++) if (!seen[h[i]]) out.push(h[i]);
+    for (i = 0; i < list.length; i++) out.push(keyOf(list[i]));
+    store('history', out.slice(Math.max(0, out.length - HISTORY_MAX)));
+  }
+
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1)), t = a[i];
+      a[i] = a[j];
+      a[j] = t;
+    }
+    return a;
+  }
+
+  function hasGenre(ids, genre) {
+    for (var i = 0; ids && i < ids.length; i++) if (ids[i] === genre) return true;
+    return false;
+  }
+
+  /**
+   * Up to `max` catalog titles of this kind that are on one of the TV's apps (the details say where), the ones not
+   * shown lately first, in a new order each time. Looks at most max * 6 of them up.
+   */
+  function handPicked(kind, max, shown, done) {
+    var fresh = [], old = [], out = [];
+    for (var i = 0; i < CATALOG.length; i++) {
+      var t = CATALOG[i];
+      if (t.kind !== kind) continue;
+      (shown[kind + ':' + t.id] ? old : fresh).push(t);
+    }
+    shuffle(fresh);
+    // All of them seen lately: the others come after, so the list still fills.
+    var order = fresh.length < max ? fresh.concat(shuffle(old)) : fresh;
+    order = order.slice(0, max * 6);
+    var i2 = 0;
+    (function next() {
+      if (out.length >= max || i2 >= order.length) { done(out); return; }
+      var t = order[i2++];
+      var p = {id: t.id, kind: kind, title: t.title, backdrop: null, meta: '', app: null, detailed: false};
+      details(p, function (err) {
+        if (!err && p.app && p.backdrop && !(CONFIG.hideAnimation && hasGenre(p.genreIds, ANIMATION))) out.push(p);
+        next();
+      });
+    })();
+  }
+
+  /**
+   * Only when too few catalog titles are on the TV's apps: highly rated titles for the age band on those apps (US
+   * certifications; TMDB's Kids genre for shows), never the general trending lists. done(movies, shows), shuffled.
+   */
+  function agePool(common, done) {
+    // One without_genres each: the animation one (hide_animation) joins the age band's.
+    var noAnimation = CONFIG.hideAnimation ? ',' + ANIMATION : '';
+    var top = common.replace('&sort_by=popularity.desc', '&sort_by=vote_average.desc').replace('&without_genres=' + ANIMATION, '');
+    var movieAge = BAND === '4-6' ? '&with_genres=16%7C10751&certification.lte=G'
+        : BAND === '11-13' ? '&certification.lte=PG-13' : '&with_genres=16&certification.lte=PG';
+    var showGenres = BAND === '11-13' ? '10759%7C10765%7C99' : '10762';
+    var movies = [], shows = [];
+    tmdb('/discover/movie?vote_count.gte=300&vote_average.gte=7&without_genres=27,53,80,10749' + noAnimation
+        + '&certification_country=US' + movieAge + '&page=' + (1 + Math.floor(Math.random() * 4)) + top, function (e1, r1) {
+      for (var j = 0; !e1 && r1.results && j < r1.results.length; j++) addPick(movies, r1.results[j], 'movie');
+      tmdb('/discover/tv?vote_count.gte=30&vote_average.gte=7&with_genres=' + showGenres + '&without_genres=80,10768' + noAnimation
+          + '&page=' + (1 + Math.floor(Math.random() * 2)) + top, function (e2, r2) {
+        for (var k = 0; !e2 && r2.results && k < r2.results.length; k++) addPick(shows, r2.results[k], 'tv');
+        done(shuffle(movies), shuffle(shows));
+      });
+    });
+  }
+
+  function unseen(list, shown) {
+    return list.filter(function (p) { return !shown[keyOf(p)]; });
+  }
+
   function fetchList(done) {
     tmdb('/watch/providers/movie?language=' + lang() + '&watch_region=' + REGION, function (err, res) {
       if (err) { done(err); return; }
@@ -446,27 +555,23 @@ var Data = (function () {
       var common = '&language=' + lang() + '&watch_region=' + REGION + '&with_watch_monetization_types=flatrate&include_adult=false'
           + '&sort_by=popularity.desc&with_watch_providers=' + encodeURIComponent(ids.join('|'))
           + (CONFIG.hideAnimation ? '&without_genres=' + ANIMATION : '');
-      var hot = {movie: [], tv: []}, fresh = {movie: [], tv: []};
-      each(['movie', 'tv'], function (kind, next) {
-        tmdb('/trending/' + kind + '/week?language=' + lang(), function (e, r) {
-          var candidates = [];
-          for (var j = 0; !e && j < r.results.length && j < 16; j++) addPick(candidates, r.results[j], kind);
-          // Trending is only kept when it's on one of the TV's apps: the details say where.
-          each(candidates, function (p, n) {
-            details(p, function (de) { if (!de && p.app) hot[kind].push(p); n(); });
-          }, next);
-        });
-      }, function () {
-        tmdb('/discover/movie?vote_count.gte=30&primary_release_date.gte=' + day(-365) + '&primary_release_date.lte=' + day(0) + common, function (e1, r1) {
-          for (var j = 0; !e1 && j < r1.results.length; j++) addPick(fresh.movie, r1.results[j], 'movie');
-          tmdb('/discover/tv?vote_count.gte=20&air_date.gte=' + day(-90) + '&air_date.lte=' + day(0) + common, function (e2, r2) {
-            for (var k = 0; !e2 && k < r2.results.length; k++) addPick(fresh.tv, r2.results[k], 'tv');
-            var list = [], seen = {};
-            alternate(list, seen, hot.movie, hot.tv, 24);
-            alternate(list, seen, fresh.movie, fresh.tv, 24);
+      var h = history(), shown = {};
+      for (var k = 0; k < h.length; k++) shown[h[k]] = true;
+      handPicked('movie', MOVIES, shown, function (movies) {
+        handPicked('tv', SHOWS, shown, function (shows) {
+          var list = [], seen = {};
+          alternate(list, seen, movies, shows, MOVIES + SHOWS);
+          function finish() {
             if (!list.length) { done(new Error('TMDB returned no recommendations')); return; }
+            remember(list);
             picks = list;
             done(null);
+          }
+          if (list.length >= ENOUGH) { finish(); return; }
+          agePool(common, function (poolMovies, poolShows) {
+            alternate(list, seen, unseen(poolMovies, shown), unseen(poolShows, shown), ENOUGH);
+            alternate(list, seen, poolMovies, poolShows, ENOUGH);
+            finish();
           });
         });
       });

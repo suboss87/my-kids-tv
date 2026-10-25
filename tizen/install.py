@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Installs Free My TV on a Samsung TV in Developer Mode, over your Wi-Fi, without Samsung's sdb.
+"""Installs My Kids TV on a Samsung TV in Developer Mode, over your Wi-Fi, without Samsung's sdb.
 
     python3 tizen/install.py 192.168.1.50              # install or update, then open it
     python3 tizen/install.py 192.168.1.50 --uninstall  # remove it
@@ -22,10 +22,10 @@ import time
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WGT = os.path.join(ROOT, 'FreeMyTV-tizen.wgt')
+WGT = os.path.join(ROOT, 'MyKidsTV-tizen.wgt')
 PORT = 26101
 MAX_DATA = 4096   # what this side announces; sdbd keeps each packet within both sides' maximum
-ON_TV = 'Apps, Settings, Free My TV, Delete'   # removing it on the TV itself
+ON_TV = 'Apps, Settings, My Kids TV, Delete'   # removing it on the TV itself
 
 
 class Sdb:
@@ -153,7 +153,7 @@ def main():
             sys.exit('Build and sign it first: python3 tizen/build.py --sign <profile>')
         with zipfile.ZipFile(WGT) as z:
             if 'author-signature.xml' not in z.namelist():
-                sys.exit('FreeMyTV-tizen.wgt isn\'t signed, and the TV only installs signed apps: '
+                sys.exit('MyKidsTV-tizen.wgt isn\'t signed, and the TV only installs signed apps: '
                          'python3 tizen/build.py --sign <profile>')
             manifest = z.read('config.xml').decode('utf-8')
     tag = re.search(r'<tizen:application[^>]*>', manifest).group(0)
@@ -177,7 +177,7 @@ def main():
         print('Removed.')
         return
 
-    remote = caps.get('sdk_toolpath', '/home/owner/share/tmp/sdk_tools').rstrip('/') + '/FreeMyTV-tizen.wgt'
+    remote = caps.get('sdk_toolpath', '/home/owner/share/tmp/sdk_tools').rstrip('/') + '/MyKidsTV-tizen.wgt'
     with open(WGT, 'rb') as f:
         data = f.read()
     print('Copying the app to the TV ...')
@@ -187,13 +187,13 @@ def main():
     if not re.search(r'install completed', out):
         hint = ''
         if 'different certificate' in out:
-            hint = ('\nThe Free My TV on the TV was signed with another certificate, and the TV only updates it with the '
+            hint = ('\nThe My Kids TV on the TV was signed with another certificate, and the TV only updates it with the '
                     'same one. Remove it on the TV (' + ON_TV + '), then run this again.')
         sys.exit('The TV didn\'t finish installing. It said:\n' + out.strip() + hint)
     sdb.shell('0 was_execute ' + app_id, r'launched|spend time', 20)
     print('Installed and open on the TV.')
     print('Tip: turn on Autorun Last App in the TV\'s settings (General, Smart Features; where it is changes by year) '
-          'and the TV turns on into Free My TV.')
+          'and the TV turns on into My Kids TV.')
 
 
 if __name__ == '__main__':

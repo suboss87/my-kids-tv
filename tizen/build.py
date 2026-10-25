@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Builds Free My TV for Samsung TVs (Tizen): FreeMyTV-tizen.wgt, the app package the TV installs.
+"""Builds My Kids TV for Samsung TVs (Tizen): MyKidsTV-tizen.wgt, the app package the TV installs.
 
-    python3 tizen/build.py                 # → FreeMyTV-tizen.wgt, not signed yet
+    python3 tizen/build.py                 # → MyKidsTV-tizen.wgt, not signed yet
     python3 tizen/build.py --sign PROFILE  # signed with a certificate profile of Samsung's Tizen tools
     python3 tizen/build.py --preview       # also leaves the files in out/tizen/ to open index.html in a browser
     python3 tizen/build.py --config other.properties
@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.join(ROOT, 'tools'))
 import webapp  # noqa: E402
 
 OUT = os.path.join(ROOT, 'out', 'tizen')
-WGT = os.path.join(ROOT, 'FreeMyTV-tizen.wgt')
+WGT = os.path.join(ROOT, 'MyKidsTV-tizen.wgt')
 
 
 def tizen_cli():

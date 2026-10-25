@@ -301,7 +301,9 @@ entries; its system pieces are in `PROTECTED`. USB debugging opens ADB on 5555 t
   `formatDate('format|h:mm a', at)` (the catalogue's SimpleDateFormat pattern, written by `web/strings.js`), and
   `tools/translate.py` reads those calls too. Built without a city (`--generic`), `web/zones.js`
   (`tools/make_zones.py`, from the tz database) turns the TV's time zone into the city, the currency and the region.
-  `tools/webapp.py` is what both builds share. Preview: `python3 webos/build.py --preview` (or `tizen/build.py`), then
+  `tools/webapp.py` is what both builds share; it packs the `age_band` catalog (`app/assets/catalog/<band>.json`) as
+  `catalog.js`, which `web/data.js` picks from as `Recs` does (a band without a catalog falls back to TMDB's
+  age-restricted discover). Preview: `python3 webos/build.py --preview` (or `tizen/build.py`), then
   open `out/webos/index.html` in a browser (a stand-in lists sample apps).
 
 ## Always
