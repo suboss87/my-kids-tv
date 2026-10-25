@@ -1,0 +1,462 @@
+band,kind,tmdb_id,title,year,original_language,genres,age_rating,tmdb_url,badge,age_fit,value,must_watch,fun,score
+11-13,series,246,Avatar: The Last Airbender,2005,en,Animation;Action & Adventure;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/246,must-watch,0.99,2.98,0.94,2.98,0.977
+11-13,movie,129,Spirited Away,2001,ja,Animation;Family;Fantasy,PG,https://www.themoviedb.org/movie/129,must-watch,0.99,2.97,0.94,2.81,0.962
+11-13,movie,354912,Coco,2017,en,Family;Animation;Music;Adventure,PG,https://www.themoviedb.org/movie/354912,must-watch,0.99,2.98,0.89,2.88,0.954
+11-13,movie,10191,How to Train Your Dragon,2010,en,Fantasy;Adventure;Animation;Family,PG,https://www.themoviedb.org/movie/10191,must-watch,0.99,2.77,0.86,2.95,0.919
+11-13,movie,671,Harry Potter and the Philosopher's Stone,2001,en,Adventure;Fantasy,PG,https://www.themoviedb.org/movie/671,must-watch,1.0,2.65,0.91,2.97,0.918
+11-13,movie,10386,The Iron Giant,1999,en,Animation;Drama;Family;Science Fiction;Adventure,PG,https://www.themoviedb.org/movie/10386,must-watch,0.97,2.96,0.84,2.67,0.918
+11-13,series,1044,Planet Earth,2006,en,Documentary,TV-PG,https://www.themoviedb.org/tv/1044,must-watch,1.0,3.0,0.91,2.31,0.916
+11-13,series,68595,Planet Earth II,2016,en,Documentary;Family,TV-G,https://www.themoviedb.org/tv/68595,must-watch,1.0,2.99,0.88,2.4,0.913
+11-13,movie,81,Warriors of the Wind,1984,ja,Adventure;Animation;Fantasy,PG,https://www.themoviedb.org/movie/81,must-watch,0.96,2.98,0.86,2.49,0.913
+11-13,movie,10681,WALL·E,2008,en,Animation;Family;Science Fiction,G,https://www.themoviedb.org/movie/10681,must-watch,0.97,2.82,0.9,2.55,0.906
+11-13,series,40075,Gravity Falls,2012,en,Action & Adventure;Animation;Comedy;Family;Mystery;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/40075,must-watch,0.97,2.71,0.82,2.96,0.899
+11-13,movie,128,Princess Mononoke,1997,ja,Adventure;Fantasy;Animation,PG-13,https://www.themoviedb.org/movie/128,must-watch,0.45,2.98,0.85,2.34,0.897
+11-13,series,74313,Blue Planet II,2017,en,Documentary;Family,TV-G,https://www.themoviedb.org/tv/74313,must-watch,1.0,2.99,0.86,2.27,0.896
+11-13,movie,8587,The Lion King,1994,en,Animation;Family;Drama,G,https://www.themoviedb.org/movie/8587,must-watch,0.78,2.81,0.91,2.35,0.89
+11-13,movie,150540,Inside Out,2015,en,Animation;Family;Adventure;Drama;Comedy,PG,https://www.themoviedb.org/movie/150540,must-watch,0.98,2.9,0.81,2.51,0.887
+11-13,movie,313297,Kubo and the Two Strings,2016,en,Animation;Adventure;Family,PG,https://www.themoviedb.org/movie/313297,must-watch,0.96,2.97,0.76,2.56,0.887
+11-13,movie,10674,Mulan,1998,en,Animation;Family;Adventure,G,https://www.themoviedb.org/movie/10674,must-watch,0.97,2.9,0.77,2.64,0.886
+11-13,movie,11,Star Wars,1977,en,Adventure;Action;Science Fiction,PG,https://www.themoviedb.org/movie/11,must-watch,0.99,2.45,0.93,2.84,0.883
+11-13,movie,324857,Spider-Man: Into the Spider-Verse,2018,en,Animation;Action;Adventure;Science Fiction,PG,https://www.themoviedb.org/movie/324857,must-watch,1.0,2.39,0.91,2.98,0.88
+11-13,movie,4935,Howl's Moving Castle,2004,ja,Fantasy;Animation;Adventure,PG,https://www.themoviedb.org/movie/4935,must-watch,0.98,2.54,0.88,2.7,0.87
+11-13,movie,120,The Lord of the Rings: The Fellowship of the Ring,2001,en,Adventure;Fantasy;Action,PG-13,https://www.themoviedb.org/movie/120,must-watch,0.57,2.88,0.86,2.16,0.87
+11-13,series,8724,Frozen Planet,2011,en,Documentary,TV-PG,https://www.themoviedb.org/tv/8724,must-watch,1.0,2.99,0.81,2.11,0.867
+11-13,series,16946,Life,2009,en,Documentary,TV-G,https://www.themoviedb.org/tv/16946,must-watch,0.98,2.99,0.76,2.27,0.866
+11-13,movie,277834,Moana,2016,en,Adventure;Comedy;Family;Animation,PG,https://www.themoviedb.org/movie/277834,,0.94,2.8,0.73,2.72,0.866
+11-13,movie,8392,My Neighbor Totoro,1988,ja,Fantasy;Animation;Family,G,https://www.themoviedb.org/movie/8392,must-watch,0.73,2.79,0.91,2.08,0.865
+11-13,movie,10515,Castle in the Sky,1986,ja,Adventure;Fantasy;Animation;Action;Family,PG,https://www.themoviedb.org/movie/10515,must-watch,0.99,2.47,0.87,2.76,0.862
+11-13,movie,411,"The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",2005,en,Adventure;Family;Fantasy,PG,https://www.themoviedb.org/movie/411,must-watch,0.98,2.72,0.8,2.57,0.862
+11-13,movie,14160,Up,2009,en,Animation;Comedy;Family;Adventure,PG,https://www.themoviedb.org/movie/14160,must-watch,0.96,2.65,0.86,2.48,0.862
+11-13,movie,284054,Black Panther,2018,en,Action;Adventure;Science Fiction,PG-13,https://www.themoviedb.org/movie/284054,must-watch,0.75,2.71,0.78,2.62,0.859
+11-13,movie,441130,Wolfwalkers,2020,en,Animation;Family;Adventure;Fantasy,PG,https://www.themoviedb.org/movie/441130,,0.99,2.9,0.67,2.67,0.859
+11-13,movie,12445,Harry Potter and the Deathly Hallows: Part 2,2011,en,Adventure;Fantasy,PG-13,https://www.themoviedb.org/movie/12445,must-watch,0.66,2.48,0.82,2.88,0.858
+11-13,series,116156,Planet Earth III,2023,en,Documentary;Family,TV-PG,https://www.themoviedb.org/tv/116156,learn-something,0.99,2.98,0.74,2.27,0.858
+11-13,series,95171,Prehistoric Planet,2022,en,Documentary,TV-PG,https://www.themoviedb.org/tv/95171,learn-something,0.99,2.86,0.69,2.64,0.856
+11-13,movie,555604,Guillermo del Toro's Pinocchio,2022,en,Animation;Fantasy;Adventure,PG,https://www.themoviedb.org/movie/555604,must-watch,0.81,2.94,0.75,2.27,0.855
+11-13,movie,1891,The Empire Strikes Back,1980,en,Adventure;Action;Science Fiction,PG,https://www.themoviedb.org/movie/1891,must-watch,0.97,2.31,0.92,2.79,0.855
+11-13,movie,630,The Wizard of Oz,1939,en,Adventure;Fantasy;Family,G,https://www.themoviedb.org/movie/630,must-watch,0.85,2.62,0.92,2.22,0.854
+11-13,movie,569094,Spider-Man: Across the Spider-Verse,2023,en,Animation;Action;Adventure;Science Fiction,PG,https://www.themoviedb.org/movie/569094,must-watch,0.99,2.3,0.86,2.97,0.851
+11-13,series,61175,Steven Universe,2013,en,Animation;Action & Adventure;Comedy;Sci-Fi & Fantasy;Family,TV-PG,https://www.themoviedb.org/tv/61175,,0.96,2.76,0.71,2.68,0.85
+11-13,series,13579,The Blue Planet,2001,en,Documentary,U,https://www.themoviedb.org/tv/13579,must-watch,1.0,2.98,0.79,1.98,0.849
+11-13,movie,673,Harry Potter and the Prisoner of Azkaban,2004,en,Adventure;Fantasy,PG,https://www.themoviedb.org/movie/673,must-watch,0.96,2.35,0.84,2.92,0.848
+11-13,series,83880,Our Planet,2019,en,Documentary;Family,TV-PG,https://www.themoviedb.org/tv/83880,must-watch,1.0,2.98,0.75,2.1,0.847
+11-13,series,15117,Life on Earth,1979,en,Documentary,,https://www.themoviedb.org/tv/15117,must-watch,0.99,2.99,0.82,1.74,0.84
+11-13,movie,110416,Song of the Sea,2014,en,Family;Animation;Fantasy,PG,https://www.themoviedb.org/movie/110416,,0.94,2.91,0.68,2.39,0.84
+11-13,movie,15121,The Sound of Music,1965,en,Drama;Family;Music;Romance,G,https://www.themoviedb.org/movie/15121,must-watch,0.95,2.91,0.81,1.93,0.84
+11-13,movie,105,Back to the Future,1985,en,Adventure;Comedy;Science Fiction,PG,https://www.themoviedb.org/movie/105,must-watch,0.99,2.18,0.91,2.86,0.838
+11-13,series,3557,Walking with Dinosaurs,1999,en,Documentary;Animation,NR,https://www.themoviedb.org/tv/3557,learn-something,0.98,2.89,0.68,2.38,0.836
+11-13,movie,10020,Beauty and the Beast,1991,en,Romance;Family;Animation;Fantasy,G,https://www.themoviedb.org/movie/10020,must-watch,0.91,2.41,0.89,2.47,0.834
+11-13,movie,601,E.T. the Extra-Terrestrial,1982,en,Adventure;Science Fiction;Family,PG,https://www.themoviedb.org/movie/601,must-watch,0.92,2.55,0.84,2.39,0.834
+11-13,series,33880,The Legend of Korra,2012,en,Animation;Action & Adventure;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/33880,,0.87,2.71,0.67,2.7,0.833
+11-13,series,58474,Cosmos,2014,en,Documentary,TV-G,https://www.themoviedb.org/tv/58474,must-watch,0.99,2.99,0.77,1.81,0.83
+11-13,movie,149871,The Tale of The Princess Kaguya,2013,ja,Animation;Drama;Fantasy,PG,https://www.themoviedb.org/movie/149871,must-watch,0.93,2.96,0.82,1.68,0.83
+11-13,movie,381284,Hidden Figures,2016,en,Drama;History,PG,https://www.themoviedb.org/movie/381284,must-watch,0.96,2.99,0.76,1.82,0.828
+11-13,movie,44826,Hugo,2011,en,Adventure;Drama;Family,PG,https://www.themoviedb.org/movie/44826,,1.0,2.92,0.67,2.25,0.827
+11-13,movie,16716,A Christmas Carol,1999,en,Drama;Fantasy,PG,https://www.themoviedb.org/movie/16716,must-watch,0.94,2.96,0.78,1.76,0.825
+11-13,series,61617,Over the Garden Wall,2014,en,Mystery;Sci-Fi & Fantasy;Animation;Family;Comedy,TV-PG,https://www.themoviedb.org/tv/61617,,0.92,2.63,0.72,2.57,0.825
+11-13,movie,672,Harry Potter and the Chamber of Secrets,2002,en,Adventure;Fantasy,PG,https://www.themoviedb.org/movie/672,must-watch,0.99,2.22,0.82,2.94,0.824
+11-13,series,46664,Africa,2013,en,Documentary,TV-G,https://www.themoviedb.org/tv/46664,learn-something,1.0,2.96,0.67,2.13,0.823
+11-13,movie,508442,Soul,2020,en,Animation;Family;Drama;Music;Fantasy,PG,https://www.themoviedb.org/movie/508442,must-watch,0.93,2.89,0.79,1.8,0.821
+11-13,series,1430,Cosmos: A Personal Voyage,1980,en,Documentary,,https://www.themoviedb.org/tv/1430,must-watch,0.97,3.0,0.82,1.49,0.82
+11-13,movie,568,Apollo 13,1995,en,Drama;History,PG,https://www.themoviedb.org/movie/568,,0.97,2.92,0.71,2.01,0.819
+11-13,movie,664280,David Attenborough: A Life on Our Planet,2020,en,Documentary;Drama,PG,https://www.themoviedb.org/movie/664280,must-watch,0.95,2.99,0.75,1.74,0.819
+11-13,series,92685,The Owl House,2020,en,Animation;Action & Adventure;Comedy;Sci-Fi & Fantasy;Family,TV-Y7,https://www.themoviedb.org/tv/92685,kids-love-it,0.97,2.45,0.69,2.93,0.819
+11-13,movie,85,Raiders of the Lost Ark,1981,en,Adventure;Action,PG,https://www.themoviedb.org/movie/85,must-watch,0.86,2.2,0.87,2.72,0.818
+11-13,movie,82702,How to Train Your Dragon 2,2014,en,Fantasy;Action;Adventure;Animation;Family,PG,https://www.themoviedb.org/movie/82702,,0.98,2.53,0.69,2.74,0.815
+11-13,series,64313,The Hunt,2015,en,Documentary,TV-PG,https://www.themoviedb.org/tv/64313,learn-something,0.96,2.96,0.63,2.18,0.815
+11-13,movie,17979,A Christmas Carol,2009,en,Animation;Family;Fantasy,PG,https://www.themoviedb.org/movie/17979,,0.94,2.94,0.72,1.87,0.813
+11-13,movie,13189,A Christmas Carol,1984,en,Drama;Fantasy;TV Movie;Family,PG,https://www.themoviedb.org/movie/13189,must-watch,0.94,2.95,0.76,1.68,0.811
+11-13,movie,10895,Pinocchio,1940,en,Animation;Family;Fantasy,G,https://www.themoviedb.org/movie/10895,must-watch,0.64,2.78,0.84,1.71,0.811
+11-13,movie,568124,Encanto,2021,en,Animation;Comedy;Family;Fantasy,PG,https://www.themoviedb.org/movie/568124,,0.93,2.72,0.6,2.66,0.81
+11-13,movie,674,Harry Potter and the Goblet of Fire,2005,en,Adventure;Fantasy,PG-13,https://www.themoviedb.org/movie/674,must-watch,0.7,2.24,0.79,2.84,0.81
+11-13,movie,615453,Ne Zha,2019,zh,Animation;Fantasy;Adventure,NR,https://www.themoviedb.org/movie/615453,,0.87,2.64,0.66,2.59,0.81
+11-13,series,90790,"Seven Worlds, One Planet",2019,en,Documentary;Family,TV-PG,https://www.themoviedb.org/tv/90790,learn-something,1.0,2.97,0.64,2.06,0.809
+11-13,series,70785,Anne with an E,2017,en,Drama;Family,TV-G,https://www.themoviedb.org/tv/70785,,0.88,2.87,0.58,2.43,0.807
+11-13,series,2098,Batman: The Animated Series,1992,en,Action & Adventure;Animation;Drama;Mystery,TV-PG,https://www.themoviedb.org/tv/2098,must-watch,0.89,2.16,0.85,2.74,0.807
+11-13,movie,360814,Dangal,2016,hi,Drama;Family;Comedy,NR,https://www.themoviedb.org/movie/360814,,0.75,2.93,0.68,1.95,0.806
+11-13,movie,980431,Avatar Aang: The Last Airbender,2026,en,Animation;Adventure;Fantasy;Action,PG,https://www.themoviedb.org/movie/980431,,0.97,2.58,0.65,2.68,0.805
+11-13,movie,329,Jurassic Park,1993,en,Adventure;Science Fiction,PG-13,https://www.themoviedb.org/movie/329,must-watch,0.59,2.23,0.79,2.8,0.805
+11-13,movie,2493,The Princess Bride,1987,en,Fantasy;Comedy;Romance;Adventure,PG,https://www.themoviedb.org/movie/2493,must-watch,0.98,2.12,0.84,2.82,0.805
+11-13,movie,406997,Wonder,2017,en,Family;Drama,PG,https://www.themoviedb.org/movie/406997,,0.94,2.92,0.67,1.98,0.804
+11-13,series,116155,Frozen Planet II,2022,en,Documentary;Family,TV-G,https://www.themoviedb.org/tv/116155,learn-something,1.0,2.95,0.66,1.95,0.803
+11-13,movie,10545,The Hunchback of Notre Dame,1996,en,Drama;Animation;Family,G,https://www.themoviedb.org/movie/10545,,0.79,2.83,0.64,2.23,0.802
+11-13,movie,166428,How to Train Your Dragon: The Hidden World,2019,en,Animation;Family;Adventure,PG,https://www.themoviedb.org/movie/166428,,1.0,2.51,0.66,2.71,0.8
+11-13,movie,433,Mary Poppins,1964,en,Comedy;Family;Fantasy,G,https://www.themoviedb.org/movie/433,must-watch,0.8,2.51,0.86,1.98,0.8
+11-13,movie,17663,Anne of Green Gables,1985,en,Family;Drama,PG,https://www.themoviedb.org/movie/17663,,0.97,2.78,0.71,2.02,0.798
+11-13,movie,916224,Suzume,2022,ja,Animation;Drama;Adventure;Fantasy,PG,https://www.themoviedb.org/movie/916224,,0.76,2.82,0.59,2.34,0.795
+11-13,movie,21334,Children of Heaven,1997,fa,Drama;Family,,https://www.themoviedb.org/movie/21334,,0.99,2.96,0.71,1.65,0.794
+11-13,series,121,Doctor Who,1963,en,Drama;Action & Adventure;Sci-Fi & Fantasy,TV-PG,https://www.themoviedb.org/tv/121,,0.85,2.73,0.71,2.06,0.794
+11-13,series,57243,Doctor Who,2005,en,Action & Adventure;Drama;Sci-Fi & Fantasy,TV-PG,https://www.themoviedb.org/tv/57243,,0.84,2.57,0.64,2.58,0.792
+11-13,series,213609,Life on Our Planet,2023,en,Documentary,TV-PG,https://www.themoviedb.org/tv/213609,learn-something,0.95,2.96,0.56,2.16,0.792
+11-13,movie,1585,It's a Wonderful Life,1946,en,Drama;Family;Fantasy,PG,https://www.themoviedb.org/movie/1585,must-watch,0.73,2.91,0.85,1.2,0.791
+11-13,movie,315465,The Boy and the Beast,2015,ja,Action;Adventure;Animation;Drama;Family;Fantasy,PG-13,https://www.themoviedb.org/movie/315465,,0.61,2.81,0.59,2.3,0.79
+11-13,movie,595,To Kill a Mockingbird,1962,en,Drama,NR,https://www.themoviedb.org/movie/595,must-watch,0.4,2.99,0.82,1.14,0.789
+11-13,movie,13466,October Sky,1999,en,Drama;History;Family,PG,https://www.themoviedb.org/movie/13466,,0.98,2.98,0.6,1.93,0.788
+11-13,movie,1184918,The Wild Robot,2024,en,Family;Animation;Science Fiction;Adventure,PG,https://www.themoviedb.org/movie/1184918,,0.92,2.61,0.6,2.6,0.788
+11-13,movie,767,Harry Potter and the Half-Blood Prince,2009,en,Adventure;Fantasy,PG,https://www.themoviedb.org/movie/767,,0.71,2.31,0.72,2.69,0.787
+11-13,series,1428,MythBusters,2003,en,Documentary,TV-PG,https://www.themoviedb.org/tv/1428,learn-something,0.97,2.73,0.51,2.69,0.787
+11-13,series,9555,The Life of Mammals,2002,en,Documentary,TV-G,https://www.themoviedb.org/tv/9555,learn-something,1.0,2.94,0.63,1.88,0.787
+11-13,movie,1892,Return of the Jedi,1983,en,Adventure;Action;Science Fiction,PG,https://www.themoviedb.org/movie/1892,must-watch,0.98,2.12,0.81,2.7,0.786
+11-13,movie,49051,The Hobbit: An Unexpected Journey,2012,en,Adventure;Fantasy;Action,PG-13,https://www.themoviedb.org/movie/49051,,0.76,2.46,0.66,2.63,0.786
+11-13,series,9554,The Life of Birds,1998,en,Documentary,,https://www.themoviedb.org/tv/9554,learn-something,0.99,2.96,0.64,1.8,0.786
+11-13,movie,675,Harry Potter and the Order of the Phoenix,2007,en,Adventure;Fantasy,PG-13,https://www.themoviedb.org/movie/675,,0.73,2.34,0.71,2.65,0.785
+11-13,movie,8326,Holes,2003,en,Adventure;Family;Drama;Comedy,PG,https://www.themoviedb.org/movie/8326,,0.99,2.66,0.61,2.44,0.785
+11-13,movie,1265,Bridge to Terabithia,2007,en,Adventure;Drama;Family,PG,https://www.themoviedb.org/movie/1265,,0.9,2.86,0.6,2.1,0.784
+11-13,movie,9479,The Nightmare Before Christmas,1993,en,Fantasy;Animation;Family,PG,https://www.themoviedb.org/movie/9479,must-watch,0.95,2.23,0.77,2.61,0.783
+11-13,movie,16859,Kiki's Delivery Service,1989,ja,Animation;Family;Fantasy,G,https://www.themoviedb.org/movie/16859,must-watch,0.95,2.34,0.78,2.37,0.782
+11-13,series,86031,Dr. STONE,2019,ja,Animation;Action & Adventure;Comedy;Sci-Fi & Fantasy,TV-14,https://www.themoviedb.org/tv/86031,,0.54,2.78,0.49,2.6,0.781
+11-13,movie,110420,Wolf Children,2012,ja,Animation;Family;Drama;Fantasy,PG,https://www.themoviedb.org/movie/110420,,0.78,2.81,0.67,1.9,0.781
+11-13,series,42705,Fighting Spirit,2000,ja,Animation;Comedy;Drama;Action & Adventure,TV-PG,https://www.themoviedb.org/tv/42705,,0.86,2.59,0.64,2.39,0.78
+11-13,movie,89,Indiana Jones and the Last Crusade,1989,en,Adventure;Action,PG-13,https://www.themoviedb.org/movie/89,,0.7,2.23,0.74,2.67,0.779
+11-13,movie,491480,The Boy Who Harnessed the Wind,2019,en,Drama;History,,https://www.themoviedb.org/movie/491480,,0.95,2.99,0.56,1.92,0.777
+11-13,movie,9806,The Incredibles,2004,en,Action;Adventure;Animation;Family,PG,https://www.themoviedb.org/movie/9806,must-watch,0.98,2.01,0.81,2.79,0.777
+11-13,series,32374,Wonders of the Solar System,2010,en,Documentary,TV-G,https://www.themoviedb.org/tv/32374,learn-something,0.99,2.95,0.59,1.89,0.777
+11-13,movie,682110,My Octopus Teacher,2020,en,Documentary,,https://www.themoviedb.org/movie/682110,learn-something,0.96,2.98,0.56,1.93,0.776
+11-13,series,32062,Human Planet,2011,en,Documentary,,https://www.themoviedb.org/tv/32062,learn-something,0.98,2.91,0.59,1.94,0.775
+11-13,movie,10637,Remember the Titans,2000,en,Drama,PG,https://www.themoviedb.org/movie/10637,,0.86,2.96,0.56,1.96,0.775
+11-13,series,82953,Dynasties,2018,en,Documentary;Family,TV-PG,https://www.themoviedb.org/tv/82953,learn-something,0.97,2.87,0.54,2.18,0.774
+11-13,movie,315162,Puss in Boots: The Last Wish,2022,en,Animation;Adventure;Fantasy;Comedy;Family,PG,https://www.themoviedb.org/movie/315162,must-watch,0.96,2.05,0.77,2.82,0.773
+11-13,series,89667,The Planets,2019,en,Documentary,TV-PG,https://www.themoviedb.org/tv/89667,learn-something,1.0,2.92,0.59,1.88,0.772
+11-13,movie,252,Willy Wonka & the Chocolate Factory,1971,en,Family;Fantasy;Comedy,G,https://www.themoviedb.org/movie/252,must-watch,0.91,2.2,0.79,2.44,0.77
+11-13,movie,309809,The Little Prince,2015,en,Adventure;Animation;Fantasy;Family,PG,https://www.themoviedb.org/movie/309809,,0.95,2.82,0.63,1.89,0.769
+11-13,movie,1088,Whale Rider,2003,en,Drama;Family,PG-13,https://www.themoviedb.org/movie/1088,,0.91,2.98,0.53,1.95,0.768
+11-13,movie,14836,Coraline,2009,en,Animation;Family;Fantasy;Horror,PG,https://www.themoviedb.org/movie/14836,,0.93,2.38,0.66,2.54,0.767
+11-13,movie,14811,Fiddler on the Roof,1971,en,Drama;Romance,G,https://www.themoviedb.org/movie/14811,,0.7,2.95,0.72,1.3,0.767
+11-13,movie,687163,Project Hail Mary,2026,en,Science Fiction;Adventure,PG-13,https://www.themoviedb.org/movie/687163,,0.69,2.8,0.53,2.24,0.766
+11-13,movie,508883,The Boy and the Heron,2023,ja,Animation;Fantasy;Drama,PG-13,https://www.themoviedb.org/movie/508883,,0.56,2.92,0.65,1.6,0.766
+11-13,movie,87827,Life of Pi,2012,en,Adventure;Drama,PG,https://www.themoviedb.org/movie/87827,,0.87,2.88,0.57,1.95,0.765
+11-13,movie,2062,Ratatouille,2007,en,Animation;Comedy;Family;Fantasy,G,https://www.themoviedb.org/movie/2062,,0.94,2.28,0.72,2.48,0.765
+11-13,movie,34584,The NeverEnding Story,1984,de,Adventure;Fantasy;Family,PG,https://www.themoviedb.org/movie/34584,,0.94,2.5,0.62,2.45,0.765
+11-13,movie,19995,Avatar,2009,en,Science Fiction;Action;Adventure,PG-13,https://www.themoviedb.org/movie/19995,,0.74,2.53,0.63,2.35,0.764
+11-13,series,32419,Horrible Histories,2009,en,Family;Comedy,TV-PG,https://www.themoviedb.org/tv/32419,kids-love-it,0.91,2.33,0.59,2.85,0.764
+11-13,movie,26963,The Secret of Kells,2009,en,Animation;Family;Fantasy,NR,https://www.themoviedb.org/movie/26963,,0.98,2.86,0.5,2.22,0.764
+11-13,movie,19666,Lagaan: Once Upon a Time in India,2001,hi,Adventure;Drama;History,PG,https://www.themoviedb.org/movie/19666,,0.82,2.94,0.62,1.63,0.763
+11-13,movie,37797,Whisper of the Heart,1995,ja,Animation;Drama;Family,G,https://www.themoviedb.org/movie/37797,,0.99,2.7,0.65,1.96,0.763
+11-13,movie,489471,The Dawn Wall,2017,en,Documentary;Adventure,NR,https://www.themoviedb.org/movie/489471,learn-something,0.91,2.75,0.65,1.85,0.762
+11-13,series,75782,One Strange Rock,2018,en,Documentary,TV-PG,https://www.themoviedb.org/tv/75782,learn-something,0.98,2.98,0.45,2.15,0.761
+11-13,movie,11621,Porco Rosso,1992,ja,Animation;Adventure;Fantasy,PG,https://www.themoviedb.org/movie/11621,,0.88,2.46,0.68,2.26,0.761
+11-13,movie,286217,The Martian,2015,en,Science Fiction;Drama;Adventure,PG-13,https://www.themoviedb.org/movie/286217,,0.64,2.82,0.57,2.0,0.761
+11-13,series,60863,Haikyu!!,2014,ja,Animation;Comedy;Drama,TV-14,https://www.themoviedb.org/tv/60863,,0.78,2.19,0.69,2.7,0.76
+11-13,movie,14292,Miracle,2004,en,Drama;History,PG,https://www.themoviedb.org/movie/14292,,0.97,2.73,0.6,2.05,0.76
+11-13,series,19744,Nature's Great Events,2009,en,Documentary,NR,https://www.themoviedb.org/tv/19744,learn-something,0.99,2.87,0.54,2.01,0.76
+11-13,series,655,Star Trek: The Next Generation,1987,en,Sci-Fi & Fantasy;Action & Adventure;Drama;Mystery,TV-PG,https://www.themoviedb.org/tv/655,,0.91,2.77,0.7,1.61,0.76
+11-13,series,34381,Great Migrations,2010,en,Documentary,NR,https://www.themoviedb.org/tv/34381,learn-something,0.99,2.97,0.5,1.96,0.759
+11-13,movie,331482,Little Women,2019,en,Drama;Romance,PG,https://www.themoviedb.org/movie/331482,,0.99,2.83,0.64,1.7,0.758
+11-13,movie,1162,The Miracle Worker,1962,en,Drama;History,NR,https://www.themoviedb.org/movie/1162,,0.95,2.98,0.69,1.22,0.756
+11-13,movie,334543,Lion,2016,en,Drama,PG-13,https://www.themoviedb.org/movie/334543,,0.65,2.92,0.61,1.6,0.754
+11-13,movie,5925,The Great Escape,1963,en,Adventure;Drama;War,NR,https://www.themoviedb.org/movie/5925,,0.48,2.71,0.63,1.89,0.753
+11-13,series,96323,The Green Planet,2022,en,Documentary,TV-PG,https://www.themoviedb.org/tv/96323,learn-something,1.0,2.97,0.54,1.74,0.753
+11-13,movie,1885,The Karate Kid,1984,en,Action;Drama;Family,PG,https://www.themoviedb.org/movie/1885,,0.99,2.53,0.6,2.32,0.753
+11-13,movie,10437,The Muppet Christmas Carol,1992,en,Music;Comedy;Family;Fantasy;Drama,G,https://www.themoviedb.org/movie/10437,,0.85,2.65,0.54,2.31,0.752
+11-13,movie,7508,Like Stars on Earth,2007,hi,Drama,PG,https://www.themoviedb.org/movie/7508,,0.83,2.94,0.64,1.42,0.751
+11-13,series,1904,The Crocodile Hunter,1997,en,Documentary;Action & Adventure;Family,TV-G,https://www.themoviedb.org/tv/1904,learn-something,0.96,2.84,0.4,2.44,0.749
+11-13,movie,1041580,The Elephant Whisperers,2022,ta,Documentary,U/A 7+,https://www.themoviedb.org/movie/1041580,learn-something,0.98,2.95,0.47,1.97,0.748
+11-13,movie,129112,Wadjda,2012,ar,Drama,PG,https://www.themoviedb.org/movie/129112,,0.99,2.94,0.55,1.71,0.748
+11-13,series,6080,Once Upon a Time… Man,1978,fr,Animation;Drama;Family,NR,https://www.themoviedb.org/tv/6080,,0.85,2.87,0.58,1.7,0.746
+11-13,movie,173,"20,000 Leagues Under the Sea",1954,en,Adventure;Science Fiction;Fantasy,G,https://www.themoviedb.org/movie/173,,0.97,2.56,0.64,2.03,0.745
+11-13,movie,10098,The Kid,1921,en,Comedy;Drama,NR,https://www.themoviedb.org/movie/10098,must-watch,0.71,2.71,0.77,1.29,0.745
+11-13,series,46260,Naruto,2002,ja,Animation;Action & Adventure;Sci-Fi & Fantasy,TV-PG,https://www.themoviedb.org/tv/46260,kids-love-it,0.75,2.19,0.61,2.79,0.744
+11-13,series,4194,Star Wars: The Clone Wars,2008,en,Action & Adventure;Sci-Fi & Fantasy;Animation,TV-PG,https://www.themoviedb.org/tv/4194,kids-love-it,0.95,2.11,0.66,2.75,0.744
+11-13,movie,1667,March of the Penguins,2005,fr,Documentary;Family,G,https://www.themoviedb.org/movie/1667,learn-something,0.95,2.89,0.49,1.93,0.741
+11-13,movie,15283,Pom Poko,1994,ja,Adventure;Animation;Fantasy,PG,https://www.themoviedb.org/movie/15283,,0.95,2.77,0.5,2.1,0.741
+11-13,movie,49964,Where Is The Friend's House?,1987,fa,Drama;Adventure,NR,https://www.themoviedb.org/movie/49964,,0.87,2.9,0.63,1.4,0.741
+11-13,series,20574,Wild China,2008,en,Documentary,,https://www.themoviedb.org/tv/20574,learn-something,1.0,2.83,0.52,1.93,0.741
+11-13,series,37783,Wonders of the Universe,2011,en,Documentary,TV-G,https://www.themoviedb.org/tv/37783,learn-something,0.98,2.96,0.56,1.55,0.741
+11-13,movie,258230,A Monster Calls,2016,en,Fantasy;Adventure;Family,PG-13,https://www.themoviedb.org/movie/258230,,0.63,2.94,0.45,1.97,0.74
+11-13,series,253,Star Trek,1966,en,Sci-Fi & Fantasy;Drama,TV-PG,https://www.themoviedb.org/tv/253,,0.91,2.64,0.72,1.53,0.74
+11-13,series,85349,Amphibia,2019,en,Animation;Action & Adventure;Comedy;Sci-Fi & Fantasy;Family,TV-Y7,https://www.themoviedb.org/tv/85349,kids-love-it,0.97,2.3,0.52,2.86,0.739
+11-13,series,1781,Little House on the Prairie,1974,en,Western;Drama;Family,TV-PG,https://www.themoviedb.org/tv/1781,,0.97,2.89,0.6,1.49,0.738
+11-13,movie,9555,Rabbit-Proof Fence,2002,en,Adventure;Drama;History,PG,https://www.themoviedb.org/movie/9555,,0.61,2.98,0.52,1.6,0.736
+11-13,series,79732,She-Ra and the Princesses of Power,2018,en,Animation;Action & Adventure;Sci-Fi & Fantasy;Family,TV-Y7,https://www.themoviedb.org/tv/79732,,0.96,2.26,0.58,2.68,0.736
+11-13,movie,269149,Zootopia,2016,en,Animation;Adventure;Family;Comedy,PG,https://www.themoviedb.org/movie/269149,,0.95,2.28,0.62,2.5,0.736
+11-13,series,35790,Cardcaptor Sakura,1998,ja,Animation;Sci-Fi & Fantasy;Action & Adventure,TV-PG,https://www.themoviedb.org/tv/35790,,0.68,2.19,0.69,2.39,0.735
+11-13,movie,9587,Little Women,1994,en,Drama;Romance,PG,https://www.themoviedb.org/movie/9587,,0.95,2.78,0.62,1.58,0.735
+11-13,movie,372058,Your Name.,2016,ja,Animation;Romance;Drama,PG,https://www.themoviedb.org/movie/372058,,0.67,2.35,0.66,2.21,0.735
+11-13,movie,13188,Scrooge,1951,en,Fantasy;Drama,NR,https://www.themoviedb.org/movie/13188,,0.94,2.91,0.65,1.23,0.734
+11-13,series,2622,The Universe,2007,en,Documentary,NR,https://www.themoviedb.org/tv/2622,learn-something,0.94,2.92,0.5,1.75,0.734
+11-13,movie,9443,Chariots of Fire,1981,en,Drama;History,PG,https://www.themoviedb.org/movie/9443,,0.92,2.93,0.62,1.29,0.733
+11-13,movie,22954,Invictus,2009,en,Drama;History,PG-13,https://www.themoviedb.org/movie/22954,,0.7,2.95,0.57,1.43,0.733
+11-13,movie,13597,Labyrinth,1986,en,Adventure;Family;Fantasy,PG,https://www.themoviedb.org/movie/13597,,0.95,2.37,0.57,2.48,0.733
+11-13,series,65294,A Series of Unfortunate Events,2017,en,Action & Adventure;Family;Comedy;Mystery,TV-PG,https://www.themoviedb.org/tv/65294,,0.96,2.34,0.57,2.52,0.732
+11-13,movie,9305,Microcosmos,1996,fr,Documentary,G,https://www.themoviedb.org/movie/9305,learn-something,0.97,2.9,0.5,1.77,0.732
+11-13,movie,157336,Interstellar,2014,en,Adventure;Drama;Science Fiction,PG-13,https://www.themoviedb.org/movie/157336,,0.57,2.75,0.62,1.59,0.731
+11-13,movie,665,Ben-Hur,1959,en,History;Drama;Adventure,G,https://www.themoviedb.org/movie/665,,0.72,2.81,0.65,1.35,0.729
+11-13,movie,9340,The Goonies,1985,en,Adventure;Comedy;Family,PG,https://www.themoviedb.org/movie/9340,kids-love-it,0.94,2.03,0.62,2.86,0.729
+11-13,movie,11287,A League of Their Own,1992,en,Comedy;Drama,PG,https://www.themoviedb.org/movie/11287,,0.94,2.59,0.56,2.06,0.728
+11-13,movie,10946,Earth,2007,en,Documentary,G,https://www.themoviedb.org/movie/10946,learn-something,0.97,2.85,0.44,2.01,0.727
+11-13,movie,346648,Paddington 2,2017,en,Adventure;Comedy;Family,PG,https://www.themoviedb.org/movie/346648,,0.76,2.16,0.7,2.3,0.726
+11-13,movie,527774,Raya and the Last Dragon,2021,en,Animation;Action;Adventure;Fantasy;Family,PG,https://www.themoviedb.org/movie/527774,,0.99,2.63,0.42,2.47,0.726
+11-13,series,32609,Into the Universe with Stephen Hawking,2010,en,Documentary,TV-PG,https://www.themoviedb.org/tv/32609,learn-something,0.98,2.94,0.44,1.83,0.725
+11-13,movie,15265,The Red Balloon,1956,fr,Comedy;Drama;Family;Fantasy,NR,https://www.themoviedb.org/movie/15265,,0.86,2.52,0.73,1.54,0.725
+11-13,movie,14069,The Girl Who Leapt Through Time,2006,ja,Fantasy;Animation;Drama;Science Fiction,NR,https://www.themoviedb.org/movie/14069,,0.84,2.37,0.65,2.08,0.724
+11-13,series,1294,Walking with Beasts,2001,en,Documentary;Animation,TV-14,https://www.themoviedb.org/tv/1294,learn-something,0.54,2.69,0.51,2.01,0.724
+11-13,movie,5693,Hoosiers,1986,en,Drama;Family,PG,https://www.themoviedb.org/movie/5693,,0.94,2.58,0.6,1.87,0.723
+11-13,movie,470819,Jane,2017,en,Documentary,,https://www.themoviedb.org/movie/470819,learn-something,0.99,2.99,0.48,1.57,0.723
+11-13,movie,317557,Queen of Katwe,2016,en,Drama,PG,https://www.themoviedb.org/movie/317557,,0.99,2.95,0.4,1.91,0.722
+11-13,movie,12444,Harry Potter and the Deathly Hallows: Part 1,2010,en,Adventure;Fantasy,PG-13,https://www.themoviedb.org/movie/12444,,0.59,2.24,0.62,2.39,0.721
+11-13,series,1990,Ramayan,1987,hi,Drama;Action & Adventure;Family,,https://www.themoviedb.org/tv/1990,,0.94,2.94,0.59,1.23,0.721
+11-13,series,103540,Percy Jackson and the Olympians,2023,en,Action & Adventure;Sci-Fi & Fantasy;Drama;Family,TV-PG,https://www.themoviedb.org/tv/103540,,0.99,2.34,0.5,2.62,0.719
+11-13,movie,126319,Ernest & Celestine,2012,fr,Animation;Family;Crime;Drama;Comedy,PG,https://www.themoviedb.org/movie/126319,,0.88,2.58,0.53,2.05,0.717
+11-13,movie,606856,Togo,2019,en,Adventure;History;Drama,PG,https://www.themoviedb.org/movie/606856,,0.98,2.8,0.37,2.23,0.717
+11-13,movie,13187,A Charlie Brown Christmas,1965,en,Animation;Family;Comedy;TV Movie,NR,https://www.themoviedb.org/movie/13187,must-watch,0.66,2.32,0.77,1.61,0.713
+11-13,movie,549559,Apollo 11,2019,en,Documentary;History;Drama,G,https://www.themoviedb.org/movie/549559,learn-something,1.0,2.88,0.48,1.64,0.713
+11-13,series,82456,Hilda,2018,en,Action & Adventure;Animation;Family;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/82456,,0.71,2.32,0.56,2.36,0.713
+11-13,series,14951,Nature,1982,en,Documentary;Family,TV-G,https://www.themoviedb.org/tv/14951,learn-something,0.98,2.93,0.41,1.79,0.712
+11-13,series,15260,Adventure Time,2010,en,Animation;Comedy;Sci-Fi & Fantasy,TV-PG,https://www.themoviedb.org/tv/15260,,0.89,2.0,0.63,2.66,0.711
+11-13,movie,872,Singin' in the Rain,1952,en,Comedy;Romance,G,https://www.themoviedb.org/movie/872,must-watch,0.97,2.15,0.81,1.74,0.711
+11-13,movie,10193,Toy Story 3,2010,en,Animation;Family;Comedy,G,https://www.themoviedb.org/movie/10193,must-watch,0.75,2.09,0.75,2.07,0.711
+11-13,movie,11544,Lilo & Stitch,2002,en,Animation;Family;Comedy;Science Fiction,PG,https://www.themoviedb.org/movie/11544,,0.68,2.52,0.5,2.18,0.71
+11-13,movie,36970,Oceans,2010,en,Documentary;Family;Drama,G,https://www.themoviedb.org/movie/36970,learn-something,0.94,2.88,0.44,1.75,0.71
+11-13,movie,14163,Chak De! India,2007,hi,Drama,PG,https://www.themoviedb.org/movie/14163,,0.93,2.68,0.52,1.8,0.708
+11-13,movie,10830,Matilda,1996,en,Comedy;Family;Fantasy,PG,https://www.themoviedb.org/movie/10830,,0.77,2.3,0.58,2.27,0.708
+11-13,movie,1087192,How to Train Your Dragon,2025,en,Fantasy;Family;Action;Adventure,PG,https://www.themoviedb.org/movie/1087192,,0.97,2.26,0.55,2.44,0.707
+11-13,movie,3082,Modern Times,1936,en,Comedy;Drama;Romance,G,https://www.themoviedb.org/movie/3082,must-watch,0.83,2.48,0.76,1.28,0.707
+11-13,movie,227,The Outsiders,1983,en,Crime;Drama,PG,https://www.themoviedb.org/movie/227,,0.61,2.62,0.55,1.79,0.707
+11-13,series,5303,The Storyteller,1988,en,Action & Adventure;Family;Sci-Fi & Fantasy;Drama,TV-Y7,https://www.themoviedb.org/tv/5303,,0.74,2.72,0.46,1.93,0.707
+11-13,movie,242828,When Marnie Was There,2014,ja,Animation;Drama;Family,PG,https://www.themoviedb.org/movie/242828,,0.93,2.68,0.53,1.75,0.707
+11-13,movie,1366,Rocky,1976,en,Drama,PG,https://www.themoviedb.org/movie/1366,,0.73,2.26,0.7,1.85,0.703
+11-13,movie,5528,The Chorus,2004,fr,Drama;Comedy;Music,PG-13,https://www.themoviedb.org/movie/5528,,0.84,2.63,0.53,1.79,0.703
+11-13,movie,10315,Fantastic Mr. Fox,2009,en,Adventure;Animation;Comedy;Family,PG,https://www.themoviedb.org/movie/10315,,0.9,2.06,0.68,2.27,0.702
+11-13,movie,79,Hero,2002,zh,Drama;Adventure;Action;History,PG-13,https://www.themoviedb.org/movie/79,,0.62,2.59,0.55,1.78,0.702
+11-13,series,1719,Gargoyles,1994,en,Animation;Sci-Fi & Fantasy;Action & Adventure,TV-Y7,https://www.themoviedb.org/tv/1719,,0.92,2.32,0.49,2.47,0.701
+11-13,series,3570,Sailor Moon,1992,ja,Action & Adventure;Animation;Comedy;Sci-Fi & Fantasy;Kids,TV-PG,https://www.themoviedb.org/tv/3570,,0.96,2.05,0.61,2.53,0.701
+11-13,movie,109410,42,2013,en,Drama,PG-13,https://www.themoviedb.org/movie/109410,,0.8,2.95,0.44,1.51,0.7
+11-13,movie,109445,Frozen,2013,en,Animation;Family;Adventure;Fantasy,PG,https://www.themoviedb.org/movie/109445,,0.69,2.04,0.65,2.39,0.7
+11-13,movie,508965,Klaus,2019,en,Animation;Family;Comedy,PG,https://www.themoviedb.org/movie/508965,,0.84,2.22,0.55,2.4,0.698
+11-13,movie,11236,The Secret Garden,1993,en,Drama;Family;Fantasy,G,https://www.themoviedb.org/movie/11236,,0.95,2.62,0.49,1.9,0.698
+11-13,series,68267,Trollhunters: Tales of Arcadia,2016,en,Family;Animation;Action & Adventure;Comedy;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/68267,kids-love-it,0.92,2.08,0.51,2.79,0.698
+11-13,movie,22660,Old Yeller,1957,en,Adventure;Drama;Family;Western,G,https://www.themoviedb.org/movie/22660,,0.83,2.75,0.49,1.65,0.697
+11-13,movie,11704,The Secret of NIMH,1982,en,Adventure;Animation;Family;Fantasy;Mystery;Science Fiction,G,https://www.themoviedb.org/movie/11704,,0.85,2.53,0.49,2.05,0.697
+11-13,movie,11528,The Sandlot,1993,en,Family;Comedy;Drama,PG,https://www.themoviedb.org/movie/11528,,0.98,2.13,0.52,2.65,0.696
+11-13,movie,808,Shrek,2001,en,Animation;Comedy;Fantasy;Adventure;Family,PG,https://www.themoviedb.org/movie/808,,0.89,1.91,0.65,2.55,0.694
+11-13,movie,154,Star Trek II: The Wrath of Khan,1982,en,Action;Adventure;Science Fiction,PG,https://www.themoviedb.org/movie/154,,0.85,2.25,0.62,2.05,0.694
+11-13,movie,515042,Free Solo,2018,en,Documentary;Adventure,PG-13,https://www.themoviedb.org/movie/515042,learn-something,0.51,2.45,0.57,1.85,0.693
+11-13,movie,17917,Oliver!,1968,en,Drama;Family,G,https://www.themoviedb.org/movie/17917,,0.94,2.56,0.55,1.73,0.693
+11-13,movie,871,Planet of the Apes,1968,en,Science Fiction;Adventure;Drama;Action,G,https://www.themoviedb.org/movie/871,,0.47,2.43,0.61,1.74,0.693
+11-13,series,94280,Steven Universe Future,2019,en,Animation;Action & Adventure;Comedy;Sci-Fi & Fantasy;Family,TV-PG,https://www.themoviedb.org/tv/94280,,0.84,2.47,0.51,2.03,0.693
+11-13,movie,37165,The Truman Show,1998,en,Comedy;Drama,PG,https://www.themoviedb.org/movie/37165,,0.74,2.39,0.62,1.78,0.693
+11-13,movie,14048,Man on Wire,2008,en,Documentary,PG-13,https://www.themoviedb.org/movie/14048,learn-something,0.85,2.52,0.52,1.9,0.692
+11-13,series,72350,DuckTales,2017,en,Family;Comedy;Animation,TV-Y7,https://www.themoviedb.org/tv/72350,,0.83,2.16,0.53,2.5,0.691
+11-13,series,31910,Naruto Shippūden,2007,ja,Animation;Action & Adventure;Sci-Fi & Fantasy,TV-PG,https://www.themoviedb.org/tv/31910,,0.64,2.01,0.54,2.73,0.691
+11-13,series,4018,Quantum Leap,1989,en,Sci-Fi & Fantasy;Action & Adventure;Drama,TV-PG,https://www.themoviedb.org/tv/4018,,0.88,2.61,0.49,1.83,0.691
+11-13,movie,864,Cool Runnings,1993,en,Comedy;Adventure;Drama,PG,https://www.themoviedb.org/movie/864,,0.99,2.45,0.4,2.43,0.69
+11-13,movie,28178,Hachi: A Dog's Tale,2009,en,Drama;Family,G,https://www.themoviedb.org/movie/28178,,0.94,2.67,0.49,1.7,0.689
+11-13,series,240,Jackie Chan Adventures,2000,en,Action & Adventure;Animation;Comedy;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/240,kids-love-it,0.93,2.12,0.46,2.79,0.689
+11-13,series,61592,Human Universe,2014,en,Documentary,,https://www.themoviedb.org/tv/61592,learn-something,0.97,2.92,0.44,1.42,0.688
+11-13,movie,663558,New Gods: Nezha Reborn,2021,zh,Animation;Fantasy;Action,,https://www.themoviedb.org/movie/663558,,0.84,2.24,0.5,2.42,0.688
+11-13,movie,389,12 Angry Men,1957,en,Drama,NR,https://www.themoviedb.org/movie/389,,0.5,2.85,0.68,0.67,0.687
+11-13,series,3562,NOVA,1974,en,Documentary,TV-PG,https://www.themoviedb.org/tv/3562,learn-something,0.99,2.84,0.51,1.3,0.687
+11-13,movie,13980,Sword of the Stranger,2007,ja,Action;Animation;History,PG,https://www.themoviedb.org/movie/13980,,0.71,2.27,0.5,2.36,0.687
+11-13,movie,620249,The Legend of Hei,2019,zh,Animation;Fantasy;Action;Adventure,PG,https://www.themoviedb.org/movie/620249,,0.95,2.43,0.41,2.38,0.686
+11-13,movie,506528,Harriet,2019,en,Drama;History,PG-13,https://www.themoviedb.org/movie/506528,,0.57,2.97,0.35,1.62,0.685
+11-13,series,97861,Night on Earth,2020,en,Documentary,TV-PG,https://www.themoviedb.org/tv/97861,learn-something,0.97,2.68,0.39,1.99,0.685
+11-13,movie,420818,The Lion King,2019,en,Adventure;Drama;Family;Animation,PG,https://www.themoviedb.org/movie/420818,,0.88,2.41,0.49,2.12,0.685
+11-13,movie,371645,Hunt for the Wilderpeople,2016,en,Adventure;Comedy;Drama,PG-13,https://www.themoviedb.org/movie/371645,,0.67,2.29,0.43,2.52,0.682
+11-13,series,513,Batman Beyond,1999,en,Animation;Action & Adventure;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/513,,0.86,1.99,0.55,2.61,0.681
+11-13,series,110818,Earth at Night in Colour,2020,en,Documentary,TV-PG,https://www.themoviedb.org/tv/110818,learn-something,1.0,2.64,0.37,2.09,0.681
+11-13,movie,177572,Big Hero 6,2014,en,Adventure;Family;Animation;Action;Comedy,PG,https://www.themoviedb.org/movie/177572,,0.99,2.13,0.47,2.64,0.68
+11-13,movie,77174,ParaNorman,2012,en,Family;Animation;Adventure;Comedy,PG,https://www.themoviedb.org/movie/77174,,0.93,2.33,0.42,2.46,0.68
+11-13,movie,14534,Rudy,1993,en,Drama;History,PG,https://www.themoviedb.org/movie/14534,,0.99,2.56,0.44,1.96,0.679
+11-13,series,33827,How the Universe Works,2010,en,Documentary,TV-G,https://www.themoviedb.org/tv/33827,learn-something,1.0,2.81,0.33,1.88,0.677
+11-13,series,127700,Welcome to Earth,2021,en,Documentary,TV-PG,https://www.themoviedb.org/tv/127700,learn-something,0.96,2.78,0.28,2.11,0.677
+11-13,movie,28874,Summer Wars,2009,ja,Animation;Science Fiction,PG,https://www.themoviedb.org/movie/28874,,0.89,2.37,0.42,2.32,0.675
+11-13,movie,531,The Wrong Trousers,1993,en,Animation;Comedy;Family,PG,https://www.themoviedb.org/movie/531,,0.93,1.82,0.66,2.45,0.675
+11-13,movie,568160,Weathering with You,2019,ja,Animation;Drama;Fantasy;Romance,PG-13,https://www.themoviedb.org/movie/568160,,0.44,2.39,0.51,1.96,0.675
+11-13,movie,475215,Mirai,2018,ja,Animation;Family;Fantasy;Adventure;Drama,PG,https://www.themoviedb.org/movie/475215,,0.63,2.72,0.44,1.61,0.674
+11-13,series,137646,Animal,2021,en,Documentary,,https://www.themoviedb.org/tv/137646,learn-something,0.96,2.55,0.37,2.16,0.673
+11-13,movie,7214,Coach Carter,2005,en,Drama;History,PG-13,https://www.themoviedb.org/movie/7214,,0.77,2.69,0.41,1.76,0.673
+11-13,movie,323677,Race,2016,en,Drama;History,PG-13,https://www.themoviedb.org/movie/323677,,0.81,2.94,0.29,1.74,0.673
+11-13,movie,533,Wallace & Gromit: The Curse of the Were-Rabbit,2005,en,Adventure;Animation;Comedy;Family,G,https://www.themoviedb.org/movie/533,,0.91,2.03,0.57,2.37,0.673
+11-13,movie,11516,Winged Migration,2001,fr,Documentary,G,https://www.themoviedb.org/movie/11516,learn-something,0.99,2.82,0.41,1.53,0.673
+11-13,series,604,Teen Titans,2003,en,Animation;Action & Adventure;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/604,,0.93,1.86,0.55,2.73,0.672
+11-13,movie,9918,Glory Road,2006,en,Drama;History,PG,https://www.themoviedb.org/movie/9918,,0.94,2.85,0.33,1.73,0.671
+11-13,movie,9502,Kung Fu Panda,2008,en,Action;Animation;Comedy;Family,PG,https://www.themoviedb.org/movie/9502,,0.91,2.04,0.5,2.58,0.671
+11-13,series,313298,The Dinosaurs,2026,en,Documentary;Animation,TV-PG,https://www.themoviedb.org/tv/313298,learn-something,0.98,2.87,0.24,2.02,0.671
+11-13,series,91425,Infinity Train,2019,en,Animation;Sci-Fi & Fantasy;Action & Adventure,TV-PG,https://www.themoviedb.org/tv/91425,,0.91,2.39,0.36,2.43,0.669
+11-13,movie,508943,Luca,2021,en,Animation;Family;Fantasy;Drama;Comedy,PG,https://www.themoviedb.org/movie/508943,,0.95,2.15,0.44,2.57,0.669
+11-13,movie,20544,Something the Lord Made,2004,en,TV Movie;Drama,PG,https://www.themoviedb.org/movie/20544,,0.78,2.97,0.4,1.24,0.669
+11-13,movie,17578,The Adventures of Tintin,2011,en,Adventure;Animation;Mystery,PG,https://www.themoviedb.org/movie/17578,,0.97,2.14,0.52,2.3,0.669
+11-13,movie,508947,Turning Red,2022,en,Animation;Family;Comedy;Fantasy,PG,https://www.themoviedb.org/movie/508947,,1.0,2.29,0.37,2.58,0.669
+11-13,movie,913823,Fire of Love,2022,en,Documentary,PG,https://www.themoviedb.org/movie/913823,learn-something,0.82,2.88,0.34,1.61,0.668
+11-13,movie,273895,Selma,2014,en,History;Drama,PG-13,https://www.themoviedb.org/movie/273895,,0.41,2.97,0.48,0.94,0.668
+11-13,movie,29154,Stand and Deliver,1988,en,Drama,PG,https://www.themoviedb.org/movie/29154,,0.86,2.81,0.44,1.37,0.668
+11-13,movie,995133,"The Boy, the Mole, the Fox and the Horse",2022,en,Animation;Family;Drama;Adventure,G,https://www.themoviedb.org/movie/995133,,0.7,2.52,0.51,1.64,0.668
+11-13,series,119815,Attenborough's Life in Colour,2021,en,Documentary,TV-PG,https://www.themoviedb.org/tv/119815,learn-something,0.99,2.74,0.33,1.88,0.667
+11-13,series,252,Everybody Hates Chris,2005,en,Comedy,TV-PG,https://www.themoviedb.org/tv/252,,0.88,2.29,0.47,2.19,0.667
+11-13,movie,399174,Isle of Dogs,2018,en,Adventure;Comedy;Animation,PG-13,https://www.themoviedb.org/movie/399174,,0.78,2.27,0.49,2.15,0.667
+11-13,movie,51739,Arrietty,2010,ja,Fantasy;Animation;Family,G,https://www.themoviedb.org/movie/51739,,0.89,2.25,0.5,2.13,0.665
+11-13,series,69763,Mind Field,2017,en,Documentary,TV-14,https://www.themoviedb.org/tv/69763,learn-something,0.47,2.74,0.31,1.93,0.665
+11-13,movie,557,Spider-Man,2002,en,Action;Science Fiction,PG-13,https://www.themoviedb.org/movie/557,,0.72,1.88,0.52,2.72,0.665
+11-13,movie,10907,The Adventures of Robin Hood,1938,en,Adventure;Romance;Action,PG,https://www.themoviedb.org/movie/10907,,0.98,2.09,0.59,2.09,0.665
+11-13,movie,16515,Captains Courageous,1937,en,Adventure;Drama;Family,G,https://www.themoviedb.org/movie/16515,,0.99,2.66,0.43,1.63,0.664
+11-13,movie,961323,Nimona,2023,en,Animation;Family;Fantasy;Adventure;Science Fiction;Action,PG,https://www.themoviedb.org/movie/961323,,0.91,2.13,0.43,2.59,0.664
+11-13,movie,612654,Fantastic Fungi,2019,en,Documentary,NR,https://www.themoviedb.org/movie/612654,learn-something,0.99,2.95,0.31,1.51,0.661
+11-13,movie,558,Spider-Man 2,2004,en,Action;Adventure;Science Fiction,PG-13,https://www.themoviedb.org/movie/558,,0.63,1.88,0.55,2.57,0.661
+11-13,movie,82690,Wreck-It Ralph,2012,en,Family;Animation;Comedy;Adventure,PG,https://www.themoviedb.org/movie/82690,,0.98,2.03,0.44,2.7,0.661
+11-13,movie,1022789,Inside Out 2,2024,en,Animation;Adventure;Comedy;Family,PG,https://www.themoviedb.org/movie/1022789,,0.99,2.23,0.4,2.47,0.66
+11-13,movie,13751,Akeelah and the Bee,2006,en,Drama,PG,https://www.themoviedb.org/movie/13751,,0.98,2.65,0.33,1.95,0.659
+11-13,series,4303,Superman: The Animated Series,1996,en,Animation;Action & Adventure;Sci-Fi & Fantasy;Kids,TV-Y7,https://www.themoviedb.org/tv/4303,,0.91,1.9,0.6,2.33,0.659
+11-13,movie,532,A Close Shave,1996,en,Family;Animation;Comedy,NR,https://www.themoviedb.org/movie/532,,0.9,2.02,0.51,2.42,0.658
+11-13,movie,926,Galaxy Quest,1999,en,Comedy;Science Fiction;Adventure,PG,https://www.themoviedb.org/movie/926,,0.97,2.02,0.5,2.46,0.658
+11-13,movie,264038,Kaaka Muttai,2015,ta,Drama,U,https://www.themoviedb.org/movie/264038,,0.92,2.42,0.49,1.76,0.657
+11-13,movie,57586,African Cats,2011,en,Documentary;Adventure,G,https://www.themoviedb.org/movie/57586,learn-something,0.95,2.69,0.26,2.09,0.656
+11-13,series,112217,Hikaru no Go,2020,zh,Drama;Comedy,,https://www.themoviedb.org/tv/112217,,0.95,2.61,0.4,1.74,0.656
+11-13,series,44305,DreamWorks Dragons,2012,en,Animation;Action & Adventure;Sci-Fi & Fantasy;Comedy,TV-PG,https://www.themoviedb.org/tv/44305,,0.93,2.0,0.44,2.68,0.655
+11-13,movie,137,Groundhog Day,1993,en,Romance;Fantasy;Comedy,PG,https://www.themoviedb.org/movie/137,,0.83,2.2,0.56,1.88,0.655
+11-13,movie,1924,Superman,1978,en,Science Fiction;Action;Adventure,PG,https://www.themoviedb.org/movie/1924,,0.96,1.84,0.64,2.25,0.655
+11-13,movie,463257,The Peanut Butter Falcon,2019,en,Adventure;Comedy;Drama,PG-13,https://www.themoviedb.org/movie/463257,,0.63,2.51,0.33,2.14,0.654
+11-13,series,4500,The Wonder Years,1988,en,Comedy;Drama;Family,TV-PG,https://www.themoviedb.org/tv/4500,,0.74,2.45,0.59,1.31,0.654
+11-13,movie,1288069,Tenzing,2026,en,Drama;History,PG,https://www.themoviedb.org/movie/1288069,,0.98,2.9,0.24,1.75,0.653
+11-13,movie,821881,The Swimmers,2022,en,Drama;History,PG-13,https://www.themoviedb.org/movie/821881,,0.63,2.92,0.22,1.79,0.653
+11-13,movie,601337,83,2021,hi,Drama;History,PG-13,https://www.themoviedb.org/movie/601337,,0.82,2.61,0.37,1.8,0.652
+11-13,movie,315620,Doctor Who: A Christmas Carol,2010,en,Science Fiction;Drama,,https://www.themoviedb.org/movie/315620,,0.95,2.19,0.43,2.34,0.652
+11-13,series,40517,Planet Dinosaur,2011,en,Documentary,TV-PG,https://www.themoviedb.org/tv/40517,learn-something,0.97,2.5,0.3,2.25,0.652
+11-13,series,61894,Life Story,2014,en,Documentary,TV-PG,https://www.themoviedb.org/tv/61894,learn-something,0.89,2.74,0.3,1.8,0.651
+11-13,series,104359,The Mysterious Benedict Society,2021,en,Family;Action & Adventure;Drama,TV-PG,https://www.themoviedb.org/tv/104359,,0.99,2.29,0.35,2.43,0.651
+11-13,series,108303,Tiny World,2020,en,Documentary,TV-G,https://www.themoviedb.org/tv/108303,learn-something,0.94,2.66,0.28,2.02,0.651
+11-13,movie,297762,Wonder Woman,2017,en,Action;Adventure;Fantasy,PG-13,https://www.themoviedb.org/movie/297762,,0.52,2.21,0.44,2.25,0.651
+11-13,movie,530,A Grand Day Out,1990,en,Family;Animation;Comedy;Science Fiction;Adventure,G,https://www.themoviedb.org/movie/530,,0.82,1.84,0.61,2.29,0.65
+11-13,series,215344,Predators,2022,en,Documentary,TV-PG,https://www.themoviedb.org/tv/215344,learn-something,0.87,2.57,0.31,2.06,0.65
+11-13,movie,17264,The Black Stallion,1979,en,Family;Adventure,G,https://www.themoviedb.org/movie/17264,,0.98,2.28,0.41,2.22,0.65
+11-13,movie,537061,Steven Universe: The Movie,2019,en,Animation;Family;Adventure;Fantasy;Drama;TV Movie,PG,https://www.themoviedb.org/movie/537061,,0.93,2.17,0.41,2.41,0.649
+11-13,series,256924,Walking with Dinosaurs,2025,en,Documentary,,https://www.themoviedb.org/tv/256924,learn-something,0.96,2.56,0.27,2.21,0.649
+11-13,movie,348892,Bajrangi Bhaijaan,2015,hi,Music;Drama,NR,https://www.themoviedb.org/movie/348892,,0.81,2.55,0.37,1.86,0.648
+11-13,series,4381,Good Eats,1999,en,Comedy;Documentary,TV-G,https://www.themoviedb.org/tv/4381,learn-something,0.98,2.53,0.41,1.75,0.648
+11-13,series,60554,Star Wars Rebels,2014,en,Action & Adventure;Animation;Sci-Fi & Fantasy,TV-Y7,https://www.themoviedb.org/tv/60554,,0.98,2.05,0.4,2.65,0.648
+11-13,movie,118,Charlie and the Chocolate Factory,2005,en,Adventure;Comedy;Family;Fantasy,PG,https://www.themoviedb.org/movie/118,,0.86,1.9,0.55,2.37,0.647
+11-13,movie,961,The General,1926,en,Comedy;War;Romance,NR,https://www.themoviedb.org/movie/961,,0.86,2.07,0.69,1.55,0.647
+11-13,movie,49047,Gravity,2013,en,Science Fiction;Thriller;Drama,PG-13,https://www.themoviedb.org/movie/49047,,0.52,2.2,0.52,1.92,0.646
+11-13,movie,668482,Roald Dahl's Matilda the Musical,2022,en,Family;Comedy;Fantasy,PG,https://www.themoviedb.org/movie/668482,,0.91,2.27,0.39,2.26,0.646
+11-13,series,114478,Star Wars: Visions,2021,en,Animation;Sci-Fi & Fantasy;Action & Adventure,TV-PG,https://www.themoviedb.org/tv/114478,,0.92,2.34,0.37,2.18,0.644
+11-13,series,16591,Galapagos,2006,en,Documentary,TV-G,https://www.themoviedb.org/tv/16591,learn-something,1.0,2.86,0.32,1.41,0.643
+11-13,movie,297222,PK,2014,hi,Comedy;Drama;Science Fiction,PG-13,https://www.themoviedb.org/movie/297222,,0.41,2.63,0.42,1.47,0.643
+11-13,movie,18444,Swiss Family Robinson,1960,en,Adventure;Family,G,https://www.themoviedb.org/movie/18444,,0.94,2.29,0.47,1.9,0.643
+11-13,movie,992,Sherlock Jr.,1924,en,Action;Comedy;Mystery,NR,https://www.themoviedb.org/movie/992,,0.95,2.0,0.68,1.66,0.642
+11-13,movie,776305,Belle,2021,ja,Animation;Science Fiction;Drama;Music,PG,https://www.themoviedb.org/movie/776305,,0.61,2.36,0.41,1.97,0.641
+11-13,movie,168,Star Trek IV: The Voyage Home,1986,en,Science Fiction;Adventure,PG,https://www.themoviedb.org/movie/168,,0.98,2.26,0.43,2.08,0.641
+11-13,movie,860,WarGames,1983,en,Drama;Science Fiction;Thriller,PG,https://www.themoviedb.org/movie/860,,0.78,2.32,0.45,1.9,0.641
+11-13,movie,19101,A Little Princess,1995,en,Drama;Family;Fantasy,G,https://www.themoviedb.org/movie/19101,,0.92,2.49,0.37,1.87,0.64
+11-13,movie,214314,Bears,2014,en,Documentary,G,https://www.themoviedb.org/movie/214314,learn-something,0.97,2.71,0.28,1.78,0.639
+11-13,series,19239,Future Boy Conan,1978,ja,Animation;Action & Adventure;Sci-Fi & Fantasy;Family,TV-PG,https://www.themoviedb.org/tv/19239,,0.93,2.36,0.36,2.12,0.639
+11-13,movie,49444,Kung Fu Panda 2,2011,en,Animation;Family;Comedy;Action,PG,https://www.themoviedb.org/movie/49444,,0.91,2.08,0.4,2.48,0.639
+11-13,series,7225,Merlin,2008,en,Action & Adventure;Drama;Sci-Fi & Fantasy,TV-PG,https://www.themoviedb.org/tv/7225,,0.9,2.08,0.38,2.56,0.639
+11-13,series,21145,Natural World,1983,en,Documentary,TV-G,https://www.themoviedb.org/tv/21145,learn-something,1.0,2.82,0.31,1.47,0.639
+11-13,movie,11639,The Dark Crystal,1982,en,Adventure;Family;Fantasy,PG,https://www.themoviedb.org/movie/11639,,0.74,2.3,0.47,1.84,0.639
+11-13,movie,213,North by Northwest,1959,en,Thriller;Adventure,G,https://www.themoviedb.org/movie/213,,0.79,1.8,0.72,1.81,0.637
+11-13,movie,11970,Hercules,1997,en,Animation;Family;Fantasy;Adventure;Comedy;Romance,G,https://www.themoviedb.org/movie/11970,,0.73,2.03,0.47,2.27,0.635
+11-13,movie,760774,One Life,2023,en,History;Drama,PG,https://www.themoviedb.org/movie/760774,,0.78,2.97,0.28,1.25,0.634
+11-13,series,213608,Our Universe,2022,en,Documentary,TV-Y7,https://www.themoviedb.org/tv/213608,learn-something,0.95,2.85,0.25,1.58,0.634
+11-13,movie,13765,Scrooge,1970,en,Fantasy;Drama;Family,G,https://www.themoviedb.org/movie/13765,,0.92,2.61,0.36,1.61,0.634
+11-13,movie,264337,Spare Parts,2015,en,Drama,PG-13,https://www.themoviedb.org/movie/264337,,0.85,2.83,0.17,1.9,0.634
+11-13,series,222792,Chimp Empire,2023,en,Documentary,TV-PG,https://www.themoviedb.org/tv/222792,learn-something,0.98,2.7,0.26,1.8,0.633
+11-13,movie,9036,Eight Below,2006,en,Adventure;Drama;Family,PG,https://www.themoviedb.org/movie/9036,,0.94,2.56,0.25,2.07,0.632
+11-13,movie,574074,Kitbull,2019,en,Animation;Family;Drama,PG,https://www.themoviedb.org/movie/574074,,0.79,2.14,0.47,2.04,0.632
+11-13,series,211694,Island of the Sea Wolves,2022,en,Documentary,TV-PG,https://www.themoviedb.org/tv/211694,learn-something,0.99,2.62,0.28,1.84,0.63
+11-13,movie,14919,Batman: Mask of the Phantasm,1993,en,Animation;Crime;Mystery,PG,https://www.themoviedb.org/movie/14919,,0.64,1.9,0.59,2.01,0.629
+11-13,movie,595228,Soorarai Pottru,2020,ta,Drama;Action,U,https://www.themoviedb.org/movie/595228,,0.61,2.46,0.46,1.47,0.629
+11-13,movie,41609,The Three Musketeers,1948,en,Adventure;Romance,NR,https://www.themoviedb.org/movie/41609,,0.87,2.13,0.53,1.81,0.629
+11-13,movie,890825,14 Peaks: Nothing Is Impossible,2021,en,Documentary,,https://www.themoviedb.org/movie/890825,learn-something,0.95,2.57,0.33,1.72,0.628
+11-13,movie,11533,Jason and the Argonauts,1963,en,Adventure;Family;Fantasy,G,https://www.themoviedb.org/movie/11533,,0.94,2.35,0.41,1.83,0.628
+11-13,movie,614917,King Richard,2021,en,Drama;History,PG-13,https://www.themoviedb.org/movie/614917,,0.82,2.56,0.34,1.7,0.628
+11-13,series,32900,Through the Wormhole,2010,en,Documentary,TV-PG,https://www.themoviedb.org/tv/32900,learn-something,0.93,2.78,0.28,1.52,0.628
+11-13,movie,11886,Robin Hood,1973,en,Animation;Family;Adventure,G,https://www.themoviedb.org/movie/11886,,0.63,2.05,0.51,1.99,0.626
+11-13,movie,774531,Young Woman and the Sea,2024,en,History;Drama,PG,https://www.themoviedb.org/movie/774531,,0.98,2.8,0.23,1.64,0.626
+11-13,movie,1002185,A Million Miles Away,2023,en,Drama;History,PG,https://www.themoviedb.org/movie/1002185,,0.97,2.92,0.19,1.54,0.623
+11-13,movie,31977,Black,2005,hi,Drama,PG-13,https://www.themoviedb.org/movie/31977,,0.4,2.62,0.44,1.17,0.623
+11-13,movie,2323,Field of Dreams,1989,en,Drama;Fantasy,PG,https://www.themoviedb.org/movie/2323,,0.87,2.39,0.5,1.37,0.623
+11-13,movie,43959,Soul Surfer,2011,en,Family;Drama,PG,https://www.themoviedb.org/movie/43959,,0.99,2.68,0.19,1.96,0.622
+11-13,movie,17529,True Grit,1969,en,Western;Drama;Adventure,G,https://www.themoviedb.org/movie/17529,,0.66,2.23,0.54,1.5,0.622
+11-13,movie,14280,Never Cry Wolf,1983,en,Adventure;Drama;Action,PG,https://www.themoviedb.org/movie/14280,,0.97,2.81,0.25,1.49,0.621
+11-13,movie,361249,Nil Battey Sannata,2016,hi,Drama;Family,,https://www.themoviedb.org/movie/361249,,0.86,2.8,0.31,1.29,0.621
+11-13,movie,4464,Seabiscuit,2003,en,Drama;History,PG-13,https://www.themoviedb.org/movie/4464,,0.87,2.5,0.36,1.66,0.621
+11-13,series,74728,Carmen Sandiego,2019,en,Animation;Action & Adventure;Crime;Kids,TV-Y7,https://www.themoviedb.org/tv/74728,,0.94,2.15,0.31,2.46,0.62
+11-13,movie,284288,Mary Kom,2014,hi,Action;Drama,PG-13,https://www.themoviedb.org/movie/284288,,0.74,2.63,0.32,1.55,0.62
+11-13,movie,759054,Rise,2022,en,Drama,PG,https://www.themoviedb.org/movie/759054,,0.9,2.79,0.22,1.63,0.62
+11-13,movie,158023,Mayabazar,1957,te,Fantasy;Drama;Comedy,UA,https://www.themoviedb.org/movie/158023,,0.92,2.46,0.49,1.23,0.619
+11-13,movie,783675,The First Slam Dunk,2022,ja,Animation;Comedy;Drama,PG-13,https://www.themoviedb.org/movie/783675,,0.7,2.12,0.39,2.21,0.619
+11-13,movie,11076,Fly Away Home,1996,en,Adventure;Drama;Family,PG,https://www.themoviedb.org/movie/11076,,0.97,2.61,0.19,2.04,0.618
+11-13,movie,359724,Ford v Ferrari,2019,en,Drama;History;Action,PG-13,https://www.themoviedb.org/movie/359724,,0.56,2.2,0.45,1.82,0.617
+11-13,series,106393,Star Trek: Prodigy,2021,en,Animation;Sci-Fi & Fantasy;Kids,TV-Y7,https://www.themoviedb.org/tv/106393,,0.93,2.27,0.27,2.35,0.617
+11-13,series,213611,Our Oceans,2024,en,Documentary,TV-PG,https://www.themoviedb.org/tv/213611,learn-something,1.0,2.7,0.19,1.85,0.616
+11-13,movie,16520,The King and I,1956,en,Romance;History;Drama,G,https://www.themoviedb.org/movie/16520,,0.92,2.33,0.52,1.33,0.616
+11-13,movie,2383,The Bear,1988,fr,Adventure;Drama;Family,PG,https://www.themoviedb.org/movie/2383,,0.87,2.51,0.31,1.74,0.615
+11-13,movie,228326,The Book of Life,2014,en,Animation;Family;Fantasy,PG,https://www.themoviedb.org/movie/228326,,0.94,2.41,0.25,2.14,0.615
+11-13,movie,823452,The Boys in the Boat,2023,en,Drama;History,PG-13,https://www.themoviedb.org/movie/823452,,0.82,2.65,0.29,1.57,0.615
+11-13,movie,464593,Earth: One Amazing Day,2017,en,Documentary,G,https://www.themoviedb.org/movie/464593,learn-something,0.97,2.6,0.27,1.72,0.614
+11-13,series,6145,Modern Marvels,1993,en,Documentary,TV-PG,https://www.themoviedb.org/tv/6145,learn-something,0.97,2.66,0.29,1.54,0.614
+11-13,movie,1144107,The Legend of Hei 2,2025,zh,Animation;Fantasy;Action;Adventure,,https://www.themoviedb.org/movie/1144107,,0.95,2.13,0.35,2.28,0.614
+11-13,movie,301528,Toy Story 4,2019,en,Family;Comedy;Animation;Adventure,G,https://www.themoviedb.org/movie/301528,,0.67,2.0,0.5,1.96,0.613
+11-13,series,9302,Digimon Tamers,2001,ja,Animation;Action & Adventure;Sci-Fi & Fantasy,TV-PG,https://www.themoviedb.org/tv/9302,,0.83,2.05,0.39,2.25,0.612
+11-13,movie,83389,From Up on Poppy Hill,2011,ja,Animation;Drama,PG,https://www.themoviedb.org/movie/83389,,0.84,2.63,0.33,1.42,0.612
+11-13,movie,481848,The Call of the Wild,2020,en,Adventure;Family;Drama,PG,https://www.themoviedb.org/movie/481848,,0.94,2.23,0.32,2.16,0.611
+11-13,series,80671,Cells at Work!,2018,ja,Animation;Action & Adventure;Comedy,TV-14,https://www.themoviedb.org/tv/80671,,0.47,2.25,0.27,2.3,0.61
+11-13,movie,22683,Gifted Hands: The Ben Carson Story,2009,en,Drama,NR,https://www.themoviedb.org/movie/22683,,0.88,2.84,0.25,1.31,0.61
+11-13,movie,739986,True Spirit,2023,en,Adventure;Drama;History,PG,https://www.themoviedb.org/movie/739986,,0.99,2.69,0.17,1.83,0.607
+11-13,movie,10601,Peter Pan,2003,en,Adventure;Fantasy;Family,PG,https://www.themoviedb.org/movie/10601,,0.75,1.86,0.52,2.03,0.604
+11-13,movie,543084,The Biggest Little Farm,2019,en,Documentary,PG,https://www.themoviedb.org/movie/543084,learn-something,0.98,2.77,0.25,1.36,0.604
+11-13,movie,645489,Gunjan Saxena: The Kargil Girl,2020,hi,Drama,U,https://www.themoviedb.org/movie/645489,,0.95,2.69,0.24,1.53,0.603
+11-13,movie,116149,Paddington,2014,en,Comedy;Adventure;Family,PG,https://www.themoviedb.org/movie/116149,,0.6,2.12,0.4,1.98,0.603
+11-13,movie,1061699,The Six Triple Eight,2024,en,Drama;War;History,PG-13,https://www.themoviedb.org/movie/1061699,,0.78,2.9,0.22,1.22,0.603
+11-13,movie,478682,Gold,2018,hi,Drama;History,UA,https://www.themoviedb.org/movie/478682,,0.98,2.69,0.27,1.39,0.6
+11-13,movie,157841,The Young and Prodigious T.S. Spivet,2013,en,Adventure;Drama;Family,PG,https://www.themoviedb.org/movie/157841,,0.96,2.55,0.19,1.93,0.6
+11-13,series,2632,Once Upon a Time... Life,1987,fr,Animation;Kids;Documentary;Family,NR,https://www.themoviedb.org/tv/2632,learn-something,0.68,2.4,0.33,1.68,0.599
+11-13,movie,3110,Shane,1953,en,Drama;Western,NR,https://www.themoviedb.org/movie/3110,,0.77,2.17,0.56,1.26,0.599
+11-13,movie,727306,Safety,2020,en,Family;Drama;History,PG,https://www.themoviedb.org/movie/727306,,0.92,2.69,0.19,1.65,0.598
+11-13,movie,433694,Sgt. Stubby: An American Hero,2018,en,Animation;Adventure;Family;History;War,PG,https://www.themoviedb.org/movie/433694,,0.92,2.47,0.2,2.01,0.598
+11-13,movie,838240,Robot Dreams,2023,es,Animation;Drama;Comedy;Science Fiction,NR,https://www.themoviedb.org/movie/838240,,0.85,2.19,0.45,1.6,0.597
+11-13,series,54315,Brain Games,2011,en,Documentary;Comedy;Reality,TV-G,https://www.themoviedb.org/tv/54315,learn-something,0.99,2.37,0.22,2.09,0.596
+11-13,movie,459003,Mavka: The Forest Song,2023,uk,Animation;Adventure;Family;Fantasy,PG,https://www.themoviedb.org/movie/459003,,0.96,2.47,0.19,2.02,0.596
+11-13,movie,1325678,Sarah's Oil,2025,en,Drama,PG,https://www.themoviedb.org/movie/1325678,,0.97,2.84,0.16,1.45,0.595
+11-13,movie,278927,The Jungle Book,2016,en,Adventure;Family;Fantasy,PG,https://www.themoviedb.org/movie/278927,,0.91,2.04,0.38,2.1,0.595
+11-13,movie,9912,The World's Fastest Indian,2005,en,Drama;Adventure;History,PG-13,https://www.themoviedb.org/movie/9912,,0.7,2.55,0.3,1.47,0.595
+11-13,movie,11113,My Fair Lady,1964,en,Comedy;Music;Drama,G,https://www.themoviedb.org/movie/11113,,0.83,2.04,0.62,1.2,0.592
+11-13,movie,15370,The Cat Returns,2002,ja,Adventure;Fantasy;Animation;Drama;Family,G,https://www.themoviedb.org/movie/15370,,0.92,2.03,0.35,2.19,0.592
+11-13,movie,353326,The Man Who Knew Infinity,2016,en,Drama;History,PG-13,https://www.themoviedb.org/movie/353326,,0.53,2.85,0.36,0.68,0.592
+11-13,movie,345775,Long Way North,2015,fr,Adventure;Animation;Drama;Family,,https://www.themoviedb.org/movie/345775,,0.95,2.38,0.22,2.01,0.591
+11-13,movie,272878,Max,2015,en,Adventure;Drama;Family,PG,https://www.themoviedb.org/movie/272878,,0.91,2.41,0.24,1.89,0.591
+11-13,movie,505953,Storm Boy,2019,en,Drama;Adventure;Family,PG,https://www.themoviedb.org/movie/505953,,0.97,2.47,0.26,1.71,0.591
+11-13,movie,402431,Wicked,2024,en,Drama;Romance;Fantasy,PG,https://www.themoviedb.org/movie/402431,,0.83,2.09,0.37,1.99,0.59
+11-13,movie,635389,Jiang Ziya,2020,zh,Animation;Action;Fantasy;Adventure,,https://www.themoviedb.org/movie/635389,,0.86,2.27,0.26,2.05,0.589
+11-13,movie,13920,Radio,2003,en,Drama,PG,https://www.themoviedb.org/movie/13920,,0.98,2.69,0.18,1.58,0.589
+11-13,movie,1069945,Manjummel Boys,2024,ml,Adventure;Thriller;Drama,U,https://www.themoviedb.org/movie/1069945,,0.87,2.25,0.25,2.1,0.588
+11-13,series,106173,Mystery Lab,2020,pt,Documentary;Comedy;Family,,https://www.themoviedb.org/tv/106173,learn-something,0.99,2.36,0.18,2.16,0.588
+11-13,movie,16052,Selena,1997,en,Drama;Music;History,PG,https://www.themoviedb.org/movie/16052,,0.83,2.43,0.34,1.44,0.587
+11-13,movie,823219,Flow,2024,lv,Adventure;Animation;Family;Fantasy,PG,https://www.themoviedb.org/movie/823219,,0.88,2.14,0.38,1.8,0.585
+11-13,movie,10865,Atlantis: The Lost Empire,2001,en,Animation;Family;Adventure;Science Fiction,PG,https://www.themoviedb.org/movie/10865,,0.99,2.18,0.27,2.09,0.582
+11-13,movie,62214,Frankenweenie,2012,en,Animation;Comedy;Family;Horror;Science Fiction,PG,https://www.themoviedb.org/movie/62214,,0.96,2.1,0.27,2.23,0.582
+11-13,movie,22881,The Blind Side,2009,en,Drama,PG-13,https://www.themoviedb.org/movie/22881,,0.67,2.42,0.27,1.65,0.582
+11-13,movie,100271,A Letter to Momo,2012,ja,Comedy;Fantasy;Animation;Drama;Family,PG,https://www.themoviedb.org/movie/100271,,0.95,2.28,0.22,2.08,0.581
+11-13,movie,585077,Children of the Sea,2019,ja,Animation;Fantasy;Adventure;Mystery,NR,https://www.themoviedb.org/movie/585077,,0.72,2.46,0.27,1.57,0.581
+11-13,movie,212167,Patema Inverted,2013,ja,Animation;Science Fiction;Adventure;Drama,NR,https://www.themoviedb.org/movie/212167,,0.78,2.4,0.22,1.86,0.581
+11-13,series,95339,The Imagineering Story,2019,en,Documentary,TV-PG,https://www.themoviedb.org/tv/95339,learn-something,0.99,2.49,0.27,1.52,0.581
+11-13,movie,256876,Red Army,2015,en,Documentary;History,PG,https://www.themoviedb.org/movie/256876,learn-something,0.89,2.55,0.3,1.29,0.58
+11-13,movie,340357,April and the Extraordinary World,2015,fr,Animation;Comedy;Family;Mystery;Science Fiction,,https://www.themoviedb.org/movie/340357,,0.98,2.27,0.21,2.11,0.579
+11-13,movie,840,Close Encounters of the Third Kind,1977,en,Science Fiction;Drama,PG,https://www.themoviedb.org/movie/840,,0.79,1.92,0.59,1.35,0.578
+11-13,movie,392011,Kedi,2017,en,Documentary,NR,https://www.themoviedb.org/movie/392011,learn-something,0.97,2.46,0.25,1.59,0.577
+11-13,movie,447856,Pad Man,2018,hi,Comedy;Drama,UA,https://www.themoviedb.org/movie/447856,,0.8,2.71,0.19,1.36,0.577
+11-13,movie,785522,Skater Girl,2021,en,Drama;Family,PG,https://www.themoviedb.org/movie/785522,,0.99,2.4,0.18,1.96,0.577
+11-13,movie,664996,Apollo 10½: A Space Age Childhood,2022,en,Animation;Drama;History,PG-13,https://www.themoviedb.org/movie/664996,,0.59,2.5,0.27,1.42,0.574
+11-13,movie,458302,"Remi, Nobody's Boy",2018,fr,Adventure;Family;Drama,,https://www.themoviedb.org/movie/458302,,0.95,2.4,0.19,1.88,0.574
+11-13,movie,35144,The Journey of Natty Gann,1985,en,Adventure;Family;Drama,PG,https://www.themoviedb.org/movie/35144,,0.73,2.48,0.17,1.81,0.574
+11-13,movie,342473,Ballerina,2016,en,Animation;Family;Comedy;Music,PG,https://www.themoviedb.org/movie/342473,,0.88,2.24,0.23,2.02,0.573
+11-13,movie,522402,Finch,2021,en,Science Fiction;Drama;Adventure,PG-13,https://www.themoviedb.org/movie/522402,,0.6,2.45,0.23,1.64,0.573
+11-13,series,126164,The Wonder Years,2021,en,Comedy;Drama;Family,TV-PG,https://www.themoviedb.org/tv/126164,,0.9,2.51,0.22,1.55,0.572
+11-13,movie,71562,I Am Kalam,2010,hi,Comedy;Drama;Family,,https://www.themoviedb.org/movie/71562,,0.95,2.43,0.23,1.6,0.567
+11-13,series,68427,Mars,2016,en,Sci-Fi & Fantasy;Action & Adventure,TV-PG,https://www.themoviedb.org/tv/68427,,0.87,2.56,0.17,1.55,0.564
+11-13,movie,574,The Man Who Knew Too Much,1956,en,Thriller;Mystery;Drama,PG,https://www.themoviedb.org/movie/574,,0.7,1.8,0.57,1.48,0.564
+11-13,movie,866440,2018,2023,ml,Thriller;Action;Adventure,UA,https://www.themoviedb.org/movie/866440,,0.7,2.4,0.28,1.4,0.561
+11-13,movie,450322,The Man Who Invented Christmas,2017,en,Drama;History;Comedy;Family,PG,https://www.themoviedb.org/movie/450322,,0.97,2.45,0.2,1.59,0.56
+11-13,series,157194,Pole to Pole with Will Smith,2026,en,Documentary,TV-14,https://www.themoviedb.org/tv/157194,learn-something,0.59,2.55,0.11,1.72,0.559
+11-13,movie,936074,Tenor,2022,fr,Comedy;Drama;Music,,https://www.themoviedb.org/movie/936074,,0.91,2.51,0.18,1.54,0.559
+11-13,movie,25527,The Ron Clark Story,2006,en,Drama,PG,https://www.themoviedb.org/movie/25527,,0.96,2.48,0.2,1.52,0.559
+11-13,series,237853,WondLa,2024,en,Animation;Sci-Fi & Fantasy;Family,TV-PG,https://www.themoviedb.org/tv/237853,,0.95,2.1,0.2,2.16,0.555
+11-13,movie,656690,The Social Dilemma,2020,en,Documentary;Drama,PG-13,https://www.themoviedb.org/movie/656690,learn-something,0.45,2.51,0.31,1.02,0.554
+11-13,movie,206789,The Kingdom of Diamonds,1980,bn,Comedy,,https://www.themoviedb.org/movie/206789,,0.76,2.06,0.38,1.56,0.553
+11-13,movie,14325,The Express,2008,en,Drama,PG,https://www.themoviedb.org/movie/14325,,0.97,2.55,0.17,1.37,0.548
+11-13,series,1292,How Do They Do It?,2006,en,Documentary,TV-G,https://www.themoviedb.org/tv/1292,learn-something,0.98,2.41,0.16,1.63,0.545
+11-13,movie,369972,First Man,2018,en,History;Drama,PG-13,https://www.themoviedb.org/movie/369972,,0.59,2.5,0.29,0.95,0.541
+11-13,movie,493623,Hichki,2018,hi,Drama;Comedy,,https://www.themoviedb.org/movie/493623,,0.9,2.44,0.21,1.22,0.531
+11-13,movie,11170,We Are Marshall,2006,en,Drama;History,PG,https://www.themoviedb.org/movie/11170,,0.69,2.46,0.18,1.25,0.527
+11-13,movie,333596,Woodlawn,2015,en,Drama,PG,https://www.themoviedb.org/movie/333596,,0.94,2.43,0.13,1.47,0.526
+11-13,series,254930,Simone Biles Rising,2024,en,Documentary,TV-14,https://www.themoviedb.org/tv/254930,learn-something,0.53,2.32,0.16,1.45,0.517
+11-13,movie,477666,My Best Friend,2018,es,Drama;Romance,,https://www.themoviedb.org/movie/477666,,0.82,2.45,0.16,1.2,0.515

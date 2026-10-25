@@ -1,0 +1,14 @@
+My Kids TV open dataset
+
+Copyright (c) My Kids TV contributors.
+
+The curation and judgments in this folder (the selection of titles per age band, the badges, and the age_fit,
+value, must_watch, fun and score columns) are licensed under the Creative Commons Attribution 4.0 International
+License (CC BY 4.0). You may share and adapt them for any purpose, including commercially, as long as you give
+appropriate credit ("My Kids TV"), link to the license, and indicate if changes were made.
+
+Full license: https://creativecommons.org/licenses/by/4.0/
+
+Title metadata (TMDB ids, titles, years, genres and age ratings) comes from TMDB and is subject to TMDB's terms of
+use: https://www.themoviedb.org/api-terms-of-use
+This product uses the TMDB API but is not endorsed or certified by TMDB.
