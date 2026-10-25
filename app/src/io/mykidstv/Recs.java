@@ -142,6 +142,7 @@ final class Recs {
     private volatile boolean light;     // light design: builds only the cards (all three tabs' cards fit in memory)
     private volatile long failedAt, keyStamp, linkRetryAt;
     private volatile String listLanguage = "";   // language used for the saved titles, genres and texts
+    private volatile String listBand = "";       // age band the saved picks were chosen for
 
     private Recs(Context c) {
         context = c;
@@ -154,6 +155,7 @@ final class Recs {
             listAt = cache.getLong("listAt", 0);
             listLanguage = cache.getString("language", cache.getBoolean("english", false) ? "en" : "pt");
             keyStamp = cache.getLong("keyStamp", 0);
+            listBand = cache.getString("band", "");
         } catch (Exception ignored) {
         }
     }
@@ -268,8 +270,13 @@ final class Recs {
     void refreshIfStale() {
         if (!hasKey(context) || fetching) return;
         long now = System.currentTimeMillis();
-        long stamp = sourceStamp();   // a new key, country, animation choice or installed streaming-app set refetches
+        long stamp = sourceStamp();   // a new key, country, age band, animation choice or installed streaming-app set refetches
         boolean newKey = stamp != keyStamp;
+        // Another age band (Home Settings): the old picks may be too old for the child, so none show until the new ones come.
+        if (!listBand.isEmpty() && !listBand.equals(Prefs.ageBand())) {
+            picks = new ArrayList<>();
+            listBand = "";
+        }
         long sinceFail = now - failedAt;    // negative = the clock went back: don't wait
         if (!newKey && failedAt != 0 && sinceFail >= 0 && sinceFail < 10 * 60_000L) return;
         int p = period(now);
@@ -458,6 +465,7 @@ final class Recs {
         period = p;
         listAt = System.currentTimeMillis();
         listLanguage = Ui.language;
+        listBand = band;
     }
 
     /** Language of titles and genres (TMDB's "fr-FR", "zh-CN"…); the services come from the region. */
@@ -473,15 +481,20 @@ final class Recs {
 
     /**
      * The vetted catalog for the child's age band (app/assets/catalog/<band>.json, built by catalog/pipeline.py: TMDB age
-     * ratings, Jev's judgments and a person's review). Ids by kind, loaded once.
+     * ratings, Jev's judgments and a person's review). Ids by kind, loaded once per band (the band can change in Home
+     * Settings).
      */
     private static int[] catalogMovies, catalogShows;
     private static final Map<String, String> catalogBadges = new HashMap<>();   // "movie:12" -> "must"
+    private static String catalogBand;
 
     private void loadCatalog() {
-        if (catalogMovies != null) return;
+        String band = Prefs.ageBand();
+        if (catalogMovies != null && band.equals(catalogBand)) return;
+        catalogBand = band;
+        catalogBadges.clear();
         List<Integer> movies = new ArrayList<>(), shows = new ArrayList<>();
-        try (java.io.InputStream in = context.getAssets().open("catalog/" + Prefs.ageBand() + ".json")) {
+        try (java.io.InputStream in = context.getAssets().open("catalog/" + band + ".json")) {
             JSONArray titles = new JSONObject(read(in)).getJSONArray("titles");
             for (int i = 0; i < titles.length(); i++) {
                 JSONObject t = titles.getJSONObject(i);
@@ -489,11 +502,12 @@ final class Recs {
                 if (!t.optString("badge").isEmpty()) catalogBadges.put(t.optString("kind") + ":" + t.getInt("id"), t.optString("badge"));
             }
         } catch (Exception e) {
-            AppLog.w("catalog " + Prefs.ageBand() + ": " + e.getMessage());
+            AppLog.w("catalog " + band + ": " + e.getMessage());
         }
         catalogMovies = movies.stream().mapToInt(Integer::intValue).toArray();
         catalogShows = shows.stream().mapToInt(Integer::intValue).toArray();
     }
+
     private static final int HISTORY_MAX = 150;
 
     /** Up to `max` unseen hand-picked titles that are on one of the TV's services (looked up one by one). */
@@ -701,7 +715,8 @@ final class Recs {
     }
 
     private long sourceStamp() {
-        long stamp = (Config.TMDB_KEY.hashCode() * 31L + REGION.hashCode()) * 31L + (Config.HIDE_ANIMATION ? 1 : 0);
+        long stamp = ((Config.TMDB_KEY.hashCode() * 31L + REGION.hashCode()) * 31L + (Config.HIDE_ANIMATION ? 1 : 0)) * 31L
+                + Prefs.ageBand().hashCode();
         for (String[] service : SERVICES) stamp = stamp * 31L + (installed(service[2]) ? service[2].hashCode() : 0);
         return stamp;
     }
@@ -910,7 +925,7 @@ final class Recs {
                         .put("detailed", p.detailed));
             }
             SharedPreferences.Editor e = cache.edit().putString("picks", a.toString()).putInt("period", period).putLong("listAt", listAt)
-                    .putString("language", listLanguage)
+                    .putString("language", listLanguage).putString("band", listBand)
                     .putLong("keyStamp", keyStamp).putInt("version", CACHE_VERSION);
             // Watchmode links of titles no longer in the list go (the refused-key mark stays).
             Set<String> keep = new HashSet<>();

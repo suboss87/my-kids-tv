@@ -45,8 +45,8 @@ final class RemoteKeys {
     static final boolean STEM_NETFLIX = VESTEL || FORMOVIE;
     /**
      * Haier (MatrixTV BE, MediaTek, Google TV 14). Its YouTube button sends 247, a hot key that Haier's
-     * HaierHotKeyDispatcher turns into YouTube. With block_youtube_button (a parent's choice) it is swallowed; every
-     * other key is left alone.
+     * HaierHotKeyDispatcher turns into YouTube. With the YouTube button blocked (a parent's choice: Prefs, first
+     * block_youtube_button) it is swallowed; every other key is left alone.
      */
     static final boolean HAIER = is("Haier");
     private static final int KEY_YOUTUBE_HAIER = 247;
@@ -63,7 +63,7 @@ final class RemoteKeys {
     static boolean onKey(Context c, KeyEvent e) {
         if (!supported()) return false;
         if (HAIER) {
-            if (!Config.BLOCK_YOUTUBE_BUTTON || e.getKeyCode() != KEY_YOUTUBE_HAIER) return false;
+            if (e.getKeyCode() != KEY_YOUTUBE_HAIER || !Prefs.blockYoutubeButton()) return false;
             if (e.getAction() == KeyEvent.ACTION_DOWN && e.getRepeatCount() == 0) AppLog.w("remote key 247 (YouTube) blocked");
             return true;
         }
@@ -81,6 +81,12 @@ final class RemoteKeys {
         boolean ours = false;
         for (int key : Prefs.KEYS) ours |= key == keyCode;
         if (!ours) return false;
+        // Blocked by a parent: whatever app the button was set to open, it does nothing.
+        if ((keyCode == Prefs.KEY_YOUTUBE || keyCode == Prefs.KEY_HISENSE_YOUTUBE || keyCode == Prefs.KEY_SONY_YOUTUBE)
+                && Prefs.blockYoutubeButton()) {
+            if (e.getAction() == KeyEvent.ACTION_DOWN && e.getRepeatCount() == 0) AppLog.w("remote key " + e.getKeyCode() + " (YouTube) blocked");
+            return true;
+        }
         String pkg = Prefs.keyApp(keyCode);
         if (pkg.isEmpty()) return false;   // "Nothing": the key goes on as if we weren't here
         if (e.getAction() == KeyEvent.ACTION_DOWN && e.getRepeatCount() == 0) {

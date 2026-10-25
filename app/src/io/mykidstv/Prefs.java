@@ -152,6 +152,77 @@ final class Prefs {
     static String childName() { return sp().getString("child_name", Config.CHILD_NAME.trim()).trim(); }
 
     static void setChildName(String v) { put("child_name", v); }
+    // MARK: - Parent PIN
+
+    // Only a salted SHA-256 hash ("salt:hash", hex) is kept, never the PIN. No version++: nothing on screen shows it.
+    // "pin_preset" is the hash parent_pin (config.properties) last set: a new parent_pin, built and installed again,
+    // replaces the PIN (the way back for a parent who forgot it).
+
+    /** A PIN is set (from parent_pin or made on the TV). */
+    static boolean hasPin() {
+        applyPinPreset();
+        return !sp().getString("pin", "").isEmpty();
+    }
+
+    static boolean checkPin(String pin) {
+        applyPinPreset();
+        return matches(pin, sp().getString("pin", ""));
+    }
+
+    static void setPin(String pin) {
+        sp().edit().putString("pin", hashPin(pin)).apply();
+    }
+
+    /** Wrong tries in a row, and until when (elapsedRealtime) entry waits after too many. */
+    static int pinFails() { return sp().getInt("pinFails", 0); }
+    static long pinWaitUntil() { return sp().getLong("pinWaitUntil", 0); }
+
+    static void setPinFails(int fails, long waitUntil) {
+        sp().edit().putInt("pinFails", fails).putLong("pinWaitUntil", waitUntil).apply();
+    }
+
+    private static void applyPinPreset() {
+        String preset = Config.PARENT_PIN.trim();
+        if (!preset.matches("[0-9]{4}") || matches(preset, sp().getString("pin_preset", ""))) return;
+        String hash = hashPin(preset);
+        sp().edit().putString("pin", hash).putString("pin_preset", hash).putInt("pinFails", 0).putLong("pinWaitUntil", 0).apply();
+    }
+
+    private static String hashPin(String pin) {
+        byte[] salt = new byte[16];
+        new java.security.SecureRandom().nextBytes(salt);
+        return hex(salt) + ":" + sha256(salt, pin);
+    }
+
+    private static boolean matches(String pin, String saltHash) {
+        int cut = saltHash.indexOf(':');
+        if (cut <= 0) return false;
+        String salt = saltHash.substring(0, cut);
+        byte[] bytes = new byte[salt.length() / 2];
+        try {
+            for (int i = 0; i < bytes.length; i++) bytes[i] = (byte) Integer.parseInt(salt.substring(2 * i, 2 * i + 2), 16);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return java.security.MessageDigest.isEqual(sha256(bytes, pin).getBytes(StandardCharsets.US_ASCII),
+                saltHash.substring(cut + 1).getBytes(StandardCharsets.US_ASCII));
+    }
+
+    private static String sha256(byte[] salt, String pin) {
+        try {
+            java.security.MessageDigest d = java.security.MessageDigest.getInstance("SHA-256");
+            d.update(salt);
+            return hex(d.digest(pin.getBytes(StandardCharsets.UTF_8)));
+        } catch (java.security.NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);   // every Android has SHA-256
+        }
+    }
+
+    private static String hex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) sb.append(String.format(Locale.ROOT, "%02x", b));
+        return sb.toString();
+    }
 
     // MARK: - City
 
@@ -277,7 +348,9 @@ final class Prefs {
     }
 
     private static final String[] keyApps = new String[KEYS.length];   // null = the default
+    private static Boolean blockYoutube;   // null = block_youtube_button from config.properties
     private static long keysStamp = Long.MIN_VALUE;
+    private static final String BLOCK_YOUTUBE = "blockYoutube=";
 
     /** A temporary file per process (two can start together after an update), synced before it replaces the old one. */
     private static boolean writeKeys(String text) {
@@ -305,35 +378,61 @@ final class Prefs {
         writeKeys(sb.toString());
     }
 
+    /** Reads the file again if it changed (call holding keyApps). */
+    private static void readKeys() {
+        File f = keysFile();
+        long stamp = f.lastModified() * 31 + f.length();   // 0 without the file: every key opens its default
+        if (stamp == keysStamp) return;
+        keysStamp = stamp;
+        java.util.Arrays.fill(keyApps, null);
+        blockYoutube = null;
+        if (stamp == 0) return;
+        try (BufferedReader r = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = r.readLine()) != null) {
+                if (line.startsWith(BLOCK_YOUTUBE)) blockYoutube = "true".equals(line.substring(BLOCK_YOUTUBE.length()));
+                for (int i = 0; i < KEYS.length; i++) {
+                    String prefix = KEYS[i] + "=";
+                    if (line.startsWith(prefix)) keyApps[i] = line.substring(prefix.length());
+                }
+            }
+        } catch (IOException ignored) {
+        }
+    }
+
     /** Package the key opens ("" = nothing). */
     static String keyApp(int keyCode) {
         synchronized (keyApps) {
-            File f = keysFile();
-            long stamp = f.lastModified() * 31 + f.length();   // 0 without the file: every key opens its default
-            if (stamp != keysStamp) {
-                keysStamp = stamp;
-                java.util.Arrays.fill(keyApps, null);
-                if (stamp != 0) {
-                    try (BufferedReader r = new BufferedReader(new FileReader(f))) {
-                        String line;
-                        while ((line = r.readLine()) != null) {
-                            for (int i = 0; i < KEYS.length; i++) {
-                                String prefix = KEYS[i] + "=";
-                                if (line.startsWith(prefix)) keyApps[i] = line.substring(prefix.length());
-                            }
-                        }
-                    } catch (IOException ignored) {
-                    }
-                }
-            }
+            readKeys();
             for (int i = 0; i < KEYS.length; i++) if (KEYS[i] == keyCode && keyApps[i] != null) return keyApps[i];
             return defaultApp(keyCode);
         }
     }
 
+    /** The remote's YouTube button does nothing (a parent's choice; the YouTube app stays). */
+    static boolean blockYoutubeButton() {
+        synchronized (keyApps) {
+            readKeys();
+            return blockYoutube != null ? blockYoutube : Config.BLOCK_YOUTUBE_BUTTON;
+        }
+    }
+
     static void setKeyApp(int keyCode, String pkg) {
+        synchronized (keyApps) {
+            if (writeKeys(keysText(keyCode, pkg, blockYoutubeButton()))) version++;
+        }
+    }
+
+    static void setBlockYoutubeButton(boolean on) {
+        synchronized (keyApps) {
+            if (writeKeys(keysText(0, null, on))) version++;
+        }
+    }
+
+    /** Every button's app (keyCode's as pkg) and the YouTube block, as the file holds them. */
+    private static String keysText(int keyCode, String pkg, boolean block) {
         StringBuilder sb = new StringBuilder();
-        for (int key : KEYS) sb.append(key).append('=').append(key == keyCode ? pkg : keyApp(key)).append('\n');
-        if (writeKeys(sb.toString())) version++;
+        for (int key : KEYS) sb.append(key).append('=').append(pkg != null && key == keyCode ? pkg : keyApp(key)).append('\n');
+        return sb.append(BLOCK_YOUTUBE).append(block).append('\n').toString();
     }
 }

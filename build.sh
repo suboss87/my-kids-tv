@@ -55,6 +55,8 @@ ASSIST=false; [ "$(prop disable_assistant false)" = "true" ] && ASSIST=true
 CRYPTO=false; [ "$(prop show_crypto false)" = "true" ] && CRYPTO=true
 ANIMATION=false; [ "$(prop hide_animation false)" = "true" ] && ANIMATION=true
 BLOCK_YT=false; [ "$(prop block_youtube_button false)" = "true" ] && BLOCK_YT=true
+PARENT_PIN="$(prop parent_pin '')"
+[[ -z "$PARENT_PIN" || "$PARENT_PIN" =~ ^[0-9]{4}$ ]] || { echo "config.properties: parent_pin must be 4 digits or empty" >&2; exit 1; }
 
 rm -rf out && mkdir -p out/gen/io/mykidstv out/classes
 cat > out/gen/io/mykidstv/Config.java <<EOF
@@ -81,6 +83,7 @@ final class Config {
     static final String AGE_BAND = "$(prop age_band 7-10)";
     static final String CHILD_NAME = "$(prop child_name '')";
     static final boolean BLOCK_YOUTUBE_BUTTON = $BLOCK_YT;
+    static final String PARENT_PIN = "$PARENT_PIN";
 }
 EOF
 

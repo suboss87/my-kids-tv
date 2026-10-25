@@ -18,6 +18,7 @@ Ask these in one or two short batches, in plain words, with the choices shown. E
 | Which country and city do you live in? | Which titles are on which app in their country; weather and the evening dark theme | `tmdb_region`, `latitude`, `longitude`, `city` |
 | Which streaming apps do you pay for? (Netflix, Prime Video, JioHotstar, Disney+, ...) | Apps on the TV they don't subscribe to are left out of the picks | `hide_services` |
 | Should the remote's **YouTube button** do nothing? | Children can't jump into YouTube with one press (the YouTube app stays) | `block_youtube_button` |
+| A 4-digit **parent PIN** for the settings (or skip: the TV asks for one the first time the settings open) | Children can't change the settings or switch back to the TV's own home screen | `parent_pin` |
 | Are there apps on the TV your child shouldn't see at all? | Turned off (never uninstalled) when the TV switches to My Kids TV | ask, then see step 4 |
 | Your TV's brand and model, and its IP address (Settings, Network & Internet) | Install | - |
 
@@ -57,6 +58,17 @@ Apps they asked to hide: with their OK, `adb shell pm disable-user --user 0 <pac
 ISPs, India's included, reset many connections to TMDB; the app retries, so the first load can take a while). Have
 them try the remote's Home, Back, microphone and app buttons, and the YouTube button if they blocked it.
 
+## Parent PIN
+
+The My Kids TV settings (the app's icon, the home screen's gear) ask for a 4-digit parent PIN every time they open;
+Back leaves to the home screen, and 5 wrong tries wait 30 seconds. The TV keeps only a salted hash of it. Age and the
+YouTube button can also be changed there (Home Settings).
+
+**Forgotten PIN:** with their OK, put a new one after `parent_pin=` in `config.properties`, run `./build.sh` and
+`adb install -r MyKidsTV.apk`: a new `parent_pin` replaces the PIN on the TV, and the other settings stay. Never use
+`adb shell pm clear io.mykidstv` (or clear the app's data in the TV's settings) for this: it wipes every setting, the
+home screen choice and the photos too.
+
 ## Catalogs
 
 `app/assets/catalog/<band>.json` holds the vetted titles per age band. They come from `catalog/pipeline.py`:
@@ -75,6 +87,7 @@ Parents don't need to run it: the catalogs ship with the app. To refresh or buil
 - Never commit `config.properties`, `*.keystore`, `kids-disabled.txt` or any key.
 - No analytics, no accounts, nothing about the child leaves the TV. The app talks only to TMDB (titles and images),
   Open-Meteo (weather) and, if set, Watchmode.
-- Never uninstall or clear the data of system apps; only `pm disable-user --user 0`, so it can come back.
+- Never uninstall or clear the data of system apps; only `pm disable-user --user 0`, so it can come back. Never
+  `pm clear` My Kids TV either (a forgotten PIN: see "Parent PIN").
 - Don't change the TV's picture, sound, network or account settings.
 - Keep the way back working: *Original* mode and the watchdog.

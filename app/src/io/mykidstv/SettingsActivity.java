@@ -42,7 +42,8 @@ import java.util.Set;
  * My Kids TV's settings (the app's icon, "All Apps", or the gear on the home screen), in the style of Apple TV's
  * settings: the big symbol and title on the left, the list on the right with the focused row in white. "Home screen"
  * opens the My Kids TV / Original choice (with a check on the current one); the switch runs in the main process
- * (HomeMode) and this screen only asks for it and follows the state file.
+ * (HomeMode) and this screen only asks for it and follows the state file. The parent PIN (ParentLock) comes first,
+ * every time the screen opens: children can't change the settings or leave the kids home screen from here.
  */
 public class SettingsActivity extends Activity {
     private SettingsView view;
@@ -78,6 +79,11 @@ public class SettingsActivity extends Activity {
         if (view == null) return;
         view.resume();
         // From ADB: am start -n io.mykidstv/.SettingsActivity --ez screensaver true (straight to the preview).
+        if (!view.locked()) openRequestedPreview();
+    }
+
+    /** The preview asked for from ADB, once the PIN let us in. */
+    void openRequestedPreview() {
         if (preview == null && getIntent().getBooleanExtra("screensaver", false)) {
             getIntent().removeExtra("screensaver");
             view.pause();
@@ -95,6 +101,18 @@ public class SettingsActivity extends Activity {
         closePreview();     // before pausing the view: closing the preview resumes it (view.resume)
         if (view != null) view.pause();
         super.onPause();
+    }
+
+    /** Out of sight (Home, another app, the screensaver): the PIN is asked again next time. */
+    @Override protected void onStop() {
+        if (view != null) view.lock();
+        super.onStop();
+    }
+
+    /** Back or Cancel on the PIN: to the home screen, not into the settings. */
+    void leave() {
+        startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        finish();
     }
 
     @Override public boolean dispatchKeyEvent(KeyEvent event) {
@@ -175,6 +193,7 @@ public class SettingsActivity extends Activity {
         private int whyState = -1;
         private String errorShown;
         private final Spoken spoken;
+        private ParentLock lock;   // the PIN in front of everything; null once it let the parent in
         private long startedAt, lastNanos, pendingAt, lastSky;
         private int w, h;
         private float k = 1;
@@ -216,6 +235,7 @@ public class SettingsActivity extends Activity {
             scene.applyPalette();
             setFocusable(true);
             setContentDescription("My Kids TV");
+            lock();
             // TalkBack: one item per row, id = row + 1.
             spoken = new Spoken(this, new Spoken.Source() {
                 @Override public void items(List<Integer> out) { for (int i = 1; i <= rowCount(); i++) out.add(i); }
@@ -232,6 +252,29 @@ public class SettingsActivity extends Activity {
                 }
                 @Override public void click(int id) { activate(); }
             });
+        }
+
+        boolean locked() {
+            return lock != null;
+        }
+
+        /** Asks for the PIN again (the screen closed); the settings stay where they were behind it. */
+        void lock() {
+            if (lock != null) return;
+            lock = new ParentLock(this, new ParentLock.Listener() {
+                @Override public void unlocked() {
+                    lock = null;
+                    for (Spring s : pop) s.snap(0);
+                    invalidate();
+                    spoken.focusMoved();
+                    activity.openRequestedPreview();
+                }
+
+                @Override public void cancelled() {
+                    activity.leave();
+                }
+            });
+            invalidate();
         }
 
         @Override public AccessibilityNodeProvider getAccessibilityNodeProvider() {
@@ -320,6 +363,7 @@ public class SettingsActivity extends Activity {
             handler.post(poll);
             Choreographer.getInstance().postFrameCallback(this);
             spoken.readAgain();
+            if (lock != null) postDelayed(() -> { if (lock != null) announceForAccessibility(lock.spoken()); }, 400);
             Photos.importInbox(getContext(), this::invalidate);   // photos a computer just sent
         }
 
@@ -333,6 +377,7 @@ public class SettingsActivity extends Activity {
             if (!running) return;
             boolean moving = busy();
             for (Spring s : pop) moving |= !s.settled();
+            if (lock != null) moving |= lock.moving();
             if (moving || SystemClock.uptimeMillis() - lastSky >= 100) invalidate();
             Choreographer.getInstance().postFrameCallback(this);
         }
@@ -387,6 +432,7 @@ public class SettingsActivity extends Activity {
         }
 
         private int rowCount() {
+            if (lock != null) return 0;   // nothing behind the PIN for TalkBack to read
             switch (screen) {
                 case MAIN: return 8;
                 case HOME_CHOICE: return 2;
@@ -422,7 +468,8 @@ public class SettingsActivity extends Activity {
             c.drawText(Ui.tr("Your TV's home screen and screensaver"), cx, 660 * k, subtitle);
             c.drawText(versionName(getContext()), cx, 704 * k, version);
 
-            if (screen == MAIN) drawMain(c, seconds); else if (screen == HOME_CHOICE) drawChoice(c); else if (screen == PICKER) drawPicker(c); else if (screen == SHELF_EDIT) drawShelfEditor(c);
+            if (lock != null) lock.draw(c, k, LIST_X, LIST_R, LIST_TOP, dt);
+            else if (screen == MAIN) drawMain(c, seconds); else if (screen == HOME_CHOICE) drawChoice(c); else if (screen == PICKER) drawPicker(c); else if (screen == SHELF_EDIT) drawShelfEditor(c);
             else drawList(c);
         }
 
@@ -625,6 +672,7 @@ public class SettingsActivity extends Activity {
         }
 
         boolean onKey(KeyEvent e) {
+            if (lock != null) return lock.onKey(e);
             boolean down = e.getAction() == KeyEvent.ACTION_DOWN;
             switch (e.getKeyCode()) {
                 case KeyEvent.KEYCODE_DPAD_UP:
@@ -673,7 +721,7 @@ public class SettingsActivity extends Activity {
                                 pickScroll = 0;   // the picker's scroll isn't this short list's
                                 screen = POWER;
                             } else if (screen == PICKER && (pickFor == PICK_CITY || pickFor == PICK_LANGUAGE)) {
-                                focus = pickFor == PICK_CITY ? CITY_ROW : 0;
+                                focus = pickFor == PICK_CITY ? CITY_ROW : LANGUAGE_ROW;
                                 pickScroll = 0;   // both rows are on the list's first screen
                                 screen = HOME_SETTINGS;
                             } else if (screen == PICKER) {
@@ -698,8 +746,12 @@ public class SettingsActivity extends Activity {
         // MARK: - Home Settings and Remote Buttons
 
         private static final String[] UNITS = {"auto", "C", "F"}, THEMES = {"auto", "light", "dark"};
-        /** Home Settings: language, temperature, theme, my photos, sounds, weather, city, forecast, quotes, then one row per coin. */
-        private static final int PHOTOS_ROW = 3, CITY_ROW = 6, FORECAST_ROW = 7, QUOTES_ROW = 8, COIN_ROWS = 9;
+        /**
+         * Home Settings: the child's age and the YouTube button (a parent's choices, first), language, temperature, theme,
+         * my photos, sounds, weather, city, forecast, quotes, then one row per coin.
+         */
+        private static final int AGE_ROW = 0, YOUTUBE_ROW = 1, LANGUAGE_ROW = 2, TEMPERATURE_ROW = 3, THEME_ROW = 4,
+                PHOTOS_ROW = 5, SOUNDS_ROW = 6, WEATHER_ROW = 7, CITY_ROW = 8, FORECAST_ROW = 9, QUOTES_ROW = 10, COIN_ROWS = 11;
         /** Home Settings rows on screen at once (what fits above the hints at 1080p); a longer list scrolls. */
         private static final int SETTINGS_VISIBLE = 10;
 
@@ -709,6 +761,8 @@ public class SettingsActivity extends Activity {
 
         private String[] settingLabels() {
             List<String> l = new ArrayList<>();
+            l.add(Ui.tr("Age"));
+            l.add(Ui.tr("Block YouTube button"));
             l.add(Ui.tr("Language"));
             l.add(Ui.tr("Temperature"));
             l.add(Ui.tr("Theme"));
@@ -728,17 +782,19 @@ public class SettingsActivity extends Activity {
         private String[] settingValues() {
             String[] labels = settingLabels();
             String[] v = new String[labels.length];
+            v[AGE_ROW] = Ui.trf("{band} years", "band", Prefs.ageBand());
+            v[YOUTUBE_ROW] = onOff(Prefs.blockYoutubeButton());
             String lang = Prefs.language();
-            v[0] = lang.equals("auto") ? Ui.tr("Automatic") : Ui.languageName(lang);
+            v[LANGUAGE_ROW] = lang.equals("auto") ? Ui.tr("Automatic") : Ui.languageName(lang);
             String unit = Prefs.temperature();
-            v[1] = unit.equals("C") ? "°C" : unit.equals("F") ? "°F" : Ui.tr("unit|Automatic");
+            v[TEMPERATURE_ROW] = unit.equals("C") ? "°C" : unit.equals("F") ? "°F" : Ui.tr("unit|Automatic");
             String theme = Prefs.theme();
-            v[2] = theme.equals("light") ? Ui.tr("Light") : theme.equals("dark") ? Ui.tr("Dark") : Ui.tr("Automatic");
+            v[THEME_ROW] = theme.equals("light") ? Ui.tr("Light") : theme.equals("dark") ? Ui.tr("Dark") : Ui.tr("Automatic");
             int photos = Photos.files(getContext()).size();
             v[PHOTOS_ROW] = photos == 0 ? Ui.tr("photos|None")
                     : Prefs.photos() ? Ui.plural("plural|one:{n} photo|other:{n} photos", photos) : Ui.tr("Off");
-            v[4] = onOff(Prefs.sounds());
-            v[5] = onOff(Prefs.weather());
+            v[SOUNDS_ROW] = onOff(Prefs.sounds());
+            v[WEATHER_ROW] = onOff(Prefs.weather());
             v[CITY_ROW] = !cityStatus.isEmpty() ? cityStatus : Prefs.city().isEmpty() ? "—" : Prefs.city();
             v[FORECAST_ROW] = Prefs.forecast().equals("days") ? Ui.tr("Next days") : Ui.tr("Next hours");
             v[QUOTES_ROW] = onOff(Prefs.quotes());
@@ -764,6 +820,8 @@ public class SettingsActivity extends Activity {
             switch (screen) {
                 case MAIN:
                     return i == 5 ? Capabilities.NEED_REMOTE_BUTTONS : i == 6 ? Capabilities.NEED_ADB : null;
+                case HOME_SETTINGS:
+                    return pickScroll + i == YOUTUBE_ROW ? Capabilities.NEED_REMOTE_BUTTONS : null;
                 case POWER: {
                     int id = powerRows()[i];
                     return id == P_WHERE ? Capabilities.NEED_OVERLAY : null;
@@ -987,13 +1045,21 @@ public class SettingsActivity extends Activity {
             }
             int row = pickScroll + focus;
             switch (row) {
-                case 0: break;   // OK opens the language picker.
-                case 1: {
+                case AGE_ROW: {   // Recs picks from the new band's catalog when the home screen comes back
+                    int at = java.util.Arrays.asList(Prefs.AGE_BANDS).indexOf(Prefs.ageBand());
+                    Prefs.setAgeBand(Prefs.AGE_BANDS[(at + dir + Prefs.AGE_BANDS.length) % Prefs.AGE_BANDS.length]);
+                    return;
+                }
+                case YOUTUBE_ROW:
+                    Prefs.setBlockYoutubeButton(!Prefs.blockYoutubeButton());
+                    return;
+                case LANGUAGE_ROW: break;   // OK opens the language picker.
+                case TEMPERATURE_ROW: {
                     int at = java.util.Arrays.asList(UNITS).indexOf(Prefs.temperature());
                     Prefs.setTemperature(UNITS[(at + dir + UNITS.length) % UNITS.length]);
                     break;
                 }
-                case 2: {
+                case THEME_ROW: {
                     int at = java.util.Arrays.asList(THEMES).indexOf(Prefs.theme());
                     Prefs.setTheme(THEMES[(at + dir + THEMES.length) % THEMES.length]);
                     SleepOverlay.update(getContext());   // the pill's glass follows
@@ -1003,8 +1069,8 @@ public class SettingsActivity extends Activity {
                     if (Photos.files(getContext()).isEmpty()) return;
                     Prefs.setPhotos(!Prefs.photos());
                     return;
-                case 4: Prefs.setSounds(!Prefs.sounds()); break;
-                case 5: Prefs.setWeather(!Prefs.weather()); break;
+                case SOUNDS_ROW: Prefs.setSounds(!Prefs.sounds()); break;
+                case WEATHER_ROW: Prefs.setWeather(!Prefs.weather()); break;
                 case CITY_ROW: return;
                 case FORECAST_ROW:   // both are in memory: nothing to fetch
                     Prefs.setForecast(Prefs.forecast().equals("days") ? "hours" : "days");
@@ -1322,7 +1388,7 @@ public class SettingsActivity extends Activity {
             } else if (screen == PICKER && pickFor == PICK_LANGUAGE) {
                 Prefs.setLanguage(languageChoices()[pickScroll + focus]);
                 SleepOverlay.update(c);   // the pill speaks it too
-                focus = 0;
+                focus = LANGUAGE_ROW;
                 pickScroll = 0;
                 screen = HOME_SETTINGS;
             } else if (screen == PICKER) {
@@ -1336,7 +1402,7 @@ public class SettingsActivity extends Activity {
                 return;
             } else if (screen == REMOTE_KEYS) {
                 openPicker(focus + 1);
-            } else if (screen == HOME_SETTINGS && pickScroll + focus == 0) {
+            } else if (screen == HOME_SETTINGS && pickScroll + focus == LANGUAGE_ROW) {
                 openPicker(PICK_LANGUAGE);
             } else if (screen == HOME_SETTINGS && pickScroll + focus == CITY_ROW) {
                 askCity();
