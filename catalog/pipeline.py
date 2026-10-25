@@ -6,12 +6,13 @@
 
 Stages: 1) candidates from seeds, research lists and TMDB sweeps; 2) hard age-rating and quality filters (code);
 3) Jev judges age fit, value, must-watch and fun; 4) policy in code plus overrides/<band>.json (a person's review);
-5) app/assets/catalog/<band>.json, which the app reads. Needs $TYPESAFE_API_KEY for judging, a TMDB key for the rest.
+5) app/assets/catalog/<band>.json, which the app reads, and the open dataset in data/. Needs $TYPESAFE_API_KEY for judging, a TMDB key for the rest.
 """
 import argparse, concurrent.futures as cf, json, os, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tmdb import get
 from bands import BANDS, questions, audience, policy
+import export_dataset
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 INDIAN = ('hi', 'ta', 'te', 'ml', 'bn', 'mr', 'kn', 'gu')
@@ -214,6 +215,7 @@ def stage_emit(band):
              'badge': badge(r, genres.get('%s:%d' % (r['kind'], r['id']), []))} for r in keep]
     json.dump({'band': band, 'titles': rows}, open(os.path.join(out, band + '.json'), 'w'), indent=0, ensure_ascii=False)
     print('[%s] wrote app/assets/catalog/%s.json (%d titles)' % (band, band, len(rows)))
+    export_dataset.export()  # keep the open dataset in data/ in step with the app's catalogs
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

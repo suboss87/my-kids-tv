@@ -56,6 +56,13 @@ How a title gets in:
 Everything is in [`catalog/`](catalog/): the pipeline, each band's candidates, Jev's judgments and the review
 decisions (`catalog/overrides/`), so every choice can be read, questioned and changed.
 
+## Open dataset
+
+The catalogs are also an open dataset in [`data/`](data/), for parents, schools and developers who want the lists
+without the app: one row per age band and title, with genres, age rating and Jev's judgments. Start with
+[`data/kids-titles.csv`](data/kids-titles.csv); [`data/README.md`](data/README.md) explains the columns. The curation
+and judgments are [CC BY 4.0](data/LICENSE) (credit "My Kids TV"); title data comes from TMDB.
+
 ## Set it up
 
 About twenty minutes, guided by an AI assistant. You need the TV and a computer on the same Wi-Fi.
