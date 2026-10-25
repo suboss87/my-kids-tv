@@ -110,6 +110,19 @@ The design principles are in [PRODUCT.md](PRODUCT.md); the setup flow an AI assi
 **Status:** running daily on a Haier Google TV (Android 14). The LG and Samsung apps build and pass the checks, and
 still need a run on real TVs.
 
+## Please note
+
+- **Use it at your own risk.** My Kids TV is a free, independent project, provided as is, without warranty (see the
+  [LICENSE](LICENSE)). It has run daily on one family's TV, not on every model.
+- **It changes how your TV starts up.** It becomes the home screen and turns off some preinstalled apps (never
+  uninstalls them). *Original* in its settings puts everything back.
+- **USB debugging stays on** so the app can switch modes. Keep the TV on your home Wi-Fi, and never open port 5555 on
+  your router.
+- **It's a calmer home screen, not a lock.** Apps like YouTube still work inside, and the picks come from a curated
+  list, not a guarantee. You know your child best; please keep an eye on what they watch.
+- **Not affiliated** with Google, any TV maker, or any streaming service. All names and trademarks belong to their
+  owners.
+
 ## Credits
 
 - Titles, pictures and availability: [TMDB](https://www.themoviedb.org). *This product uses the TMDB API but is not
