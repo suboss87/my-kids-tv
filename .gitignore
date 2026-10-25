@@ -7,7 +7,7 @@ config.properties
 out/
 *.apk
 *.ipk
-!docs/webos/FreeMyTV-webos-*.ipk
+!docs/webos/MyKidsTV-webos-*.ipk
 *.wgt
 __pycache__/
 

@@ -24,7 +24,7 @@ if [ "$what" = all ] || [ "$what" = web ]; then
 
   # The generic LG and Samsung packages land where your own build leaves yours (with your city and TMDB key):
   # keep yours and put them back afterwards, so the next install isn't the generic one.
-  packages="FreeMyTV-webos.ipk FreeMyTV-tizen.wgt"
+  packages="MyKidsTV-webos.ipk MyKidsTV-tizen.wgt"
   kept="$(mktemp -d)"
   for p in $packages; do if [ -f "$p" ]; then cp "$p" "$kept/"; fi; done
   trap 'for p in $packages; do if [ -f "$kept/$p" ]; then mv "$kept/$p" "$p"; else rm -f "$p"; fi; done; rm -rf "$kept"' EXIT

@@ -272,17 +272,17 @@ NAMES = {"pt": "Brazilian Portuguese", "es": "Spanish", "de": "German", "fr": "F
          "ko": "Korean", "zh-CN": "Simplified Chinese", "zh-TW": "Traditional Chinese (Taiwan)", "hi": "Hindi", "id": "Indonesian", "vi": "Vietnamese",
          "hu": "Hungarian", "bg": "Bulgarian", "hr": "Croatian", "sk": "Slovak", "th": "Thai", "ms": "Malay"}
 
-PROMPT = """Translate the user interface strings of a TV home screen app ("Free My TV") from English into {name} ({lang}).
+PROMPT = """Translate the user interface strings of a TV home screen app ("My Kids TV") from English into {name} ({lang}).
 Rules:
 - Keep each translation short, about as long as the English: it is drawn on a TV screen in fixed places.
 - Friendly, plain, everyday words, like the TV's own menus in {name}. Address the viewer informally if the language usually does on TV.
 - Keep every placeholder like {{n}} or {{app}} exactly as written (they are filled in at runtime); move them where the grammar needs them.
   {{ago}} is already a full phrase in {name} ("12 min ago"), {{list}} a comma-separated list of things, {{error}} an error message,
-  {{app}} an app's name, {{time}} a clock time, {{mode}} "Free My TV" or "Original".
+  {{app}} an app's name, {{time}} a clock time, {{mode}} "My Kids TV" or "Original".
 - A "context" note says where the string appears. Context "format" means the text is a java.text.SimpleDateFormat pattern: give the usual pattern for {name} instead of a translation.
 - Avoid plural agreement with a number placeholder when the language needs several plural forms: use a form that reads right for any number (an abbreviation, or "label: {{n}}").
 - Context "plural" means the text is a count in plural forms, "one:…|other:…": answer with one form per Unicode CLDR plural category {name} uses for whole numbers, joined by "|" and always including "other" (Russian: "one:{{n}} сезон|few:{{n}} сезона|many:{{n}} сезонов|other:{{n}} сезона"; Japanese: "other:{{n}}シーズン").
-- Keep product and brand names (Free My TV, Netflix, YouTube, TMDB, HDMI, Android, Claude Code) as they are.
+- Keep product and brand names (My Kids TV, Netflix, YouTube, TMDB, HDMI, Android, Claude Code) as they are.
 Answer with a JSON object only, mapping each id to its translation."""
 
 
