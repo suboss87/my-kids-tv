@@ -295,6 +295,8 @@
     setClass($('quotes'), 'hide', st.zone === Z.TOP && st.top >= 3);
     list = $('cards').children;
     for (i = 0; i < list.length; i++) setClass(list[i], 'focus', st.zone === Z.CARDS && st.card === i);
+    setClass(body, 'browsing', st.zone === Z.CARDS);
+    renderSpot();
     list = $('tiles').children;
     for (i = 0; i < list.length; i++) setClass(list[i], 'focus', st.zone === Z.SHELF && st.shelf === i);
     setClass($('tiles'), 'on', st.zone === Z.SHELF);
@@ -412,22 +414,60 @@
     holder.innerHTML = '';
     setClass(holder, 'swap', false);
     if (swap) { void holder.offsetWidth; setClass(holder, 'swap', true); }
-    var rects = [[80, 1040], [1160, 320], [1520, 320]];
+    // The 3 as small pictures along the window's lower edge; the window above shows the one in the spotlight.
     for (var c = 0; c < list.length; c++) {
       var p = list[c], card = el('div', 'card', holder);
-      card.style.left = rects[c][0] + 'px';
-      card.style.width = rects[c][1] + 'px';
       var img = el('div', 'img', card);
-      img.style.backgroundImage = 'url(' + Data.image(p.backdrop, c === 0 ? 'w1280' : 'w780') + ')';
-      badge(card, p.badge);
+      img.style.backgroundImage = 'url(' + Data.image(p.backdrop, 'w780') + ')';
       el('div', 'name', card, p.title);
-      if (c === 0 && p.meta) el('div', 'meta', card, p.meta);
       hover(card, Z.CARDS, c);
     }
+    spotAt = -1;
     st.card = Math.min(st.card, Math.max(0, list.length - 1));
     if (!list.length && st.zone === Z.CARDS) st.zone = Z.SHELF;
-    backdrop(list.length ? Data.image(list[0].backdrop, 'w300') : '');
     updateFocus();
+  }
+
+  // MARK: - The story window: one title large, with its story in a line; the 3 thumbnails choose which.
+
+  var spotAt = -1, spotKey = '', artFront = 0;
+
+  /** The title in the window: the focused thumbnail while the child browses, otherwise the next one every 15 s. */
+  function renderSpot() {
+    var w = $('window');
+    setClass(w, 'empty', !cards.length);
+    if (!cards.length) return;
+    var i = st.zone === Z.CARDS ? st.card : Math.min(cards.length - 1, Data.spot());
+    var p = cards[i], key = p.kind + ':' + p.id + ':' + p.backdrop + ':' + (p.tagline || '') + ':' + p.meta;
+    var dots = w.querySelector('.dots').children;
+    for (var d = 0; d < dots.length; d++) {
+      dots[d].style.display = d < cards.length ? '' : 'none';
+      setClass(dots[d], 'on', d === i);
+    }
+    var thumbs = $('cards').children;
+    for (var t = 0; t < thumbs.length; t++) setClass(thumbs[t], 'spot', t === i);
+    if (i === spotAt && key === spotKey) return;
+    var same = i === spotAt;   // only the details arrived: no fade
+    spotAt = i;
+    spotKey = key;
+    var arts = w.querySelectorAll('.art'), url = Data.image(p.backdrop, 'w1280');
+    if (!same) artFront = 1 - artFront;
+    arts[artFront].style.backgroundImage = 'url(' + url + ')';
+    setClass(arts[artFront], 'on', true);
+    setClass(arts[1 - artFront], 'on', false);
+    var story = w.querySelector('.story');
+    if (!same) { setClass(story, 'in', false); void story.offsetWidth; }
+    var chip = story.querySelector('.chip');
+    chip.innerHTML = '';
+    badge(chip, p.badge);
+    story.querySelector('.name').textContent = p.title;
+    story.querySelector('.meta').textContent = p.meta || '';
+    story.querySelector('.tag').textContent = p.tagline || '';
+    var app = Data.appFor(p.app);
+    story.querySelector('.where').textContent = p.service || (app ? app.title : '');
+    setClass(story.querySelector('.cta'), 'hide', !app);
+    setClass(story, 'in', true);
+    backdrop(Data.image(p.backdrop, 'w300'));   // the sky takes a little of its color
   }
 
   var bgUrl = null, bgFront = 'bgA';
@@ -1158,10 +1198,12 @@
   setInterval(function () {
     checkNight();
     Data.refresh();
-    renderCards();   // new ones every minute
+    renderCards();   // a new set every 45 s
     if (!saverOn && !sheetOpen() && Date.now() - idleAt > SAVER_AFTER) showSaver();
     if (saverOn) tickSaverClock($('saver').querySelector('.clock'));
   }, 15000);
+
+  setInterval(function () { if (!saverOn) { renderCards(); renderSpot(); } }, 1000);   // the window moves on on time
 
   // For the browser preview and tests.
   window.MyKidsTV = {state: st, move: move, activate: activate, back: back, showSaver: showSaver, hideSaver: hideSaver, toast: toast};

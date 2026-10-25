@@ -1,7 +1,7 @@
 /*
  * What the home screen shows, kept in localStorage so it opens with numbers:
  *  - the picks: titles from the age band's vetted kids catalog (catalog.js, from app/assets/catalog), only those on
- *    the streaming apps on this TV (TMDB, with the person's own free key from config.properties), three per tab each minute;
+ *    the streaming apps on this TV (TMDB, with the person's own free key from config.properties), three per tab, a new set every 45 s;
  *  - weather, sunrise and sunset (Open-Meteo, every 30 min).
  * Settings changed on the TV (Prefs) win over config.properties, as on Android. Built without a city (--generic), the
  * TV's time zone gives the city, and its country the region (zones.js).
@@ -237,9 +237,9 @@ var Data = (function () {
     return (cut > 0 ? t.slice(0, cut) : t).replace(/^\s+|\s+$/g, '');
   }
 
-  var ROTATE_EVERY = 60000;   // new cards on every tab each minute
+  var SPOT_EVERY = 15000, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 15 s; a new set after all 3
 
-  /** This minute's 3 picks: movies ("movie"), shows ("tv") or both (null). */
+  /** This set's 3 picks (a new set every ROTATE_EVERY): movies ("movie"), shows ("tv") or both (null). */
   function now(kind) {
     return at(kind, Math.floor(Date.now() / ROTATE_EVERY));
   }
@@ -349,11 +349,20 @@ var Data = (function () {
       }
       if (p.service && p.app) parts.push(p.service);
       p.meta = parts.join(' · ');
+      p.tagline = storyLine(o);
       title(p, o, function () {
         p.detailed = true;
         done(null);
       });
     });
+  }
+
+  /** The story in one line for the window: TMDB's tagline, or the synopsis's first sentence when it's short. */
+  function storyLine(o) {
+    var t = (o.tagline || '').replace(/^\s+|\s+$/g, '');
+    if (t) return t;
+    var first = (o.overview || '').split(/(?:[.!?。])\s/)[0];
+    return first && first.length <= 120 ? first.replace(/[.!?。]?$/, '.') : '';
   }
 
   /**
@@ -554,7 +563,7 @@ var Data = (function () {
     if (st === stamp && failedAt && t - failedAt < 10 * 60000 && t >= failedAt) return;
     var stale = st !== stamp || p !== period || t - listAt > 3600000 || t < listAt || !picks.length || listLang !== I18N.lang;
     var wanted = all(), missing = false;
-    for (var i = 0; i < wanted.length; i++) missing = missing || !wanted[i].detailed;
+    for (var i = 0; i < wanted.length; i++) missing = missing || !wanted[i].detailed || wanted[i].tagline === undefined;
     if (!stale && !missing) return;
     fetchingRecs = true;
     stamp = st;
@@ -565,7 +574,7 @@ var Data = (function () {
       changed();
     }
     function detailWanted() {
-      var todo = all().filter(function (x) { return !x.detailed; });
+      var todo = all().filter(function (x) { return !x.detailed || x.tagline === undefined; });   // older saves have no story line
       each(todo, function (x, next) { details(x, function () { next(); }); }, function () { finish(null); });
     }
     if (stale) {
@@ -605,6 +614,8 @@ var Data = (function () {
     hasKey: function () { return !!KEY; },
     recsError: function () { return recsError; },
     picks: now,
+    /** Which of the 3 the window shows while nobody is browsing (0-2), and when it moves on next. */
+    spot: function () { return Math.floor((Date.now() % ROTATE_EVERY) / SPOT_EVERY); },
     showcase: all,
     image: function (path, size) { return path ? 'https://image.tmdb.org/t/p/' + (size || 'w1280') + path : ''; },
 

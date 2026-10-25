@@ -240,29 +240,150 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .night .round.focus { background: #FFF; color: #121A43; }
 .night .round.focus .tip { color: #F3F5FF; }
 
-/* MARK: - Picks: a wide card and two tall ones; focused, a card rises, grows 6% and its edge lights up. */
+/*
+ * MARK: - The story window: one title large (its picture, name, story in a line and why it's worth watching) and the
+ * set's 3 as small pictures along its lower edge. Focusing a picture brings it into the window; left alone, the window
+ * moves on every 15 s. The text sits on a deep-indigo scrim, so it reads the same by day and by night.
+ */
 
-.card {
+#window {
   position: absolute;
-  top: 280px;
-  height: 426px;
-  -webkit-transition: -webkit-transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  left: 80px;
+  top: 248px;
+  width: 1760px;
+  height: 540px;
+  border-radius: 44px;
+  overflow: hidden;
+  background: #1E2660;
+  box-shadow: 0 40px 90px rgba(14, 34, 64, 0.32);
+  -webkit-transform: translateZ(0);   /* clips the rounded corners on older WebKit */
 }
-.card .img {
+.night #window { box-shadow: 0 40px 90px rgba(0, 0, 20, 0.55); }
+.empty#window { display: none; }
+#window .art {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  border-radius: 32px;
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0;
+  -webkit-transform: scale(1.04);
+  transform: scale(1.04);
+  -webkit-transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), -webkit-transform 8s linear;
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 8s linear;
+}
+/* in the window, the picture drifts very slowly closer (Ken Burns, barely) */
+#window .art.on { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
+#window .scrim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(left, rgba(14, 18, 52, 0.92) 0%, rgba(14, 18, 52, 0.72) 30%, rgba(14, 18, 52, 0) 62%),
+              -webkit-linear-gradient(bottom, rgba(14, 18, 52, 0.8) 0%, rgba(14, 18, 52, 0) 45%);
+  background: linear-gradient(90deg, rgba(14, 18, 52, 0.92) 0%, rgba(14, 18, 52, 0.72) 30%, rgba(14, 18, 52, 0) 62%),
+              linear-gradient(0deg, rgba(14, 18, 52, 0.8) 0%, rgba(14, 18, 52, 0) 45%);
+}
+#window .rim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 44px;
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.35), inset 0 0 0 1.5px rgba(255, 255, 255, 0.12);
+}
+#window .story { position: absolute; left: 72px; top: 60px; width: 780px; color: #FFF; }
+#window .story.in { -webkit-animation: storyIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards; animation: storyIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+@-webkit-keyframes storyIn { from { opacity: 0; -webkit-transform: translateY(12px); } to { opacity: 1; -webkit-transform: none; } }
+@keyframes storyIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+#window .chip { height: 44px; }
+#window .badge {
+  display: inline-block;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 44px;
+}
+#window .badge .dot { display: inline-block; width: 12px; height: 12px; margin-right: 12px; border-radius: 6px; vertical-align: 1px; }
+#window .story .name {
+  margin-top: 24px;
+  font-size: 80px;
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  max-height: 164px;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.4);
+}
+#window .story .meta { margin-top: 18px; font-size: 26px; font-weight: 500; color: rgba(243, 245, 255, 0.74); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#window .story .tag { margin-top: 18px; max-width: 660px; font-size: 32px; font-weight: 500; line-height: 1.32; max-height: 84px; overflow: hidden; }
+#window .cta {
+  display: inline-block;
+  margin-top: 30px;
+  height: 64px;
+  padding: 0 32px 0 28px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 64px;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+}
+#window .cta.hide { display: none; }
+#window .play {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 14px;
+  border-left: 18px solid currentColor;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  vertical-align: -1px;
+}
+/* the window's title has the focus: its button turns white, as the place OK will take you */
+.browsing #window .cta { background: #FFF; color: #121A43; box-shadow: 0 16px 36px rgba(0, 0, 20, 0.4); }
+#window .dots { position: absolute; left: 72px; bottom: 46px; height: 10px; }
+#window .dots b {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.35);
+  -webkit-transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s;
+}
+#window .dots b.on { width: 40px; background: #FFF; }
+
+/* The 3 small pictures, at the window's lower right; the one in the window is outlined, the focused one lifts. */
+#cards { position: absolute; right: 48px; bottom: 44px; width: 822px; height: 196px; }
+.card {
+  position: absolute;
+  top: 0;
+  width: 258px;
+  -webkit-transition: -webkit-transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card:nth-child(1) { left: 0; }
+.card:nth-child(2) { left: 282px; }
+.card:nth-child(3) { left: 564px; }
+.card .img {
+  position: relative;
+  height: 145px;
+  border-radius: 22px;
+  background-color: rgba(255, 255, 255, 0.1);
   background-size: cover;
   background-position: center;
-  box-shadow: 0 16px 40px rgba(14, 34, 64, 0.2);
-  -webkit-transition: box-shadow 0.28s;
-  transition: box-shadow 0.28s;
+  box-shadow: 0 14px 30px rgba(0, 0, 20, 0.5);
 }
 .card .img::after {
   content: '';
@@ -271,76 +392,27 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  border-radius: 32px;
-  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.9);
-  background: -webkit-linear-gradient(-60deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%);
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%);
-  opacity: 0;
-  -webkit-transition: opacity 0.17s;
-  transition: opacity 0.17s;
-}
-.card.focus { -webkit-transform: translateY(-14px) scale(1.06); transform: translateY(-14px) scale(1.06); z-index: 2; }
-.card.focus .img { box-shadow: 0 34px 64px rgba(14, 34, 64, 0.36); }
-.card.focus .img::after { opacity: 1; }
-.card .name {
-  position: absolute;
-  left: 0;
-  top: 446px;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 32px;
-  font-weight: 650;
-  letter-spacing: 0.004em;
-  color: #0E2240;
-  -webkit-transition: color 2s;
-  transition: color 2s;
-}
-.card .meta {
-  position: absolute;
-  left: 0;
-  top: 488px;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 26px;
-  font-weight: 500;
-  color: rgba(14, 34, 64, 0.7);
-}
-.night .card .img { background-color: rgba(255, 255, 255, 0.08); box-shadow: 0 16px 40px rgba(0, 0, 20, 0.4); }
-.night .card.focus .img { box-shadow: 0 34px 64px rgba(0, 0, 20, 0.55); }
-.night .card .name { color: #F3F5FF; }
-.night .card .meta { color: rgba(243, 245, 255, 0.72); }
-/* Why it's worth watching: shown only on the focused card, a dark frosted pill over the picture's corner. */
-.card .badge {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  height: 44px;
-  padding: 0 18px;
   border-radius: 22px;
-  background: rgba(10, 18, 44, 0.64);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
-  color: #FFF;
-  font-size: 23px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 44px;
-  white-space: nowrap;
-  opacity: 0;
-  -webkit-transform: translateY(-6px);
-  transform: translateY(-6px);
-  -webkit-transition: opacity 0.24s, -webkit-transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-  transition: opacity 0.24s, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
 }
-.card.focus .badge { opacity: 1; -webkit-transform: none; transform: none; }
-.card .badge .dot { display: inline-block; width: 12px; height: 12px; margin-right: 10px; border-radius: 6px; vertical-align: 1px; }
-.badge-must .dot { background: #FFB020; }
+.card.spot .img::after { box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.9); }
+.card.focus { -webkit-transform: translateY(-10px) scale(1.08); transform: translateY(-10px) scale(1.08); z-index: 2; }
+.card.focus .img { box-shadow: 0 26px 50px rgba(0, 0, 20, 0.6); }
+.card .name {
+  margin-top: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(243, 245, 255, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card.spot .name, .card.focus .name { color: #FFF; }
+.badge-must .dot { background: #FFB020; box-shadow: 0 0 12px rgba(255, 176, 32, 0.8); }
 .badge-learn .dot { background: #14B8A6; }
 .badge-loved .dot { background: #FF5C8A; }
-.badge-must .dot { box-shadow: 0 0 10px rgba(255, 176, 32, 0.8); }
 
 /* Without a TMDB key (or picks yet): the date and the time instead of the cards. */
 #clock {
@@ -359,22 +431,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .night #clock { color: #F5F5F7; }
 .night #clock .date { color: rgba(245, 245, 247, 0.62); }
 
-/* MARK: - Shelf: the glass bar with the apps, each in its brand color; focused, a tile grows 20% and rises. */
+/* MARK: - Shelf: the apps in their brand colors, floating; focused, a tile grows and rises, no bounce. */
 
-#platter {
-  position: absolute;
-  top: 814px;
-  height: 206px;
-  border-radius: 62px;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
-  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
-  box-shadow: 0 24px 50px rgba(14, 34, 64, 0.16), inset 0 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-}
-.night #platter {
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
-  background: linear-gradient(rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
-  box-shadow: 0 24px 50px rgba(0, 0, 20, 0.35), inset 0 1.5px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
+/* No box around the apps: they float on the sky, each with its own soft shadow (the element stays for the arrows). */
+#platter { position: absolute; top: 814px; height: 206px; }
 
 #tiles {
   position: absolute;
@@ -391,9 +451,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border-radius: 22px;
   overflow: hidden;
   color: #FFF;
-  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.14);
-  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.2s, opacity 0.3s;
-  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.2s, opacity 0.3s;
+  box-shadow: 0 16px 34px rgba(14, 34, 64, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  -webkit-transition: -webkit-transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s, opacity 0.3s;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s, opacity 0.3s;
 }
 .tile img { position: absolute; left: 50%; top: 50%; max-width: 76%; max-height: 62%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
 /* a logo lifted off the TV's icon (home.js): as large as the tile allows */
@@ -448,7 +508,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .night .tile::before { background: rgba(0, 0, 0, 0.48); }
 #tiles.on .tile::before { opacity: 1; }
 #tiles.on .tile.focus::before { background: none; box-shadow: inset 0 0 0 2.5px rgba(255, 255, 255, 0.85); }
-.night .tile { box-shadow: 0 4px 22px rgba(0, 0, 0, 0.3); }
+.night .tile { box-shadow: 0 18px 36px rgba(0, 0, 20, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.14); }
 .night .tile.focus { box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6); }
 .more { position: absolute; width: 17px; height: 17px; color: rgba(0, 0, 0, 0.6); }
 .more.back { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
@@ -630,7 +690,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* Reduced motion: things still change, without moving. */
 @media (prefers-reduced-motion: reduce) {
-  .card, .tab, .round, .card .badge, #home, #drawer, #tiles { -webkit-transition-duration: 0.01s !important; transition-duration: 0.01s !important; }
+  .card, .tab, .round, #window .art, #window .story, #home, #drawer, #tiles { -webkit-transition-duration: 0.01s !important; transition-duration: 0.01s !important; }
 }
 
 /* The minute's new cards come in one after another: a soft fade with a slight settle, no bounce. */
