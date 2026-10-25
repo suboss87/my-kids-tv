@@ -1,0 +1,1550 @@
+{
+ "movies": [
+  {
+   "title": "My Neighbor Totoro",
+   "year": 1988
+  },
+  {
+   "title": "Kiki's Delivery Service",
+   "year": 1989
+  },
+  {
+   "title": "Ponyo",
+   "year": 2008
+  },
+  {
+   "title": "The Secret World of Arrietty",
+   "year": 2010
+  },
+  {
+   "title": "The Cat Returns",
+   "year": 2002
+  },
+  {
+   "title": "My Neighbors the Yamadas",
+   "year": 1999
+  },
+  {
+   "title": "Panda! Go, Panda!",
+   "year": 1972
+  },
+  {
+   "title": "Paddington",
+   "year": 2014
+  },
+  {
+   "title": "Paddington 2",
+   "year": 2017
+  },
+  {
+   "title": "Paddington in Peru",
+   "year": 2024
+  },
+  {
+   "title": "Winnie the Pooh",
+   "year": 2011
+  },
+  {
+   "title": "The Many Adventures of Winnie the Pooh",
+   "year": 1977
+  },
+  {
+   "title": "Winnie the Pooh and the Honey Tree",
+   "year": 1966
+  },
+  {
+   "title": "Winnie the Pooh and the Blustery Day",
+   "year": 1968
+  },
+  {
+   "title": "Winnie the Pooh and Tigger Too",
+   "year": 1974
+  },
+  {
+   "title": "Pooh's Grand Adventure: The Search for Christopher Robin",
+   "year": 1997
+  },
+  {
+   "title": "The Tigger Movie",
+   "year": 2000
+  },
+  {
+   "title": "Piglet's Big Movie",
+   "year": 2003
+  },
+  {
+   "title": "Pooh's Heffalump Movie",
+   "year": 2005
+  },
+  {
+   "title": "Christopher Robin",
+   "year": 2018
+  },
+  {
+   "title": "Toy Story",
+   "year": 1995
+  },
+  {
+   "title": "Toy Story 2",
+   "year": 1999
+  },
+  {
+   "title": "Toy Story 3",
+   "year": 2010
+  },
+  {
+   "title": "Toy Story 4",
+   "year": 2019
+  },
+  {
+   "title": "A Bug's Life",
+   "year": 1998
+  },
+  {
+   "title": "Monsters, Inc.",
+   "year": 2001
+  },
+  {
+   "title": "Monsters University",
+   "year": 2013
+  },
+  {
+   "title": "Finding Nemo",
+   "year": 2003
+  },
+  {
+   "title": "Finding Dory",
+   "year": 2016
+  },
+  {
+   "title": "Cars",
+   "year": 2006
+  },
+  {
+   "title": "Cars 3",
+   "year": 2017
+  },
+  {
+   "title": "Ratatouille",
+   "year": 2007
+  },
+  {
+   "title": "WALL-E",
+   "year": 2008
+  },
+  {
+   "title": "Up",
+   "year": 2009
+  },
+  {
+   "title": "Inside Out",
+   "year": 2015
+  },
+  {
+   "title": "Inside Out 2",
+   "year": 2024
+  },
+  {
+   "title": "Coco",
+   "year": 2017
+  },
+  {
+   "title": "Luca",
+   "year": 2021
+  },
+  {
+   "title": "Elemental",
+   "year": 2023
+  },
+  {
+   "title": "Zootopia",
+   "year": 2016
+  },
+  {
+   "title": "Moana",
+   "year": 2016
+  },
+  {
+   "title": "Moana 2",
+   "year": 2024
+  },
+  {
+   "title": "Frozen",
+   "year": 2013
+  },
+  {
+   "title": "Frozen II",
+   "year": 2019
+  },
+  {
+   "title": "Tangled",
+   "year": 2010
+  },
+  {
+   "title": "Encanto",
+   "year": 2021
+  },
+  {
+   "title": "Wish",
+   "year": 2023
+  },
+  {
+   "title": "Bolt",
+   "year": 2008
+  },
+  {
+   "title": "Meet the Robinsons",
+   "year": 2007
+  },
+  {
+   "title": "Wreck-It Ralph",
+   "year": 2012
+  },
+  {
+   "title": "Ralph Breaks the Internet",
+   "year": 2018
+  },
+  {
+   "title": "Lilo & Stitch",
+   "year": 2002
+  },
+  {
+   "title": "Lilo & Stitch",
+   "year": 2025
+  },
+  {
+   "title": "The Princess and the Frog",
+   "year": 2009
+  },
+  {
+   "title": "The Emperor's New Groove",
+   "year": 2000
+  },
+  {
+   "title": "Snow White and the Seven Dwarfs",
+   "year": 1937
+  },
+  {
+   "title": "Fantasia",
+   "year": 1940
+  },
+  {
+   "title": "Fantasia 2000",
+   "year": 1999
+  },
+  {
+   "title": "Dumbo",
+   "year": 1941
+  },
+  {
+   "title": "Saludos Amigos",
+   "year": 1942
+  },
+  {
+   "title": "The Three Caballeros",
+   "year": 1944
+  },
+  {
+   "title": "Cinderella",
+   "year": 1950
+  },
+  {
+   "title": "Cinderella",
+   "year": 2015
+  },
+  {
+   "title": "Alice in Wonderland",
+   "year": 1951
+  },
+  {
+   "title": "Peter Pan",
+   "year": 1953
+  },
+  {
+   "title": "Lady and the Tramp",
+   "year": 1955
+  },
+  {
+   "title": "Lady and the Tramp",
+   "year": 2019
+  },
+  {
+   "title": "Sleeping Beauty",
+   "year": 1959
+  },
+  {
+   "title": "One Hundred and One Dalmatians",
+   "year": 1961
+  },
+  {
+   "title": "The Sword in the Stone",
+   "year": 1963
+  },
+  {
+   "title": "The Jungle Book",
+   "year": 1967
+  },
+  {
+   "title": "The Aristocats",
+   "year": 1970
+  },
+  {
+   "title": "Robin Hood",
+   "year": 1973
+  },
+  {
+   "title": "The Rescuers",
+   "year": 1977
+  },
+  {
+   "title": "Oliver & Company",
+   "year": 1988
+  },
+  {
+   "title": "The Little Mermaid",
+   "year": 1989
+  },
+  {
+   "title": "Beauty and the Beast",
+   "year": 1991
+  },
+  {
+   "title": "Aladdin",
+   "year": 1992
+  },
+  {
+   "title": "The Lion King",
+   "year": 1994
+  },
+  {
+   "title": "Mickey's Christmas Carol",
+   "year": 1983
+  },
+  {
+   "title": "Mary Poppins",
+   "year": 1964
+  },
+  {
+   "title": "Mary Poppins Returns",
+   "year": 2018
+  },
+  {
+   "title": "Bedknobs and Broomsticks",
+   "year": 1971
+  },
+  {
+   "title": "Pete's Dragon",
+   "year": 1977
+  },
+  {
+   "title": "Pete's Dragon",
+   "year": 2016
+  },
+  {
+   "title": "The Sound of Music",
+   "year": 1965
+  },
+  {
+   "title": "Singin' in the Rain",
+   "year": 1952
+  },
+  {
+   "title": "Doctor Dolittle",
+   "year": 1967
+  },
+  {
+   "title": "Annie",
+   "year": 1982
+  },
+  {
+   "title": "Heidi",
+   "year": 1937
+  },
+  {
+   "title": "Heidi",
+   "year": 2015
+  },
+  {
+   "title": "The Secret Garden",
+   "year": 1993
+  },
+  {
+   "title": "A Little Princess",
+   "year": 1995
+  },
+  {
+   "title": "Madeline",
+   "year": 1998
+  },
+  {
+   "title": "The Kid",
+   "year": 1921
+  },
+  {
+   "title": "The Red Balloon",
+   "year": 1956
+  },
+  {
+   "title": "Tinker Bell",
+   "year": 2008
+  },
+  {
+   "title": "Tinker Bell and the Lost Treasure",
+   "year": 2009
+  },
+  {
+   "title": "Tinker Bell and the Great Fairy Rescue",
+   "year": 2010
+  },
+  {
+   "title": "Secret of the Wings",
+   "year": 2012
+  },
+  {
+   "title": "The Pirate Fairy",
+   "year": 2014
+  },
+  {
+   "title": "Kung Fu Panda",
+   "year": 2008
+  },
+  {
+   "title": "Madagascar",
+   "year": 2005
+  },
+  {
+   "title": "Penguins of Madagascar",
+   "year": 2014
+  },
+  {
+   "title": "Despicable Me",
+   "year": 2010
+  },
+  {
+   "title": "Despicable Me 2",
+   "year": 2013
+  },
+  {
+   "title": "Minions",
+   "year": 2015
+  },
+  {
+   "title": "Sing",
+   "year": 2016
+  },
+  {
+   "title": "Sing 2",
+   "year": 2021
+  },
+  {
+   "title": "The Secret Life of Pets",
+   "year": 2016
+  },
+  {
+   "title": "Migration",
+   "year": 2023
+  },
+  {
+   "title": "Trolls",
+   "year": 2016
+  },
+  {
+   "title": "Trolls World Tour",
+   "year": 2020
+  },
+  {
+   "title": "Trolls Band Together",
+   "year": 2023
+  },
+  {
+   "title": "Rio",
+   "year": 2011
+  },
+  {
+   "title": "Rio 2",
+   "year": 2014
+  },
+  {
+   "title": "Ice Age",
+   "year": 2002
+  },
+  {
+   "title": "Happy Feet",
+   "year": 2006
+  },
+  {
+   "title": "Bee Movie",
+   "year": 2007
+  },
+  {
+   "title": "Over the Hedge",
+   "year": 2006
+  },
+  {
+   "title": "Flushed Away",
+   "year": 2006
+  },
+  {
+   "title": "Robots",
+   "year": 2005
+  },
+  {
+   "title": "Horton Hears a Who!",
+   "year": 2008
+  },
+  {
+   "title": "The Lorax",
+   "year": 2012
+  },
+  {
+   "title": "The Grinch",
+   "year": 2018
+  },
+  {
+   "title": "How the Grinch Stole Christmas!",
+   "year": 1966
+  },
+  {
+   "title": "A Charlie Brown Christmas",
+   "year": 1965
+  },
+  {
+   "title": "It's the Great Pumpkin, Charlie Brown",
+   "year": 1966
+  },
+  {
+   "title": "A Charlie Brown Thanksgiving",
+   "year": 1973
+  },
+  {
+   "title": "A Boy Named Charlie Brown",
+   "year": 1969
+  },
+  {
+   "title": "Snoopy Come Home",
+   "year": 1972
+  },
+  {
+   "title": "Race for Your Life, Charlie Brown",
+   "year": 1977
+  },
+  {
+   "title": "The Peanuts Movie",
+   "year": 2015
+  },
+  {
+   "title": "Curious George",
+   "year": 2006
+  },
+  {
+   "title": "Clifford's Really Big Movie",
+   "year": 2004
+  },
+  {
+   "title": "Clifford the Big Red Dog",
+   "year": 2021
+  },
+  {
+   "title": "Arthur's Perfect Christmas",
+   "year": 2000
+  },
+  {
+   "title": "Babe",
+   "year": 1995
+  },
+  {
+   "title": "Charlotte's Web",
+   "year": 1973
+  },
+  {
+   "title": "Charlotte's Web",
+   "year": 2006
+  },
+  {
+   "title": "Stuart Little",
+   "year": 1999
+  },
+  {
+   "title": "Stuart Little 2",
+   "year": 2002
+  },
+  {
+   "title": "The Muppet Movie",
+   "year": 1979
+  },
+  {
+   "title": "The Muppet Christmas Carol",
+   "year": 1992
+  },
+  {
+   "title": "Muppet Treasure Island",
+   "year": 1996
+  },
+  {
+   "title": "The Muppets",
+   "year": 2011
+  },
+  {
+   "title": "Sesame Street Presents: Follow That Bird",
+   "year": 1985
+  },
+  {
+   "title": "The Adventures of Elmo in Grouchland",
+   "year": 1999
+  },
+  {
+   "title": "Babar: The Movie",
+   "year": 1989
+  },
+  {
+   "title": "Wallace & Gromit: A Grand Day Out",
+   "year": 1989
+  },
+  {
+   "title": "Wallace & Gromit: The Wrong Trousers",
+   "year": 1993
+  },
+  {
+   "title": "Wallace & Gromit: A Close Shave",
+   "year": 1995
+  },
+  {
+   "title": "Wallace & Gromit: The Curse of the Were-Rabbit",
+   "year": 2005
+  },
+  {
+   "title": "Wallace & Gromit: Vengeance Most Fowl",
+   "year": 2024
+  },
+  {
+   "title": "Shaun the Sheep Movie",
+   "year": 2015
+  },
+  {
+   "title": "A Shaun the Sheep Movie: Farmageddon",
+   "year": 2019
+  },
+  {
+   "title": "The Gruffalo",
+   "year": 2009
+  },
+  {
+   "title": "The Gruffalo's Child",
+   "year": 2011
+  },
+  {
+   "title": "Room on the Broom",
+   "year": 2012
+  },
+  {
+   "title": "Stick Man",
+   "year": 2015
+  },
+  {
+   "title": "The Highway Rat",
+   "year": 2017
+  },
+  {
+   "title": "Zog",
+   "year": 2018
+  },
+  {
+   "title": "The Snail and the Whale",
+   "year": 2019
+  },
+  {
+   "title": "Zog and the Flying Doctors",
+   "year": 2020
+  },
+  {
+   "title": "Superworm",
+   "year": 2021
+  },
+  {
+   "title": "The Smeds and the Smoos",
+   "year": 2022
+  },
+  {
+   "title": "Tabby McTat",
+   "year": 2023
+  },
+  {
+   "title": "The Scarecrows' Wedding",
+   "year": 2024
+  },
+  {
+   "title": "The Snowman",
+   "year": 1982
+  },
+  {
+   "title": "The Snowman and the Snowdog",
+   "year": 2012
+  },
+  {
+   "title": "Father Christmas",
+   "year": 1991
+  },
+  {
+   "title": "The Tiger Who Came to Tea",
+   "year": 2019
+  },
+  {
+   "title": "We're Going on a Bear Hunt",
+   "year": 2016
+  },
+  {
+   "title": "Mog's Christmas Calamity",
+   "year": 2015
+  },
+  {
+   "title": "Lost and Found",
+   "year": 2008
+  },
+  {
+   "title": "Here We Are: Notes for Living on Planet Earth",
+   "year": 2020
+  },
+  {
+   "title": "Ernest & Celestine",
+   "year": 2012
+  },
+  {
+   "title": "Ernest & Celestine: A Trip to Gibberitia",
+   "year": 2022
+  },
+  {
+   "title": "The Big Bad Fox and Other Tales",
+   "year": 2017
+  },
+  {
+   "title": "Song of the Sea",
+   "year": 2014
+  },
+  {
+   "title": "Mary and the Witch's Flower",
+   "year": 2017
+  },
+  {
+   "title": "Arthur Christmas",
+   "year": 2011
+  },
+  {
+   "title": "Klaus",
+   "year": 2019
+  },
+  {
+   "title": "Elf",
+   "year": 2003
+  },
+  {
+   "title": "Miracle on 34th Street",
+   "year": 1947
+  },
+  {
+   "title": "Frosty the Snowman",
+   "year": 1969
+  },
+  {
+   "title": "Rudolph the Red-Nosed Reindeer",
+   "year": 1964
+  },
+  {
+   "title": "Wonka",
+   "year": 2023
+  },
+  {
+   "title": "Homeward Bound: The Incredible Journey",
+   "year": 1993
+  },
+  {
+   "title": "Air Bud",
+   "year": 1997
+  },
+  {
+   "title": "Benji",
+   "year": 1974
+  },
+  {
+   "title": "Lassie Come Home",
+   "year": 1943
+  },
+  {
+   "title": "The Adventures of Milo and Otis",
+   "year": 1986
+  },
+  {
+   "title": "Duma",
+   "year": 2005
+  },
+  {
+   "title": "Dolphin Tale",
+   "year": 2011
+  },
+  {
+   "title": "Because of Winn-Dixie",
+   "year": 2005
+  },
+  {
+   "title": "Mr. Popper's Penguins",
+   "year": 2011
+  },
+  {
+   "title": "Spirit: Stallion of the Cimarron",
+   "year": 2002
+  },
+  {
+   "title": "Ferdinand",
+   "year": 2017
+  },
+  {
+   "title": "Leap!",
+   "year": 2016
+  },
+  {
+   "title": "The Star",
+   "year": 2017
+  },
+  {
+   "title": "Smallfoot",
+   "year": 2018
+  },
+  {
+   "title": "Abominable",
+   "year": 2019
+  },
+  {
+   "title": "Over the Moon",
+   "year": 2020
+  },
+  {
+   "title": "Luck",
+   "year": 2022
+  },
+  {
+   "title": "The Bad Guys",
+   "year": 2022
+  },
+  {
+   "title": "Dog Man",
+   "year": 2025
+  },
+  {
+   "title": "DC League of Super-Pets",
+   "year": 2022
+  },
+  {
+   "title": "PAW Patrol: The Movie",
+   "year": 2021
+  },
+  {
+   "title": "PAW Patrol: The Mighty Movie",
+   "year": 2023
+  },
+  {
+   "title": "Blue's Big City Adventure",
+   "year": 2022
+  },
+  {
+   "title": "My Little Pony: A New Generation",
+   "year": 2021
+  },
+  {
+   "title": "Peter Rabbit",
+   "year": 2018
+  },
+  {
+   "title": "Peter Rabbit 2: The Runaway",
+   "year": 2021
+  },
+  {
+   "title": "Mr. Bean's Holiday",
+   "year": 2007
+  },
+  {
+   "title": "Hop",
+   "year": 2011
+  },
+  {
+   "title": "The Boss Baby",
+   "year": 2017
+  },
+  {
+   "title": "Storks",
+   "year": 2016
+  },
+  {
+   "title": "Puffin Rock and the New Friends",
+   "year": 2023
+  },
+  {
+   "title": "March of the Penguins",
+   "year": 2005
+  },
+  {
+   "title": "Winged Migration",
+   "year": 2001
+  },
+  {
+   "title": "Earth",
+   "year": 2007
+  },
+  {
+   "title": "Oceans",
+   "year": 2009
+  },
+  {
+   "title": "African Cats",
+   "year": 2011
+  },
+  {
+   "title": "Chimpanzee",
+   "year": 2012
+  },
+  {
+   "title": "Bears",
+   "year": 2014
+  },
+  {
+   "title": "Monkey Kingdom",
+   "year": 2015
+  },
+  {
+   "title": "Born in China",
+   "year": 2016
+  },
+  {
+   "title": "Dolphin Reef",
+   "year": 2018
+  },
+  {
+   "title": "Penguins",
+   "year": 2019
+  },
+  {
+   "title": "Elephant",
+   "year": 2020
+  },
+  {
+   "title": "Bal Ganesh",
+   "year": 2007
+  },
+  {
+   "title": "Bal Ganesh 2",
+   "year": 2009
+  },
+  {
+   "title": "My Friend Ganesha",
+   "year": 2007
+  },
+  {
+   "title": "Hanuman",
+   "year": 2005
+  },
+  {
+   "title": "Return of Hanuman",
+   "year": 2007
+  },
+  {
+   "title": "Krishna Aur Kans",
+   "year": 2012
+  },
+  {
+   "title": "Chhota Bheem and the Throne of Bali",
+   "year": 2013
+  },
+  {
+   "title": "Chhota Bheem and the Curse of Damyaan",
+   "year": 2012
+  },
+  {
+   "title": "Chhota Bheem: Kung Fu Dhamaka",
+   "year": 2019
+  },
+  {
+   "title": "Motu Patlu: King of Kings",
+   "year": 2016
+  },
+  {
+   "title": "Jumbo",
+   "year": 2008
+  },
+  {
+   "title": "Delhi Safari",
+   "year": 2012
+  },
+  {
+   "title": "Halo",
+   "year": 1996
+  },
+  {
+   "title": "Jajantaram Mamantaram",
+   "year": 2003
+  },
+  {
+   "title": "Goopy Gyne Bagha Byne",
+   "year": 1969
+  },
+  {
+   "title": "Malli",
+   "year": 1998
+  },
+  {
+   "title": "Chhota Chethan",
+   "year": 1984
+  },
+  {
+   "title": "Ramayana: The Legend of Prince Rama",
+   "year": 1992
+  }
+ ],
+ "shows": [
+  {
+   "title": "Bluey",
+   "year": 2018
+  },
+  {
+   "title": "Puffin Rock",
+   "year": 2015
+  },
+  {
+   "title": "Hey Duggee",
+   "year": 2014
+  },
+  {
+   "title": "Peppa Pig",
+   "year": 2004
+  },
+  {
+   "title": "Daniel Tiger's Neighborhood",
+   "year": 2012
+  },
+  {
+   "title": "Mister Rogers' Neighborhood",
+   "year": 1968
+  },
+  {
+   "title": "Sesame Street",
+   "year": 1969
+  },
+  {
+   "title": "Wild Kratts",
+   "year": 2011
+  },
+  {
+   "title": "Octonauts",
+   "year": 2010
+  },
+  {
+   "title": "Octonauts: Above & Beyond",
+   "year": 2021
+  },
+  {
+   "title": "Odd Squad",
+   "year": 2014
+  },
+  {
+   "title": "Ask the StoryBots",
+   "year": 2016
+  },
+  {
+   "title": "StoryBots: Answer Time",
+   "year": 2022
+  },
+  {
+   "title": "Numberblocks",
+   "year": 2017
+  },
+  {
+   "title": "Alphablocks",
+   "year": 2010
+  },
+  {
+   "title": "Peg + Cat",
+   "year": 2013
+  },
+  {
+   "title": "Dinosaur Train",
+   "year": 2009
+  },
+  {
+   "title": "Sid the Science Kid",
+   "year": 2008
+  },
+  {
+   "title": "Ada Twist, Scientist",
+   "year": 2021
+  },
+  {
+   "title": "Rosie's Rules",
+   "year": 2022
+  },
+  {
+   "title": "Molly of Denali",
+   "year": 2019
+  },
+  {
+   "title": "Arthur",
+   "year": 1996
+  },
+  {
+   "title": "Curious George",
+   "year": 2006
+  },
+  {
+   "title": "Clifford the Big Red Dog",
+   "year": 2000
+  },
+  {
+   "title": "Blue's Clues",
+   "year": 1996
+  },
+  {
+   "title": "Blue's Clues & You!",
+   "year": 2019
+  },
+  {
+   "title": "Dora the Explorer",
+   "year": 2000
+  },
+  {
+   "title": "Go, Diego, Go!",
+   "year": 2005
+  },
+  {
+   "title": "Bubble Guppies",
+   "year": 2011
+  },
+  {
+   "title": "PAW Patrol",
+   "year": 2013
+  },
+  {
+   "title": "Doc McStuffins",
+   "year": 2012
+  },
+  {
+   "title": "Sofia the First",
+   "year": 2013
+  },
+  {
+   "title": "Mickey Mouse Clubhouse",
+   "year": 2006
+  },
+  {
+   "title": "Little Einsteins",
+   "year": 2005
+  },
+  {
+   "title": "Handy Manny",
+   "year": 2006
+  },
+  {
+   "title": "PJ Masks",
+   "year": 2015
+  },
+  {
+   "title": "Super Why!",
+   "year": 2007
+  },
+  {
+   "title": "WordWorld",
+   "year": 2007
+  },
+  {
+   "title": "WordGirl",
+   "year": 2007
+  },
+  {
+   "title": "The Magic School Bus",
+   "year": 1994
+  },
+  {
+   "title": "The Magic School Bus Rides Again",
+   "year": 2017
+  },
+  {
+   "title": "The Cat in the Hat Knows a Lot About That!",
+   "year": 2010
+  },
+  {
+   "title": "Martha Speaks",
+   "year": 2008
+  },
+  {
+   "title": "Nature Cat",
+   "year": 2015
+  },
+  {
+   "title": "Elinor Wonders Why",
+   "year": 2020
+  },
+  {
+   "title": "Peep and the Big Wide World",
+   "year": 2004
+  },
+  {
+   "title": "Bob the Builder",
+   "year": 1999
+  },
+  {
+   "title": "Thomas & Friends",
+   "year": 1984
+  },
+  {
+   "title": "Fireman Sam",
+   "year": 1987
+  },
+  {
+   "title": "Postman Pat",
+   "year": 1981
+  },
+  {
+   "title": "Pingu",
+   "year": 1990
+  },
+  {
+   "title": "Shaun the Sheep",
+   "year": 2007
+  },
+  {
+   "title": "Timmy Time",
+   "year": 2009
+  },
+  {
+   "title": "Twirlywoos",
+   "year": 2015
+  },
+  {
+   "title": "In the Night Garden...",
+   "year": 2007
+  },
+  {
+   "title": "Ben and Holly's Little Kingdom",
+   "year": 2009
+  },
+  {
+   "title": "Sarah & Duck",
+   "year": 2013
+  },
+  {
+   "title": "Charlie and Lola",
+   "year": 2005
+  },
+  {
+   "title": "Kipper",
+   "year": 1997
+  },
+  {
+   "title": "Maisy",
+   "year": 1999
+  },
+  {
+   "title": "Franklin",
+   "year": 1997
+  },
+  {
+   "title": "Little Bear",
+   "year": 1995
+  },
+  {
+   "title": "Max & Ruby",
+   "year": 2002
+  },
+  {
+   "title": "Little Bill",
+   "year": 1999
+  },
+  {
+   "title": "Gaspard and Lisa",
+   "year": 2010
+  },
+  {
+   "title": "Tumble Leaf",
+   "year": 2014
+  },
+  {
+   "title": "Creative Galaxy",
+   "year": 2013
+  },
+  {
+   "title": "Annedroids",
+   "year": 2014
+  },
+  {
+   "title": "Emily's Wonder Lab",
+   "year": 2020
+  },
+  {
+   "title": "Gigantosaurus",
+   "year": 2019
+  },
+  {
+   "title": "Go Jetters",
+   "year": 2015
+  },
+  {
+   "title": "Andy's Dinosaur Adventures",
+   "year": 2014
+  },
+  {
+   "title": "Andy's Safari Adventures",
+   "year": 2018
+  },
+  {
+   "title": "Kratts' Creatures",
+   "year": 1996
+  },
+  {
+   "title": "Zoboomafoo",
+   "year": 1999
+  },
+  {
+   "title": "Bear in the Big Blue House",
+   "year": 1997
+  },
+  {
+   "title": "Between the Lions",
+   "year": 2000
+  },
+  {
+   "title": "Reading Rainbow",
+   "year": 1983
+  },
+  {
+   "title": "Fraggle Rock",
+   "year": 1983
+  },
+  {
+   "title": "Fraggle Rock: Back to the Rock",
+   "year": 2022
+  },
+  {
+   "title": "Muppet Babies",
+   "year": 2018
+  },
+  {
+   "title": "Ruff-Ruff, Tweet and Dave",
+   "year": 2015
+  },
+  {
+   "title": "Gabby's Dollhouse",
+   "year": 2021
+  },
+  {
+   "title": "Llama Llama",
+   "year": 2018
+  },
+  {
+   "title": "Pinkalicious & Peterrific",
+   "year": 2018
+  },
+  {
+   "title": "Let's Go Luna!",
+   "year": 2018
+  },
+  {
+   "title": "Xavier Riddle and the Secret Museum",
+   "year": 2019
+  },
+  {
+   "title": "Work It Out Wombats!",
+   "year": 2023
+  },
+  {
+   "title": "Donkey Hodie",
+   "year": 2021
+  },
+  {
+   "title": "Duck & Goose",
+   "year": 2022
+  },
+  {
+   "title": "Spirit Rangers",
+   "year": 2022
+  },
+  {
+   "title": "Stillwater",
+   "year": 2020
+  },
+  {
+   "title": "Helpsters",
+   "year": 2019
+  },
+  {
+   "title": "Doug Unplugs",
+   "year": 2020
+  },
+  {
+   "title": "Frog and Toad",
+   "year": 2023
+  },
+  {
+   "title": "Pretzel and the Puppies",
+   "year": 2022
+  },
+  {
+   "title": "Interrupting Chicken",
+   "year": 2022
+  },
+  {
+   "title": "Wonder Pets!",
+   "year": 2006
+  },
+  {
+   "title": "Oswald",
+   "year": 2001
+  },
+  {
+   "title": "Toot & Puddle",
+   "year": 2008
+  },
+  {
+   "title": "The Wiggles",
+   "year": 1991
+  },
+  {
+   "title": "Little Princess",
+   "year": 2006
+  },
+  {
+   "title": "Clangers",
+   "year": 2015
+  },
+  {
+   "title": "Bagpuss",
+   "year": 1974
+  },
+  {
+   "title": "Lily's Driftwood Bay",
+   "year": 2014
+  },
+  {
+   "title": "Tinga Tinga Tales",
+   "year": 2010
+  },
+  {
+   "title": "Pocoyo",
+   "year": 2005
+  },
+  {
+   "title": "Trash Truck",
+   "year": 2020
+  },
+  {
+   "title": "Ridley Jones",
+   "year": 2021
+  },
+  {
+   "title": "Waffles + Mochi",
+   "year": 2021
+  },
+  {
+   "title": "Masha and the Bear",
+   "year": 2009
+  },
+  {
+   "title": "Chip and Potato",
+   "year": 2018
+  },
+  {
+   "title": "Dino Ranch",
+   "year": 2021
+  },
+  {
+   "title": "Esme & Roy",
+   "year": 2018
+  },
+  {
+   "title": "Bing",
+   "year": 2014
+  },
+  {
+   "title": "Moomin",
+   "year": 1990
+  },
+  {
+   "title": "Moominvalley",
+   "year": 2019
+  },
+  {
+   "title": "Go! Go! Cory Carson",
+   "year": 2020
+  },
+  {
+   "title": "Simon",
+   "year": 2016
+  },
+  {
+   "title": "Lyla in the Loop",
+   "year": 2024
+  },
+  {
+   "title": "Carl the Collector",
+   "year": 2024
+  },
+  {
+   "title": "Alma's Way",
+   "year": 2021
+  },
+  {
+   "title": "Bea's Block",
+   "year": 2024
+  },
+  {
+   "title": "Ms. Rachel",
+   "year": 2022
+  },
+  {
+   "title": "Kiri and Lou",
+   "year": 2019
+  },
+  {
+   "title": "Mighty Little Bheem",
+   "year": 2019
+  },
+  {
+   "title": "Chhota Bheem",
+   "year": 2008
+  },
+  {
+   "title": "Little Krishna",
+   "year": 2009
+  },
+  {
+   "title": "Motu Patlu",
+   "year": 2012
+  },
+  {
+   "title": "Galli Galli Sim Sim",
+   "year": 2006
+  },
+  {
+   "title": "Lamput",
+   "year": 2017
+  },
+  {
+   "title": "Gattu Battu",
+   "year": 2012
+  },
+  {
+   "title": "Krishna Balram",
+   "year": 2008
+  },
+  {
+   "title": "Shaka Laka Boom Boom",
+   "year": 2000
+  },
+  {
+   "title": "Son Pari",
+   "year": 2000
+  },
+  {
+   "title": "Potli Baba Ki",
+   "year": 1991
+  },
+  {
+   "title": "The Jungle Book",
+   "year": 1989
+  }
+ ]
+}

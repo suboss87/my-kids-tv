@@ -11,7 +11,7 @@ Stages: 1) candidates from seeds, research lists and TMDB sweeps; 2) hard age-ra
 import argparse, concurrent.futures as cf, json, os, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tmdb import get
-from bands import BANDS, questions, audience
+from bands import BANDS, questions, audience, policy
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 INDIAN = ('hi', 'ta', 'te', 'ml', 'bn', 'mr', 'kn', 'gu')
@@ -183,7 +183,9 @@ def stage_select(band):
         if k in over:
             if over[k] == 'keep': keep.append(row)
             continue
-        core = s['jr'] >= 0.6 and s['value'] >= 2.0 and s['fun'] >= 1.2 and (s['must'] >= 0.5 or s['value'] >= 2.4)
+        pol = policy(band)
+        core = s['jr'] >= pol['jr'] and s['value'] >= pol['value'] and s['fun'] >= pol['fun'] \
+            and (s['must'] >= pol['must'] or s['value'] >= 2.4)
         solid = s['jr'] >= 0.75 and s['value'] >= 2.1 and s['fun'] >= 2.0
         near = (0.4 <= s['jr'] < 0.6 and s['value'] >= 2.2) or \
                (s['jr'] >= 0.6 and s['fun'] >= 1.2 and ((1.8 <= s['value'] < 2.0 and s['must'] >= 0.5) or (2.0 <= s['value'] < 2.4 and 0.35 <= s['must'] < 0.5)))

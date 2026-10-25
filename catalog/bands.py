@@ -10,6 +10,8 @@ BANDS = {
         'movie_sweeps': [dict(with_genres=g, certification_country='US', **{'certification.lte': 'G'}) for g in (16, 10751, 12, 35)]
                         + [dict(with_genres='16|10751', certification_country='US', **{'certification.lte': 'PG'})],
         'tv_sweeps': [dict(with_genres=10762), dict(with_genres='16|10751')],
+        # Gentle titles for young children rarely count as "must-watch": right age, solid value and high fun is enough.
+        'policy': {'jr': 0.6, 'value': 1.9, 'fun': 2.0, 'must': 0.0},
     },
     '7-10': {
         'child': 'a 7-to-10-year-old child',
@@ -32,6 +34,11 @@ BANDS = {
         'tv_sweeps': [dict(with_genres=g) for g in (10759, 10765, 16, 99, 10751, 35)],
     },
 }
+
+DEFAULT_POLICY = {'jr': 0.6, 'value': 2.0, 'fun': 1.2, 'must': 0.5}
+
+def policy(band):
+    return BANDS[band].get('policy', DEFAULT_POLICY)
 
 def questions(band):
     """Jev questions for a band: the judgment is the same, only the child's age and the age limits change."""
