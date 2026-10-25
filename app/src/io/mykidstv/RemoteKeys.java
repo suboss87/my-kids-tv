@@ -43,9 +43,16 @@ final class RemoteKeys {
     static final boolean XIAOMI = is("Xiaomi") && !FORMOVIE && Build.MODEL.startsWith("MiTV-M");
     /** Brands whose Netflix button is STEM_1, a global key (MediaTek): only that button is ours. */
     static final boolean STEM_NETFLIX = VESTEL || FORMOVIE;
+    /**
+     * Haier (MatrixTV BE, MediaTek, Google TV 14). Its YouTube button sends 247, a hot key that Haier's
+     * HaierHotKeyDispatcher turns into YouTube. With block_youtube_button (a parent's choice) it is swallowed; every
+     * other key is left alone.
+     */
+    static final boolean HAIER = is("Haier");
+    private static final int KEY_YOUTUBE_HAIER = 247;
 
     static boolean supported() {
-        return TCL || STEM_NETFLIX || KTC || SONY || XIAOMI || HISENSE;
+        return TCL || STEM_NETFLIX || KTC || SONY || XIAOMI || HISENSE || HAIER;
     }
 
     private static boolean is(String maker) {
@@ -55,6 +62,11 @@ final class RemoteKeys {
     /** Opens the app for this key on its first press. True if the key is ours and in use (it is then consumed). */
     static boolean onKey(Context c, KeyEvent e) {
         if (!supported()) return false;
+        if (HAIER) {
+            if (!Config.BLOCK_YOUTUBE_BUTTON || e.getKeyCode() != KEY_YOUTUBE_HAIER) return false;
+            if (e.getAction() == KeyEvent.ACTION_DOWN && e.getRepeatCount() == 0) AppLog.w("remote key 247 (YouTube) blocked");
+            return true;
+        }
         // BUTTON_3 is also a game controller's button: keys from a gamepad or a joystick are left alone.
         int source = e.getSource();
         if ((source & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD

@@ -1,0 +1,1270 @@
+{
+ "movies": [
+  {
+   "title": "Toy Story 2",
+   "year": 1999
+  },
+  {
+   "title": "Toy Story 4",
+   "year": 2019
+  },
+  {
+   "title": "A Bug's Life",
+   "year": 1998
+  },
+  {
+   "title": "Monsters University",
+   "year": 2013
+  },
+  {
+   "title": "Cars",
+   "year": 2006
+  },
+  {
+   "title": "Incredibles 2",
+   "year": 2018
+  },
+  {
+   "title": "Brave",
+   "year": 2012
+  },
+  {
+   "title": "Onward",
+   "year": 2020
+  },
+  {
+   "title": "Lilo & Stitch",
+   "year": 2002
+  },
+  {
+   "title": "Tangled",
+   "year": 2010
+  },
+  {
+   "title": "Frozen",
+   "year": 2013
+  },
+  {
+   "title": "Wreck-It Ralph",
+   "year": 2012
+  },
+  {
+   "title": "Ralph Breaks the Internet",
+   "year": 2018
+  },
+  {
+   "title": "Bolt",
+   "year": 2008
+  },
+  {
+   "title": "Meet the Robinsons",
+   "year": 2007
+  },
+  {
+   "title": "The Princess and the Frog",
+   "year": 2009
+  },
+  {
+   "title": "Treasure Planet",
+   "year": 2002
+  },
+  {
+   "title": "Atlantis: The Lost Empire",
+   "year": 2001
+  },
+  {
+   "title": "The Emperor's New Groove",
+   "year": 2000
+  },
+  {
+   "title": "Hercules",
+   "year": 1997
+  },
+  {
+   "title": "Aladdin",
+   "year": 1992
+  },
+  {
+   "title": "Beauty and the Beast",
+   "year": 1991
+  },
+  {
+   "title": "The Jungle Book",
+   "year": 1967
+  },
+  {
+   "title": "Robin Hood",
+   "year": 1973
+  },
+  {
+   "title": "One Hundred and One Dalmatians",
+   "year": 1961
+  },
+  {
+   "title": "Pinocchio",
+   "year": 1940
+  },
+  {
+   "title": "The Little Mermaid",
+   "year": 1989
+  },
+  {
+   "title": "Tarzan",
+   "year": 1999
+  },
+  {
+   "title": "Raya and the Last Dragon",
+   "year": 2021
+  },
+  {
+   "title": "How to Train Your Dragon 2",
+   "year": 2014
+  },
+  {
+   "title": "How to Train Your Dragon: The Hidden World",
+   "year": 2019
+  },
+  {
+   "title": "Kung Fu Panda 2",
+   "year": 2011
+  },
+  {
+   "title": "Kung Fu Panda 3",
+   "year": 2016
+  },
+  {
+   "title": "Shrek",
+   "year": 2001
+  },
+  {
+   "title": "Shrek 2",
+   "year": 2004
+  },
+  {
+   "title": "Madagascar",
+   "year": 2005
+  },
+  {
+   "title": "Megamind",
+   "year": 2010
+  },
+  {
+   "title": "The Croods",
+   "year": 2013
+  },
+  {
+   "title": "The Bad Guys",
+   "year": 2022
+  },
+  {
+   "title": "The Prince of Egypt",
+   "year": 1998
+  },
+  {
+   "title": "Spirit: Stallion of the Cimarron",
+   "year": 2002
+  },
+  {
+   "title": "The Road to El Dorado",
+   "year": 2000
+  },
+  {
+   "title": "Over the Hedge",
+   "year": 2006
+  },
+  {
+   "title": "Rise of the Guardians",
+   "year": 2012
+  },
+  {
+   "title": "Despicable Me",
+   "year": 2010
+  },
+  {
+   "title": "Despicable Me 2",
+   "year": 2013
+  },
+  {
+   "title": "Sing",
+   "year": 2016
+  },
+  {
+   "title": "Sing 2",
+   "year": 2021
+  },
+  {
+   "title": "Horton Hears a Who!",
+   "year": 2008
+  },
+  {
+   "title": "Ice Age",
+   "year": 2002
+  },
+  {
+   "title": "Rio",
+   "year": 2011
+  },
+  {
+   "title": "Cloudy with a Chance of Meatballs",
+   "year": 2009
+  },
+  {
+   "title": "Hotel Transylvania",
+   "year": 2012
+  },
+  {
+   "title": "The Lego Movie",
+   "year": 2014
+  },
+  {
+   "title": "The Lego Batman Movie",
+   "year": 2017
+  },
+  {
+   "title": "Spider-Man: Across the Spider-Verse",
+   "year": 2023
+  },
+  {
+   "title": "Howl's Moving Castle",
+   "year": 2004
+  },
+  {
+   "title": "Nausica\u00e4 of the Valley of the Wind",
+   "year": 1984
+  },
+  {
+   "title": "Porco Rosso",
+   "year": 1992
+  },
+  {
+   "title": "Whisper of the Heart",
+   "year": 1995
+  },
+  {
+   "title": "The Secret World of Arrietty",
+   "year": 2010
+  },
+  {
+   "title": "The Cat Returns",
+   "year": 2002
+  },
+  {
+   "title": "From Up on Poppy Hill",
+   "year": 2011
+  },
+  {
+   "title": "The Tale of the Princess Kaguya",
+   "year": 2013
+  },
+  {
+   "title": "The Red Turtle",
+   "year": 2016
+  },
+  {
+   "title": "The Little Prince",
+   "year": 2015
+  },
+  {
+   "title": "The Secret of Kells",
+   "year": 2009
+  },
+  {
+   "title": "Mary and the Witch's Flower",
+   "year": 2017
+  },
+  {
+   "title": "Mirai",
+   "year": 2018
+  },
+  {
+   "title": "A Shaun the Sheep Movie: Farmageddon",
+   "year": 2019
+  },
+  {
+   "title": "Early Man",
+   "year": 2018
+  },
+  {
+   "title": "Wallace & Gromit: Vengeance Most Fowl",
+   "year": 2024
+  },
+  {
+   "title": "Arthur Christmas",
+   "year": 2011
+  },
+  {
+   "title": "Flushed Away",
+   "year": 2006
+  },
+  {
+   "title": "Missing Link",
+   "year": 2019
+  },
+  {
+   "title": "The Sea Beast",
+   "year": 2022
+  },
+  {
+   "title": "Nimona",
+   "year": 2023
+  },
+  {
+   "title": "Over the Moon",
+   "year": 2020
+  },
+  {
+   "title": "Vivo",
+   "year": 2021
+  },
+  {
+   "title": "Wish Dragon",
+   "year": 2021
+  },
+  {
+   "title": "The Willoughbys",
+   "year": 2020
+  },
+  {
+   "title": "Leo",
+   "year": 2023
+  },
+  {
+   "title": "Robot Dreams",
+   "year": 2023
+  },
+  {
+   "title": "Flow",
+   "year": 2024
+  },
+  {
+   "title": "Elio",
+   "year": 2025
+  },
+  {
+   "title": "Zootopia 2",
+   "year": 2025
+  },
+  {
+   "title": "The Book of Life",
+   "year": 2014
+  },
+  {
+   "title": "Ferdinand",
+   "year": 2017
+  },
+  {
+   "title": "Abominable",
+   "year": 2019
+  },
+  {
+   "title": "Chicken Run: Dawn of the Nugget",
+   "year": 2023
+  },
+  {
+   "title": "The Boy, the Mole, the Fox and the Horse",
+   "year": 2022
+  },
+  {
+   "title": "Ernest & Celestine",
+   "year": 2012
+  },
+  {
+   "title": "Lightyear",
+   "year": 2022
+  },
+  {
+   "title": "Wall-E",
+   "year": 2008
+  },
+  {
+   "title": "The Princess Bride",
+   "year": 1987
+  },
+  {
+   "title": "Back to the Future",
+   "year": 1985
+  },
+  {
+   "title": "Jumanji",
+   "year": 1995
+  },
+  {
+   "title": "Hook",
+   "year": 1991
+  },
+  {
+   "title": "The NeverEnding Story",
+   "year": 1984
+  },
+  {
+   "title": "Honey, I Shrunk the Kids",
+   "year": 1989
+  },
+  {
+   "title": "Babe",
+   "year": 1995
+  },
+  {
+   "title": "Paddington",
+   "year": 2014
+  },
+  {
+   "title": "Paddington in Peru",
+   "year": 2024
+  },
+  {
+   "title": "Charlie and the Chocolate Factory",
+   "year": 2005
+  },
+  {
+   "title": "Willy Wonka & the Chocolate Factory",
+   "year": 1971
+  },
+  {
+   "title": "Wonka",
+   "year": 2023
+  },
+  {
+   "title": "Mary Poppins Returns",
+   "year": 2018
+  },
+  {
+   "title": "Chitty Chitty Bang Bang",
+   "year": 1968
+  },
+  {
+   "title": "The Wizard of Oz",
+   "year": 1939
+  },
+  {
+   "title": "The Parent Trap",
+   "year": 1998
+  },
+  {
+   "title": "Night at the Museum: Battle of the Smithsonian",
+   "year": 2009
+  },
+  {
+   "title": "Holes",
+   "year": 2003
+  },
+  {
+   "title": "Stuart Little",
+   "year": 1999
+  },
+  {
+   "title": "Bridge to Terabithia",
+   "year": 2007
+  },
+  {
+   "title": "Because of Winn-Dixie",
+   "year": 2005
+  },
+  {
+   "title": "Charlotte's Web",
+   "year": 2006
+  },
+  {
+   "title": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+   "year": 2005
+  },
+  {
+   "title": "Harry Potter and the Chamber of Secrets",
+   "year": 2002
+  },
+  {
+   "title": "Harry Potter and the Prisoner of Azkaban",
+   "year": 2004
+  },
+  {
+   "title": "The Sandlot",
+   "year": 1993
+  },
+  {
+   "title": "Roald Dahl's Matilda the Musical",
+   "year": 2022
+  },
+  {
+   "title": "The Secret Garden",
+   "year": 1993
+  },
+  {
+   "title": "A Little Princess",
+   "year": 1995
+  },
+  {
+   "title": "Black Beauty",
+   "year": 1994
+  },
+  {
+   "title": "Fly Away Home",
+   "year": 1996
+  },
+  {
+   "title": "Free Willy",
+   "year": 1993
+  },
+  {
+   "title": "Hachi: A Dog's Tale",
+   "year": 2009
+  },
+  {
+   "title": "Homeward Bound: The Incredible Journey",
+   "year": 1993
+  },
+  {
+   "title": "A Dog's Purpose",
+   "year": 2017
+  },
+  {
+   "title": "Dolphin Tale",
+   "year": 2011
+  },
+  {
+   "title": "Life of Pi",
+   "year": 2012
+  },
+  {
+   "title": "The BFG",
+   "year": 2016
+  },
+  {
+   "title": "Pete's Dragon",
+   "year": 2016
+  },
+  {
+   "title": "Christopher Robin",
+   "year": 2018
+  },
+  {
+   "title": "Aladdin",
+   "year": 2019
+  },
+  {
+   "title": "Cinderella",
+   "year": 2015
+  },
+  {
+   "title": "The Jungle Book",
+   "year": 2016
+  },
+  {
+   "title": "Home Alone 2: Lost in New York",
+   "year": 1992
+  },
+  {
+   "title": "Elf",
+   "year": 2003
+  },
+  {
+   "title": "The Polar Express",
+   "year": 2004
+  },
+  {
+   "title": "Miracle on 34th Street",
+   "year": 1994
+  },
+  {
+   "title": "Big",
+   "year": 1988
+  },
+  {
+   "title": "Back to the Future Part II",
+   "year": 1989
+  },
+  {
+   "title": "The Kid Who Would Be King",
+   "year": 2019
+  },
+  {
+   "title": "Tomorrowland",
+   "year": 2015
+  },
+  {
+   "title": "Nanny McPhee",
+   "year": 2005
+  },
+  {
+   "title": "Spy Kids",
+   "year": 2001
+  },
+  {
+   "title": "The Adventures of Tintin",
+   "year": 2011
+  },
+  {
+   "title": "Mr. Bean's Holiday",
+   "year": 2007
+  },
+  {
+   "title": "Enchanted",
+   "year": 2007
+  },
+  {
+   "title": "Freaky Friday",
+   "year": 2003
+  },
+  {
+   "title": "Night at the Museum",
+   "year": 2006
+  },
+  {
+   "title": "Zathura: A Space Adventure",
+   "year": 2005
+  },
+  {
+   "title": "Journey to the Center of the Earth",
+   "year": 2008
+  },
+  {
+   "title": "The Iron Giant",
+   "year": 1999
+  },
+  {
+   "title": "Matilda",
+   "year": 1996
+  },
+  {
+   "title": "Annie",
+   "year": 1982
+  },
+  {
+   "title": "The Muppet Movie",
+   "year": 1979
+  },
+  {
+   "title": "The Muppets",
+   "year": 2011
+  },
+  {
+   "title": "Muppets Most Wanted",
+   "year": 2014
+  },
+  {
+   "title": "Babe: Pig in the City",
+   "year": 1998
+  },
+  {
+   "title": "Dr. Seuss' The Grinch",
+   "year": 2018
+  },
+  {
+   "title": "The Karate Kid",
+   "year": 1984
+  },
+  {
+   "title": "The Karate Kid",
+   "year": 2010
+  },
+  {
+   "title": "Cool Runnings",
+   "year": 1993
+  },
+  {
+   "title": "Remember the Titans",
+   "year": 2000
+  },
+  {
+   "title": "Miracle",
+   "year": 2004
+  },
+  {
+   "title": "Rookie of the Year",
+   "year": 1993
+  },
+  {
+   "title": "The Mighty Ducks",
+   "year": 1992
+  },
+  {
+   "title": "Queen of Katwe",
+   "year": 2016
+  },
+  {
+   "title": "Million Dollar Arm",
+   "year": 2014
+  },
+  {
+   "title": "McFarland, USA",
+   "year": 2015
+  },
+  {
+   "title": "Rudy",
+   "year": 1993
+  },
+  {
+   "title": "Soul Surfer",
+   "year": 2011
+  },
+  {
+   "title": "The Boy Who Harnessed the Wind",
+   "year": 2019
+  },
+  {
+   "title": "October Sky",
+   "year": 1999
+  },
+  {
+   "title": "Apollo 13",
+   "year": 1995
+  },
+  {
+   "title": "Space Jam",
+   "year": 1996
+  },
+  {
+   "title": "Secretariat",
+   "year": 2010
+  },
+  {
+   "title": "Eddie the Eagle",
+   "year": 2016
+  },
+  {
+   "title": "Spare Parts",
+   "year": 2015
+  },
+  {
+   "title": "The Greatest Game Ever Played",
+   "year": 2005
+  },
+  {
+   "title": "Glory Road",
+   "year": 2006
+  },
+  {
+   "title": "Invincible",
+   "year": 2006
+  },
+  {
+   "title": "The Rookie",
+   "year": 2002
+  },
+  {
+   "title": "Searching for Bobby Fischer",
+   "year": 1993
+  },
+  {
+   "title": "Dolphin Tale 2",
+   "year": 2014
+  },
+  {
+   "title": "Little Women",
+   "year": 2019
+  },
+  {
+   "title": "Charlie Chaplin: The Kid",
+   "year": 1921
+  },
+  {
+   "title": "Modern Times",
+   "year": 1936
+  },
+  {
+   "title": "The Gold Rush",
+   "year": 1925
+  },
+  {
+   "title": "City Lights",
+   "year": 1931
+  },
+  {
+   "title": "Singin' in the Rain",
+   "year": 1952
+  },
+  {
+   "title": "Hidden Figures",
+   "year": 2016
+  },
+  {
+   "title": "The Sound of Music",
+   "year": 1965
+  },
+  {
+   "title": "Mary Poppins",
+   "year": 1964
+  },
+  {
+   "title": "March of the Penguins",
+   "year": 2005
+  },
+  {
+   "title": "Apollo 11",
+   "year": 2019
+  },
+  {
+   "title": "Oceans",
+   "year": 2009
+  },
+  {
+   "title": "Earth",
+   "year": 2007
+  },
+  {
+   "title": "Born in China",
+   "year": 2016
+  },
+  {
+   "title": "Monkey Kingdom",
+   "year": 2015
+  },
+  {
+   "title": "Bears",
+   "year": 2014
+  },
+  {
+   "title": "Chimpanzee",
+   "year": 2012
+  },
+  {
+   "title": "Penguins",
+   "year": 2019
+  },
+  {
+   "title": "The Biggest Little Farm",
+   "year": 2018
+  },
+  {
+   "title": "My Octopus Teacher",
+   "year": 2020
+  },
+  {
+   "title": "The Elephant Queen",
+   "year": 2018
+  },
+  {
+   "title": "Born to Be Wild",
+   "year": 2011
+  },
+  {
+   "title": "Wings of Life",
+   "year": 2011
+  },
+  {
+   "title": "African Cats",
+   "year": 2011
+  },
+  {
+   "title": "Dolphin Reef",
+   "year": 2018
+  },
+  {
+   "title": "Elephant",
+   "year": 2020
+  },
+  {
+   "title": "Jane",
+   "year": 2017
+  },
+  {
+   "title": "Fantastic Fungi",
+   "year": 2019
+  },
+  {
+   "title": "Iqbal",
+   "year": 2005
+  },
+  {
+   "title": "Lagaan",
+   "year": 2001
+  },
+  {
+   "title": "Swades",
+   "year": 2004
+  },
+  {
+   "title": "Chak De! India",
+   "year": 2007
+  },
+  {
+   "title": "3 Idiots",
+   "year": 2009
+  },
+  {
+   "title": "Dangal",
+   "year": 2016
+  },
+  {
+   "title": "Nil Battey Sannata",
+   "year": 2016
+  },
+  {
+   "title": "Hichki",
+   "year": 2018
+  },
+  {
+   "title": "Super 30",
+   "year": 2019
+  },
+  {
+   "title": "Koi... Mil Gaya",
+   "year": 2003
+  },
+  {
+   "title": "Makdee",
+   "year": 2002
+  },
+  {
+   "title": "The Blue Umbrella",
+   "year": 2005
+  },
+  {
+   "title": "Gattu",
+   "year": 2011
+  },
+  {
+   "title": "Hawaa Hawaai",
+   "year": 2014
+  },
+  {
+   "title": "Dhanak",
+   "year": 2015
+  },
+  {
+   "title": "Poorna",
+   "year": 2017
+  },
+  {
+   "title": "Bhoothnath",
+   "year": 2008
+  },
+  {
+   "title": "Hanuman",
+   "year": 2005
+  },
+  {
+   "title": "Arjun: The Warrior Prince",
+   "year": 2012
+  },
+  {
+   "title": "Pather Panchali",
+   "year": 1955
+  },
+  {
+   "title": "Goopy Gyne Bagha Byne",
+   "year": 1969
+  },
+  {
+   "title": "Sonar Kella",
+   "year": 1974
+  },
+  {
+   "title": "Kaaka Muttai",
+   "year": 2014
+  },
+  {
+   "title": "Pasanga",
+   "year": 2009
+  },
+  {
+   "title": "Anjali",
+   "year": 1990
+  },
+  {
+   "title": "My Dear Kuttichathan",
+   "year": 1984
+  },
+  {
+   "title": "Killa",
+   "year": 2014
+  },
+  {
+   "title": "Elizabeth Ekadashi",
+   "year": 2014
+  },
+  {
+   "title": "Budhia Singh: Born to Run",
+   "year": 2016
+  },
+  {
+   "title": "Rocketry: The Nambi Effect",
+   "year": 2022
+  },
+  {
+   "title": "Mission Mangal",
+   "year": 2019
+  },
+  {
+   "title": "Jalpari: The Desert Mermaid",
+   "year": 2012
+  },
+  {
+   "title": "Tare Zameen Par",
+   "year": 2007
+  },
+  {
+   "title": "Chhota Bheem and the Throne of Bali",
+   "year": 2013
+  },
+  {
+   "title": "Lilli",
+   "year": 2024
+  },
+  {
+   "title": "Sitaare Zameen Par",
+   "year": 2025
+  }
+ ],
+ "shows": [
+  {
+   "title": "Planet Earth",
+   "year": 2006
+  },
+  {
+   "title": "Planet Earth II",
+   "year": 2016
+  },
+  {
+   "title": "Our Planet",
+   "year": 2019
+  },
+  {
+   "title": "Blue Planet II",
+   "year": 2017
+  },
+  {
+   "title": "The Magic School Bus",
+   "year": 1994
+  },
+  {
+   "title": "Bill Nye the Science Guy",
+   "year": 1993
+  },
+  {
+   "title": "Cosmos: A Spacetime Odyssey",
+   "year": 2014
+  },
+  {
+   "title": "Horrible Histories",
+   "year": 2009
+  },
+  {
+   "title": "Mr. Bean",
+   "year": 1990
+  },
+  {
+   "title": "Mr. Bean: The Animated Series",
+   "year": 2002
+  },
+  {
+   "title": "Tom and Jerry",
+   "year": 1965
+  },
+  {
+   "title": "The Pink Panther Show",
+   "year": 1969
+  },
+  {
+   "title": "Scooby-Doo, Where Are You!",
+   "year": 1969
+  },
+  {
+   "title": "Doraemon",
+   "year": 2005
+  },
+  {
+   "title": "Tenali Rama",
+   "year": 2017
+  },
+  {
+   "title": "Vikram Aur Betaal",
+   "year": 1985
+  },
+  {
+   "title": "The Jungle Book",
+   "year": 1989
+  },
+  {
+   "title": "Cyberchase",
+   "year": 2002
+  },
+  {
+   "title": "Wishbone",
+   "year": 1995
+  },
+  {
+   "title": "Arthur",
+   "year": 1996
+  },
+  {
+   "title": "Reading Rainbow",
+   "year": 1983
+  },
+  {
+   "title": "Beakman's World",
+   "year": 1992
+  },
+  {
+   "title": "How It's Made",
+   "year": 2001
+  },
+  {
+   "title": "Dino Dana",
+   "year": 2017
+  },
+  {
+   "title": "Annedroids",
+   "year": 2014
+  },
+  {
+   "title": "Molly of Denali",
+   "year": 2019
+  },
+  {
+   "title": "Xavier Riddle and the Secret Museum",
+   "year": 2019
+  },
+  {
+   "title": "Ada Twist, Scientist",
+   "year": 2021
+  },
+  {
+   "title": "Ridley Jones",
+   "year": 2021
+  },
+  {
+   "title": "The Who Was? Show",
+   "year": 2018
+  },
+  {
+   "title": "Julie's Greenroom",
+   "year": 2017
+  },
+  {
+   "title": "Voltron: Legendary Defender",
+   "year": 2016
+  },
+  {
+   "title": "She-Ra and the Princesses of Power",
+   "year": 2018
+  },
+  {
+   "title": "Pok\u00e9mon",
+   "year": 1997
+  },
+  {
+   "title": "Little House on the Prairie",
+   "year": 1974
+  },
+  {
+   "title": "Puffin Rock",
+   "year": 2015
+  },
+  {
+   "title": "Zig & Sharko",
+   "year": 2010
+  },
+  {
+   "title": "Night on Earth",
+   "year": 2020
+  },
+  {
+   "title": "Our Universe",
+   "year": 2022
+  },
+  {
+   "title": "Dancing with the Birds",
+   "year": 2019
+  },
+  {
+   "title": "Life in Colour",
+   "year": 2021
+  },
+  {
+   "title": "The Mysterious Benedict Society",
+   "year": 2021
+  },
+  {
+   "title": "Diary of a Wimpy Kid",
+   "year": 2021
+  },
+  {
+   "title": "Hilda",
+   "year": 2018
+  },
+  {
+   "title": "Craig of the Creek",
+   "year": 2018
+  },
+  {
+   "title": "Steven Universe",
+   "year": 2013
+  },
+  {
+   "title": "Adventure Time",
+   "year": 2010
+  },
+  {
+   "title": "Over the Garden Wall",
+   "year": 2014
+  },
+  {
+   "title": "Tumble Leaf",
+   "year": 2014
+  },
+  {
+   "title": "StoryBots: Answer Time",
+   "year": 2022
+  },
+  {
+   "title": "Lego Masters",
+   "year": 2020
+  },
+  {
+   "title": "Sesame Street",
+   "year": 1969
+  },
+  {
+   "title": "Bluey",
+   "year": 2018
+  },
+  {
+   "title": "Kung Fu Panda: Legends of Awesomeness",
+   "year": 2011
+  },
+  {
+   "title": "Motu Patlu",
+   "year": 2012
+  },
+  {
+   "title": "Little Singham",
+   "year": 2018
+  },
+  {
+   "title": "Akbar Birbal",
+   "year": 2014
+  },
+  {
+   "title": "Krishna Balram",
+   "year": 2008
+  },
+  {
+   "title": "The Lion Guard",
+   "year": 2016
+  },
+  {
+   "title": "Miraculous: Tales of Ladybug & Cat Noir",
+   "year": 2015
+  },
+  {
+   "title": "Paw Patrol",
+   "year": 2013
+  },
+  {
+   "title": "Kim Possible",
+   "year": 2002
+  },
+  {
+   "title": "Teen Titans Go!",
+   "year": 2013
+  },
+  {
+   "title": "The Amazing World of Gumball",
+   "year": 2011
+  },
+  {
+   "title": "Inside Job",
+   "year": 2021
+  }
+ ]
+}

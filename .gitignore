@@ -14,3 +14,6 @@ __pycache__/
 # macOS
 .DS_Store
 tools/.i18n-cache.json
+
+# Catalog pipeline: TMDB response cache (rebuildable, large)
+catalog/work/cache/

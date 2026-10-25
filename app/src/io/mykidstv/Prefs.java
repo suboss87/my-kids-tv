@@ -135,6 +135,19 @@ final class Prefs {
 
     static void setTheme(String v) { put("theme", v); }
 
+    // MARK: - Kids
+
+    static final String[] AGE_BANDS = {"4-6", "7-10", "11-13"};
+
+    /** The child's age band: which vetted catalog (app/assets/catalog) the picks come from. */
+    static String ageBand() {
+        String v = sp().getString("age_band", Config.AGE_BAND.trim());
+        for (String b : AGE_BANDS) if (b.equals(v)) return b;
+        return "7-10";
+    }
+
+    static void setAgeBand(String v) { put("age_band", v); }
+
     // MARK: - City
 
     static String city() { return sp().getString("city", Place.city()).trim(); }
