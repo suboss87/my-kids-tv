@@ -9,7 +9,8 @@
 "score": 0.93,
 "badge": "must",
 "links": {
-"disney": "https://www.disneyplus.com/series/wp/1xy9TAOQ0M3r"
+"disney": "https://www.disneyplus.com/series/wp/1xy9TAOQ0M3r",
+"hotstar": "https://www.hotstar.com/in/shows/bluey/1260048928"
 }
 },
 {
@@ -36,7 +37,8 @@
 "famous": true,
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.6mbogy74hds0btkz7rj83hzhq",
-"disney": "https://www.disneyplus.com/movies/wd/5Gpj2XqF7BV2"
+"disney": "https://www.disneyplus.com/movies/wd/5Gpj2XqF7BV2",
+"hotstar": "https://www.hotstar.com/in/movies/finding-nemo/1660010114/watch"
 }
 },
 {
@@ -62,7 +64,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.qrdx9s4xrk47f4taowt4tx82",
 "disney": "https://www.disneyplus.com/movies/wd/1Ye1nzUgtF7d",
-"hotstar": "https://www.hotstar.com/1660010197",
+"hotstar": "https://www.hotstar.com/in/movies/toy-story/1660010197/watch",
 "netflix": "https://www.netflix.com/title/60036637"
 }
 },
@@ -148,7 +150,8 @@
 "famous": true,
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.3uji6fbqdcps9k4oxy1ikddrs",
-"disney": "https://www.disneyplus.com/movies/wd/33q7DY1rtHQH"
+"disney": "https://www.disneyplus.com/movies/wd/33q7DY1rtHQH",
+"hotstar": "https://www.hotstar.com/in/movies/encanto/1260076051/watch"
 }
 },
 {
@@ -162,6 +165,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.3ilsdzy6ghi4adtg3tnwf6jcb",
 "disney": "https://www.disneyplus.com/movies/wd/5vQuMGjgTZz5",
+"hotstar": "https://www.hotstar.com/in/movies/monsters-inc/1260016863/watch",
 "netflix": "https://www.netflix.com/title/60004479"
 }
 },
@@ -187,6 +191,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.1zrtu7kymga7ucaqeolq5akpm",
 "disney": "https://www.disneyplus.com/movies/wd/3P3waOoBmUdm",
+"hotstar": "https://www.hotstar.com/in/movies/mary-poppins/1260018316/watch",
 "netflix": "https://www.netflix.com/title/60036639"
 }
 },
@@ -275,7 +280,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.26fwluo98zc2e2d9i595455t2",
 "disney": "https://www.disneyplus.com/movies/wd/6eunXQzaXkGr",
-"hotstar": "https://www.hotstar.com/1660000051",
+"hotstar": "https://www.hotstar.com/in/movies/toy-story-2/1660000051/watch",
 "netflix": "https://www.netflix.com/title/60036638"
 }
 },
@@ -290,8 +295,9 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.2i8p6l6cpu6zxmcpqao7bs147",
 "disney": "https://www.disneyplus.com/movies/wd/4zRnUvYGbUZG",
+"hotstar": "https://www.hotstar.com/in/movies/ratatouille/1260016855/watch",
 "netflix": "https://www.netflix.com/title/70045269",
-"prime": "https://www.primevideo.com/detail/B0060D16VI"
+"prime": "https://app.primevideo.com/detail?asin=B0060D16VI"
 }
 },
 {
@@ -328,7 +334,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5hv0dvpzmjgiqka0r66rn4cf4",
 "disney": "https://www.disneyplus.com/movies/wd/5trzAb4Rz3F9",
-"hotstar": "https://www.hotstar.com/1260018026",
+"hotstar": "https://www.hotstar.com/in/movies/the-jungle-book/1260018026/watch",
 "netflix": "https://www.netflix.com/title/60029689"
 }
 },
@@ -338,7 +344,10 @@
 "title": "Blue's Clues",
 "year": "1996",
 "score": 0.725,
-"badge": "loved"
+"badge": "loved",
+"links": {
+"hotstar": "https://www.hotstar.com/in/shows/blue-s-clues/1971003457"
+}
 },
 {
 "kind": "movie",
@@ -351,6 +360,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.4b17gber8k76h90rzlulvrbcl",
 "disney": "https://www.disneyplus.com/movies/wd/1JffnkWmY6mD",
+"hotstar": "https://www.hotstar.com/in/movies/frozen/1260018197/watch",
 "netflix": "https://www.netflix.com/title/70279000"
 }
 },
@@ -373,7 +383,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.13229jkd134ryb4p2jhktwx31",
 "disney": "https://www.disneyplus.com/movies/wd/2SngByljXESE",
-"hotstar": "https://www.hotstar.com/1660000031",
+"hotstar": "https://www.hotstar.com/in/movies/aladdin/1660000031/watch",
 "netflix": "https://www.netflix.com/title/60010064"
 }
 },
@@ -400,6 +410,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.44zn5mij4tcnfk95hxexjm5x8",
 "disney": "https://www.disneyplus.com/movies/wd/4HkAlqhq1ZKp",
+"hotstar": "https://www.hotstar.com/in/movies/the-little-mermaid/1660010306/watch",
 "netflix": "https://www.netflix.com/title/705052"
 }
 },
@@ -457,7 +468,10 @@
 "title": "Bear in the Big Blue House",
 "year": "1997",
 "score": 0.684,
-"badge": ""
+"badge": "",
+"links": {
+"hotstar": "https://www.hotstar.com/in/shows/bear-in-the-big-blue-house/1260116839"
+}
 },
 {
 "kind": "tv",
@@ -530,7 +544,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5jnai8irbqw4s2n64dgdwfzz9",
 "disney": "https://www.disneyplus.com/movies/wd/2CtjW4tKzIHp",
-"hotstar": "https://www.hotstar.com/1260015326"
+"hotstar": "https://www.hotstar.com/in/movies/toy-story-4/1260015326/watch"
 }
 },
 {
@@ -541,7 +555,8 @@
 "score": 0.66,
 "badge": "",
 "links": {
-"disney": "https://www.disneyplus.com/series/wp/1H1pGQ8RYFqN"
+"disney": "https://www.disneyplus.com/series/wp/1H1pGQ8RYFqN",
+"hotstar": "https://www.hotstar.com/in/shows/ducktales/1260015294"
 }
 },
 {
@@ -562,7 +577,10 @@
 "title": "Curious George",
 "year": "2006",
 "score": 0.645,
-"badge": "loved"
+"badge": "loved",
+"links": {
+"hotstar": "https://www.hotstar.com/in/shows/curious-george/1971003063"
+}
 },
 {
 "kind": "movie",
@@ -574,6 +592,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.3xn63ajjx99xf0wjde2y6sd7q",
 "disney": "https://www.disneyplus.com/movies/wd/7TPAcC8QPGpm",
+"hotstar": "https://www.hotstar.com/in/movies/the-princess-and-the-frog/1260018350/watch",
 "netflix": "https://www.netflix.com/title/70109429"
 }
 },
@@ -608,6 +627,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.7k1eigpw7zixnwe61ll44zzis",
 "disney": "https://www.disneyplus.com/movies/wd/2L6w30vnqebX",
+"hotstar": "https://www.hotstar.com/in/movies/finding-dory/1260016574/watch",
 "netflix": "https://www.netflix.com/title/80094319"
 }
 },
@@ -633,6 +653,7 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5n3ojj870mov5u2kwzn694dhg",
+"hotstar": "https://www.hotstar.com/in/movies/mirai/1271461808/watch",
 "netflix": "https://www.netflix.com/title/81004268"
 }
 },
@@ -646,6 +667,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.66qyx82pfnj2gf092d2ehrrqk",
 "disney": "https://www.disneyplus.com/movies/wd/7NOwGGV7R7kE",
+"hotstar": "https://www.hotstar.com/in/movies/one-hundred-and-one-dalmatians/1260027508/watch",
 "netflix": "https://www.netflix.com/title/205524"
 }
 },
@@ -702,7 +724,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.6tkcbec7pfpemkufvlqkyxxyu",
 "disney": "https://www.disneyplus.com/movies/wd/41KYquQjLwge",
-"hotstar": "https://www.hotstar.com/1260017229",
+"hotstar": "https://www.hotstar.com/in/movies/cars/1260017229/watch",
 "netflix": "https://www.netflix.com/title/70043811"
 }
 },
@@ -729,6 +751,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.40rxsni23f92ibvz5qio38enq",
 "disney": "https://www.disneyplus.com/movies/wd/2kV0c48TF0Ea",
+"hotstar": "https://www.hotstar.com/in/movies/a-bug-s-life/1260018158/watch",
 "netflix": "https://www.netflix.com/title/18110943"
 }
 },
@@ -794,6 +817,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.3ypq9jn33efvbv0h4aqijbysx",
 "disney": "https://www.disneyplus.com/movies/wd/6nl0Z9PyWwIC",
+"hotstar": "https://www.hotstar.com/in/movies/winnie-the-pooh/1260020572/watch",
 "netflix": "https://www.netflix.com/title/70178626"
 }
 },
@@ -834,7 +858,10 @@
 "title": "Blaze and the Monster Machines",
 "year": "2014",
 "score": 0.568,
-"badge": ""
+"badge": "",
+"links": {
+"hotstar": "https://www.hotstar.com/in/shows/blaze-and-the-monster-machines/1971003379"
+}
 },
 {
 "kind": "tv",
@@ -862,6 +889,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.52ok5fgzlftre3ug6glre6df9",
 "disney": "https://www.disneyplus.com/movies/wd/2I5C5nArKzvk",
+"hotstar": "https://www.hotstar.com/in/movies/ferdinand/1770005026/watch",
 "netflix": "https://www.netflix.com/title/80191879"
 }
 },
@@ -873,6 +901,7 @@
 "score": 0.542,
 "badge": "",
 "links": {
+"hotstar": "https://www.hotstar.com/in/shows/blue-s-clues-you/1971314768",
 "netflix": "https://www.netflix.com/title/81486556"
 }
 },
@@ -904,8 +933,9 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.2bu7hwru4lky6tgu9a91trvr4",
+"hotstar": "https://www.hotstar.com/in/movies/the-grinch/1971000752/watch",
 "netflix": "https://www.netflix.com/title/80996790",
-"prime": "https://www.primevideo.com/detail/amzn1.dv.gti.bcb3c57a-7581-7d30-af92-0db26d4103cd"
+"prime": "https://app.primevideo.com/detail?asin=amzn1.dv.gti.bcb3c57a-7581-7d30-af92-0db26d4103cd"
 }
 },
 {
@@ -938,6 +968,7 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.3lczqz71i3j4w4ioyahsasfjc",
 "disney": "https://www.disneyplus.com/movies/wd/7WSfCSfvgWeb",
+"hotstar": "https://www.hotstar.com/in/movies/tinker-bell-and-the-legend-of-the-neverbeast/1260027509/watch",
 "netflix": "https://www.netflix.com/title/80028529"
 }
 },

@@ -60,10 +60,10 @@ final class Recs {
     private static final String IMAGES = "https://image.tmdb.org/t/p/" + (Backdrop.W <= 1280 ? "w1280" : "original");
     /** TMDB's Animation genre (movies and shows: cartoons and anime), left out with hide_animation=true. */
     private static final int ANIMATION = 16;
-    private static final long LIST_EVERY = 3600_000L;   // a new set of 60 titles from the catalog every hour
+    private static final long LIST_EVERY = 6 * 3600_000L;   // every title on the TV's apps, looked up again every 6 hours
     static final long SPOT_EVERY = 10_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 10 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 15;   // 15 = links straight to each title in its app
+    private static final int CACHE_VERSION = 18;   // 18 = every available title in the list; each opens its page or the app's search
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -472,13 +472,13 @@ final class Recs {
         // Kids only: the age band's vetted catalog, the titles not shown lately first.
         java.util.Set<String> history = history();
         loadCatalog();
-        List<Pick> handMovies = handPicked(catalogMovies, "movie", history, 40);
-        List<Pick> handShows = handPicked(catalogShows, "tv", history, 20);
+        List<Pick> handMovies = handPicked(catalogMovies, "movie", history, 100);
+        List<Pick> handShows = handPicked(catalogShows, "tv", history, 50);
         String band = Prefs.ageBand();
         // Only vetted titles, ever: no "highly rated" fallback from TMDB at large (it once let an R-rated anime in).
         List<Pick> list = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
-        alternate(list, seen, handMovies, handShows, 60);
+        alternate(list, seen, handMovies, handShows, 150);
         AppLog.w("picks: " + handMovies.size() + " movies and " + handShows.size() + " shows from the " + band + " catalog");
         // A bad moment for TMDB (rate limits, an ISP resetting connections): keep the list we have and try again later
         // rather than show a thin one.
@@ -545,7 +545,7 @@ final class Recs {
         catalogShows = shows.stream().mapToInt(Integer::intValue).toArray();
     }
 
-    private static final int HISTORY_MAX = 240;
+    private static final int HISTORY_MAX = 400;
 
     /**
      * Titles the child opened from a card: never recommended again (kept on the TV only). Only when the catalog runs
@@ -631,6 +631,7 @@ final class Recs {
         List<Pick> out = new ArrayList<>();
         int tried = 0, notHere = 0, noImage = 0, failed = 0;
         java.util.Set<String> nowAway = new java.util.HashSet<>();
+        List<Pick> unlinked = new ArrayList<>();   // on the TV's apps, but without the address of the title's own page
         String lastError = "";
         java.util.concurrent.ExecutorService pool = Executors.newFixedThreadPool(6);
         try {
@@ -647,7 +648,9 @@ final class Recs {
                         fetchDetails(p);
                         // OK on the card opens the title itself, not just the app, when the catalog knows its address there.
                         JSONObject links = catalogLinks.get(key(p));
-                        if (p.app != null && links != null && !links.optString(p.app).isEmpty()) p.link = links.optString(p.app);
+                        String direct = p.app == null || links == null ? "" : links.optString(p.app);
+                        if (direct.contains("hotstar.com") && !"IN".equals(REGION)) direct = "";   // JioHotstar India's pages
+                        p.link = !direct.isEmpty() ? direct : searchLink(p);
                         return p;
                     }));
                 }
@@ -660,6 +663,7 @@ final class Recs {
                             nowAway.add(kind + ":" + p.id);
                         }
                         else if (p.backdrop == null) noImage++;
+                        else if (p.link == null) unlinked.add(p);   // opens only the app: kept in reserve
                         else if (out.size() < max) out.add(p);
                     } catch (Exception e) {
                         failed++;   // this one didn't come back: the others still count
@@ -672,8 +676,11 @@ final class Recs {
             pool.shutdownNow();
         }
         rememberUnavailable(nowAway);
+        // Every title on the TV's apps gets its turn: the ones that open the title (or the app's search for it) first,
+        // the few that can only open the app after them.
+        for (Pick p : unlinked) if (out.size() < max) out.add(p);
         AppLog.w(kind + ": " + order.size() + " to look up, " + tried + " looked up, " + out.size() + " kept, " + notHere
-                + " not on the TV's apps, " + noImage + " without a picture, " + failed + " failed" + (failed > 0 ? " (" + lastError + ")" : ""));
+                + " not on the TV's apps, " + noImage + " without a picture, " + unlinked.size() + " without a direct link, " + failed + " failed" + (failed > 0 ? " (" + lastError + ")" : ""));
         return out;
     }
 
@@ -749,6 +756,24 @@ final class Recs {
         JSONArray genres = o.optJSONArray("genre_ids");
         for (int i = 0; genres != null && i < genres.length(); i++) if (genres.optInt(i) == ANIMATION) return true;
         return false;
+    }
+
+    /**
+     * Without the title's own address: the app's search with the title already typed (Prime Video and JioHotstar take
+     * it), so the child is one press from it. Null for apps that don't (then the app opens at its home: the last resort).
+     */
+    private static String searchLink(Pick p) {
+        if (p.app == null || p.title == null) return null;
+        try {
+            String q = URLEncoder.encode(p.title, "UTF-8");
+            switch (p.app) {
+                case "prime": return "https://app.primevideo.com/search?phrase=" + q;
+                case "hotstar": return "IN".equals(REGION) ? "https://www.hotstar.com/in/explore?search_query=" + q : null;
+                default: return null;
+            }
+        } catch (java.io.UnsupportedEncodingException e) {
+            return null;
+        }
     }
 
     /** The story in one line: TMDB's tagline, or the synopsis's first sentence when it's short. */

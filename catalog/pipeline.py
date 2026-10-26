@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tmdb import get
 from bands import BANDS, questions, craft_question, audience, policy
 import export_dataset
+import hotstar
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 INDIAN = ('hi', 'ta', 'te', 'ml', 'bn', 'mr', 'kn', 'gu')
@@ -233,8 +234,10 @@ LINK_PROPS = {'netflix': ('P1874', 'https://www.netflix.com/title/%s'),
               'disney_tv': ('P7596', 'https://www.disneyplus.com/series/wp/%s'),
               'appletv': ('P9586', 'https://tv.apple.com/movie/%s'),
               'appletv_tv': ('P9751', 'https://tv.apple.com/show/%s'),
-              'prime': ('P14440', 'https://www.primevideo.com/detail/%s'),
-              'prime_asin': ('P8055', 'https://www.primevideo.com/detail/%s'),
+              # Prime Video's TV app takes app.primevideo.com only: the global id (GTI) first, the store's ASIN after.
+              'prime': ('P14440', 'https://app.primevideo.com/detail?gti=%s'),
+              'prime_gti': ('P14462', 'https://app.primevideo.com/detail?gti=%s'),
+              'prime_asin': ('P8055', 'https://app.primevideo.com/detail?asin=%s'),
               'max': ('P8298', 'https://play.hbomax.com/%s'),
               'hotstar': ('P11049', 'https://www.hotstar.com/%s')}
 
@@ -267,6 +270,22 @@ def stage_links(band):
                 for k, (_, url) in LINK_PROPS.items():
                     service = k.split('_')[0]
                     if k in r and service not in out: out[service] = url % r[k]['value']
+    # JioHotstar India: its own sitemaps, each match checked against the page's release year (catalog/hotstar.py).
+    cands = {'%s:%d' % (c['kind'], c['id']): c for c in load(work(band, 'candidates.json'), [])}
+    todo = []
+    for r in keep:
+        k = '%s:%d' % (r['kind'], r['id'])
+        t = {'kind': r['kind'], 'id': r['id'], 'title': r['title'], 'year': r['year'],
+             'hotstar_id': links.get(k, {}).get('hotstar', '').rstrip('/').split('/')[-1]}
+        if cands.get(k, {}).get('lang', 'en') != 'en':
+            try:
+                d = get('/%s/%d' % (r['kind'], r['id'])) or {}
+                t['original'] = d.get('original_title') or d.get('original_name')
+            except RuntimeError:
+                pass
+        todo.append(t)
+    for k, url in hotstar.links(todo).items():
+        links.setdefault(k, {})['hotstar'] = url   # the page's full address beats Wikidata's bare id
     json.dump(links, open(work(band, 'links.json'), 'w'), indent=1, sort_keys=True)
     print('[%s] links for %d of %d titles' % (band, sum(1 for v in links.values() if v), len(keep)), flush=True)
 

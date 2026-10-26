@@ -421,7 +421,7 @@ var Data = (function () {
    */
   var BAND = /^(4-6|7-10|11-13)$/.test(CONFIG.ageBand || '') ? CONFIG.ageBand : '7-10';
   var CATALOG = (window.CATALOG && window.CATALOG.band === BAND && window.CATALOG.titles) || [];
-  var MOVIES = 40, SHOWS = 20, ENOUGH = 12, HISTORY_MAX = 240;
+  var MOVIES = 100, SHOWS = 50, ENOUGH = 12, HISTORY_MAX = 400;
 
   /** The titles shown lately ("movie:123"), oldest first, so a new list starts with others. */
   function history() {
@@ -531,7 +531,7 @@ var Data = (function () {
     if (!KEY || fetchingRecs || !installed.length) return;
     var t = Date.now(), p = hourPeriod(new Date()), st = sourceStamp();
     if (st === stamp && failedAt && t - failedAt < 10 * 60000 && t >= failedAt) return;
-    var stale = st !== stamp || p !== period || t - listAt > 3600000 || t < listAt || picks.length < 9 || listLang !== I18N.lang;
+    var stale = st !== stamp || p !== period || t - listAt > 6 * 3600000 || t < listAt || picks.length < 9 || listLang !== I18N.lang;
     var wanted = all(), missing = false;
     for (var i = 0; i < wanted.length; i++) missing = missing || !wanted[i].detailed || wanted[i].tagline === undefined;
     if (!stale && !missing) return;

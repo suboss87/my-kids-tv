@@ -517,11 +517,16 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         click.release();
     }
 
-    /** Starting state (Home pressed while the home screen is showing): first app focused, drawer and sheet closed. */
+    /**
+     * Starting state (Home pressed while the home screen is showing): the title in the window focused (OK opens it),
+     * or the first app while there are no titles; drawer and sheet closed.
+     */
     void reset(boolean animated) {
         wake();
         cancelReorder(!animated);
-        zone = Z_SHELF;
+        keyAt = 0;   // nobody browsing: the focus follows the window again
+        zone = cards.isEmpty() ? Z_SHELF : Z_CARDS;
+        cardIndex = cards.isEmpty() ? 0 : Math.min(cards.size() - 1, Recs.spot());
         shelfIndex = 0;
         sheetOpen = false;
         drawerOpen = false;
@@ -1105,6 +1110,14 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             spotPick = null;
             spotIndex = -1;
             return;
+        }
+        // Left alone on the cards (no key for 20 s), the focus moves with the window, so OK opens the title on show.
+        if (zone == Z_CARDS && SystemClock.uptimeMillis() - keyAt > 20_000) {
+            int follow = Math.min(cards.size() - 1, Recs.spot());
+            if (follow != cardIndex) {
+                cardIndex = follow;
+                retarget(false);
+            }
         }
         int i = Math.min(cards.size() - 1, zone == Z_CARDS ? cardIndex : Recs.spot());
         Recs.Pick p = cards.get(i);
@@ -2909,9 +2922,16 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 prevCards = new ArrayList<>();
                 cardSwapAt = 0;
             }
+            boolean first = cards.isEmpty();
             cardsTab = tab;
             cards = list;
             cardIndex = Math.min(cardIndex, Math.max(0, list.size() - 1));
+            // The first titles in, nobody has pressed anything yet: the focus goes to the one in the window.
+            if (first && !list.isEmpty() && zone == Z_SHELF && keyAt == 0 && !drawerOpen && !sheetOpen) {
+                zone = Z_CARDS;
+                cardIndex = Math.min(list.size() - 1, Recs.spot());
+                retarget(false);
+            }
             if (zone == Z_CARDS && list.isEmpty()) {
                 zone = Z_SHELF;
                 retarget(false);

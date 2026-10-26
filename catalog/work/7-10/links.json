@@ -15,6 +15,7 @@
  "movie:10144": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.44zn5mij4tcnfk95hxexjm5x8",
   "disney": "https://www.disneyplus.com/movies/wd/4HkAlqhq1ZKp",
+  "hotstar": "https://www.hotstar.com/in/movies/the-little-mermaid/1660010306/watch",
   "netflix": "https://www.netflix.com/title/705052"
  },
  "movie:10150": {
@@ -23,21 +24,24 @@
  },
  "movie:10191": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3028ht7u7qx3a077kxhreuadn",
+  "hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon/1271517345/watch",
   "netflix": "https://www.netflix.com/title/70109893"
  },
  "movie:10193": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5eyei47zjeao0u3wdwn5lv93c",
   "disney": "https://www.disneyplus.com/movies/wd/5i3MkHrmohAt",
-  "hotstar": "https://www.hotstar.com/1660000056",
+  "hotstar": "https://www.hotstar.com/in/movies/toy-story-3/1660000056/watch",
   "netflix": "https://www.netflix.com/title/70116690"
  },
  "movie:10198": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3xn63ajjx99xf0wjde2y6sd7q",
   "disney": "https://www.disneyplus.com/movies/wd/7TPAcC8QPGpm",
+  "hotstar": "https://www.hotstar.com/in/movies/the-princess-and-the-frog/1260018350/watch",
   "netflix": "https://www.netflix.com/title/70109429"
  },
  "movie:1022789": {
-  "disney": "https://www.disneyplus.com/movies/wd/6MeZYf9JkFii"
+  "disney": "https://www.disneyplus.com/movies/wd/6MeZYf9JkFii",
+  "hotstar": "https://www.hotstar.com/in/movies/inside-out-2/1271325263/watch"
  },
  "movie:10315": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.rjm5r8m9xnog8o1rzzl2mxc3",
@@ -50,12 +54,14 @@
  },
  "movie:10437": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.43x9c8qf5dw65k5w4sszfi44u",
-  "disney": "https://www.disneyplus.com/movies/wd/6BumPfZlq5OH"
+  "disney": "https://www.disneyplus.com/movies/wd/6BumPfZlq5OH",
+  "hotstar": "https://www.hotstar.com/in/movies/the-muppet-christmas-carol/1260044172/watch"
  },
  "movie:105": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.1alygfljzpxrofhgpoa6mmjnb",
+  "hotstar": "https://www.hotstar.com/in/movies/back-to-the-future/1271627208/watch",
   "netflix": "https://www.netflix.com/title/60010110",
-  "prime": "https://www.primevideo.com/detail/B00498XR9U"
+  "prime": "https://app.primevideo.com/detail?asin=B00498XR9U"
  },
  "movie:10515": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.516swa7pdvopljazl2r52h72e",
@@ -65,16 +71,18 @@
  "movie:10530": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2fawj485z0ghq64es53v7szuk",
   "disney": "https://www.disneyplus.com/movies/wd/2WjLTJt9dM5C",
+  "hotstar": "https://www.hotstar.com/in/movies/pocahontas/1260018346/watch",
   "netflix": "https://www.netflix.com/title/862771"
  },
  "movie:10601": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.61pmir3e3ob54xzvzzhruu4cp",
+  "hotstar": "https://www.hotstar.com/in/movies/peter-pan/1260018323/watch",
   "netflix": "https://www.netflix.com/title/60031292"
  },
  "movie:10674": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.77brsbjadcf6s3i7g8cc6az36",
   "disney": "https://www.disneyplus.com/movies/wd/85wmj4hahA0B",
-  "hotstar": "https://www.hotstar.com/1660010444",
+  "hotstar": "https://www.hotstar.com/in/movies/mulan/1660010444/watch",
   "netflix": "https://www.netflix.com/title/14607635"
  },
  "movie:10681": {
@@ -85,16 +93,21 @@
  "movie:10693": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.6hxeen2bwkehiwgwprcaxgf7l",
   "disney": "https://www.disneyplus.com/movies/wd/20a1PB36VPVF",
+  "hotstar": "https://www.hotstar.com/in/movies/peter-pan/1260018323/watch",
   "netflix": "https://www.netflix.com/title/60022286"
  },
  "movie:10830": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2a04dnrfvmpoln4g3dqqh3qf6",
-  "netflix": "https://www.netflix.com/title/70033005"
+  "netflix": "https://www.netflix.com/title/70033005",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.26a9f6c0-33eb-83d9-3db6-76f877af2408"
  },
- "movie:1087192": {},
+ "movie:1087192": {
+  "hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon/1271517345/watch"
+ },
  "movie:10895": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4ixknv3558j9uodmwlui4gfy8",
   "disney": "https://www.disneyplus.com/movies/wd/3awzEJp1S6xg",
+  "hotstar": "https://www.hotstar.com/in/movies/pinocchio/1260018337/watch",
   "netflix": "https://www.netflix.com/title/858168"
  },
  "movie:10907": {
@@ -104,6 +117,7 @@
  "movie:109445": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4b17gber8k76h90rzlulvrbcl",
   "disney": "https://www.disneyplus.com/movies/wd/1JffnkWmY6mD",
+  "hotstar": "https://www.hotstar.com/in/movies/frozen/1260018197/watch",
   "netflix": "https://www.netflix.com/title/70279000"
  },
  "movie:10946": {
@@ -117,7 +131,7 @@
   "appletv": "https://tv.apple.com/movie/umc.cmc.2o65qvudvwq1l1rqjlbyfszwn",
   "disney": "https://www.disneyplus.com/movies/wd/12fVeZxD2fWJ",
   "netflix": "https://www.netflix.com/title/60010932",
-  "prime": "https://www.primevideo.com/detail/B00VF06PS0"
+  "prime": "https://app.primevideo.com/detail?asin=B00VF06PS0"
  },
  "movie:110416": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.59z8m4ulxhs357e6573fmox3o",
@@ -159,7 +173,8 @@
   "netflix": "https://www.netflix.com/title/60022989"
  },
  "movie:1159799": {
-  "appletv": "https://tv.apple.com/movie/umc.cmc.dblclqvmkqadci3x2hx0llmr"
+  "appletv": "https://tv.apple.com/movie/umc.cmc.dblclqvmkqadci3x2hx0llmr",
+  "hotstar": "https://www.hotstar.com/in/movies/my-penguin-friend/1271392389/watch"
  },
  "movie:116149": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.759zk34s47omthqjyvc9i6pgo",
@@ -167,17 +182,23 @@
  },
  "movie:11704": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2jddljekegwmjjlp73ewszqn1",
-  "netflix": "https://www.netflix.com/title/943973"
+  "netflix": "https://www.netflix.com/title/943973",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.38a9f77f-eaf0-6ef4-97b6-faf8d8dfdfd4"
  },
  "movie:11708": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5bh6k501fudgtfgpvipjx3gdt",
-  "netflix": "https://www.netflix.com/title/374651"
+  "netflix": "https://www.netflix.com/title/374651",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.47b7246d-057e-4328-98b9-ed51b44bec29"
  },
  "movie:118": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3mo8p5peoquw0aniinm2ht3ai",
-  "netflix": "https://www.netflix.com/title/70021648"
+  "hotstar": "https://www.hotstar.com/in/movies/charlie-and-the-chocolate-factory/1971000549/watch",
+  "netflix": "https://www.netflix.com/title/70021648",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.7aa9f6b8-6b16-976f-cb50-672cc533b053"
  },
- "movie:1184918": {},
+ "movie:1184918": {
+  "hotstar": "https://www.hotstar.com/in/movies/the-wild-robot/1271392372/watch"
+ },
  "movie:11886": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2f3jb9jb6cmlj6n7nhrgrqwc7",
   "disney": "https://www.disneyplus.com/movies/wd/5ACMz1bJJwwZ",
@@ -186,11 +207,13 @@
  "movie:11970": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.75ki76zgijhtzk3xpx27jbtyq",
   "disney": "https://www.disneyplus.com/movies/wd/2e02rZ2TfE0f",
+  "hotstar": "https://www.hotstar.com/in/movies/hercules/1260018298/watch",
   "netflix": "https://www.netflix.com/title/1171557"
  },
  "movie:12": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.6mbogy74hds0btkz7rj83hzhq",
-  "disney": "https://www.disneyplus.com/movies/wd/5Gpj2XqF7BV2"
+  "disney": "https://www.disneyplus.com/movies/wd/5Gpj2XqF7BV2",
+  "hotstar": "https://www.hotstar.com/in/movies/finding-nemo/1660010114/watch"
  },
  "movie:12092": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.60xt9qc8qcbh9vooo01ln8jtz",
@@ -200,11 +223,12 @@
  "movie:12144": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.6u3b5e89dojwtxbn4g6ih3lao",
   "netflix": "https://www.netflix.com/title/683101",
-  "prime": "https://www.primevideo.com/detail/B00GGPNV68"
+  "prime": "https://app.primevideo.com/detail?asin=B00GGPNV68"
  },
  "movie:12230": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.66qyx82pfnj2gf092d2ehrrqk",
   "disney": "https://www.disneyplus.com/movies/wd/7NOwGGV7R7kE",
+  "hotstar": "https://www.hotstar.com/in/movies/one-hundred-and-one-dalmatians/1260027508/watch",
   "netflix": "https://www.netflix.com/title/205524"
  },
  "movie:12335": {
@@ -212,7 +236,8 @@
   "disney": "https://www.disneyplus.com/movies/wd/1g2R5E8uFZqt"
  },
  "movie:1241982": {
-  "disney": "https://www.disneyplus.com/movies/wd/63iJerTm3znF"
+  "disney": "https://www.disneyplus.com/movies/wd/63iJerTm3znF",
+  "hotstar": "https://www.hotstar.com/in/movies/moana-2/1271337439/watch"
  },
  "movie:12429": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.11anqj3fvjt8xg0vs137v8ob6",
@@ -226,7 +251,8 @@
  "movie:1265": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.kt0dr9f6pe7u2eao51glokhw",
   "disney": "https://www.disneyplus.com/movies/wd/6Czf0V5vqJvh",
-  "netflix": "https://www.netflix.com/title/70053832"
+  "netflix": "https://www.netflix.com/title/70053832",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.0abaf197-7870-ee4c-a4e4-73f2fd800691"
  },
  "movie:1267": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4v6lci4ssapmlmpn83fo4eyhc",
@@ -236,6 +262,7 @@
  "movie:127380": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.7k1eigpw7zixnwe61ll44zzis",
   "disney": "https://www.disneyplus.com/movies/wd/2L6w30vnqebX",
+  "hotstar": "https://www.hotstar.com/in/movies/finding-dory/1260016574/watch",
   "netflix": "https://www.netflix.com/title/80094319"
  },
  "movie:1288069": {
@@ -245,7 +272,7 @@
   "appletv": "https://tv.apple.com/movie/umc.cmc.20eiqqikjqp0aibugjcx9s41p",
   "max": "https://play.hbomax.com/feature/urn:hbo:feature:GXrHanAQBunUYOAEAAAB3",
   "netflix": "https://www.netflix.com/title/60023642",
-  "prime": "https://www.primevideo.com/detail/B081GJPV9P"
+  "prime": "https://app.primevideo.com/detail?asin=B081GJPV9P"
  },
  "movie:13187": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.mbxalimrwrtq72wj4h601pyf",
@@ -260,8 +287,9 @@
  },
  "movie:13466": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4cb8q2937e379kvres3hwd9sx",
+  "hotstar": "https://www.hotstar.com/in/movies/october-sky/1971000739/watch",
   "netflix": "https://www.netflix.com/title/18957852",
-  "prime": "https://www.primevideo.com/detail/amzn1.dv.gti.a6a9f74b-3dcb-8251-4869-4fd6203ba440"
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.a6a9f74b-3dcb-8251-4869-4fd6203ba440"
  },
  "movie:13597": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.703b2zy35ovxjtm2b9eegx4h",
@@ -278,13 +306,14 @@
  "movie:14160": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.7hyl1e1p1ihe8aiij3fzjwwyc",
   "disney": "https://www.disneyplus.com/movies/wd/3XiRSXriK0E8",
+  "hotstar": "https://www.hotstar.com/in/movies/up/1660010198/watch",
   "netflix": "https://www.netflix.com/title/70103760"
  },
  "movie:14292": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3hyj4v7fbysb1617kjdkexusc",
   "disney": "https://www.disneyplus.com/movies/wd/38uh6GJall9b",
   "netflix": "https://www.netflix.com/title/60033300",
-  "prime": "https://www.primevideo.com/detail/B003V5G8GG"
+  "prime": "https://app.primevideo.com/detail?asin=B003V5G8GG"
  },
  "movie:14447": {},
  "movie:14534": {
@@ -303,6 +332,7 @@
  "movie:150540": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.e8rnwzv7klnnt9d5gq9m45nv",
   "disney": "https://www.disneyplus.com/movies/wd/uzQ2ycVDi2IE",
+  "hotstar": "https://www.hotstar.com/in/movies/inside-out/1260018307/watch",
   "netflix": "https://www.netflix.com/title/80030684"
  },
  "movie:15121": {
@@ -327,14 +357,16 @@
  },
  "movie:164990": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.qy9etke53ztma28q9wexpv62",
-  "netflix": "https://www.netflix.com/title/70045647"
+  "netflix": "https://www.netflix.com/title/70045647",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.bf79a194-a8ca-4736-8f7e-744d29bc16a2"
  },
  "movie:16515": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.70pt5l4870kvc4b4xngwu15jw",
   "netflix": "https://www.netflix.com/title/60010210"
  },
  "movie:166428": {
-  "appletv": "https://tv.apple.com/movie/umc.cmc.64pazyz0q2ux3use2ffd1fspf"
+  "appletv": "https://tv.apple.com/movie/umc.cmc.64pazyz0q2ux3use2ffd1fspf",
+  "hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon-the-hidden-world/1271514010/watch"
  },
  "movie:16859": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5w5rol5j2y9kaxsrrtbfme7dh",
@@ -343,7 +375,9 @@
  },
  "movie:17264": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.45kkoukx4wdomj6oeizmga9c1",
-  "netflix": "https://www.netflix.com/title/312525"
+  "hotstar": "https://www.hotstar.com/in/movies/black-stallion/1000109912/watch",
+  "netflix": "https://www.netflix.com/title/312525",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.baa9f781-83a6-3228-7137-022bea35d4de"
  },
  "movie:173": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3js4yj4u7jiter34im4npbrxe",
@@ -360,6 +394,7 @@
  "movie:177572": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3x3ioa5prp4cjp9nnccadzdrx",
   "disney": "https://www.disneyplus.com/movies/wd/4AozFbXy3sPw",
+  "hotstar": "https://www.hotstar.com/in/movies/big-hero-6/1260018153/watch",
   "netflix": "https://www.netflix.com/title/70305902"
  },
  "movie:17917": {
@@ -373,13 +408,14 @@
  },
  "movie:1885": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.35sgeb85f20mzxp5wv4qo7w0o",
+  "hotstar": "https://www.hotstar.com/in/movies/the-karate-kid/1271651426/watch",
   "netflix": "https://www.netflix.com/title/60036164"
  },
  "movie:1891": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3vabzkcmuoxxm3r3ng9q4rgh9",
   "disney": "https://www.disneyplus.com/movies/wd/iqtDTZAewwYl",
   "netflix": "https://www.netflix.com/title/60011114",
-  "prime": "https://www.primevideo.com/detail/B00VF19E5K"
+  "prime": "https://app.primevideo.com/detail?asin=B00VF19E5K"
  },
  "movie:1892": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3ggalukb7xb5pf1gfgdlwkcx",
@@ -391,7 +427,8 @@
   "netflix": "https://www.netflix.com/title/705734"
  },
  "movie:1924": {
-  "appletv": "https://tv.apple.com/movie/umc.cmc.5qkqo6kcwxnno7lex3a2wmlal"
+  "appletv": "https://tv.apple.com/movie/umc.cmc.5qkqo6kcwxnno7lex3a2wmlal",
+  "hotstar": "https://www.hotstar.com/in/movies/superman/1271509950/watch"
  },
  "movie:19666": {
   "netflix": "https://www.netflix.com/title/60020906"
@@ -399,11 +436,13 @@
  "movie:2062": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2i8p6l6cpu6zxmcpqao7bs147",
   "disney": "https://www.disneyplus.com/movies/wd/4zRnUvYGbUZG",
+  "hotstar": "https://www.hotstar.com/in/movies/ratatouille/1260016855/watch",
   "netflix": "https://www.netflix.com/title/70045269",
-  "prime": "https://www.primevideo.com/detail/B0060D16VI"
+  "prime": "https://app.primevideo.com/detail?asin=B0060D16VI"
  },
  "movie:206789": {
-  "netflix": "https://www.netflix.com/title/70114820"
+  "netflix": "https://www.netflix.com/title/70114820",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.3e2b05a9-7b83-4ad5-8b26-c5ef7d1f570d"
  },
  "movie:21032": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3incgwwukqoavllkf787ls14m",
@@ -435,13 +474,16 @@
  },
  "movie:260513": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.uzvd8mpcpeyggo5ttxyeg58u",
-  "disney": "https://www.disneyplus.com/movies/wd/4Le2C4pyeB3J"
+  "disney": "https://www.disneyplus.com/movies/wd/4Le2C4pyeB3J",
+  "hotstar": "https://www.hotstar.com/in/movies/incredibles-2/1660010691/watch"
  },
- "movie:264038": {},
+ "movie:264038": {
+  "hotstar": "https://www.hotstar.com/in/movies/kaaka-muttai/1000070415/watch"
+ },
  "movie:269149": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.24f3dqmqxdcw4bmcv1c9zw9gj",
   "disney": "https://www.disneyplus.com/movies/wd/1QOxldhm1sKg",
-  "hotstar": "https://www.hotstar.com/1260017510",
+  "hotstar": "https://www.hotstar.com/in/movies/zootopia/1260017510/watch",
   "netflix": "https://www.netflix.com/title/80079258"
  },
  "movie:26963": {
@@ -456,11 +498,12 @@
  "movie:278927": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4givmnl788an88xihendpuqkc",
   "disney": "https://www.disneyplus.com/movies/wd/6mPifwCWjpbQ",
-  "hotstar": "https://www.hotstar.com/1260018310",
+  "hotstar": "https://www.hotstar.com/in/movies/the-jungle-book/1260018310/watch",
   "netflix": "https://www.netflix.com/title/80084660"
  },
  "movie:28178": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2l2qtmj30xnptzo7cwmppu7b4",
+  "hotstar": "https://www.hotstar.com/in/movies/hachi-a-dog-s-tale/1271508745/watch",
   "netflix": "https://www.netflix.com/title/70118677"
  },
  "movie:295592": {
@@ -470,7 +513,7 @@
  "movie:301528": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5jnai8irbqw4s2n64dgdwfzz9",
   "disney": "https://www.disneyplus.com/movies/wd/2CtjW4tKzIHp",
-  "hotstar": "https://www.hotstar.com/1260015326"
+  "hotstar": "https://www.hotstar.com/in/movies/toy-story-4/1260015326/watch"
  },
  "movie:3082": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3tcp1o8pfpodim7m9r2bjk3t3",
@@ -486,11 +529,13 @@
  },
  "movie:315162": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3ysvrfdjp7h6q8dt73t3bq23i",
+  "hotstar": "https://www.hotstar.com/in/movies/puss-in-boots-the-last-wish/1971000543/watch",
   "netflix": "https://www.netflix.com/title/81555726"
  },
  "movie:3170": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.6upxpij1t4o8folv7h4x69ivz",
-  "disney": "https://www.disneyplus.com/movies/wd/2s64jMJasyNO"
+  "disney": "https://www.disneyplus.com/movies/wd/2s64jMJasyNO",
+  "hotstar": "https://www.hotstar.com/in/movies/bambi/1260018149/watch"
  },
  "movie:317557": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4y1g24sdpzj34jtd8pb07eb9y",
@@ -500,11 +545,12 @@
  "movie:321612": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.184cexy0s9jtbtz0939q2cn8a",
   "disney": "https://www.disneyplus.com/movies/wd/227lND2lKmLZ",
-  "hotstar": "https://www.hotstar.com/1260017283",
+  "hotstar": "https://www.hotstar.com/in/movies/beauty-and-the-beast/1260017283/watch",
   "netflix": "https://www.netflix.com/title/80135073"
  },
  "movie:324857": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4a2ypxddplsdsahwxrc5fkz4x",
+  "hotstar": "https://www.hotstar.com/in/movies/spider-man-into-the-spider-verse/1271668892/watch",
   "netflix": "https://www.netflix.com/title/81002747"
  },
  "movie:342473": {
@@ -518,9 +564,11 @@
  "movie:354912": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5y1554je00oslx5xtkxv9uk7s",
   "disney": "https://www.disneyplus.com/movies/wd/4M9wtfJ9CfQm",
+  "hotstar": "https://www.hotstar.com/in/movies/coco/1660010633/watch",
   "netflix": "https://www.netflix.com/title/80189213"
  },
  "movie:360814": {
+  "hotstar": "https://www.hotstar.com/in/movies/dangal/1271659734/watch",
   "netflix": "https://www.netflix.com/title/80166185"
  },
  "movie:36970": {
@@ -531,11 +579,13 @@
  "movie:37135": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3h80ytly5p0h710da97okjdky",
   "disney": "https://www.disneyplus.com/movies/wd/1aKEyYDmGDLb",
+  "hotstar": "https://www.hotstar.com/in/movies/tarzan/1260018145/watch",
   "netflix": "https://www.netflix.com/title/26009364"
  },
  "movie:38757": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4bofe8sikofs0fnarn3pd6u5p",
   "disney": "https://www.disneyplus.com/movies/wd/3V3ALy4SHStq",
+  "hotstar": "https://www.hotstar.com/in/movies/tangled/1660010196/watch",
   "netflix": "https://www.netflix.com/title/70128681"
  },
  "movie:392011": {
@@ -548,30 +598,33 @@
  "movie:406997": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.1az1oiykk5wjiczwacw3i05y2",
   "netflix": "https://www.netflix.com/title/80147986",
-  "prime": "https://www.primevideo.com/detail/amzn1.dv.gti.0ab0ef77-3f71-fcfa-039d-034c28524a88"
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.0ab0ef77-3f71-fcfa-039d-034c28524a88"
  },
  "movie:408": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5uuypkuso8d8hpir1y348k5n9",
-  "disney": "https://www.disneyplus.com/movies/wd/7X592hsrOB4X"
+  "disney": "https://www.disneyplus.com/movies/wd/7X592hsrOB4X",
+  "hotstar": "https://www.hotstar.com/in/movies/snow-white-and-the-seven-dwarfs/1260017758/watch"
  },
  "movie:411": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.74ylmvjgg8c0uzugsay5hkkdj",
   "disney": "https://www.disneyplus.com/movies/wd/4rcSmuEmfIvs",
-  "hotstar": "https://www.hotstar.com/1260018747",
+  "hotstar": "https://www.hotstar.com/in/movies/the-chronicles-of-narnia-the-lion-the-witch-and-the-wardrobe/1260018747/watch",
   "netflix": "https://www.netflix.com/title/70021663"
  },
  "movie:41903": {
-  "netflix": "https://www.netflix.com/title/60037395"
+  "netflix": "https://www.netflix.com/title/60037395",
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.89fdc595-7601-430e-a170-6695e0eaa916"
  },
  "movie:420818": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.8u8dqncoixk0k00wbdlu0zsf",
   "disney": "https://www.disneyplus.com/movies/wd/6uCvSyAXOYKn",
-  "hotstar": "https://www.hotstar.com/1260014782",
-  "prime": "https://www.primevideo.com/detail/B0B66JJ5VR"
+  "hotstar": "https://www.hotstar.com/in/movies/the-lion-king/1260014782/watch",
+  "prime": "https://app.primevideo.com/detail?asin=B0B66JJ5VR"
  },
  "movie:433": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.1zrtu7kymga7ucaqeolq5akpm",
   "disney": "https://www.disneyplus.com/movies/wd/3P3waOoBmUdm",
+  "hotstar": "https://www.hotstar.com/in/movies/mary-poppins/1260018316/watch",
   "netflix": "https://www.netflix.com/title/60036639"
  },
  "movie:433694": {
@@ -587,7 +640,7 @@
  "movie:44826": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.56uqlfteouwj2u8vljw8wqxz5",
   "netflix": "https://www.netflix.com/title/70202136",
-  "prime": "https://www.primevideo.com/detail/B09PKPPMNR"
+  "prime": "https://app.primevideo.com/detail?asin=B09PKPPMNR"
  },
  "movie:464593": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.38xyk9t2o99691hg0qqhm3x7s"
@@ -624,11 +677,13 @@
  },
  "movie:508442": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.6wle5itf2fkzl2gvlw9r14xcx",
-  "disney": "https://www.disneyplus.com/movies/wd/77zlWrb9vRYp"
+  "disney": "https://www.disneyplus.com/movies/wd/77zlWrb9vRYp",
+  "hotstar": "https://www.hotstar.com/in/movies/soul/1260049853/watch"
  },
  "movie:508943": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4iiqngoc22wuohtan4eyl0qvq",
-  "disney": "https://www.disneyplus.com/movies/wd/7K1HyQ6Hl16P"
+  "disney": "https://www.disneyplus.com/movies/wd/7K1HyQ6Hl16P",
+  "hotstar": "https://www.hotstar.com/in/movies/luca/1260063730/watch"
  },
  "movie:508965": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.180ns3n9ahzliijlzvaykyfrp",
@@ -645,13 +700,15 @@
  },
  "movie:527774": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.13yhvlcnjgixwpl8hy62kuppp",
-  "disney": "https://www.disneyplus.com/movies/wd/6dyengbx3iYK"
+  "disney": "https://www.disneyplus.com/movies/wd/6dyengbx3iYK",
+  "hotstar": "https://www.hotstar.com/in/movies/raya-and-the-last-dragon/1260062999/watch"
  },
  "movie:530": {},
  "movie:531": {},
  "movie:532": {},
  "movie:533": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3m648271booldvtyo6idpp9n6",
+  "hotstar": "https://www.hotstar.com/in/movies/wallace-gromit-the-curse-of-the-were-rabbit/1971001526/watch",
   "netflix": "https://www.netflix.com/title/70021655"
  },
  "movie:537061": {
@@ -681,11 +738,13 @@
  },
  "movie:568": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5vgm2wvd7nt2eklpd7lk1arpz",
+  "hotstar": "https://www.hotstar.com/in/movies/apollo-13/1971000553/watch",
   "netflix": "https://www.netflix.com/title/262866"
  },
  "movie:568124": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3uji6fbqdcps9k4oxy1ikddrs",
-  "disney": "https://www.disneyplus.com/movies/wd/33q7DY1rtHQH"
+  "disney": "https://www.disneyplus.com/movies/wd/33q7DY1rtHQH",
+  "hotstar": "https://www.hotstar.com/in/movies/encanto/1260076051/watch"
  },
  "movie:569094": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2zphwshxw2ejh2znevhod0u01"
@@ -705,14 +764,19 @@
  "movie:585": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3ilsdzy6ghi4adtg3tnwf6jcb",
   "disney": "https://www.disneyplus.com/movies/wd/5vQuMGjgTZz5",
+  "hotstar": "https://www.hotstar.com/in/movies/monsters-inc/1260016863/watch",
   "netflix": "https://www.netflix.com/title/60004479"
  },
- "movie:588921": {},
+ "movie:588921": {
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.d01a47b7-b836-499c-bd48-25a8bb71f8bb"
+ },
  "movie:598387": {
-  "appletv": "https://tv.apple.com/movie/umc.cmc.4s5z0mrwb4uemhoeazcjbhpj7"
+  "appletv": "https://tv.apple.com/movie/umc.cmc.4s5z0mrwb4uemhoeazcjbhpj7",
+  "hotstar": "https://www.hotstar.com/in/movies/the-tiger-s-apprentice/1271513042/watch"
  },
  "movie:601": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.y7sdg83ku22c7qmfh4v16q2e",
+  "hotstar": "https://www.hotstar.com/in/movies/e-t-the-extra-terrestrial/1971000520/watch",
   "netflix": "https://www.netflix.com/title/60022398"
  },
  "movie:606856": {
@@ -726,6 +790,7 @@
  "movie:62177": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.a5h7arztcvuj7vdz82lydg5b",
   "disney": "https://www.disneyplus.com/movies/wd/ovUp92sPbaSW",
+  "hotstar": "https://www.hotstar.com/in/movies/brave/1260018157/watch",
   "netflix": "https://www.netflix.com/title/70213513"
  },
  "movie:62837": {
@@ -757,11 +822,13 @@
  },
  "movie:672": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.69sq804vqp3dy39oxiajnr3ux",
+  "hotstar": "https://www.hotstar.com/in/movies/harry-potter-and-the-chamber-of-secrets/1971000409/watch",
   "max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssMIAadRcNMvwEAAAA7",
   "netflix": "https://www.netflix.com/title/60024925"
  },
  "movie:673": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.1uwqg0s65yo3lzxz96krkieoq",
+  "hotstar": "https://www.hotstar.com/in/movies/harry-potter-and-the-prisoner-of-azkaban/1971000405/watch",
   "max": "https://play.hbomax.com/feature/urn:hbo:feature:GXssObwqZrVVGwwEAAABI",
   "netflix": "https://www.netflix.com/title/60034567"
  },
@@ -773,6 +840,7 @@
   "appletv": "https://tv.apple.com/movie/umc.cmc.5b8j1z7lh8osr80rbo69diwzf"
  },
  "movie:69891": {
+  "hotstar": "https://www.hotstar.com/in/movies/chillar-party/1271701682/watch",
   "netflix": "https://www.netflix.com/title/70139072"
  },
  "movie:739986": {
@@ -781,6 +849,7 @@
  "movie:7443": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.oorb0ak4pgdfn9m8gdl0k5nb",
   "disney": "https://www.disneyplus.com/movies/wd/5PcWiPyrGw3q",
+  "hotstar": "https://www.hotstar.com/in/movies/chicken-run/1971000705/watch",
   "netflix": "https://www.netflix.com/title/60001287"
  },
  "movie:7508": {
@@ -789,6 +858,7 @@
  "movie:756": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.36cr7afaq8tjqk2aumi75doba",
   "disney": "https://www.disneyplus.com/movies/wd/7lt6sjm8nbud",
+  "hotstar": "https://www.hotstar.com/in/movies/fantasia/1260019027/watch",
   "netflix": "https://www.netflix.com/title/60003064"
  },
  "movie:759054": {
@@ -814,11 +884,12 @@
  "movie:812": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.13229jkd134ryb4p2jhktwx31",
   "disney": "https://www.disneyplus.com/movies/wd/2SngByljXESE",
-  "hotstar": "https://www.hotstar.com/1660000031",
+  "hotstar": "https://www.hotstar.com/in/movies/aladdin/1660000031/watch",
   "netflix": "https://www.netflix.com/title/60010064"
  },
  "movie:823219": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.22galt2spi1jlic15bdjvf1mz",
+  "hotstar": "https://www.hotstar.com/in/movies/flow/1271516173/watch",
   "netflix": "https://www.netflix.com/title/82040308"
  },
  "movie:82690": {
@@ -828,6 +899,7 @@
  },
  "movie:82702": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2ag6thi96de0ywp2ohysjz2u8",
+  "hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon-2/1971000613/watch",
   "netflix": "https://www.netflix.com/title/70298991"
  },
  "movie:8326": {
@@ -843,20 +915,20 @@
  "movie:8587": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.hzw12vgjjoz0tf0jn5m0x8i4",
   "disney": "https://www.disneyplus.com/movies/wd/1HqwiEcje6Nj",
-  "hotstar": "https://www.hotstar.com/1660000046",
+  "hotstar": "https://www.hotstar.com/in/movies/the-lion-king/1660000046/watch",
   "netflix": "https://www.netflix.com/title/60029890",
-  "prime": "https://www.primevideo.com/detail/B073ZPXDGW"
+  "prime": "https://app.primevideo.com/detail?asin=B073ZPXDGW"
  },
  "movie:862": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.qrdx9s4xrk47f4taowt4tx82",
   "disney": "https://www.disneyplus.com/movies/wd/1Ye1nzUgtF7d",
-  "hotstar": "https://www.hotstar.com/1660010197",
+  "hotstar": "https://www.hotstar.com/in/movies/toy-story/1660010197/watch",
   "netflix": "https://www.netflix.com/title/60036637"
  },
  "movie:863": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.26fwluo98zc2e2d9i595455t2",
   "disney": "https://www.disneyplus.com/movies/wd/6eunXQzaXkGr",
-  "hotstar": "https://www.hotstar.com/1660000051",
+  "hotstar": "https://www.hotstar.com/in/movies/toy-story-2/1660000051/watch",
   "netflix": "https://www.netflix.com/title/60036638"
  },
  "movie:864": {
@@ -891,7 +963,7 @@
  "movie:9325": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5hv0dvpzmjgiqka0r66rn4cf4",
   "disney": "https://www.disneyplus.com/movies/wd/5trzAb4Rz3F9",
-  "hotstar": "https://www.hotstar.com/1260018026",
+  "hotstar": "https://www.hotstar.com/in/movies/the-jungle-book/1260018026/watch",
   "netflix": "https://www.netflix.com/title/60029689"
  },
  "movie:9340": {
@@ -911,10 +983,12 @@
  "movie:9487": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.40rxsni23f92ibvz5qio38enq",
   "disney": "https://www.disneyplus.com/movies/wd/2kV0c48TF0Ea",
+  "hotstar": "https://www.hotstar.com/in/movies/a-bug-s-life/1260018158/watch",
   "netflix": "https://www.netflix.com/title/18110943"
  },
  "movie:9502": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.34elthhr2qybuu3emdzn4d2fr",
+  "hotstar": "https://www.hotstar.com/in/movies/kung-fu-panda/1971001864/watch",
   "netflix": "https://www.netflix.com/title/70075480"
  },
  "movie:961323": {
@@ -924,6 +998,7 @@
  "movie:9806": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3l02o7h3trocpynaslpu6epsv",
   "disney": "https://www.disneyplus.com/movies/wd/4jfOKErlmVcJ",
+  "hotstar": "https://www.hotstar.com/in/movies/the-incredibles/1260018306/watch",
   "netflix": "https://www.netflix.com/title/70001989"
  },
  "movie:9837": {
@@ -961,7 +1036,9 @@
  "tv:119815": {
   "netflix": "https://www.netflix.com/title/81036559"
  },
- "tv:127700": {},
+ "tv:127700": {
+  "hotstar": "https://www.hotstar.com/in/shows/welcome-to-earth/1260074816"
+ },
  "tv:13579": {
   "netflix": "https://www.netflix.com/title/70235731"
  },
@@ -992,6 +1069,7 @@
  "tv:1877": {
   "appletv": "https://tv.apple.com/show/umc.cmc.7drszvnx2vrwbtsv8nrf5tolv",
   "disney": "https://www.disneyplus.com/series/wp/1Vl0AKTYhC6U",
+  "hotstar": "https://www.hotstar.com/in/shows/phineas-and-ferb/1260015299",
   "netflix": "https://www.netflix.com/title/70177007"
  },
  "tv:188": {},
@@ -1021,8 +1099,9 @@
  "tv:2408": {},
  "tv:246": {
   "appletv": "https://tv.apple.com/show/umc.cmc.4d38ljozi439j6g8e5m5o2bv5",
+  "hotstar": "https://www.hotstar.com/in/shows/avatar-the-last-airbender/1971003405",
   "netflix": "https://www.netflix.com/title/70142405",
-  "prime": "https://www.primevideo.com/detail/amzn1.dv.gti.eebbea29-4ffd-9538-b0c9-a68a8bdc1b33"
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.eebbea29-4ffd-9538-b0c9-a68a8bdc1b33"
  },
  "tv:256924": {},
  "tv:2957": {},
@@ -1042,7 +1121,8 @@
   "netflix": "https://www.netflix.com/title/70309056"
  },
  "tv:40075": {
-  "disney": "https://www.disneyplus.com/series/wp/HZxayxzMJqed"
+  "disney": "https://www.disneyplus.com/series/wp/HZxayxzMJqed",
+  "hotstar": "https://www.hotstar.com/in/shows/gravity-falls/1260015262"
  },
  "tv:40517": {
   "appletv": "https://tv.apple.com/show/umc.cmc.rp1n4n1zoj6xihiujt3fgkgp"
@@ -1050,6 +1130,7 @@
  "tv:4194": {
   "appletv": "https://tv.apple.com/show/umc.cmc.pipey73n3wfe96uwbg7eunec",
   "disney": "https://www.disneyplus.com/series/wp/1wYXzjabXGVZ",
+  "hotstar": "https://www.hotstar.com/in/shows/star-wars-the-clone-wars/1260015288",
   "netflix": "https://www.netflix.com/title/70155581"
  },
  "tv:44305": {
@@ -1073,13 +1154,15 @@
  },
  "tv:60554": {
   "appletv": "https://tv.apple.com/show/umc.cmc.29znoughk8bnj2ud456pge0zu",
-  "disney": "https://www.disneyplus.com/series/wp/64MCZgAzY0Zw"
+  "disney": "https://www.disneyplus.com/series/wp/64MCZgAzY0Zw",
+  "hotstar": "https://www.hotstar.com/in/shows/star-wars-rebels/1260015296"
  },
  "tv:61175": {
   "appletv": "https://tv.apple.com/show/umc.cmc.4rhvo6h6xxxss16xxq1hnj7lx",
+  "hotstar": "https://www.hotstar.com/in/shows/steven-universe/1971003363",
   "max": "https://play.hbomax.com/series/urn:hbo:series:GXbGBEw3y6pGYoAEAAAVc",
   "netflix": "https://www.netflix.com/title/80130696",
-  "prime": "https://www.primevideo.com/detail/amzn1.dv.gti.5343821f-586a-4657-9936-0eac22b8e361"
+  "prime": "https://app.primevideo.com/detail?asin=amzn1.dv.gti.5343821f-586a-4657-9936-0eac22b8e361"
  },
  "tv:61617": {
   "appletv": "https://tv.apple.com/show/umc.cmc.410w5085kvgoshzsilbm3gyu6",
@@ -1100,7 +1183,8 @@
   "netflix": "https://www.netflix.com/title/80195377"
  },
  "tv:72350": {
-  "disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE"
+  "disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE",
+  "hotstar": "https://www.hotstar.com/in/shows/ducktales/1260015294"
  },
  "tv:74313": {},
  "tv:74728": {
@@ -1113,6 +1197,7 @@
  },
  "tv:75782": {
   "disney": "https://www.disneyplus.com/series/wp/bON1qBV74Bes",
+  "hotstar": "https://www.hotstar.com/in/shows/one-strange-rock/16957",
   "netflix": "https://www.netflix.com/title/81071666"
  },
  "tv:79061": {
@@ -1133,7 +1218,8 @@
   "netflix": "https://www.netflix.com/title/80049832"
  },
  "tv:85349": {
-  "disney": "https://www.disneyplus.com/series/wp/4jsQ0zDkUTeN"
+  "disney": "https://www.disneyplus.com/series/wp/4jsQ0zDkUTeN",
+  "hotstar": "https://www.hotstar.com/in/shows/amphibia/1260025786"
  },
  "tv:8724": {
   "appletv": "https://tv.apple.com/show/umc.cmc.50ihghdu3qzqkz4t6aplry64v",
