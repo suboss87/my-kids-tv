@@ -421,6 +421,20 @@
  },
  {
   "kind": "movie",
+  "id": 146,
+  "title": "Crouching Tiger, Hidden Dragon",
+  "year": "2000",
+  "rating": "PG-13",
+  "lang": "zh",
+  "jr": 0.43,
+  "value": 2.52,
+  "must": 0.64,
+  "fun": 1.7,
+  "score": 0.666,
+  "craft": 2.98
+ },
+ {
+  "kind": "movie",
   "id": 1667,
   "title": "March of the Penguins",
   "year": "2005",
@@ -589,6 +603,20 @@
  },
  {
   "kind": "tv",
+  "id": 132141,
+  "title": "Maya and the Three",
+  "year": "2021",
+  "rating": "TV-Y7",
+  "lang": "es",
+  "jr": 0.8,
+  "value": 2.15,
+  "must": 0.31,
+  "fun": 2.37,
+  "score": 0.629,
+  "craft": 2.51
+ },
+ {
+  "kind": "tv",
   "id": 67048,
   "title": "Barakamon",
   "year": "2014",
@@ -728,6 +756,20 @@
   "craft": 2.11
  },
  {
+  "kind": "movie",
+  "id": 682012,
+  "title": "Little Am\u00e9lie or the Character of Rain",
+  "year": "2025",
+  "rating": "PG",
+  "lang": "fr",
+  "jr": 0.9,
+  "value": 2.78,
+  "must": 0.15,
+  "fun": 1.6,
+  "score": 0.599,
+  "craft": 2.3
+ },
+ {
   "kind": "tv",
   "id": 64492,
   "title": "SHIROBAKO",
@@ -785,6 +827,20 @@
  },
  {
   "kind": "movie",
+  "id": 785976,
+  "title": "Pel\u00e9",
+  "year": "2021",
+  "rating": "PG-13",
+  "lang": "pt",
+  "jr": 0.83,
+  "value": 2.64,
+  "must": 0.33,
+  "fun": 1.45,
+  "score": 0.571,
+  "craft": 2.34
+ },
+ {
+  "kind": "movie",
   "id": 361249,
   "title": "Nil Battey Sannata",
   "year": "2016",
@@ -810,6 +866,20 @@
   "fun": 2.01,
   "score": 0.568,
   "craft": 2.53
+ },
+ {
+  "kind": "movie",
+  "id": 978,
+  "title": "Seven Years in Tibet",
+  "year": "1997",
+  "rating": "PG-13",
+  "lang": "en",
+  "jr": 0.57,
+  "value": 2.74,
+  "must": 0.32,
+  "fun": 1.38,
+  "score": 0.565,
+  "craft": 2.54
  },
  {
   "kind": "movie",
@@ -852,6 +922,20 @@
   "fun": 2.05,
   "score": 0.561,
   "craft": 2.45
+ },
+ {
+  "kind": "movie",
+  "id": 10198,
+  "title": "The Princess and the Frog",
+  "year": "2009",
+  "rating": "G",
+  "lang": "en",
+  "jr": 0.64,
+  "value": 2.18,
+  "must": 0.35,
+  "fun": 1.96,
+  "score": 0.561,
+  "craft": 2.43
  },
  {
   "kind": "movie",
@@ -953,6 +1037,34 @@
  },
  {
   "kind": "movie",
+  "id": 711,
+  "title": "Finding Forrester",
+  "year": "2000",
+  "rating": "PG-13",
+  "lang": "en",
+  "jr": 0.58,
+  "value": 2.62,
+  "must": 0.36,
+  "fun": 1.21,
+  "score": 0.543,
+  "craft": 2.4
+ },
+ {
+  "kind": "movie",
+  "id": 785534,
+  "title": "Paper Lives",
+  "year": "2021",
+  "rating": "NR",
+  "lang": "tr",
+  "jr": 0.53,
+  "value": 2.57,
+  "must": 0.23,
+  "fun": 0.87,
+  "score": 0.54,
+  "craft": 2.39
+ },
+ {
+  "kind": "movie",
   "id": 478682,
   "title": "Gold",
   "year": "2018",
@@ -1050,6 +1162,20 @@
   "craft": 2.13
  },
  {
+  "kind": "tv",
+  "id": 93514,
+  "title": "The Mind, Explained",
+  "year": "2019",
+  "rating": "TV-14",
+  "lang": "en",
+  "jr": 0.57,
+  "value": 2.29,
+  "must": 0.18,
+  "fun": 1.37,
+  "score": 0.501,
+  "craft": 1.9
+ },
+ {
   "kind": "movie",
   "id": 477666,
   "title": "My Best Friend",
@@ -1065,6 +1191,20 @@
  },
  {
   "kind": "movie",
+  "id": 532865,
+  "title": "The Dig",
+  "year": "2021",
+  "rating": "PG-13",
+  "lang": "en",
+  "jr": 0.56,
+  "value": 2.39,
+  "must": 0.16,
+  "fun": 1.02,
+  "score": 0.43,
+  "craft": 2.12
+ },
+ {
+  "kind": "movie",
   "id": 17187,
   "title": "The Emperor's Club",
   "year": "2002",
@@ -1076,5 +1216,19 @@
   "fun": 0.64,
   "score": 0.429,
   "craft": 2.24
+ },
+ {
+  "kind": "tv",
+  "id": 95730,
+  "title": "Love on the Spectrum",
+  "year": "2019",
+  "rating": "",
+  "lang": "en",
+  "jr": 0.53,
+  "value": 2.29,
+  "must": 0.15,
+  "fun": 0.59,
+  "score": 0.429,
+  "craft": 1.93
  }
 ]

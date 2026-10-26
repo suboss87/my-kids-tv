@@ -339,6 +339,20 @@
 }
 },
 {
+"kind": "movie",
+"id": 10895,
+"title": "Pinocchio",
+"year": "1940",
+"score": 0.726,
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4ixknv3558j9uodmwlui4gfy8",
+"disney": "https://www.disneyplus.com/movies/wd/3awzEJp1S6xg",
+"hotstar": "https://www.hotstar.com/in/movies/pinocchio/1260018337/watch",
+"netflix": "https://www.netflix.com/title/858168"
+}
+},
+{
 "kind": "tv",
 "id": 10821,
 "title": "Blue's Clues",
@@ -398,6 +412,14 @@
 "appletv": "https://tv.apple.com/show/umc.cmc.354ikstkxoozptt98eakedfpp",
 "netflix": "https://www.netflix.com/title/81272431"
 }
+},
+{
+"kind": "tv",
+"id": 256953,
+"title": "Bluey Minisodes",
+"year": "2024",
+"score": 0.7,
+"badge": "loved"
 },
 {
 "kind": "movie",
@@ -535,6 +557,18 @@
 },
 {
 "kind": "movie",
+"id": 252,
+"title": "Willy Wonka & the Chocolate Factory",
+"year": "1971",
+"score": 0.663,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.33jugzmtwhfbl45dd3eui946o",
+"netflix": "https://www.netflix.com/title/60020949"
+}
+},
+{
+"kind": "movie",
 "id": 301528,
 "title": "Toy Story 4",
 "year": "2019",
@@ -568,6 +602,19 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.s38fyk3b2mnlwp1ug6jovbpc",
 "disney": "https://www.disneyplus.com/movies/wd/2NOY3PbUN9os"
+}
+},
+{
+"kind": "movie",
+"id": 10693,
+"title": "Peter Pan",
+"year": "1953",
+"score": 0.65,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6hxeen2bwkehiwgwprcaxgf7l",
+"disney": "https://www.disneyplus.com/movies/wd/20a1PB36VPVF",
+"netflix": "https://www.netflix.com/title/60022286"
 }
 },
 {
@@ -657,6 +704,19 @@
 },
 {
 "kind": "movie",
+"id": 11360,
+"title": "Dumbo",
+"year": "1941",
+"score": 0.632,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5l5te302410nyy0se0qlbc6m4",
+"disney": "https://www.disneyplus.com/movies/wd/3lAXKmGUOnjh",
+"netflix": "https://www.netflix.com/title/60010304"
+}
+},
+{
+"kind": "movie",
 "id": 12230,
 "title": "One Hundred and One Dalmatians",
 "year": "1961",
@@ -667,6 +727,44 @@
 "disney": "https://www.disneyplus.com/movies/wd/7NOwGGV7R7kE",
 "hotstar": "https://www.hotstar.com/in/movies/one-hundred-and-one-dalmatians/1260027508/watch",
 "netflix": "https://www.netflix.com/title/205524"
+}
+},
+{
+"kind": "movie",
+"id": 13353,
+"title": "It's the Great Pumpkin, Charlie Brown",
+"year": "1966",
+"score": 0.63,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1c5nvp802hos5t3u0umlukkwh",
+"netflix": "https://www.netflix.com/title/60002160"
+}
+},
+{
+"kind": "tv",
+"id": 3902,
+"title": "Shaun the Sheep",
+"year": "2007",
+"score": 0.625,
+"badge": "loved",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.2xv16ikbkqjcnvquiqo3r3oqn",
+"netflix": "https://www.netflix.com/title/70155567"
+}
+},
+{
+"kind": "movie",
+"id": 137106,
+"title": "The Lego Movie",
+"year": "2014",
+"score": 0.624,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.aitacxahxadzpxklh881ate4",
+"hotstar": "https://www.hotstar.com/in/movies/the-lego-movie/1971000711/watch",
+"netflix": "https://www.netflix.com/title/70289949"
 }
 },
 {
@@ -689,6 +787,19 @@
 "badge": "",
 "links": {
 "netflix": "https://www.netflix.com/title/80020935"
+}
+},
+{
+"kind": "movie",
+"id": 11688,
+"title": "The Emperor's New Groove",
+"year": "2000",
+"score": 0.611,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.v4cekiexingmkwd29xrejvnh",
+"disney": "https://www.disneyplus.com/movies/wd/3jFGExhfWgxg",
+"netflix": "https://www.netflix.com/title/60002908"
 }
 },
 {
@@ -728,6 +839,18 @@
 },
 {
 "kind": "movie",
+"id": 1084244,
+"title": "Toy Story 5",
+"year": "2026",
+"score": 0.606,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1kglq78ta10an5gbdv55t7myw",
+"hotstar": "https://www.hotstar.com/in/movies/toy-story-5/1271506603/watch"
+}
+},
+{
+"kind": "movie",
 "id": 14813,
 "title": "Mickey's Christmas Carol",
 "year": "1983",
@@ -760,6 +883,17 @@
 "year": "1994",
 "score": 0.601,
 "badge": ""
+},
+{
+"kind": "movie",
+"id": 453191,
+"title": "The Big Bad Fox and Other Tales",
+"year": "2017",
+"score": 0.596,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5aesw14wa3jy0wr0x7etkno4i"
+}
 },
 {
 "kind": "movie",
@@ -807,6 +941,31 @@
 },
 {
 "kind": "movie",
+"id": 12092,
+"title": "Alice in Wonderland",
+"year": "1951",
+"score": 0.585,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.60xt9qc8qcbh9vooo01ln8jtz",
+"disney": "https://www.disneyplus.com/movies/wd/2l0X3WdCxQ4F",
+"netflix": "https://www.netflix.com/title/60031746"
+}
+},
+{
+"kind": "tv",
+"id": 64752,
+"title": "The Lion Guard",
+"year": "2016",
+"score": 0.585,
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/3sJT6PU2gT88",
+"hotstar": "https://www.hotstar.com/in/shows/the-lion-guard/1260014884"
+}
+},
+{
+"kind": "movie",
 "id": 51162,
 "title": "Winnie the Pooh",
 "year": "2011",
@@ -842,6 +1001,20 @@
 }
 },
 {
+"kind": "movie",
+"id": 10882,
+"title": "Sleeping Beauty",
+"year": "1959",
+"score": 0.572,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3ri98xki588ft79xbfgn3yrhh",
+"disney": "https://www.disneyplus.com/movies/wd/1rc2EavpNV7U",
+"hotstar": "https://www.hotstar.com/in/movies/sleeping-beauty/1260018161/watch",
+"netflix": "https://www.netflix.com/title/60029529"
+}
+},
+{
 "kind": "tv",
 "id": 9834,
 "title": "Little Bear",
@@ -861,12 +1034,36 @@
 }
 },
 {
+"kind": "movie",
+"id": 13925,
+"title": "Luxo Jr.",
+"year": "1986",
+"score": 0.562,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5z4eayirgbinn5zfjhkh4lzds",
+"disney": "https://www.disneyplus.com/movies/wd/3jgf3x1CHkzS"
+}
+},
+{
 "kind": "tv",
 "id": 94075,
 "title": "Doki",
 "year": "2013",
 "score": 0.556,
 "badge": ""
+},
+{
+"kind": "movie",
+"id": 263109,
+"title": "Shaun the Sheep Movie",
+"year": "2015",
+"score": 0.555,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.327g94goo5099ifjs0x9v2vf4",
+"disney": "https://www.disneyplus.com/movies/wd/4sHAxjXiVQFn"
+}
 },
 {
 "kind": "tv",
@@ -936,6 +1133,18 @@
 }
 },
 {
+"kind": "movie",
+"id": 81684,
+"title": "The Gruffalo's Child",
+"year": "2011",
+"score": 0.529,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4r5fuaj7akd6lbio57fhwm9bc",
+"netflix": "https://www.netflix.com/title/80005737"
+}
+},
+{
 "kind": "tv",
 "id": 2153,
 "title": "Arthur",
@@ -946,6 +1155,14 @@
 "appletv": "https://tv.apple.com/show/umc.cmc.32hpmpaty5eem41zg40onjnxw",
 "netflix": "https://www.netflix.com/title/70176984"
 }
+},
+{
+"kind": "tv",
+"id": 30958,
+"title": "Charlie and Lola",
+"year": "2005",
+"score": 0.525,
+"badge": ""
 },
 {
 "kind": "movie",
@@ -999,6 +1216,25 @@
 "appletv": "https://tv.apple.com/movie/umc.cmc.5vw4hd6xvenffic45y8aw22q5",
 "netflix": "https://www.netflix.com/title/81776760"
 }
+},
+{
+"kind": "movie",
+"id": 422803,
+"title": "A Shaun the Sheep Movie: Farmageddon",
+"year": "2019",
+"score": 0.504,
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80242602"
+}
+},
+{
+"kind": "tv",
+"id": 9262,
+"title": "Pingu",
+"year": "1986",
+"score": 0.493,
+"badge": ""
 },
 {
 "kind": "tv",

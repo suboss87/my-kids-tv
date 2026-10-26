@@ -317,6 +317,20 @@
 }
 },
 {
+"kind": "movie",
+"id": 121,
+"title": "The Lord of the Rings: The Two Towers",
+"year": "2002",
+"score": 0.864,
+"badge": "must",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6vre5k3uptb2mrfml73kd9veg",
+"hotstar": "https://www.hotstar.com/in/movies/the-lord-of-the-rings-the-two-towers/1971000579/watch",
+"netflix": "https://www.netflix.com/title/60004483"
+}
+},
+{
 "kind": "tv",
 "id": 95171,
 "title": "Prehistoric Planet",
@@ -325,6 +339,19 @@
 "badge": "learn",
 "links": {
 "appletv": "https://tv.apple.com/show/umc.cmc.4lh4bmztauvkooqz400akxav"
+}
+},
+{
+"kind": "movie",
+"id": 122,
+"title": "The Lord of the Rings: The Return of the King",
+"year": "2003",
+"score": 0.86,
+"badge": "must",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.57s6i23z9ry0zsgwwc2mxjqi6",
+"hotstar": "https://www.hotstar.com/in/movies/the-lord-of-the-rings-the-return-of-the-king/1971000532/watch"
 }
 },
 {
@@ -864,6 +891,29 @@
 "appletv": "https://tv.apple.com/movie/umc.cmc.3ysvrfdjp7h6q8dt73t3bq23i",
 "hotstar": "https://www.hotstar.com/in/movies/puss-in-boots-the-last-wish/1971000543/watch",
 "netflix": "https://www.netflix.com/title/81555726"
+}
+},
+{
+"kind": "tv",
+"id": 37854,
+"title": "One Piece",
+"year": "1999",
+"score": 0.796,
+"badge": "",
+"famous": true,
+"links": {
+"netflix": "https://www.netflix.com/title/80107103"
+}
+},
+{
+"kind": "tv",
+"id": 42573,
+"title": "Slam Dunk",
+"year": "1993",
+"score": 0.796,
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/70024218"
 }
 },
 {
@@ -1489,6 +1539,18 @@
 "badge": "loved",
 "links": {
 "netflix": "https://www.netflix.com/title/80075820"
+}
+},
+{
+"kind": "movie",
+"id": 680058,
+"title": "The Rescue",
+"year": "2021",
+"score": 0.748,
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.hhgdxpzseg33zb3k53a8zof8",
+"hotstar": "https://www.hotstar.com/in/movies/the-rescue/1260074691/watch"
 }
 },
 {
@@ -2185,6 +2247,18 @@
 "badge": "learn"
 },
 {
+"kind": "tv",
+"id": 81046,
+"title": "The Dragon Prince",
+"year": "2018",
+"score": 0.7,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.5o1xi52tjt8jl41ixc3dcjsn4",
+"netflix": "https://www.netflix.com/title/80212245"
+}
+},
+{
 "kind": "movie",
 "id": 10315,
 "title": "Fantastic Mr. Fox",
@@ -2222,10 +2296,7 @@
 "title": "DuckTales",
 "year": "2017",
 "score": 0.698,
-"badge": "",
-"links": {
-"disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE"
-}
+"badge": ""
 },
 {
 "kind": "tv",
@@ -2349,6 +2420,31 @@
 },
 {
 "kind": "movie",
+"id": 756,
+"title": "Fantasia",
+"year": "1940",
+"score": 0.692,
+"badge": "must",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.36cr7afaq8tjqk2aumi75doba",
+"disney": "https://www.disneyplus.com/movies/wd/7lt6sjm8nbud",
+"hotstar": "https://www.hotstar.com/in/movies/fantasia/1260019027/watch",
+"netflix": "https://www.netflix.com/title/60003064"
+}
+},
+{
+"kind": "tv",
+"id": 84200,
+"title": "Justice League Unlimited",
+"year": "2004",
+"score": 0.691,
+"badge": "",
+"links": {
+"hotstar": "https://www.hotstar.com/in/shows/justice-league-unlimited/1971003407"
+}
+},
+{
+"kind": "movie",
 "id": 1366,
 "title": "Rocky",
 "year": "1976",
@@ -2421,11 +2517,37 @@
 },
 {
 "kind": "movie",
+"id": 698948,
+"title": "Thirteen Lives",
+"year": "2022",
+"score": 0.687,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2rxldklgqrk5i0woci7dsrwyu"
+}
+},
+{
+"kind": "movie",
 "id": 995133,
 "title": "The Boy, the Mole, the Fox and the Horse",
 "year": "2022",
 "score": 0.686,
 "badge": ""
+},
+{
+"kind": "movie",
+"id": 165,
+"title": "Back to the Future Part II",
+"year": "1989",
+"score": 0.686,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5voem26uknighvs9ac01dku4y",
+"hotstar": "https://www.hotstar.com/in/movies/back-to-the-future-part-ii/1271413424/watch",
+"netflix": "https://www.netflix.com/title/60010111",
+"prime": "https://app.primevideo.com/detail?asin=B08XW5CKQG"
+}
 },
 {
 "kind": "tv",
@@ -2481,6 +2603,22 @@
 }
 },
 {
+"kind": "tv",
+"id": 78173,
+"title": "Dragons: Race to the Edge",
+"year": "2015",
+"score": 0.683,
+"badge": ""
+},
+{
+"kind": "tv",
+"id": 4625,
+"title": "The New Batman Adventures",
+"year": "1997",
+"score": 0.683,
+"badge": ""
+},
+{
 "kind": "movie",
 "id": 531,
 "title": "The Wrong Trousers",
@@ -2508,6 +2646,18 @@
 "badge": "learn",
 "links": {
 "netflix": "https://www.netflix.com/title/81145024"
+}
+},
+{
+"kind": "movie",
+"id": 501929,
+"title": "The Mitchells vs. the Machines",
+"year": "2021",
+"score": 0.68,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7e8a5ji53wrnt29s5cv2ttzoe",
+"netflix": "https://www.netflix.com/title/81399614"
 }
 },
 {
@@ -2668,6 +2818,17 @@
 },
 {
 "kind": "tv",
+"id": 45783,
+"title": "Kuroko's Basketball",
+"year": "2012",
+"score": 0.673,
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80063153"
+}
+},
+{
+"kind": "tv",
 "id": 211694,
 "title": "Island of the Sea Wolves",
 "year": "2022",
@@ -2795,6 +2956,21 @@
 "badge": ""
 },
 {
+"kind": "movie",
+"id": 863,
+"title": "Toy Story 2",
+"year": "1999",
+"score": 0.662,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.26fwluo98zc2e2d9i595455t2",
+"disney": "https://www.disneyplus.com/movies/wd/6eunXQzaXkGr",
+"hotstar": "https://www.hotstar.com/in/movies/toy-story-2/1660000051/watch",
+"netflix": "https://www.netflix.com/title/60036638"
+}
+},
+{
 "kind": "tv",
 "id": 108303,
 "title": "Tiny World",
@@ -2868,6 +3044,17 @@
 },
 {
 "kind": "movie",
+"id": 1108427,
+"title": "Moana",
+"year": "2026",
+"score": 0.659,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6iwbg2fxayjdbyw9trffmbyo8"
+}
+},
+{
+"kind": "movie",
 "id": 317557,
 "title": "Queen of Katwe",
 "year": "2016",
@@ -2877,6 +3064,17 @@
 "appletv": "https://tv.apple.com/movie/umc.cmc.4y1g24sdpzj34jtd8pb07eb9y",
 "disney": "https://www.disneyplus.com/movies/wd/6FtfjP77HPmS",
 "netflix": "https://www.netflix.com/title/80106180"
+}
+},
+{
+"kind": "movie",
+"id": 1128559,
+"title": "Super/Man: The Christopher Reeve Story",
+"year": "2024",
+"score": 0.658,
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4iun80m5fwrcch1i393qksyoh"
 }
 },
 {
@@ -2955,6 +3153,21 @@
 },
 {
 "kind": "movie",
+"id": 62177,
+"title": "Brave",
+"year": "2012",
+"score": 0.655,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.a5h7arztcvuj7vdz82lydg5b",
+"disney": "https://www.disneyplus.com/movies/wd/ovUp92sPbaSW",
+"hotstar": "https://www.hotstar.com/in/movies/brave/1260018157/watch",
+"netflix": "https://www.netflix.com/title/70213513"
+}
+},
+{
+"kind": "movie",
 "id": 11236,
 "title": "The Secret Garden",
 "year": "1993",
@@ -2963,6 +3176,21 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.7czaxjjie63i6016hu9r0zsn",
 "netflix": "https://www.netflix.com/title/943427"
+}
+},
+{
+"kind": "movie",
+"id": 38757,
+"title": "Tangled",
+"year": "2010",
+"score": 0.653,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4bofe8sikofs0fnarn3pd6u5p",
+"disney": "https://www.disneyplus.com/movies/wd/3V3ALy4SHStq",
+"hotstar": "https://www.hotstar.com/in/movies/tangled/1660010196/watch",
+"netflix": "https://www.netflix.com/title/70128681"
 }
 },
 {
@@ -3070,6 +3298,33 @@
 "year": "1996",
 "score": 0.647,
 "badge": ""
+},
+{
+"kind": "movie",
+"id": 585,
+"title": "Monsters, Inc.",
+"year": "2001",
+"score": 0.645,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3ilsdzy6ghi4adtg3tnwf6jcb",
+"disney": "https://www.disneyplus.com/movies/wd/5vQuMGjgTZz5",
+"hotstar": "https://www.hotstar.com/in/movies/monsters-inc/1260016863/watch",
+"netflix": "https://www.netflix.com/title/60004479"
+}
+},
+{
+"kind": "tv",
+"id": 61923,
+"title": "Star vs. the Forces of Evil",
+"year": "2015",
+"score": 0.645,
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/3dinruRQMph5",
+"hotstar": "https://www.hotstar.com/in/shows/star-vs-the-forces-of-evil/1260037119"
+}
 },
 {
 "kind": "movie",
@@ -3185,6 +3440,19 @@
 "badge": "",
 "links": {
 "disney": "https://www.disneyplus.com/series/wp/5HfolGRtUHpv"
+}
+},
+{
+"kind": "tv",
+"id": 105971,
+"title": "Star Wars: The Bad Batch",
+"year": "2021",
+"score": 0.64,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.jzpcwzmyd6h9eaadrakph6ta",
+"disney": "https://www.disneyplus.com/series/wp/4gMliqFxxqXC",
+"hotstar": "https://www.hotstar.com/in/shows/star-wars-the-bad-batch/1260061829"
 }
 },
 {
@@ -3475,6 +3743,14 @@
 },
 {
 "kind": "movie",
+"id": 638507,
+"title": "How to Train Your Dragon: Homecoming",
+"year": "2019",
+"score": 0.624,
+"badge": ""
+},
+{
+"kind": "movie",
 "id": 297222,
 "title": "PK",
 "year": "2014",
@@ -3510,6 +3786,18 @@
 }
 },
 {
+"kind": "tv",
+"id": 83039,
+"title": "Salt Fat Acid Heat",
+"year": "2018",
+"score": 0.624,
+"badge": "learn",
+"links": {
+"appletv": "https://tv.apple.com/show/umc.cmc.2rqggzqpgef05czf7nq4w6w25",
+"netflix": "https://www.netflix.com/title/80198288"
+}
+},
+{
 "kind": "movie",
 "id": 16515,
 "title": "Captains Courageous",
@@ -3530,6 +3818,44 @@
 "badge": "learn",
 "links": {
 "netflix": "https://www.netflix.com/title/81243961"
+}
+},
+{
+"kind": "movie",
+"id": 10144,
+"title": "The Little Mermaid",
+"year": "1989",
+"score": 0.622,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.44zn5mij4tcnfk95hxexjm5x8",
+"disney": "https://www.disneyplus.com/movies/wd/4HkAlqhq1ZKp",
+"hotstar": "https://www.hotstar.com/in/movies/the-little-mermaid/1660010306/watch",
+"netflix": "https://www.netflix.com/title/705052"
+}
+},
+{
+"kind": "tv",
+"id": 94810,
+"title": "Adventure Time: Distant Lands",
+"year": "2020",
+"score": 0.621,
+"badge": "",
+"links": {
+"max": "https://play.hbomax.com/series/urn:hbo:series:GXuu7ygQ61cI9DgEAAAAY"
+}
+},
+{
+"kind": "movie",
+"id": 387426,
+"title": "Okja",
+"year": "2017",
+"score": 0.621,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7086i3dk23d565gobtnkutwkr",
+"netflix": "https://www.netflix.com/title/80091936"
 }
 },
 {
@@ -3573,6 +3899,20 @@
 },
 {
 "kind": "movie",
+"id": 260513,
+"title": "Incredibles 2",
+"year": "2018",
+"score": 0.617,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.uzvd8mpcpeyggo5ttxyeg58u",
+"disney": "https://www.disneyplus.com/movies/wd/4Le2C4pyeB3J",
+"hotstar": "https://www.hotstar.com/in/movies/incredibles-2/1660010691/watch"
+}
+},
+{
+"kind": "movie",
 "id": 57586,
 "title": "African Cats",
 "year": "2011",
@@ -3603,6 +3943,17 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5zjeuob5v5cnm7rjz2rilygw5"
+}
+},
+{
+"kind": "movie",
+"id": 592350,
+"title": "My Hero Academia: Heroes Rising",
+"year": "2019",
+"score": 0.613,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1vasd9203dgtj9f7zfi4meg23"
 }
 },
 {
@@ -3689,6 +4040,18 @@
 },
 {
 "kind": "movie",
+"id": 762,
+"title": "Monty Python and the Holy Grail",
+"year": "1975",
+"score": 0.61,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5re6h6rrzwtaub8i4bc3udwm6",
+"netflix": "https://www.netflix.com/title/771476"
+}
+},
+{
+"kind": "movie",
 "id": 838240,
 "title": "Robot Dreams",
 "year": "2023",
@@ -3723,6 +4086,17 @@
 }
 },
 {
+"kind": "tv",
+"id": 69293,
+"title": "Little Witch Academia",
+"year": "2017",
+"score": 0.609,
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80156387"
+}
+},
+{
 "kind": "movie",
 "id": 297762,
 "title": "Wonder Woman",
@@ -3743,6 +4117,19 @@
 "year": "2010",
 "score": 0.608,
 "badge": "learn"
+},
+{
+"kind": "movie",
+"id": 788,
+"title": "Mrs. Doubtfire",
+"year": "1993",
+"score": 0.608,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2ng39gw879r6alz17osou1sfc",
+"disney": "https://www.disneyplus.com/movies/wd/RpQjgk9ZcSih",
+"netflix": "https://www.netflix.com/title/779488"
+}
 },
 {
 "kind": "movie",
@@ -3954,6 +4341,17 @@
 }
 },
 {
+"kind": "tv",
+"id": 72705,
+"title": "Marvel's Spider-Man",
+"year": "2017",
+"score": 0.596,
+"badge": "",
+"links": {
+"disney": "https://www.disneyplus.com/series/wp/5qBkPvo0L3mg"
+}
+},
+{
 "kind": "movie",
 "id": 168,
 "title": "Star Trek IV: The Voyage Home",
@@ -4086,6 +4484,18 @@
 },
 {
 "kind": "movie",
+"id": 560057,
+"title": "The Sea Beast",
+"year": "2022",
+"score": 0.586,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.52soshvp2sbmc2yvgf9xtfe77",
+"netflix": "https://www.netflix.com/title/81018682"
+}
+},
+{
+"kind": "movie",
 "id": 860,
 "title": "WarGames",
 "year": "1983",
@@ -4118,6 +4528,18 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5dnaq5az0tgnpz36c807slbil"
+}
+},
+{
+"kind": "movie",
+"id": 1584,
+"title": "The School of Rock",
+"year": "2003",
+"score": 0.582,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.im6cmmj5czmu1lrpj820whud",
+"netflix": "https://www.netflix.com/title/60031226"
 }
 },
 {
@@ -4227,6 +4649,21 @@
 },
 {
 "kind": "movie",
+"id": 140607,
+"title": "Star Wars: The Force Awakens",
+"year": "2015",
+"score": 0.574,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.61i3yveu7xby4chfkqved19ka",
+"disney": "https://www.disneyplus.com/movies/wd/1LEKJPDPeMr7",
+"hotstar": "https://www.hotstar.com/in/movies/star-wars-the-force-awakens/1260018150/watch",
+"netflix": "https://www.netflix.com/title/80058070"
+}
+},
+{
+"kind": "movie",
 "id": 22881,
 "title": "The Blind Side",
 "year": "2009",
@@ -4235,6 +4672,34 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5v44yjndjjbw4vj7rh4uarheb",
 "netflix": "https://www.netflix.com/title/70119811"
+}
+},
+{
+"kind": "movie",
+"id": 8844,
+"title": "Jumanji",
+"year": "1995",
+"score": 0.574,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2h6gplcaxjoi26y8hdn4qeel7",
+"hotstar": "https://www.hotstar.com/in/movies/jumanji/1271677272/watch",
+"max": "https://play.hbomax.com/feature/urn:hbo:feature:GYtrYmQvEnsLCwgEAAAxx",
+"netflix": "https://www.netflix.com/title/660954",
+"prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.94a9f6c2-edbe-6132-d4d8-5ff6d528ee7b"
+}
+},
+{
+"kind": "movie",
+"id": 508439,
+"title": "Onward",
+"year": "2020",
+"score": 0.574,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5um5qljv52fiyq5smadc3c5qs",
+"disney": "https://www.disneyplus.com/movies/wd/xVcGOSq9BY21"
 }
 },
 {
@@ -4263,6 +4728,17 @@
 }
 },
 {
+"kind": "tv",
+"id": 71809,
+"title": "The Dark Crystal: Age of Resistance",
+"year": "2019",
+"score": 0.574,
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80148535"
+}
+},
+{
 "kind": "movie",
 "id": 668482,
 "title": "Roald Dahl's Matilda the Musical",
@@ -4271,6 +4747,17 @@
 "badge": "",
 "links": {
 "netflix": "https://www.netflix.com/title/80993016"
+}
+},
+{
+"kind": "tv",
+"id": 68394,
+"title": "Watership Down",
+"year": "2018",
+"score": 0.572,
+"badge": "",
+"links": {
+"netflix": "https://www.netflix.com/title/80107989"
 }
 },
 {
@@ -4344,6 +4831,18 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.61pmir3e3ob54xzvzzhruu4cp",
 "netflix": "https://www.netflix.com/title/60031292"
+}
+},
+{
+"kind": "movie",
+"id": 850,
+"title": "A Christmas Story",
+"year": "1983",
+"score": 0.563,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7taqrdceohmnxmly00wtq42p",
+"netflix": "https://www.netflix.com/title/60031127"
 }
 },
 {
@@ -4430,6 +4929,20 @@
 },
 {
 "kind": "movie",
+"id": 315635,
+"title": "Spider-Man: Homecoming",
+"year": "2017",
+"score": 0.556,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.2sbgqu6gpbevxnjjhfd4ahuvn",
+"hotstar": "https://www.hotstar.com/in/movies/spider-man-homecoming/1271667616/watch",
+"netflix": "https://www.netflix.com/title/80166369"
+}
+},
+{
+"kind": "movie",
 "id": 15370,
 "title": "The Cat Returns",
 "year": "2002",
@@ -4478,6 +4991,18 @@
 },
 {
 "kind": "movie",
+"id": 929204,
+"title": "Wallace & Gromit: Vengeance Most Fowl",
+"year": "2024",
+"score": 0.551,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.7irhitlqj7nk0iehieo9luywf",
+"netflix": "https://www.netflix.com/title/81351936"
+}
+},
+{
+"kind": "movie",
 "id": 272878,
 "title": "Max",
 "year": "2015",
@@ -4499,6 +5024,19 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5iv4rqzo9gknjzkt1jj90cjsd",
 "netflix": "https://www.netflix.com/title/60010238"
+}
+},
+{
+"kind": "movie",
+"id": 629542,
+"title": "The Bad Guys",
+"year": "2022",
+"score": 0.548,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6l0nbkdiji7k55epc7lph672x",
+"hotstar": "https://www.hotstar.com/in/movies/the-bad-guys/1971001582/watch",
+"netflix": "https://www.netflix.com/title/81513703"
 }
 },
 {
@@ -4534,6 +5072,18 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.5yep1vn0z5c9mee2nnvpv0ddd",
 "netflix": "https://www.netflix.com/title/70058937"
+}
+},
+{
+"kind": "movie",
+"id": 8974,
+"title": "The War of the Worlds",
+"year": "1953",
+"score": 0.545,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.24esgqkoo8x4u1zv33cvxu72v",
+"netflix": "https://www.netflix.com/title/1103939"
 }
 },
 {
@@ -4616,6 +5166,19 @@
 },
 {
 "kind": "movie",
+"id": 11708,
+"title": "Chitty Chitty Bang Bang",
+"year": "1968",
+"score": 0.536,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.5bh6k501fudgtfgpvipjx3gdt",
+"netflix": "https://www.netflix.com/title/374651",
+"prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.47b7246d-057e-4328-98b9-ed51b44bec29"
+}
+},
+{
+"kind": "movie",
 "id": 278927,
 "title": "The Jungle Book",
 "year": "2016",
@@ -4631,6 +5194,18 @@
 },
 {
 "kind": "movie",
+"id": 38055,
+"title": "Megamind",
+"year": "2010",
+"score": 0.535,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4u183n7tgl8y9n0o2wk910chx",
+"netflix": "https://www.netflix.com/title/70120612"
+}
+},
+{
+"kind": "movie",
 "id": 157841,
 "title": "The Young and Prodigious T.S. Spivet",
 "year": "2013",
@@ -4638,6 +5213,17 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.4qx02z5uhqmh81ye2yhfq339j"
+}
+},
+{
+"kind": "tv",
+"id": 130521,
+"title": "Countdown: Inspiration4 Mission to Space",
+"year": "2021",
+"score": 0.533,
+"badge": "learn",
+"links": {
+"netflix": "https://www.netflix.com/title/81441273"
 }
 },
 {
@@ -4678,6 +5264,19 @@
 },
 {
 "kind": "movie",
+"id": 324849,
+"title": "The Lego Batman Movie",
+"year": "2017",
+"score": 0.525,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.4jph299vcq0j326k6b1qwzeqf",
+"hotstar": "https://www.hotstar.com/in/movies/the-lego-batman-movie/1971000707/watch",
+"netflix": "https://www.netflix.com/title/80131731"
+}
+},
+{
+"kind": "movie",
 "id": 664996,
 "title": "Apollo 10½: A Space Age Childhood",
 "year": "2022",
@@ -4686,6 +5285,35 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.643oqv92wpkvzqc1dg68jlii4",
 "netflix": "https://www.netflix.com/title/81161042"
+}
+},
+{
+"kind": "movie",
+"id": 429617,
+"title": "Spider-Man: Far From Home",
+"year": "2019",
+"score": 0.516,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.1xnsjqmhn8a93iy2vgj36w3d1",
+"disney": "https://www.disneyplus.com/movies/wd/3PtrmOKmcLb4",
+"hotstar": "https://www.hotstar.com/in/movies/spider-man-far-from-home/1271663449/watch",
+"netflix": "https://www.netflix.com/title/81055822"
+}
+},
+{
+"kind": "movie",
+"id": 102651,
+"title": "Maleficent",
+"year": "2014",
+"score": 0.514,
+"badge": "",
+"famous": true,
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.20rj042a7i2msdwww1c80pxoz",
+"disney": "https://www.disneyplus.com/movies/wd/1QAyjfzQe6OK",
+"netflix": "https://www.netflix.com/title/70298386"
 }
 },
 {
@@ -4733,6 +5361,18 @@
 },
 {
 "kind": "movie",
+"id": 514921,
+"title": "The Aeronauts",
+"year": "2019",
+"score": 0.504,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.3jl2um7x65ss48tozngkbj315",
+"prime": "https://app.primevideo.com/detail?asin=B0812BZF9D"
+}
+},
+{
+"kind": "movie",
 "id": 14325,
 "title": "The Express",
 "year": "2008",
@@ -4764,6 +5404,19 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.y65esaxjlrnk6jlq498guzd4",
 "hotstar": "https://www.hotstar.com/in/movies/first-man/1271422777/watch"
+}
+},
+{
+"kind": "movie",
+"id": 614930,
+"title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+"year": "2023",
+"score": 0.481,
+"badge": "",
+"links": {
+"appletv": "https://tv.apple.com/movie/umc.cmc.6eou7u8mro9ke2eowub9nie12",
+"hotstar": "https://www.hotstar.com/in/movies/teenage-mutant-ninja-turtles-mutant-mayhem/1271425996/watch",
+"prime": "https://app.primevideo.com/detail?gti=0M0UMFHQ18EPIGBLCUB3E2BHPX"
 }
 },
 {

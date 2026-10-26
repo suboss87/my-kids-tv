@@ -119,6 +119,33 @@ def stage_candidates(band, extra=None):
     json.dump(load(path, []) + kept, open(path, 'w'), indent=1)
     print('[%s] candidates +%d (dropped %s)' % (band, len(kept), dropped), flush=True)
 
+# Streaming services by region (TMDB provider ids): Netflix, Netflix Kids, Prime Video, JioHotstar in India.
+REGION_PROVIDERS = {'IN': '8|175|119|2336'}
+
+def stage_streaming(band, region='IN'):
+    """Round 3, the other way round: what streams in the region on the family's apps, for this age, through the same
+    hard rules, Jev and policy. Fills the catalog with titles a child there can actually play."""
+    b = BANDS[band]; jobs = []
+    common = {'watch_region': region, 'with_watch_providers': REGION_PROVIDERS[region],
+              'with_watch_monetization_types': 'flatrate'}
+    for sweep in b['movie_sweeps']:
+        for sort in ('popularity.desc', 'vote_average.desc'):
+            for p in range(1, 11):
+                jobs.append(('movie', dict(sweep, **common, **{'vote_count.gte': 100, 'vote_average.gte': 6.8}, sort_by=sort, page=p)))
+    for sweep in b['tv_sweeps']:
+        for sort in ('popularity.desc', 'vote_average.desc'):
+            for p in range(1, 9):
+                jobs.append(('tv', dict(sweep, **common, **{'vote_count.gte': 30, 'vote_average.gte': 6.8}, sort_by=sort, page=p)))
+    def run(j):
+        try: return j[0], (get('/discover/' + j[0], **j[1]) or {}).get('results', [])
+        except RuntimeError: return j[0], []
+    keys = {}
+    with cf.ThreadPoolExecutor(12) as ex:
+        for kind, res in ex.map(run, jobs):
+            for m in res: keys.setdefault((kind, m['id']), 'streaming-' + region)
+    print('[%s] streaming in %s: %d titles found' % (band, region, len(keys)), flush=True)
+    stage_candidates(band, keys)
+
 def stage_expand(band):
     """Round 2: TMDB recommendations of every title kept so far."""
     keep = load(work(band, 'selected.json'), {}).get('keep', [])
@@ -176,7 +203,8 @@ def stage_craft(band):
     judg = load(work(band, 'judgments.json'), {})
     path = work(band, 'craft.json'); done = load(path, {})
     todo = [cands[k] for k, a in judg.items() if k in cands and k not in done
-            and a['age_fit']['probabilities'].get('just_right', 0) >= 0.4 and a['value']['score'] >= 1.8]
+            and a['age_fit']['probabilities'].get('just_right', 0) >= 0.35
+            and (a['value']['score'] >= 1.8 or a['fun']['score'] >= 2.4)]   # the fun path needs craft too
     print('[%s] craft: judging %d (cached %d)' % (band, len(todo), len(done)), flush=True)
     with cf.ThreadPoolExecutor(8) as ex:
         for c, r in zip(todo, ex.map(lambda c: ask(band, c, key, craft_question(band)), todo)):
@@ -185,6 +213,11 @@ def stage_craft(band):
     json.dump(done, open(path, 'w'))
 
 # --- Stage 4: policy ----------------------------------------------------------------------------------------------
+
+# Official ratings safe for each band's "classic a little above the age" path.
+SAFE_RATINGS = {'4-6': {'G', 'TV-Y', 'TV-G', 'U'},
+                '7-10': {'G', 'PG', 'TV-Y', 'TV-Y7', 'TV-Y7-FV', 'TV-G', 'TV-PG', 'U'},
+                '11-13': {'G', 'PG', 'PG-13', 'TV-Y7', 'TV-G', 'TV-PG', 'TV-14', 'U', 'UA', 'U/A', 'U/A 7+', 'U/A 13+'}}
 
 def stage_select(band):
     cands = {'%s:%d' % (c['kind'], c['id']): c for c in load(work(band, 'candidates.json'), [])}
@@ -218,7 +251,18 @@ def stage_select(band):
         lang = c.get('lang', 'en')
         foreign_ok = lang == 'en' or (s['must'] >= 0.85 and c.get('vote_average', 0) >= 7.8 if lang in INDIAN
                                        else s['must'] >= 0.7 or (quality >= 0.6 and s['fun'] >= 2.4))
-        if (core or solid) and crafted and foreign_ok: keep.append(row)
+        cr = craft.get(k)
+        # Fun and well made: right for the age, children love it, a little lasting value, solid craft (Home Alone,
+        # Cars, Shaun the Sheep). Not every good watch has to teach something.
+        fun_path = s['jr'] >= 0.6 and s['fun'] >= 2.5 and s['value'] >= 1.4 and cr is not None and cr >= 2.0
+        # Beautifully made and enjoyable at that age (Elemental, Onward): Jev rates the craft high.
+        made_path = s['jr'] >= 0.75 and cr is not None and cr >= 2.4 and s['fun'] >= 2.0 and s['value'] >= 1.7
+        # A classic a little above the age, rated safe for it (Porco Rosso, City Lights, Remember the Titans): Jev's
+        # "too mature" also covers "too complex", which a parent can judge; the official rating covers the content.
+        safe = SAFE_RATINGS[band]
+        classic_path = s['jr'] >= 0.35 and (c.get('rating') or '') in safe and (s['must'] >= 0.6 or s['value'] >= 2.4) \
+            and s['fun'] >= 2.0 and (cr is None or cr >= 2.0)
+        if (core or solid or fun_path or made_path or classic_path) and crafted and foreign_ok: keep.append(row)
         elif (core or solid or near) and crafted: review.append(row)
     keep.sort(key=lambda r: -r['score']); review.sort(key=lambda r: -r['score'])
     json.dump({'keep': keep}, open(work(band, 'selected.json'), 'w'), indent=1)
@@ -349,11 +393,11 @@ def stage_emit(band):
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--band', required=True, choices=sorted(BANDS))
-    ap.add_argument('stage', choices=['all', 'candidates', 'judge', 'craft', 'select', 'expand', 'links', 'emit'])
+    ap.add_argument('stage', choices=['all', 'candidates', 'judge', 'craft', 'select', 'expand', 'streaming', 'links', 'emit'])
     a = ap.parse_args()
     if a.stage == 'all':
         stage_candidates(a.band); stage_judge(a.band); stage_select(a.band)
         stage_expand(a.band); stage_judge(a.band); stage_craft(a.band); stage_select(a.band); stage_links(a.band); stage_emit(a.band)
     else:
-        {'candidates': stage_candidates, 'judge': stage_judge, 'craft': stage_craft, 'select': stage_select, 'links': stage_links,
+        {'candidates': stage_candidates, 'judge': stage_judge, 'craft': stage_craft, 'select': stage_select, 'links': stage_links, 'streaming': stage_streaming,
          'expand': stage_expand, 'emit': stage_emit}[a.stage](a.band)

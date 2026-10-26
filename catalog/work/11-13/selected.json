@@ -337,6 +337,20 @@
    "craft": 2.86
   },
   {
+   "kind": "movie",
+   "id": 121,
+   "title": "The Lord of the Rings: The Two Towers",
+   "year": "2002",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.39,
+   "value": 2.8,
+   "must": 0.82,
+   "fun": 2.25,
+   "score": 0.864,
+   "craft": 2.99
+  },
+  {
    "kind": "tv",
    "id": 95171,
    "title": "Prehistoric Planet",
@@ -349,6 +363,20 @@
    "fun": 2.64,
    "score": 0.861,
    "craft": 2.96
+  },
+  {
+   "kind": "movie",
+   "id": 122,
+   "title": "The Lord of the Rings: The Return of the King",
+   "year": "2003",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.37,
+   "value": 2.77,
+   "must": 0.82,
+   "fun": 2.18,
+   "score": 0.86,
+   "craft": 2.99
   },
   {
    "kind": "tv",
@@ -965,6 +993,34 @@
    "fun": 2.82,
    "score": 0.796,
    "craft": 2.93
+  },
+  {
+   "kind": "tv",
+   "id": 37854,
+   "title": "One Piece",
+   "year": "1999",
+   "rating": "TV-14",
+   "lang": "ja",
+   "jr": 0.36,
+   "value": 2.21,
+   "must": 0.64,
+   "fun": 2.74,
+   "score": 0.796,
+   "craft": 2.47
+  },
+  {
+   "kind": "tv",
+   "id": 42573,
+   "title": "Slam Dunk",
+   "year": "1993",
+   "rating": "TV-14",
+   "lang": "ja",
+   "jr": 0.44,
+   "value": 2.17,
+   "must": 0.7,
+   "fun": 2.62,
+   "score": 0.796,
+   "craft": 2.4
   },
   {
    "kind": "movie",
@@ -1679,6 +1735,20 @@
    "fun": 2.79,
    "score": 0.749,
    "craft": 2.52
+  },
+  {
+   "kind": "movie",
+   "id": 680058,
+   "title": "The Rescue",
+   "year": "2021",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.97,
+   "value": 2.95,
+   "must": 0.48,
+   "fun": 2.06,
+   "score": 0.748,
+   "craft": 2.49
   },
   {
    "kind": "movie",
@@ -2493,6 +2563,20 @@
    "craft": 1.97
   },
   {
+   "kind": "tv",
+   "id": 81046,
+   "title": "The Dragon Prince",
+   "year": "2018",
+   "rating": "TV-PG",
+   "lang": "en",
+   "jr": 0.96,
+   "value": 1.99,
+   "must": 0.46,
+   "fun": 2.7,
+   "score": 0.7,
+   "craft": 2.48
+  },
+  {
    "kind": "movie",
    "id": 10315,
    "title": "Fantastic Mr. Fox",
@@ -2704,6 +2788,34 @@
   },
   {
    "kind": "movie",
+   "id": 756,
+   "title": "Fantasia",
+   "year": "1940",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.79,
+   "value": 2.63,
+   "must": 0.82,
+   "fun": 1.4,
+   "score": 0.692,
+   "craft": 2.95
+  },
+  {
+   "kind": "tv",
+   "id": 84200,
+   "title": "Justice League Unlimited",
+   "year": "2004",
+   "rating": "TV-Y7",
+   "lang": "en",
+   "jr": 0.95,
+   "value": 1.75,
+   "must": 0.54,
+   "fun": 2.59,
+   "score": 0.691,
+   "craft": 2.26
+  },
+  {
+   "kind": "movie",
    "id": 1366,
    "title": "Rocky",
    "year": "1976",
@@ -2788,6 +2900,20 @@
   },
   {
    "kind": "movie",
+   "id": 698948,
+   "title": "Thirteen Lives",
+   "year": "2022",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.83,
+   "value": 2.76,
+   "must": 0.37,
+   "fun": 2.1,
+   "score": 0.687,
+   "craft": 2.5
+  },
+  {
+   "kind": "movie",
    "id": 995133,
    "title": "The Boy, the Mole, the Fox and the Horse",
    "year": "2022",
@@ -2799,6 +2925,20 @@
    "fun": 1.64,
    "score": 0.686,
    "craft": 2.81
+  },
+  {
+   "kind": "movie",
+   "id": 165,
+   "title": "Back to the Future Part II",
+   "year": "1989",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.99,
+   "value": 1.73,
+   "must": 0.65,
+   "fun": 2.7,
+   "score": 0.686,
+   "craft": 2.5
   },
   {
    "kind": "tv",
@@ -2871,6 +3011,34 @@
    "craft": 2.2
   },
   {
+   "kind": "tv",
+   "id": 78173,
+   "title": "Dragons: Race to the Edge",
+   "year": "2015",
+   "rating": "TV-Y7",
+   "lang": "en",
+   "jr": 0.87,
+   "value": 1.96,
+   "must": 0.38,
+   "fun": 2.64,
+   "score": 0.683,
+   "craft": 2.05
+  },
+  {
+   "kind": "tv",
+   "id": 4625,
+   "title": "The New Batman Adventures",
+   "year": "1997",
+   "rating": "TV-PG",
+   "lang": "en",
+   "jr": 0.97,
+   "value": 1.79,
+   "must": 0.55,
+   "fun": 2.62,
+   "score": 0.683,
+   "craft": 2.27
+  },
+  {
    "kind": "movie",
    "id": 531,
    "title": "The Wrong Trousers",
@@ -2911,6 +3079,20 @@
    "fun": 2.16,
    "score": 0.682,
    "craft": 2.2
+  },
+  {
+   "kind": "movie",
+   "id": 501929,
+   "title": "The Mitchells vs. the Machines",
+   "year": "2021",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.99,
+   "value": 1.99,
+   "must": 0.49,
+   "fun": 2.71,
+   "score": 0.68,
+   "craft": 2.79
   },
   {
    "kind": "movie",
@@ -3096,6 +3278,20 @@
   },
   {
    "kind": "tv",
+   "id": 45783,
+   "title": "Kuroko's Basketball",
+   "year": "2012",
+   "rating": "NR",
+   "lang": "ja",
+   "jr": 0.99,
+   "value": 1.89,
+   "must": 0.4,
+   "fun": 2.52,
+   "score": 0.673,
+   "craft": 2.07
+  },
+  {
+   "kind": "tv",
    "id": 211694,
    "title": "Island of the Sea Wolves",
    "year": "2022",
@@ -3249,6 +3445,20 @@
    "craft": 2.38
   },
   {
+   "kind": "movie",
+   "id": 863,
+   "title": "Toy Story 2",
+   "year": "1999",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.58,
+   "value": 2.0,
+   "must": 0.71,
+   "fun": 2.0,
+   "score": 0.662,
+   "craft": 2.61
+  },
+  {
    "kind": "tv",
    "id": 108303,
    "title": "Tiny World",
@@ -3334,6 +3544,20 @@
   },
   {
    "kind": "movie",
+   "id": 1108427,
+   "title": "Moana",
+   "year": "2026",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.88,
+   "value": 2.41,
+   "must": 0.42,
+   "fun": 2.38,
+   "score": 0.659,
+   "craft": 1.91
+  },
+  {
+   "kind": "movie",
    "id": 317557,
    "title": "Queen of Katwe",
    "year": "2016",
@@ -3345,6 +3569,20 @@
    "fun": 1.91,
    "score": 0.658,
    "craft": 2.32
+  },
+  {
+   "kind": "movie",
+   "id": 1128559,
+   "title": "Super/Man: The Christopher Reeve Story",
+   "year": "2024",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.61,
+   "value": 2.94,
+   "must": 0.38,
+   "fun": 1.2,
+   "score": 0.658,
+   "craft": 2.45
   },
   {
    "kind": "movie",
@@ -3432,6 +3670,20 @@
   },
   {
    "kind": "movie",
+   "id": 62177,
+   "title": "Brave",
+   "year": "2012",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.95,
+   "value": 2.48,
+   "must": 0.52,
+   "fun": 2.34,
+   "score": 0.655,
+   "craft": 2.73
+  },
+  {
+   "kind": "movie",
    "id": 11236,
    "title": "The Secret Garden",
    "year": "1993",
@@ -3443,6 +3695,20 @@
    "fun": 1.9,
    "score": 0.654,
    "craft": 2.39
+  },
+  {
+   "kind": "movie",
+   "id": 38757,
+   "title": "Tangled",
+   "year": "2010",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.96,
+   "value": 1.95,
+   "must": 0.49,
+   "fun": 2.63,
+   "score": 0.653,
+   "craft": 2.62
   },
   {
    "kind": "tv",
@@ -3569,6 +3835,34 @@
    "fun": 2.42,
    "score": 0.647,
    "craft": 2.85
+  },
+  {
+   "kind": "movie",
+   "id": 585,
+   "title": "Monsters, Inc.",
+   "year": "2001",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.54,
+   "value": 1.88,
+   "must": 0.62,
+   "fun": 2.02,
+   "score": 0.645,
+   "craft": 2.74
+  },
+  {
+   "kind": "tv",
+   "id": 61923,
+   "title": "Star vs. the Forces of Evil",
+   "year": "2015",
+   "rating": "TV-Y7",
+   "lang": "en",
+   "jr": 0.84,
+   "value": 1.75,
+   "must": 0.35,
+   "fun": 2.53,
+   "score": 0.645,
+   "craft": 2.19
   },
   {
    "kind": "movie",
@@ -3709,6 +4003,20 @@
    "fun": 2.43,
    "score": 0.64,
    "craft": 2.2
+  },
+  {
+   "kind": "tv",
+   "id": 105971,
+   "title": "Star Wars: The Bad Batch",
+   "year": "2021",
+   "rating": "TV-PG",
+   "lang": "en",
+   "jr": 0.83,
+   "value": 1.77,
+   "must": 0.4,
+   "fun": 2.53,
+   "score": 0.64,
+   "craft": 2.36
   },
   {
    "kind": "movie",
@@ -4034,6 +4342,20 @@
   },
   {
    "kind": "movie",
+   "id": 638507,
+   "title": "How to Train Your Dragon: Homecoming",
+   "year": "2019",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.92,
+   "value": 1.88,
+   "must": 0.38,
+   "fun": 2.33,
+   "score": 0.624,
+   "craft": 2.42
+  },
+  {
+   "kind": "movie",
    "id": 297222,
    "title": "PK",
    "year": "2014",
@@ -4075,6 +4397,20 @@
    "craft": 2.71
   },
   {
+   "kind": "tv",
+   "id": 83039,
+   "title": "Salt Fat Acid Heat",
+   "year": "2018",
+   "rating": "TV-PG",
+   "lang": "en",
+   "jr": 0.99,
+   "value": 2.56,
+   "must": 0.38,
+   "fun": 1.5,
+   "score": 0.624,
+   "craft": 2.46
+  },
+  {
    "kind": "movie",
    "id": 16515,
    "title": "Captains Courageous",
@@ -4101,6 +4437,48 @@
    "fun": 1.58,
    "score": 0.623,
    "craft": 2.13
+  },
+  {
+   "kind": "movie",
+   "id": 10144,
+   "title": "The Little Mermaid",
+   "year": "1989",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.45,
+   "value": 1.82,
+   "must": 0.69,
+   "fun": 2.08,
+   "score": 0.622,
+   "craft": 2.75
+  },
+  {
+   "kind": "tv",
+   "id": 94810,
+   "title": "Adventure Time: Distant Lands",
+   "year": "2020",
+   "rating": "TV-PG",
+   "lang": "en",
+   "jr": 0.9,
+   "value": 1.85,
+   "must": 0.35,
+   "fun": 2.31,
+   "score": 0.621,
+   "craft": 2.58
+  },
+  {
+   "kind": "movie",
+   "id": 387426,
+   "title": "Okja",
+   "year": "2017",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.42,
+   "value": 2.69,
+   "must": 0.3,
+   "fun": 2.07,
+   "score": 0.621,
+   "craft": 2.73
   },
   {
    "kind": "movie",
@@ -4146,6 +4524,20 @@
   },
   {
    "kind": "movie",
+   "id": 260513,
+   "title": "Incredibles 2",
+   "year": "2018",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.97,
+   "value": 1.77,
+   "must": 0.52,
+   "fun": 2.51,
+   "score": 0.617,
+   "craft": 2.47
+  },
+  {
+   "kind": "movie",
    "id": 57586,
    "title": "African Cats",
    "year": "2011",
@@ -4185,6 +4577,20 @@
    "fun": 1.25,
    "score": 0.616,
    "craft": 2.2
+  },
+  {
+   "kind": "movie",
+   "id": 592350,
+   "title": "My Hero Academia: Heroes Rising",
+   "year": "2019",
+   "rating": "PG-13",
+   "lang": "ja",
+   "jr": 0.7,
+   "value": 1.74,
+   "must": 0.28,
+   "fun": 2.61,
+   "score": 0.613,
+   "craft": 2.01
   },
   {
    "kind": "movie",
@@ -4286,6 +4692,20 @@
   },
   {
    "kind": "movie",
+   "id": 762,
+   "title": "Monty Python and the Holy Grail",
+   "year": "1975",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.67,
+   "value": 1.46,
+   "must": 0.66,
+   "fun": 2.13,
+   "score": 0.61,
+   "craft": null
+  },
+  {
+   "kind": "movie",
    "id": 838240,
    "title": "Robot Dreams",
    "year": "2023",
@@ -4327,6 +4747,20 @@
    "craft": 2.49
   },
   {
+   "kind": "tv",
+   "id": 69293,
+   "title": "Little Witch Academia",
+   "year": "2017",
+   "rating": "TV-Y7",
+   "lang": "ja",
+   "jr": 0.77,
+   "value": 1.97,
+   "must": 0.26,
+   "fun": 2.51,
+   "score": 0.609,
+   "craft": 2.11
+  },
+  {
    "kind": "movie",
    "id": 297762,
    "title": "Wonder Woman",
@@ -4353,6 +4787,20 @@
    "fun": 1.52,
    "score": 0.608,
    "craft": 2.24
+  },
+  {
+   "kind": "movie",
+   "id": 788,
+   "title": "Mrs. Doubtfire",
+   "year": "1993",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.75,
+   "value": 2.17,
+   "must": 0.46,
+   "fun": 2.25,
+   "score": 0.608,
+   "craft": 2.28
   },
   {
    "kind": "movie",
@@ -4607,6 +5055,20 @@
    "craft": 2.86
   },
   {
+   "kind": "tv",
+   "id": 72705,
+   "title": "Marvel's Spider-Man",
+   "year": "2017",
+   "rating": "NR",
+   "lang": "en",
+   "jr": 0.94,
+   "value": 1.89,
+   "must": 0.31,
+   "fun": 2.7,
+   "score": 0.596,
+   "craft": 2.05
+  },
+  {
    "kind": "movie",
    "id": 168,
    "title": "Star Trek IV: The Voyage Home",
@@ -4762,6 +5224,20 @@
   },
   {
    "kind": "movie",
+   "id": 560057,
+   "title": "The Sea Beast",
+   "year": "2022",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.97,
+   "value": 2.09,
+   "must": 0.3,
+   "fun": 2.45,
+   "score": 0.586,
+   "craft": 2.55
+  },
+  {
+   "kind": "movie",
    "id": 860,
    "title": "WarGames",
    "year": "1983",
@@ -4801,6 +5277,20 @@
    "fun": 1.9,
    "score": 0.583,
    "craft": 2.04
+  },
+  {
+   "kind": "movie",
+   "id": 1584,
+   "title": "The School of Rock",
+   "year": "2003",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.66,
+   "value": 1.93,
+   "must": 0.41,
+   "fun": 2.52,
+   "score": 0.582,
+   "craft": 2.19
   },
   {
    "kind": "movie",
@@ -4930,6 +5420,20 @@
   },
   {
    "kind": "movie",
+   "id": 140607,
+   "title": "Star Wars: The Force Awakens",
+   "year": "2015",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.71,
+   "value": 1.58,
+   "must": 0.44,
+   "fun": 2.69,
+   "score": 0.574,
+   "craft": 2.15
+  },
+  {
+   "kind": "movie",
    "id": 22881,
    "title": "The Blind Side",
    "year": "2009",
@@ -4941,6 +5445,34 @@
    "fun": 1.65,
    "score": 0.574,
    "craft": 2.07
+  },
+  {
+   "kind": "movie",
+   "id": 8844,
+   "title": "Jumanji",
+   "year": "1995",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.96,
+   "value": 1.74,
+   "must": 0.39,
+   "fun": 2.61,
+   "score": 0.574,
+   "craft": 2.14
+  },
+  {
+   "kind": "movie",
+   "id": 508439,
+   "title": "Onward",
+   "year": "2020",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.98,
+   "value": 2.02,
+   "must": 0.28,
+   "fun": 2.23,
+   "score": 0.574,
+   "craft": 2.45
   },
   {
    "kind": "movie",
@@ -4971,6 +5503,20 @@
    "craft": 2.01
   },
   {
+   "kind": "tv",
+   "id": 71809,
+   "title": "The Dark Crystal: Age of Resistance",
+   "year": "2019",
+   "rating": "TV-PG",
+   "lang": "en",
+   "jr": 0.86,
+   "value": 2.18,
+   "must": 0.22,
+   "fun": 2.01,
+   "score": 0.574,
+   "craft": 2.44
+  },
+  {
    "kind": "movie",
    "id": 668482,
    "title": "Roald Dahl's Matilda the Musical",
@@ -4983,6 +5529,20 @@
    "fun": 2.26,
    "score": 0.573,
    "craft": 2.2
+  },
+  {
+   "kind": "tv",
+   "id": 68394,
+   "title": "Watership Down",
+   "year": "2018",
+   "rating": "TV-PG",
+   "lang": "en",
+   "jr": 0.7,
+   "value": 2.53,
+   "must": 0.41,
+   "fun": 1.71,
+   "score": 0.572,
+   "craft": 2.22
   },
   {
    "kind": "movie",
@@ -5067,6 +5627,20 @@
    "fun": 2.03,
    "score": 0.563,
    "craft": 1.92
+  },
+  {
+   "kind": "movie",
+   "id": 850,
+   "title": "A Christmas Story",
+   "year": "1983",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.95,
+   "value": 1.52,
+   "must": 0.6,
+   "fun": 2.16,
+   "score": 0.563,
+   "craft": null
   },
   {
    "kind": "movie",
@@ -5168,6 +5742,20 @@
   },
   {
    "kind": "movie",
+   "id": 315635,
+   "title": "Spider-Man: Homecoming",
+   "year": "2017",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.69,
+   "value": 1.67,
+   "must": 0.3,
+   "fun": 2.68,
+   "score": 0.556,
+   "craft": 2.11
+  },
+  {
+   "kind": "movie",
    "id": 15370,
    "title": "The Cat Returns",
    "year": "2002",
@@ -5224,6 +5812,20 @@
   },
   {
    "kind": "movie",
+   "id": 929204,
+   "title": "Wallace & Gromit: Vengeance Most Fowl",
+   "year": "2024",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.95,
+   "value": 1.85,
+   "must": 0.3,
+   "fun": 2.25,
+   "score": 0.551,
+   "craft": 2.57
+  },
+  {
+   "kind": "movie",
    "id": 272878,
    "title": "Max",
    "year": "2015",
@@ -5249,6 +5851,20 @@
    "fun": 1.35,
    "score": 0.548,
    "craft": 2.89
+  },
+  {
+   "kind": "movie",
+   "id": 629542,
+   "title": "The Bad Guys",
+   "year": "2022",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.93,
+   "value": 1.68,
+   "must": 0.26,
+   "fun": 2.54,
+   "score": 0.548,
+   "craft": 2.14
   },
   {
    "kind": "movie",
@@ -5291,6 +5907,20 @@
    "fun": 1.52,
    "score": 0.546,
    "craft": 1.93
+  },
+  {
+   "kind": "movie",
+   "id": 8974,
+   "title": "The War of the Worlds",
+   "year": "1953",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.79,
+   "value": 2.05,
+   "must": 0.56,
+   "fun": 1.71,
+   "score": 0.545,
+   "craft": 2.26
   },
   {
    "kind": "movie",
@@ -5392,6 +6022,20 @@
   },
   {
    "kind": "movie",
+   "id": 11708,
+   "title": "Chitty Chitty Bang Bang",
+   "year": "1968",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.83,
+   "value": 1.82,
+   "must": 0.47,
+   "fun": 2.17,
+   "score": 0.536,
+   "craft": 2.44
+  },
+  {
+   "kind": "movie",
    "id": 278927,
    "title": "The Jungle Book",
    "year": "2016",
@@ -5406,6 +6050,20 @@
   },
   {
    "kind": "movie",
+   "id": 38055,
+   "title": "Megamind",
+   "year": "2010",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.95,
+   "value": 1.85,
+   "must": 0.28,
+   "fun": 2.5,
+   "score": 0.535,
+   "craft": 2.14
+  },
+  {
+   "kind": "movie",
    "id": 157841,
    "title": "The Young and Prodigious T.S. Spivet",
    "year": "2013",
@@ -5417,6 +6075,20 @@
    "fun": 1.93,
    "score": 0.535,
    "craft": 2.34
+  },
+  {
+   "kind": "tv",
+   "id": 130521,
+   "title": "Countdown: Inspiration4 Mission to Space",
+   "year": "2021",
+   "rating": "",
+   "lang": "en",
+   "jr": 0.99,
+   "value": 2.53,
+   "must": 0.18,
+   "fun": 1.87,
+   "score": 0.533,
+   "craft": 2.09
   },
   {
    "kind": "movie",
@@ -5462,6 +6134,20 @@
   },
   {
    "kind": "movie",
+   "id": 324849,
+   "title": "The Lego Batman Movie",
+   "year": "2017",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.92,
+   "value": 1.54,
+   "must": 0.27,
+   "fun": 2.64,
+   "score": 0.525,
+   "craft": 2.05
+  },
+  {
+   "kind": "movie",
    "id": 664996,
    "title": "Apollo 10\u00bd: A Space Age Childhood",
    "year": "2022",
@@ -5473,6 +6159,34 @@
    "fun": 1.42,
    "score": 0.516,
    "craft": 2.73
+  },
+  {
+   "kind": "movie",
+   "id": 429617,
+   "title": "Spider-Man: Far From Home",
+   "year": "2019",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.65,
+   "value": 1.52,
+   "must": 0.24,
+   "fun": 2.54,
+   "score": 0.516,
+   "craft": 2.07
+  },
+  {
+   "kind": "movie",
+   "id": 102651,
+   "title": "Maleficent",
+   "year": "2014",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.91,
+   "value": 1.96,
+   "must": 0.25,
+   "fun": 2.14,
+   "score": 0.514,
+   "craft": 2.4
   },
   {
    "kind": "tv",
@@ -5532,6 +6246,20 @@
   },
   {
    "kind": "movie",
+   "id": 514921,
+   "title": "The Aeronauts",
+   "year": "2019",
+   "rating": "PG-13",
+   "lang": "en",
+   "jr": 0.64,
+   "value": 2.65,
+   "must": 0.17,
+   "fun": 1.55,
+   "score": 0.504,
+   "craft": 2.34
+  },
+  {
+   "kind": "movie",
    "id": 14325,
    "title": "The Express",
    "year": "2008",
@@ -5571,6 +6299,20 @@
    "fun": 0.95,
    "score": 0.481,
    "craft": 2.6
+  },
+  {
+   "kind": "movie",
+   "id": 614930,
+   "title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+   "year": "2023",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.95,
+   "value": 1.42,
+   "must": 0.19,
+   "fun": 2.56,
+   "score": 0.481,
+   "craft": 2.0
   },
   {
    "kind": "movie",

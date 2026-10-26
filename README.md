@@ -53,17 +53,19 @@ Everything below sits behind a **parent PIN**.
 
 | Age | Titles | For example |
 |---|---|---|
-| 4-6 | 86 | *My Neighbor Totoro*, *Bluey*, *Paddington 2*, *The Magic School Bus*, *Finding Nemo* |
-| 7-10 | 314 | *Coco*, *The Iron Giant*, *Planet Earth*, *Avatar: The Last Airbender*, *Wolfwalkers*, *Taare Zameen Par* |
-| 11-13 | 400 | *Princess Mononoke*, *Interstellar*, *To Kill a Mockingbird*, *The Man Who Knew Infinity*, *Dangal* |
+| 4-6 | 106 | *My Neighbor Totoro*, *Bluey*, *Paddington 2*, *The Magic School Bus*, *Finding Nemo* |
+| 7-10 | 372 | *Coco*, *The Iron Giant*, *Planet Earth*, *Avatar: The Last Airbender*, *Wolfwalkers*, *Taare Zameen Par* |
+| 11-13 | 453 | *Princess Mononoke*, *Interstellar*, *To Kill a Mockingbird*, *The Man Who Knew Infinity*, *Dangal* |
 
 1. **Wide search.** Best-of lists (Common Sense Media, BFI, children's film awards), sweeps of
    [TMDB](https://www.themoviedb.org), and TMDB's recommendations for every title kept: about 4,800 candidates.
 2. **Hard rules.** Official age ratings, enough votes, a good audience rating.
 3. **Judged one by one.** [Jev](https://typesafe.ai), TypeSafe's System One model, rates each title for that age:
    right for the age, lasting value, must-watch, how much a child will enjoy it and, from 7, how well it's made.
-4. **A clear policy, in code.** Mostly English-language titles plus the outstanding few from elsewhere; the best
-   come up most often; the famous ones every family has seen come up only now and then.
+4. **A clear policy, in code.** A title gets in if it's right for the age and leaves real value, or is pure fun and
+   well made (*Home Alone*, *Cars*), or beautifully made (*Elemental*), or a safely rated classic. Mostly
+   English-language titles plus the outstanding few from elsewhere. A second search starts from what actually streams
+   in your country, so the lists are full of titles you can play.
 5. **A person reviews** every borderline title before it ships.
 
 Every candidate, judgment and decision is in [`catalog/`](catalog/), so any choice can be read, questioned and changed.

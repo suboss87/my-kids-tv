@@ -26,11 +26,13 @@ band,kind,tmdb_id,title,year,original_language,genres,age_rating,tmdb_url,badge,
 4-6,movie,13187,A Charlie Brown Christmas,1965,en,Animation;Family;Comedy;TV Movie,NR,https://www.themoviedb.org/movie/13187,must-watch,0.88,2.38,0.76,2.13,0.735
 4-6,movie,15171,Charlotte's Web,1973,en,Family;Animation;Drama,G,https://www.themoviedb.org/movie/15171,,0.58,2.79,0.7,2.39,0.73
 4-6,movie,9325,The Jungle Book,1967,en,Family;Animation;Adventure,NR,https://www.themoviedb.org/movie/9325,must-watch,0.63,2.15,0.77,2.72,0.729
+4-6,movie,10895,Pinocchio,1940,en,Animation;Family;Fantasy,G,https://www.themoviedb.org/movie/10895,must-watch,0.36,2.63,0.79,2.11,0.726
 4-6,series,10821,Blue's Clues,1996,en,Kids;Comedy;Animation;Family,TV-Y,https://www.themoviedb.org/tv/10821,kids-love-it,0.87,2.24,0.57,2.77,0.725
 4-6,movie,109445,Frozen,2013,en,Animation;Family;Adventure;Fantasy,PG,https://www.themoviedb.org/movie/109445,kids-love-it,0.65,2.16,0.7,2.88,0.723
 4-6,series,2957,Fraggle Rock,1983,en,Kids;Family;Sci-Fi & Fantasy;Comedy,TV-G,https://www.themoviedb.org/tv/2957,,0.91,2.59,0.56,2.46,0.707
 4-6,movie,812,Aladdin,1992,en,Animation;Family;Adventure;Fantasy;Romance,G,https://www.themoviedb.org/movie/812,kids-love-it,0.71,1.84,0.68,2.77,0.706
 4-6,series,106009,Numberblocks,2017,en,Kids;Animation;Family,TV-Y,https://www.themoviedb.org/tv/106009,kids-love-it,0.95,2.04,0.44,2.84,0.705
+4-6,series,256953,Bluey Minisodes,2024,en,Animation;Family;Kids,TV-Y,https://www.themoviedb.org/tv/256953,kids-love-it,0.99,1.75,0.52,2.86,0.7
 4-6,movie,10144,The Little Mermaid,1989,en,Animation;Family;Fantasy,G,https://www.themoviedb.org/movie/10144,kids-love-it,0.65,1.85,0.71,2.82,0.692
 4-6,series,35094,Wild Kratts,2011,en,Family;Animation;Comedy,TV-Y,https://www.themoviedb.org/tv/35094,,0.98,2.6,0.34,2.72,0.69
 4-6,movie,28118,The Gruffalo,2009,en,Animation;Family;TV Movie,G,https://www.themoviedb.org/movie/28118,kids-love-it,0.97,2.07,0.56,2.88,0.689
@@ -42,9 +44,11 @@ band,kind,tmdb_id,title,year,original_language,genres,age_rating,tmdb_url,badge,
 4-6,movie,116149,Paddington,2014,en,Comedy;Adventure;Family,PG,https://www.themoviedb.org/movie/116149,,0.85,2.4,0.47,2.72,0.671
 4-6,series,1878,The Backyardigans,2004,en,Kids;Animation,TV-Y,https://www.themoviedb.org/tv/1878,kids-love-it,0.98,1.93,0.34,2.88,0.67
 4-6,movie,250480,The Many Adventures of Winnie the Pooh,1977,en,Animation;Family;Adventure,G,https://www.themoviedb.org/movie/250480,,0.96,2.07,0.6,2.61,0.665
+4-6,movie,252,Willy Wonka & the Chocolate Factory,1971,en,Family;Fantasy;Comedy,G,https://www.themoviedb.org/movie/252,,0.39,2.03,0.68,2.19,0.663
 4-6,series,720,DuckTales,1987,en,Animation;Mystery;Sci-Fi & Fantasy;Comedy;Kids,TV-Y,https://www.themoviedb.org/tv/720,,0.66,1.93,0.57,2.43,0.66
 4-6,movie,301528,Toy Story 4,2019,en,Family;Comedy;Animation;Adventure,G,https://www.themoviedb.org/movie/301528,,0.64,2.04,0.53,2.57,0.66
 4-6,movie,514754,Bao,2018,en,Animation;Family;Fantasy;Drama;Comedy,G,https://www.themoviedb.org/movie/514754,,0.43,2.29,0.51,2.17,0.654
+4-6,movie,10693,Peter Pan,1953,en,Animation;Family;Adventure;Fantasy,G,https://www.themoviedb.org/movie/10693,,0.43,2.0,0.67,2.37,0.65
 4-6,series,656,Curious George,2006,en,Animation;Family;Kids,TV-Y,https://www.themoviedb.org/tv/656,kids-love-it,0.97,2.06,0.47,2.82,0.645
 4-6,movie,10198,The Princess and the Frog,2009,en,Animation;Romance;Fantasy;Family,G,https://www.themoviedb.org/movie/10198,,0.78,2.31,0.43,2.53,0.643
 4-6,movie,530,A Grand Day Out,1990,en,Family;Animation;Comedy;Science Fiction;Adventure,G,https://www.themoviedb.org/movie/530,,0.61,1.81,0.61,2.44,0.642
@@ -52,36 +56,52 @@ band,kind,tmdb_id,title,year,original_language,genres,age_rating,tmdb_url,badge,
 4-6,movie,127380,Finding Dory,2016,en,Adventure;Animation;Family,PG,https://www.themoviedb.org/movie/127380,,0.84,2.02,0.53,2.72,0.636
 4-6,movie,11886,Robin Hood,1973,en,Animation;Family;Adventure,G,https://www.themoviedb.org/movie/11886,,0.72,2.06,0.53,2.4,0.634
 4-6,movie,475215,Mirai,2018,ja,Animation;Family;Fantasy;Adventure;Drama,PG,https://www.themoviedb.org/movie/475215,,0.56,2.71,0.49,1.74,0.633
+4-6,movie,11360,Dumbo,1941,en,Animation;Family,G,https://www.themoviedb.org/movie/11360,,0.55,2.1,0.62,2.34,0.632
 4-6,movie,12230,One Hundred and One Dalmatians,1961,en,Adventure;Animation;Comedy;Family,G,https://www.themoviedb.org/movie/12230,,0.62,1.83,0.62,2.54,0.631
+4-6,movie,13353,"It's the Great Pumpkin, Charlie Brown",1966,en,Family;Animation;TV Movie;Comedy,G,https://www.themoviedb.org/movie/13353,,0.87,1.73,0.65,2.26,0.63
+4-6,series,3902,Shaun the Sheep,2007,en,Kids;Animation;Family;Comedy,TV-Y7,https://www.themoviedb.org/tv/3902,kids-love-it,0.9,1.49,0.51,2.83,0.625
+4-6,movie,137106,The Lego Movie,2014,en,Animation;Family;Adventure;Comedy;Fantasy,PG,https://www.themoviedb.org/movie/137106,,0.6,1.86,0.49,2.57,0.624
 4-6,series,40050,Daniel Tiger's Neighborhood,2012,en,Animation;Family;Kids,TV-G,https://www.themoviedb.org/tv/40050,,0.85,2.26,0.37,2.6,0.618
 4-6,series,37472,Octonauts,2010,en,Animation;Kids;Action & Adventure,TV-Y,https://www.themoviedb.org/tv/37472,,0.97,2.32,0.32,2.64,0.615
 4-6,series,3090,Little Einsteins,2005,en,Animation;Family;Kids,TV-Y,https://www.themoviedb.org/tv/3090,,0.97,2.46,0.26,2.49,0.611
+4-6,movie,11688,The Emperor's New Groove,2000,en,Adventure;Animation;Comedy;Family;Fantasy,G,https://www.themoviedb.org/movie/11688,,0.84,1.82,0.42,2.56,0.611
 4-6,series,4217,Zoboomafoo,1999,en,Comedy;Kids;Documentary,TV-Y,https://www.themoviedb.org/tv/4217,learn-something,0.98,2.59,0.29,2.48,0.611
 4-6,movie,920,Cars,2006,en,Animation;Adventure;Comedy;Family,G,https://www.themoviedb.org/movie/920,,0.89,1.94,0.47,2.67,0.608
+4-6,movie,1084244,Toy Story 5,2026,en,Animation;Family;Comedy;Adventure,PG,https://www.themoviedb.org/movie/1084244,,0.72,1.56,0.28,2.66,0.606
 4-6,movie,9487,A Bug's Life,1998,en,Adventure;Animation;Comedy;Family,G,https://www.themoviedb.org/movie/9487,,0.7,2.07,0.5,2.42,0.604
 4-6,movie,14813,Mickey's Christmas Carol,1983,en,Family;Animation,G,https://www.themoviedb.org/movie/14813,,0.67,2.11,0.34,2.23,0.604
 4-6,series,6460,The Busy World of Richard Scarry,1994,en,Animation;Kids,TV-Y,https://www.themoviedb.org/tv/6460,,0.97,1.9,0.37,2.54,0.601
 4-6,movie,528644,Bilby,2018,en,Animation;Comedy;Family;Adventure,G,https://www.themoviedb.org/movie/528644,,0.88,2.02,0.21,2.36,0.596
+4-6,movie,453191,The Big Bad Fox and Other Tales,2017,fr,Family;Animation;Comedy,G,https://www.themoviedb.org/movie/453191,,0.85,1.78,0.38,2.42,0.596
 4-6,series,31623,Team Umizoomi,2010,en,Action & Adventure;Animation;Kids;Sci-Fi & Fantasy,TV-Y,https://www.themoviedb.org/tv/31623,,0.96,1.99,0.23,2.39,0.594
 4-6,movie,560050,Over the Moon,2020,en,Animation;Adventure;Family;Fantasy,PG,https://www.themoviedb.org/movie/560050,,0.69,2.23,0.31,2.38,0.587
 4-6,movie,10009,Brother Bear,2003,en,Adventure;Animation;Family,G,https://www.themoviedb.org/movie/10009,,0.68,2.29,0.28,2.28,0.586
+4-6,movie,12092,Alice in Wonderland,1951,en,Animation;Family;Fantasy;Adventure,G,https://www.themoviedb.org/movie/12092,,0.53,1.63,0.64,2.19,0.585
+4-6,series,64752,The Lion Guard,2016,en,Kids;Animation,TV-Y,https://www.themoviedb.org/tv/64752,,0.9,1.99,0.2,2.6,0.585
 4-6,movie,13479,A Charlie Brown Thanksgiving,1973,en,Animation;Comedy;Family;TV Movie,G,https://www.themoviedb.org/movie/13479,,0.92,1.95,0.43,2.18,0.577
 4-6,movie,51162,Winnie the Pooh,2011,en,Animation;Family;Adventure;Comedy,G,https://www.themoviedb.org/movie/51162,kids-love-it,0.96,1.92,0.37,2.75,0.577
 4-6,movie,40619,Day & Night,2010,en,Animation;Family;Comedy;Fantasy,G,https://www.themoviedb.org/movie/40619,,0.91,1.96,0.29,2.19,0.573
+4-6,movie,10882,Sleeping Beauty,1959,en,Fantasy;Animation;Romance;Family,G,https://www.themoviedb.org/movie/10882,,0.63,1.62,0.67,2.18,0.572
 4-6,series,9834,Little Bear,1995,en,Animation;Drama;Kids;Sci-Fi & Fantasy,TV-Y,https://www.themoviedb.org/tv/9834,,0.93,2.12,0.35,2.38,0.571
 4-6,series,64198,Blaze and the Monster Machines,2014,en,Kids;Animation;Family;Comedy,TV-Y,https://www.themoviedb.org/tv/64198,,0.94,2.09,0.18,2.54,0.568
+4-6,movie,13925,Luxo Jr.,1986,en,Animation;Comedy,G,https://www.themoviedb.org/movie/13925,,0.88,1.47,0.55,2.56,0.562
 4-6,series,94075,Doki,2013,en,Animation;Kids,TV-Y7,https://www.themoviedb.org/tv/94075,,0.73,2.06,0.15,2.17,0.556
+4-6,movie,263109,Shaun the Sheep Movie,2015,en,Family;Animation;Comedy;Adventure,PG,https://www.themoviedb.org/movie/263109,,0.86,1.71,0.37,2.71,0.555
 4-6,series,10867,Wonder Pets!,2006,en,Animation;Kids,TV-Y,https://www.themoviedb.org/tv/10867,,0.97,1.96,0.18,2.6,0.55
 4-6,movie,364689,Ferdinand,2017,en,Animation;Family;Adventure;Comedy,PG,https://www.themoviedb.org/movie/364689,,0.79,2.11,0.23,2.32,0.549
 4-6,series,92885,Blue's Clues & You!,2019,en,Kids;Comedy;Animation,TV-G,https://www.themoviedb.org/tv/92885,,0.88,2.01,0.25,2.49,0.542
 4-6,series,1585,Dragon Tales,1999,en,Kids;Animation;Sci-Fi & Fantasy;Comedy;Family;Drama,TV-Y,https://www.themoviedb.org/tv/1585,,0.96,1.91,0.19,2.53,0.541
 4-6,movie,13400,Santa Claus Is Comin' to Town,1970,en,Animation;Family;Fantasy;TV Movie,G,https://www.themoviedb.org/movie/13400,,0.69,1.92,0.33,2.15,0.535
 4-6,movie,360920,The Grinch,2018,en,Animation;Comedy;Family;Fantasy,PG,https://www.themoviedb.org/movie/360920,,0.82,1.93,0.27,2.53,0.531
+4-6,movie,81684,The Gruffalo's Child,2011,en,Adventure;Animation;Family;Fantasy;TV Movie,G,https://www.themoviedb.org/movie/81684,,0.93,1.73,0.34,2.64,0.529
 4-6,series,2153,Arthur,1996,en,Animation;Comedy;Kids;Family,TV-Y,https://www.themoviedb.org/tv/2153,,0.68,2.06,0.38,1.83,0.525
+4-6,series,30958,Charlie and Lola,2005,en,Kids;Animation;Family,TV-Y,https://www.themoviedb.org/tv/30958,,0.97,1.78,0.3,2.64,0.525
 4-6,movie,13397,The Year Without a Santa Claus,1974,en,Animation;Family;TV Movie;Fantasy,G,https://www.themoviedb.org/movie/13397,,0.83,1.93,0.27,2.2,0.525
 4-6,movie,297270,Tinker Bell and the Legend of the NeverBeast,2014,en,Adventure;Animation;Family,G,https://www.themoviedb.org/movie/297270,,0.81,1.92,0.16,2.28,0.524
 4-6,series,1894,LazyTown,2004,en,Comedy;Kids;Family,TV-Y,https://www.themoviedb.org/tv/1894,,0.98,1.91,0.19,2.31,0.521
 4-6,series,73549,Odd Squad,2014,en,Comedy;Crime;Family;Sci-Fi & Fantasy;Mystery;Kids,TV-Y,https://www.themoviedb.org/tv/73549,,0.84,2.04,0.24,2.26,0.512
 4-6,movie,516729,Paddington in Peru,2024,en,Adventure;Comedy;Family,PG,https://www.themoviedb.org/movie/516729,,0.8,1.98,0.18,2.54,0.51
+4-6,movie,422803,A Shaun the Sheep Movie: Farmageddon,2019,en,Family;Comedy;Adventure;Animation;Science Fiction,G,https://www.themoviedb.org/movie/422803,,0.83,1.6,0.27,2.62,0.504
+4-6,series,9262,Pingu,1986,en,Animation;Comedy;Kids,TV-Y,https://www.themoviedb.org/tv/9262,,0.92,1.45,0.32,2.56,0.493
 4-6,series,118439,Waffles + Mochi,2021,en,Kids,TV-Y,https://www.themoviedb.org/tv/118439,,0.95,2.05,0.14,2.26,0.493
 4-6,movie,649928,Robin Robin,2021,en,Animation;Adventure;Family,G,https://www.themoviedb.org/movie/649928,,0.77,1.98,0.17,2.17,0.492

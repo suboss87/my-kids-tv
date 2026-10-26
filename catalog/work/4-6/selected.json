@@ -12,7 +12,7 @@
    "must": 0.9,
    "fun": 2.99,
    "score": 0.93,
-   "craft": null
+   "craft": 2.9
   },
   {
    "kind": "movie",
@@ -26,7 +26,7 @@
    "must": 0.87,
    "fun": 2.76,
    "score": 0.893,
-   "craft": null
+   "craft": 2.99
   },
   {
    "kind": "movie",
@@ -40,7 +40,7 @@
    "must": 0.85,
    "fun": 2.95,
    "score": 0.854,
-   "craft": null
+   "craft": 2.95
   },
   {
    "kind": "tv",
@@ -54,7 +54,7 @@
    "must": 0.73,
    "fun": 2.75,
    "score": 0.842,
-   "craft": null
+   "craft": 2.05
   },
   {
    "kind": "movie",
@@ -68,7 +68,7 @@
    "must": 0.88,
    "fun": 2.88,
    "score": 0.837,
-   "craft": null
+   "craft": 2.91
   },
   {
    "kind": "tv",
@@ -82,7 +82,7 @@
    "must": 0.65,
    "fun": 2.05,
    "score": 0.815,
-   "craft": null
+   "craft": 2.3
   },
   {
    "kind": "movie",
@@ -96,7 +96,7 @@
    "must": 0.74,
    "fun": 2.68,
    "score": 0.808,
-   "craft": null
+   "craft": 2.92
   },
   {
    "kind": "tv",
@@ -110,7 +110,7 @@
    "must": 0.82,
    "fun": 2.86,
    "score": 0.804,
-   "craft": null
+   "craft": 2.09
   },
   {
    "kind": "movie",
@@ -124,7 +124,7 @@
    "must": 0.82,
    "fun": 2.79,
    "score": 0.802,
-   "craft": null
+   "craft": 2.69
   },
   {
    "kind": "movie",
@@ -138,7 +138,7 @@
    "must": 0.79,
    "fun": 2.14,
    "score": 0.793,
-   "craft": null
+   "craft": 2.98
   },
   {
    "kind": "movie",
@@ -152,7 +152,7 @@
    "must": 0.77,
    "fun": 2.53,
    "score": 0.772,
-   "craft": null
+   "craft": 2.98
   },
   {
    "kind": "movie",
@@ -166,7 +166,7 @@
    "must": 0.64,
    "fun": 2.68,
    "score": 0.765,
-   "craft": null
+   "craft": 2.93
   },
   {
    "kind": "movie",
@@ -180,7 +180,7 @@
    "must": 0.76,
    "fun": 2.76,
    "score": 0.763,
-   "craft": null
+   "craft": 2.85
   },
   {
    "kind": "movie",
@@ -194,7 +194,7 @@
    "must": 0.59,
    "fun": 2.57,
    "score": 0.755,
-   "craft": null
+   "craft": 2.91
   },
   {
    "kind": "movie",
@@ -208,7 +208,7 @@
    "must": 0.78,
    "fun": 2.32,
    "score": 0.755,
-   "craft": null
+   "craft": 2.97
   },
   {
    "kind": "movie",
@@ -222,7 +222,7 @@
    "must": 0.62,
    "fun": 2.84,
    "score": 0.752,
-   "craft": null
+   "craft": 2.95
   },
   {
    "kind": "movie",
@@ -236,7 +236,7 @@
    "must": 0.73,
    "fun": 2.73,
    "score": 0.752,
-   "craft": null
+   "craft": 2.8
   },
   {
    "kind": "movie",
@@ -250,7 +250,7 @@
    "must": 0.57,
    "fun": 2.61,
    "score": 0.75,
-   "craft": null
+   "craft": 2.85
   },
   {
    "kind": "movie",
@@ -264,7 +264,7 @@
    "must": 0.58,
    "fun": 2.54,
    "score": 0.743,
-   "craft": null
+   "craft": 2.77
   },
   {
    "kind": "movie",
@@ -278,7 +278,7 @@
    "must": 0.69,
    "fun": 2.79,
    "score": 0.743,
-   "craft": null
+   "craft": 2.6
   },
   {
    "kind": "movie",
@@ -292,7 +292,7 @@
    "must": 0.57,
    "fun": 2.67,
    "score": 0.743,
-   "craft": null
+   "craft": 2.43
   },
   {
    "kind": "movie",
@@ -306,7 +306,7 @@
    "must": 0.53,
    "fun": 2.15,
    "score": 0.741,
-   "craft": null
+   "craft": 2.87
   },
   {
    "kind": "movie",
@@ -320,7 +320,7 @@
    "must": 0.73,
    "fun": 2.72,
    "score": 0.74,
-   "craft": null
+   "craft": 2.72
   },
   {
    "kind": "movie",
@@ -334,7 +334,7 @@
    "must": 0.7,
    "fun": 2.4,
    "score": 0.739,
-   "craft": null
+   "craft": 2.94
   },
   {
    "kind": "movie",
@@ -348,7 +348,7 @@
    "must": 0.76,
    "fun": 2.13,
    "score": 0.735,
-   "craft": null
+   "craft": 2.62
   },
   {
    "kind": "movie",
@@ -362,7 +362,7 @@
    "must": 0.7,
    "fun": 2.39,
    "score": 0.73,
-   "craft": null
+   "craft": 2.53
   },
   {
    "kind": "movie",
@@ -376,7 +376,21 @@
    "must": 0.77,
    "fun": 2.72,
    "score": 0.729,
-   "craft": null
+   "craft": 2.79
+  },
+  {
+   "kind": "movie",
+   "id": 10895,
+   "title": "Pinocchio",
+   "year": "1940",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.36,
+   "value": 2.63,
+   "must": 0.79,
+   "fun": 2.11,
+   "score": 0.726,
+   "craft": 2.97
   },
   {
    "kind": "tv",
@@ -390,7 +404,7 @@
    "must": 0.57,
    "fun": 2.77,
    "score": 0.725,
-   "craft": null
+   "craft": 1.79
   },
   {
    "kind": "movie",
@@ -404,7 +418,7 @@
    "must": 0.7,
    "fun": 2.88,
    "score": 0.723,
-   "craft": null
+   "craft": 2.91
   },
   {
    "kind": "tv",
@@ -418,7 +432,7 @@
    "must": 0.56,
    "fun": 2.46,
    "score": 0.707,
-   "craft": null
+   "craft": 2.68
   },
   {
    "kind": "movie",
@@ -432,7 +446,7 @@
    "must": 0.68,
    "fun": 2.77,
    "score": 0.706,
-   "craft": null
+   "craft": 2.74
   },
   {
    "kind": "tv",
@@ -446,7 +460,21 @@
    "must": 0.44,
    "fun": 2.84,
    "score": 0.705,
-   "craft": null
+   "craft": 1.79
+  },
+  {
+   "kind": "tv",
+   "id": 256953,
+   "title": "Bluey Minisodes",
+   "year": "2024",
+   "rating": "TV-Y",
+   "lang": "en",
+   "jr": 0.99,
+   "value": 1.75,
+   "must": 0.52,
+   "fun": 2.86,
+   "score": 0.7,
+   "craft": 2.15
   },
   {
    "kind": "movie",
@@ -460,7 +488,7 @@
    "must": 0.71,
    "fun": 2.82,
    "score": 0.692,
-   "craft": null
+   "craft": 2.85
   },
   {
    "kind": "tv",
@@ -474,7 +502,7 @@
    "must": 0.34,
    "fun": 2.72,
    "score": 0.69,
-   "craft": null
+   "craft": 1.82
   },
   {
    "kind": "movie",
@@ -488,7 +516,7 @@
    "must": 0.56,
    "fun": 2.88,
    "score": 0.689,
-   "craft": null
+   "craft": 2.25
   },
   {
    "kind": "movie",
@@ -502,7 +530,7 @@
    "must": 0.75,
    "fun": 2.72,
    "score": 0.685,
-   "craft": null
+   "craft": 2.84
   },
   {
    "kind": "movie",
@@ -516,7 +544,7 @@
    "must": 0.61,
    "fun": 2.78,
    "score": 0.684,
-   "craft": null
+   "craft": 2.65
   },
   {
    "kind": "tv",
@@ -530,7 +558,7 @@
    "must": 0.4,
    "fun": 2.54,
    "score": 0.684,
-   "craft": null
+   "craft": 2.0
   },
   {
    "kind": "tv",
@@ -544,7 +572,7 @@
    "must": 0.4,
    "fun": 2.63,
    "score": 0.681,
-   "craft": null
+   "craft": 1.95
   },
   {
    "kind": "movie",
@@ -558,7 +586,7 @@
    "must": 0.5,
    "fun": 2.11,
    "score": 0.679,
-   "craft": null
+   "craft": 2.9
   },
   {
    "kind": "movie",
@@ -572,7 +600,7 @@
    "must": 0.47,
    "fun": 2.72,
    "score": 0.671,
-   "craft": null
+   "craft": 2.43
   },
   {
    "kind": "tv",
@@ -586,7 +614,7 @@
    "must": 0.34,
    "fun": 2.88,
    "score": 0.67,
-   "craft": null
+   "craft": 1.94
   },
   {
    "kind": "movie",
@@ -600,7 +628,21 @@
    "must": 0.6,
    "fun": 2.61,
    "score": 0.665,
-   "craft": null
+   "craft": 1.69
+  },
+  {
+   "kind": "movie",
+   "id": 252,
+   "title": "Willy Wonka & the Chocolate Factory",
+   "year": "1971",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.39,
+   "value": 2.03,
+   "must": 0.68,
+   "fun": 2.19,
+   "score": 0.663,
+   "craft": 2.86
   },
   {
    "kind": "movie",
@@ -614,7 +656,7 @@
    "must": 0.53,
    "fun": 2.57,
    "score": 0.66,
-   "craft": null
+   "craft": 2.73
   },
   {
    "kind": "tv",
@@ -628,7 +670,7 @@
    "must": 0.57,
    "fun": 2.43,
    "score": 0.66,
-   "craft": null
+   "craft": 2.19
   },
   {
    "kind": "movie",
@@ -642,7 +684,21 @@
    "must": 0.51,
    "fun": 2.17,
    "score": 0.654,
-   "craft": null
+   "craft": 2.87
+  },
+  {
+   "kind": "movie",
+   "id": 10693,
+   "title": "Peter Pan",
+   "year": "1953",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.43,
+   "value": 2.0,
+   "must": 0.67,
+   "fun": 2.37,
+   "score": 0.65,
+   "craft": 2.75
   },
   {
    "kind": "tv",
@@ -656,7 +712,7 @@
    "must": 0.47,
    "fun": 2.82,
    "score": 0.645,
-   "craft": null
+   "craft": 1.64
   },
   {
    "kind": "movie",
@@ -670,7 +726,7 @@
    "must": 0.43,
    "fun": 2.53,
    "score": 0.643,
-   "craft": null
+   "craft": 2.51
   },
   {
    "kind": "movie",
@@ -684,7 +740,7 @@
    "must": 0.61,
    "fun": 2.44,
    "score": 0.642,
-   "craft": null
+   "craft": 2.92
   },
   {
    "kind": "movie",
@@ -698,7 +754,7 @@
    "must": 0.46,
    "fun": 1.86,
    "score": 0.642,
-   "craft": null
+   "craft": 2.9
   },
   {
    "kind": "movie",
@@ -712,7 +768,7 @@
    "must": 0.53,
    "fun": 2.72,
    "score": 0.636,
-   "craft": null
+   "craft": 2.75
   },
   {
    "kind": "movie",
@@ -726,7 +782,7 @@
    "must": 0.53,
    "fun": 2.4,
    "score": 0.634,
-   "craft": null
+   "craft": 2.45
   },
   {
    "kind": "movie",
@@ -740,7 +796,21 @@
    "must": 0.49,
    "fun": 1.74,
    "score": 0.633,
-   "craft": null
+   "craft": 2.94
+  },
+  {
+   "kind": "movie",
+   "id": 11360,
+   "title": "Dumbo",
+   "year": "1941",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.55,
+   "value": 2.1,
+   "must": 0.62,
+   "fun": 2.34,
+   "score": 0.632,
+   "craft": 2.69
   },
   {
    "kind": "movie",
@@ -754,7 +824,49 @@
    "must": 0.62,
    "fun": 2.54,
    "score": 0.631,
+   "craft": 2.58
+  },
+  {
+   "kind": "movie",
+   "id": 13353,
+   "title": "It's the Great Pumpkin, Charlie Brown",
+   "year": "1966",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.87,
+   "value": 1.73,
+   "must": 0.65,
+   "fun": 2.26,
+   "score": 0.63,
    "craft": null
+  },
+  {
+   "kind": "tv",
+   "id": 3902,
+   "title": "Shaun the Sheep",
+   "year": "2007",
+   "rating": "TV-Y7",
+   "lang": "en",
+   "jr": 0.9,
+   "value": 1.49,
+   "must": 0.51,
+   "fun": 2.83,
+   "score": 0.625,
+   "craft": 2.45
+  },
+  {
+   "kind": "movie",
+   "id": 137106,
+   "title": "The Lego Movie",
+   "year": "2014",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.6,
+   "value": 1.86,
+   "must": 0.49,
+   "fun": 2.57,
+   "score": 0.624,
+   "craft": 2.44
   },
   {
    "kind": "tv",
@@ -768,7 +880,7 @@
    "must": 0.37,
    "fun": 2.6,
    "score": 0.618,
-   "craft": null
+   "craft": 1.68
   },
   {
    "kind": "tv",
@@ -782,7 +894,21 @@
    "must": 0.32,
    "fun": 2.64,
    "score": 0.615,
-   "craft": null
+   "craft": 1.91
+  },
+  {
+   "kind": "movie",
+   "id": 11688,
+   "title": "The Emperor's New Groove",
+   "year": "2000",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.84,
+   "value": 1.82,
+   "must": 0.42,
+   "fun": 2.56,
+   "score": 0.611,
+   "craft": 2.32
   },
   {
    "kind": "tv",
@@ -796,7 +922,7 @@
    "must": 0.26,
    "fun": 2.49,
    "score": 0.611,
-   "craft": null
+   "craft": 1.62
   },
   {
    "kind": "tv",
@@ -810,7 +936,7 @@
    "must": 0.29,
    "fun": 2.48,
    "score": 0.611,
-   "craft": null
+   "craft": 1.74
   },
   {
    "kind": "movie",
@@ -824,7 +950,21 @@
    "must": 0.47,
    "fun": 2.67,
    "score": 0.608,
-   "craft": null
+   "craft": 2.4
+  },
+  {
+   "kind": "movie",
+   "id": 1084244,
+   "title": "Toy Story 5",
+   "year": "2026",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.72,
+   "value": 1.56,
+   "must": 0.28,
+   "fun": 2.66,
+   "score": 0.606,
+   "craft": 2.26
   },
   {
    "kind": "movie",
@@ -838,7 +978,7 @@
    "must": 0.34,
    "fun": 2.23,
    "score": 0.604,
-   "craft": null
+   "craft": 2.04
   },
   {
    "kind": "movie",
@@ -852,7 +992,7 @@
    "must": 0.5,
    "fun": 2.42,
    "score": 0.604,
-   "craft": null
+   "craft": 2.56
   },
   {
    "kind": "tv",
@@ -866,7 +1006,21 @@
    "must": 0.37,
    "fun": 2.54,
    "score": 0.601,
-   "craft": null
+   "craft": 1.5
+  },
+  {
+   "kind": "movie",
+   "id": 453191,
+   "title": "The Big Bad Fox and Other Tales",
+   "year": "2017",
+   "rating": "G",
+   "lang": "fr",
+   "jr": 0.85,
+   "value": 1.78,
+   "must": 0.38,
+   "fun": 2.42,
+   "score": 0.596,
+   "craft": 2.7
   },
   {
    "kind": "movie",
@@ -880,7 +1034,7 @@
    "must": 0.21,
    "fun": 2.36,
    "score": 0.596,
-   "craft": null
+   "craft": 2.08
   },
   {
    "kind": "tv",
@@ -894,7 +1048,7 @@
    "must": 0.23,
    "fun": 2.39,
    "score": 0.594,
-   "craft": null
+   "craft": 1.43
   },
   {
    "kind": "movie",
@@ -908,7 +1062,7 @@
    "must": 0.31,
    "fun": 2.38,
    "score": 0.587,
-   "craft": null
+   "craft": 2.27
   },
   {
    "kind": "movie",
@@ -922,7 +1076,35 @@
    "must": 0.28,
    "fun": 2.28,
    "score": 0.586,
+   "craft": 2.11
+  },
+  {
+   "kind": "movie",
+   "id": 12092,
+   "title": "Alice in Wonderland",
+   "year": "1951",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.53,
+   "value": 1.63,
+   "must": 0.64,
+   "fun": 2.19,
+   "score": 0.585,
    "craft": null
+  },
+  {
+   "kind": "tv",
+   "id": 64752,
+   "title": "The Lion Guard",
+   "year": "2016",
+   "rating": "TV-Y",
+   "lang": "en",
+   "jr": 0.9,
+   "value": 1.99,
+   "must": 0.2,
+   "fun": 2.6,
+   "score": 0.585,
+   "craft": 1.65
   },
   {
    "kind": "movie",
@@ -936,7 +1118,7 @@
    "must": 0.37,
    "fun": 2.75,
    "score": 0.577,
-   "craft": null
+   "craft": 1.92
   },
   {
    "kind": "movie",
@@ -950,7 +1132,7 @@
    "must": 0.43,
    "fun": 2.18,
    "score": 0.577,
-   "craft": null
+   "craft": 2.08
   },
   {
    "kind": "movie",
@@ -964,6 +1146,20 @@
    "must": 0.29,
    "fun": 2.19,
    "score": 0.573,
+   "craft": 2.29
+  },
+  {
+   "kind": "movie",
+   "id": 10882,
+   "title": "Sleeping Beauty",
+   "year": "1959",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.63,
+   "value": 1.62,
+   "must": 0.67,
+   "fun": 2.18,
+   "score": 0.572,
    "craft": null
   },
   {
@@ -978,7 +1174,7 @@
    "must": 0.35,
    "fun": 2.38,
    "score": 0.571,
-   "craft": null
+   "craft": 1.91
   },
   {
    "kind": "tv",
@@ -992,7 +1188,21 @@
    "must": 0.18,
    "fun": 2.54,
    "score": 0.568,
-   "craft": null
+   "craft": 1.14
+  },
+  {
+   "kind": "movie",
+   "id": 13925,
+   "title": "Luxo Jr.",
+   "year": "1986",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.88,
+   "value": 1.47,
+   "must": 0.55,
+   "fun": 2.56,
+   "score": 0.562,
+   "craft": 2.66
   },
   {
    "kind": "tv",
@@ -1006,7 +1216,21 @@
    "must": 0.15,
    "fun": 2.17,
    "score": 0.556,
-   "craft": null
+   "craft": 1.4
+  },
+  {
+   "kind": "movie",
+   "id": 263109,
+   "title": "Shaun the Sheep Movie",
+   "year": "2015",
+   "rating": "PG",
+   "lang": "en",
+   "jr": 0.86,
+   "value": 1.71,
+   "must": 0.37,
+   "fun": 2.71,
+   "score": 0.555,
+   "craft": 2.46
   },
   {
    "kind": "tv",
@@ -1020,7 +1244,7 @@
    "must": 0.18,
    "fun": 2.6,
    "score": 0.55,
-   "craft": null
+   "craft": 1.2
   },
   {
    "kind": "movie",
@@ -1034,7 +1258,7 @@
    "must": 0.23,
    "fun": 2.32,
    "score": 0.549,
-   "craft": null
+   "craft": 2.13
   },
   {
    "kind": "tv",
@@ -1048,7 +1272,7 @@
    "must": 0.25,
    "fun": 2.49,
    "score": 0.542,
-   "craft": null
+   "craft": 1.42
   },
   {
    "kind": "tv",
@@ -1062,7 +1286,7 @@
    "must": 0.19,
    "fun": 2.53,
    "score": 0.541,
-   "craft": null
+   "craft": 1.35
   },
   {
    "kind": "movie",
@@ -1076,7 +1300,7 @@
    "must": 0.33,
    "fun": 2.15,
    "score": 0.535,
-   "craft": null
+   "craft": 2.17
   },
   {
    "kind": "movie",
@@ -1090,7 +1314,21 @@
    "must": 0.27,
    "fun": 2.53,
    "score": 0.531,
-   "craft": null
+   "craft": 1.92
+  },
+  {
+   "kind": "movie",
+   "id": 81684,
+   "title": "The Gruffalo's Child",
+   "year": "2011",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.93,
+   "value": 1.73,
+   "must": 0.34,
+   "fun": 2.64,
+   "score": 0.529,
+   "craft": 2.08
   },
   {
    "kind": "tv",
@@ -1104,7 +1342,21 @@
    "must": 0.38,
    "fun": 1.83,
    "score": 0.525,
-   "craft": null
+   "craft": 1.82
+  },
+  {
+   "kind": "tv",
+   "id": 30958,
+   "title": "Charlie and Lola",
+   "year": "2005",
+   "rating": "TV-Y",
+   "lang": "en",
+   "jr": 0.97,
+   "value": 1.78,
+   "must": 0.3,
+   "fun": 2.64,
+   "score": 0.525,
+   "craft": 2.21
   },
   {
    "kind": "movie",
@@ -1118,7 +1370,7 @@
    "must": 0.27,
    "fun": 2.2,
    "score": 0.525,
-   "craft": null
+   "craft": 2.12
   },
   {
    "kind": "movie",
@@ -1132,7 +1384,7 @@
    "must": 0.16,
    "fun": 2.28,
    "score": 0.524,
-   "craft": null
+   "craft": 1.69
   },
   {
    "kind": "tv",
@@ -1146,7 +1398,7 @@
    "must": 0.19,
    "fun": 2.31,
    "score": 0.521,
-   "craft": null
+   "craft": 1.45
   },
   {
    "kind": "tv",
@@ -1160,7 +1412,7 @@
    "must": 0.24,
    "fun": 2.26,
    "score": 0.512,
-   "craft": null
+   "craft": 1.9
   },
   {
    "kind": "movie",
@@ -1174,7 +1426,35 @@
    "must": 0.18,
    "fun": 2.54,
    "score": 0.51,
-   "craft": null
+   "craft": 2.05
+  },
+  {
+   "kind": "movie",
+   "id": 422803,
+   "title": "A Shaun the Sheep Movie: Farmageddon",
+   "year": "2019",
+   "rating": "G",
+   "lang": "en",
+   "jr": 0.83,
+   "value": 1.6,
+   "must": 0.27,
+   "fun": 2.62,
+   "score": 0.504,
+   "craft": 2.36
+  },
+  {
+   "kind": "tv",
+   "id": 9262,
+   "title": "Pingu",
+   "year": "1986",
+   "rating": "TV-Y",
+   "lang": "en",
+   "jr": 0.92,
+   "value": 1.45,
+   "must": 0.32,
+   "fun": 2.56,
+   "score": 0.493,
+   "craft": 2.01
   },
   {
    "kind": "tv",
@@ -1188,7 +1468,7 @@
    "must": 0.14,
    "fun": 2.26,
    "score": 0.493,
-   "craft": null
+   "craft": 1.47
   },
   {
    "kind": "movie",
@@ -1202,7 +1482,7 @@
    "must": 0.17,
    "fun": 2.17,
    "score": 0.492,
-   "craft": null
+   "craft": 2.21
   }
  ]
 }
