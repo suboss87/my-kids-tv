@@ -112,7 +112,6 @@
 "famous": true,
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.3028ht7u7qx3a077kxhreuadn",
-"hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon/1271517345/watch",
 "netflix": "https://www.netflix.com/title/70109893"
 }
 },
@@ -483,7 +482,7 @@
 "hotstar": "https://www.hotstar.com/in/shows/steven-universe/1971003363",
 "max": "https://play.hbomax.com/series/urn:hbo:series:GXbGBEw3y6pGYoAEAAAVc",
 "netflix": "https://www.netflix.com/title/80130696",
-"prime": "https://app.primevideo.com/detail?asin=amzn1.dv.gti.5343821f-586a-4657-9936-0eac22b8e361"
+"prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.5343821f-586a-4657-9936-0eac22b8e361"
 }
 },
 {
@@ -989,8 +988,7 @@
 "score": 0.775,
 "badge": "loved",
 "links": {
-"disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE",
-"hotstar": "https://www.hotstar.com/in/shows/ducktales/1260015294"
+"disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE"
 }
 },
 {
@@ -1455,7 +1453,6 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.6hxeen2bwkehiwgwprcaxgf7l",
 "disney": "https://www.disneyplus.com/movies/wd/20a1PB36VPVF",
-"hotstar": "https://www.hotstar.com/in/movies/peter-pan/1260018323/watch",
 "netflix": "https://www.netflix.com/title/60022286"
 }
 },
@@ -1468,8 +1465,7 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.kchxjh96mtncjtttqd1g8vp1",
-"disney": "https://www.disneyplus.com/movies/wd/7jEeXqS5aEVr",
-"hotstar": "https://www.hotstar.com/1260021358"
+"disney": "https://www.disneyplus.com/movies/wd/7jEeXqS5aEVr"
 }
 },
 {
@@ -1565,10 +1561,7 @@
 "title": "How to Train Your Dragon",
 "year": "2025",
 "score": 0.722,
-"badge": "",
-"links": {
-"hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon/1271517345/watch"
-}
+"badge": ""
 },
 {
 "kind": "movie",
@@ -1854,7 +1847,6 @@
 "score": 0.7,
 "badge": "",
 "links": {
-"hotstar": "https://www.hotstar.com/in/movies/dangal/1271659734/watch",
 "netflix": "https://www.netflix.com/title/80166185"
 }
 },
@@ -1995,7 +1987,6 @@
 "badge": "learn",
 "links": {
 "disney": "https://www.disneyplus.com/series/wp/bON1qBV74Bes",
-"hotstar": "https://www.hotstar.com/in/shows/one-strange-rock/16957",
 "netflix": "https://www.netflix.com/title/81071666"
 }
 },
@@ -2278,7 +2269,6 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.2l2qtmj30xnptzo7cwmppu7b4",
-"hotstar": "https://www.hotstar.com/in/movies/hachi-a-dog-s-tale/1271508745/watch",
 "netflix": "https://www.netflix.com/title/70118677"
 }
 },
@@ -2434,7 +2424,6 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.35sgeb85f20mzxp5wv4qo7w0o",
-"hotstar": "https://www.hotstar.com/in/movies/the-karate-kid/1271651426/watch",
 "netflix": "https://www.netflix.com/title/60036164"
 }
 },
@@ -2592,7 +2581,6 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.45kkoukx4wdomj6oeizmga9c1",
-"hotstar": "https://www.hotstar.com/in/movies/black-stallion/1000109912/watch",
 "netflix": "https://www.netflix.com/title/312525",
 "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.baa9f781-83a6-3228-7137-022bea35d4de"
 }
@@ -2703,7 +2691,6 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.61pmir3e3ob54xzvzzhruu4cp",
-"hotstar": "https://www.hotstar.com/in/movies/peter-pan/1260018323/watch",
 "netflix": "https://www.netflix.com/title/60031292"
 }
 },
@@ -2767,8 +2754,7 @@
 "score": 0.634,
 "badge": "",
 "links": {
-"disney": "https://www.disneyplus.com/series/wp/5HfolGRtUHpv",
-"hotstar": "https://www.hotstar.com/1260064342"
+"disney": "https://www.disneyplus.com/series/wp/5HfolGRtUHpv"
 }
 },
 {
@@ -2819,7 +2805,6 @@
 "badge": "",
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.22galt2spi1jlic15bdjvf1mz",
-"hotstar": "https://www.hotstar.com/in/movies/flow/1271516173/watch",
 "netflix": "https://www.netflix.com/title/82040308"
 }
 },
@@ -2924,8 +2909,7 @@
 "score": 0.618,
 "badge": "",
 "links": {
-"appletv": "https://tv.apple.com/movie/umc.cmc.5qkqo6kcwxnno7lex3a2wmlal",
-"hotstar": "https://www.hotstar.com/in/movies/superman/1271509950/watch"
+"appletv": "https://tv.apple.com/movie/umc.cmc.5qkqo6kcwxnno7lex3a2wmlal"
 }
 },
 {
@@ -2991,10 +2975,7 @@
 "title": "Kaaka Muttai",
 "year": "2015",
 "score": 0.611,
-"badge": "",
-"links": {
-"hotstar": "https://www.hotstar.com/in/movies/kaaka-muttai/1000070415/watch"
-}
+"badge": ""
 },
 {
 "kind": "movie",
@@ -3151,7 +3132,6 @@
 "links": {
 "appletv": "https://tv.apple.com/movie/umc.cmc.oorb0ak4pgdfn9m8gdl0k5nb",
 "disney": "https://www.disneyplus.com/movies/wd/5PcWiPyrGw3q",
-"hotstar": "https://www.hotstar.com/in/movies/chicken-run/1971000705/watch",
 "netflix": "https://www.netflix.com/title/60001287"
 }
 },
@@ -3772,7 +3752,6 @@
 "score": 0.453,
 "badge": "",
 "links": {
-"hotstar": "https://www.hotstar.com/in/movies/chillar-party/1271701682/watch",
 "netflix": "https://www.netflix.com/title/70139072"
 }
 },

@@ -270,7 +270,7 @@ def stage_links(band):
                 for k, (_, url) in LINK_PROPS.items():
                     service = k.split('_')[0]
                     if k in r and service not in out: out[service] = url % r[k]['value']
-    # JioHotstar India: its own sitemaps, each match checked against the page's release year (catalog/hotstar.py).
+    # JioHotstar India: its own sitemaps (catalog/hotstar.py), then checked against TMDB below.
     cands = {'%s:%d' % (c['kind'], c['id']): c for c in load(work(band, 'candidates.json'), [])}
     todo = []
     for r in keep:
@@ -286,6 +286,33 @@ def stage_links(band):
         todo.append(t)
     for k, url in hotstar.links(todo).items():
         links.setdefault(k, {})['hotstar'] = url   # the page's full address beats Wikidata's bare id
+
+    # Never a wrong film: a JioHotstar link stays only when TMDB says this very title (not a remake or namesake of
+    # another year) streams on JioHotstar in India, and no two titles share a page (DuckTales 1987 and 2017).
+    def on_hotstar(k):
+        kind, tid = k.split(':')
+        try:
+            d = get('/%s/%s/watch/providers' % (kind, tid)) or {}
+        except RuntimeError:
+            return False
+        flat = ((d.get('results') or {}).get('IN') or {}).get('flatrate') or []
+        return any('hotstar' in p.get('provider_name', '').lower() for p in flat)
+    # The sitemap matches before any check, kept per band, so the shared-page test sees every band the same way.
+    raw = {k: v['hotstar'] for k, v in links.items() if 'hotstar' in v}
+    json.dump(raw, open(work(band, 'hotstar-raw.json'), 'w'), indent=1, sort_keys=True)
+    pages = {}   # page -> the different titles pointing at it, across all the age bands
+    for b in BANDS:
+        for k, url in (raw if b == band else load(work(b, 'hotstar-raw.json'), {})).items():
+            pages.setdefault(url, set()).add(k)
+    for k, v in links.items():
+        h = v.get('hotstar')
+        if not h: continue
+        if not h.startswith('https://www.hotstar.com/in/') or len(pages.get(h, ())) > 1 or not on_hotstar(k):
+            del v['hotstar']
+    # Prime Video: Wikidata's ASIN property sometimes holds a global id; those go by ?gti=.
+    for v in links.values():
+        if v.get('prime', '').startswith('https://app.primevideo.com/detail?asin=amzn1.'):
+            v['prime'] = v['prime'].replace('?asin=', '?gti=')
     json.dump(links, open(work(band, 'links.json'), 'w'), indent=1, sort_keys=True)
     print('[%s] links for %d of %d titles' % (band, sum(1 for v in links.values() if v), len(keep)), flush=True)
 

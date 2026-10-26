@@ -170,7 +170,6 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private Recs.Pick spotPick, spotFrom;   // the title in the window, and the one fading out under it
     private long spotAt;                    // when the window last changed title (0: not changing)
     private int spotIndex = -1;
-    private LinearGradient scrimLeft, scrimBottom;
     private float scrimFor;
     private android.text.StaticLayout tagLayout;
     private String tagFor = "";
@@ -424,7 +423,12 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         // Not on Android 8 to 11: on older GPUs (a Mi Box 3's Mali-450) redrawing and compositing a big layer on every
         // frame cost more than drawing straight to the screen (measured: focus on the picks 33 → 12 ms a frame, the
         // drawer 19 → 17 ms).
-        for (View v : new View[] {heroLayer, status, platter, tiles, drawerLayer, sheetLayer}) v.setLayerType(Ui.LEGACY ? LAYER_TYPE_NONE : LAYER_TYPE_HARDWARE, null);
+        for (View v : new View[] {status, tiles, drawerLayer, sheetLayer}) v.setLayerType(Ui.LEGACY ? LAYER_TYPE_NONE : LAYER_TYPE_HARDWARE, null);
+        // The window and the empty shelf layer draw straight to the screen: the window changes most frames while it
+        // animates, and drawing it into a layer and then the layer onto the screen painted every pixel twice. It gets a
+        // layer only while the drawer or a sheet moves it as a whole (updateMotion).
+        heroLayer.setLayerType(LAYER_TYPE_NONE, null);
+        platter.setLayerType(LAYER_TYPE_NONE, null);
         for (View v : new View[] {sky, heroLayer, status, platter, tiles, drawerLayer, sheetLayer, toastLayer}) {
             v.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);   // TalkBack reads the items (Spoken)
             addView(v);
@@ -551,7 +555,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         lightButtons.clear();
         lightButtons.addAll(list);
         if (zone == Z_TOP && topIndex >= NT + lightButtons.size()) {
-            topIndex = 2 + lightButtons.size();
+            topIndex = NT - 1 + lightButtons.size();   // the last one left (or the last tab with no buttons)
             if (topIndex < NT && !picksOn()) zone = Z_SHELF;   // without the picks the tabs can't hold focus
             else if (topIndex < NT) selectTab(topIndex);
             retarget(true);
@@ -807,6 +811,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     /** Drawer and sheet: the layers' positions and opacity (without redrawing their content). */
     private void updateMotion() {
         float d = drawer.value, dc = Ui.clamp(d), s = Ui.clamp(sheet.value);
+        int heroType = !Ui.LEGACY && (d > 0.001f || s > 0.001f) ? LAYER_TYPE_HARDWARE : LAYER_TYPE_NONE;
+        if (heroLayer.getLayerType() != heroType) heroLayer.setLayerType(heroType, null);
         float home = 1 - s, top = home * (1 - smoothstep(0, 0.32f, dc));
         float shift = SHIFT * k;
         float lift = -d * shift;
@@ -1112,7 +1118,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             return;
         }
         // Left alone on the cards (no key for 20 s), the focus moves with the window, so OK opens the title on show.
-        if (zone == Z_CARDS && SystemClock.uptimeMillis() - keyAt > 20_000) {
+        if (zone == Z_CARDS && SystemClock.uptimeMillis() - keyAt > 20_000 && !spoken.on()) {
             int follow = Math.min(cards.size() - 1, Recs.spot());
             if (follow != cardIndex) {
                 cardIndex = follow;
@@ -1127,8 +1133,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         spotAt = spotFrom == null ? 0 : SystemClock.uptimeMillis();
         spotPick = p;
         spotIndex = i;
+        recs.shown(p);   // on screen: it waits its turn before coming back
+        // By day the sky takes a little of the picture's color; at night the window's own glow does that, and the sky
+        // (the slowest thing to redraw on this TV's GPU) stays still.
         Backdrop b = recs.backdrop(p);
-        if (b != null) showBackdrop(b);
+        if (b != null && night < 0.5f) showBackdrop(b);
         heroDirty = true;
     }
 
@@ -2807,6 +2816,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 if (i >= cards.size()) return;
                 if (drawerOpen) closeDrawer();
                 cardIndex = i;
+                keyAt = SystemClock.uptimeMillis();   // TalkBack on a card: it holds still, like a key press
                 break;
             case Z_SHELF:
                 if (i >= shelf.size()) return;
@@ -2895,7 +2905,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             tRight -= tw + tg;
         }
         for (RectF r : cardRects) snap(r);
-        scrimLeft = null;
+        scrimFor = 0;   // the scrim is drawn again for the new size
         for (HomeApps.Item it : lightButtons) {
             Symbols.warm(getContext(), it.symbol, 27 * k);
             Symbols.warm(getContext(), it.symbol, 27 * k * 1.1f);
@@ -2909,10 +2919,10 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         List<Recs.Pick> list = recs.now(TAB_KIND[tab]);
         // A new set every minute, but not under the child's eyes: while they browse the cards, the old ones stay.
         boolean browsing = zone == Z_CARDS && tab == cardsTab && !cards.isEmpty()
-                && SystemClock.uptimeMillis() - keyAt < 20_000;
+                && (SystemClock.uptimeMillis() - keyAt < 20_000 || spoken.on());   // TalkBack: never under the reader
         // And only once the new images are ready, so no card turns blank on the way.
         boolean ready = true;
-        if (!cards.isEmpty() && tab == cardsTab) for (Recs.Pick p : list) ready &= p.backdrop == null || recs.backdrop(p) != null;
+        if (!cards.isEmpty() && tab == cardsTab) for (Recs.Pick p : list) ready &= p.backdrop == null || recs.backdrop(p) != null || recs.imageFailed(p);
         if (!browsing && ready && !samePicks(list, cards)) {
             // The minute's new set fades in card by card on the same tab; a tab change shows its cards at once.
             if (tab == cardsTab && !cards.isEmpty()) {
@@ -3188,24 +3198,17 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         tmp.set(w);
         tmp.offset(0, 24 * k);
         shadowDeep.setColor(Ui.alpha(tone(0xFF0E2240, 0xFF000014), tone(0.3f, 0.5f)));
-        shadows.draw(c, tmp, r, DEEP_BLUR * k, shadowDeep);
-        fill.setShader(null);
-        fill.setColor(0xFF1E2660);
-        c.drawRoundRect(w, r, r, fill);
+        shadows.draw(c, tmp, r, DEEP_BLUR * k, shadowDeep, true);
         float t = t(up);
+        Backdrop art = recs.backdrop(spotPick);
+        if (art == null || art.wide == null || (spotFrom != null && t < 1)) {   // the picture covers it once it's there
+            fill.setShader(null);
+            fill.setColor(0xFF1E2660);
+            c.drawRoundRect(w, r, r, fill);
+        }
         if (spotFrom != null && t < 1) drawWindowArt(c, spotFrom, r, 255);
         drawWindowArt(c, spotPick, r, Math.round(255 * t));
-        if (scrimLeft == null || scrimFor != w.width()) {
-            scrimLeft = new LinearGradient(w.left, 0, w.left + w.width() * 0.62f, 0, new int[] {0xEB0E1234, 0xB80E1234, 0x000E1234},
-                    new float[] {0, 0.48f, 1}, Shader.TileMode.CLAMP);
-            scrimBottom = new LinearGradient(0, w.bottom, 0, w.bottom - w.height() * 0.45f, 0xCC0E1234, 0x000E1234, Shader.TileMode.CLAMP);
-            scrimFor = w.width();
-        }
-        fill.setShader(scrimLeft);
-        c.drawRoundRect(w, r, r, fill);
-        fill.setShader(scrimBottom);
-        c.drawRoundRect(w, r, r, fill);
-        fill.setShader(null);
+        drawScrim(c, w, r);
         rim.setShader(null);
         rim.setColor(0x33FFFFFF);
         rim.setStrokeWidth(1.5f * k);
@@ -3227,6 +3230,30 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         }
     }
 
+    /**
+     * The window's dark scrim (deep indigo from the left, where the text is, and along the bottom, under the
+     * thumbnails): both gradients drawn once into one small picture and stretched over the window, one pass.
+     */
+    private void drawScrim(Canvas c, RectF w, float r) {
+        if (scrim == null || scrimFor != w.width()) {
+            int sw = 440, sh = 135;   // a quarter of the window: gradients stay smooth when stretched
+            scrim = Bitmap.createBitmap(sw, sh, Bitmap.Config.ARGB_8888);
+            Canvas sc = new Canvas(scrim);
+            Paint p = new Paint(Paint.DITHER_FLAG);
+            p.setShader(new LinearGradient(0, 0, sw * 0.62f, 0, new int[] {0xEB0E1234, 0xB80E1234, 0x000E1234},
+                    new float[] {0, 0.48f, 1}, Shader.TileMode.CLAMP));
+            sc.drawRect(0, 0, sw, sh, p);
+            p.setShader(new LinearGradient(0, sh, 0, sh * 0.55f, 0xCC0E1234, 0x000E1234, Shader.TileMode.CLAMP));
+            sc.drawRect(0, 0, sw, sh, p);
+            scrimShader = new BitmapShader(scrim, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            scrimFor = w.width();
+        }
+        roundImage(c, scrim, scrimShader, w, r);
+    }
+
+    private Bitmap scrim;
+    private BitmapShader scrimShader;
+
     private float t(long up) {
         return spotAt == 0 ? 1 : fadeEase(spotAt, up, 900);
     }
@@ -3236,25 +3263,38 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
      * One soft ellipse, wider than the window; it crossfades with the picture.
      */
     private void drawAmbient(Canvas c, RectF w, float t) {
-        int to = ambientOf(spotPick), from = spotFrom == null ? to : ambientOf(spotFrom);
-        int color = blend(from, to, t);
-        if (android.graphics.Color.alpha(color) == 0) return;
-        // Centered a little above the window and flat enough to fade out before this layer's lower edge (840).
+        int to = ambientOf(spotPick), from = spotFrom == null ? 0 : ambientOf(spotFrom);
+        // Centered a little above the window and flat enough to fade out before this layer's lower edge (840). One
+        // gradient per color, kept: a crossfade draws the two at changing strength (a new gradient every frame was slow).
         float cy = w.centerY() - 80 * k, rad = w.width() * 0.62f;
-        if (ambientShader == null || ambientColor != color || ambientFor != w.width()) {
-            float a = tone(0.28f, 0.42f);
-            ambientShader = new RadialGradient(w.centerX(), cy, rad,
-                    new int[] {Ui.alpha(color, a), Ui.alpha(color, a * 0.45f), Ui.alpha(color, 0)},
-                    new float[] {0, 0.55f, 1}, Shader.TileMode.CLAMP);
-            ambientColor = color;
-            ambientFor = w.width();
-        }
         c.save();
         c.scale(1, 0.34f, w.centerX(), cy);   // an ellipse: the light spreads sideways
-        fill.setShader(ambientShader);
-        c.drawCircle(w.centerX(), cy, rad, fill);
+        // During a change only the new light fades in (two full glows a frame were too much for this GPU).
+        if (to != 0) glow(c, w.centerX(), cy, rad, to, spotFrom != null && t < 1 ? t : 1);
         fill.setShader(null);
+        fill.setAlpha(255);
         c.restore();
+    }
+
+    private final java.util.LinkedHashMap<Integer, RadialGradient> glows = new java.util.LinkedHashMap<>();
+    private float glowsFor;
+
+    private void glow(Canvas c, float cx, float cy, float rad, int color, float strength) {
+        if (glowsFor != rad) {
+            glows.clear();
+            glowsFor = rad;
+        }
+        RadialGradient g = glows.get(color);
+        if (g == null) {
+            float a = tone(0.28f, 0.42f);
+            g = new RadialGradient(cx, cy, rad, new int[] {Ui.alpha(color, a), Ui.alpha(color, a * 0.45f), Ui.alpha(color, 0)},
+                    new float[] {0, 0.55f, 1}, Shader.TileMode.CLAMP);
+            if (glows.size() > 16) glows.remove(glows.keySet().iterator().next());
+            glows.put(color, g);
+        }
+        fill.setShader(g);
+        fill.setAlpha(Math.round(255 * strength));
+        c.drawCircle(cx, cy, rad, fill);
     }
 
     private int ambientOf(Recs.Pick p) {
@@ -3262,9 +3302,6 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         return b == null ? 0 : b.ambient();
     }
 
-    private RadialGradient ambientShader;
-    private int ambientColor;
-    private float ambientFor;
 
     private void drawWindowArt(Canvas c, Recs.Pick p, float r, int alpha) {
         Backdrop b = p == null ? null : recs.backdrop(p);
@@ -3386,7 +3423,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         tmp.set(cell);
         tmp.offset(0, (10 + 12 * f) * k);
         shadowDeep.setColor(Ui.alpha(0xFF000014, 0.42f + 0.18f * f));
-        shadows.draw(c, tmp, r, DEEP_BLUR * k * 0.6f, shadowDeep);
+        shadows.draw(c, tmp, r, DEEP_BLUR * k * 0.6f, shadowDeep, true);
         float t = cardSwap(i);
         Recs.Pick old = t < 1 && i < prevCards.size() ? prevCards.get(i) : null;
         boolean swapping = old != null && (p == null || !Recs.key(old).equals(Recs.key(p)));

@@ -3,8 +3,9 @@ engines (robots.txt lists them; only /search and /play are disallowed there, and
 
 A title matches a sitemap entry by its URL name (the "slug", "the-jungle-book"), from its English or original title,
 in a few spellings ("&" as "and" or dropped, an apostrophe dropped or as "-"). Only a name with exactly one page is
-linked: two pages of the same name (a remake, a namesake) get no link, so a wrong film is never opened. The app uses
-the link only when TMDB says the title streams on JioHotstar in India. Movies link to their "watch" address, so the
+linked: two pages of the same name (a remake, a namesake) get no link. The pipeline then keeps a link only when TMDB
+says this very title streams on JioHotstar in India and no other catalog title shares the page, so a wrong film is never
+opened. Movies link to their "watch" address, so the
 film starts; shows to their page.
 """
 import os, re, time, unicodedata, urllib.request

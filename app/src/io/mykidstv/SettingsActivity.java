@@ -658,10 +658,19 @@ public class SettingsActivity extends Activity {
         private android.graphics.Bitmap childPhoto() {
             if (photoTried) return photo;
             photoTried = true;
+            // Read at about twice the size it's drawn (a phone photo at full size could run a small TV out of memory).
             try (java.io.InputStream in = getContext().getAssets().open("child-photo.png")) {
-                photo = android.graphics.BitmapFactory.decodeStream(in);
-            } catch (java.io.IOException e) {
-                photo = null;   // none: the initial or the app's icon
+                android.graphics.BitmapFactory.Options o = new android.graphics.BitmapFactory.Options();
+                o.inJustDecodeBounds = true;
+                android.graphics.BitmapFactory.decodeStream(in, null, o);
+                o.inJustDecodeBounds = false;
+                o.inSampleSize = 1;
+                while (Math.min(o.outWidth, o.outHeight) / (o.inSampleSize * 2) >= 256) o.inSampleSize *= 2;
+                try (java.io.InputStream again = getContext().getAssets().open("child-photo.png")) {
+                    photo = android.graphics.BitmapFactory.decodeStream(again, null, o);
+                }
+            } catch (java.io.IOException | OutOfMemoryError e) {
+                photo = null;   // none (or unreadable): the initial or the app's icon
             }
             return photo;
         }

@@ -24,7 +24,6 @@
  },
  "movie:10191": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3028ht7u7qx3a077kxhreuadn",
-  "hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon/1271517345/watch",
   "netflix": "https://www.netflix.com/title/70109893"
  },
  "movie:10193": {
@@ -76,7 +75,6 @@
  },
  "movie:10601": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.61pmir3e3ob54xzvzzhruu4cp",
-  "hotstar": "https://www.hotstar.com/in/movies/peter-pan/1260018323/watch",
   "netflix": "https://www.netflix.com/title/60031292"
  },
  "movie:10674": {
@@ -93,7 +91,6 @@
  "movie:10693": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.6hxeen2bwkehiwgwprcaxgf7l",
   "disney": "https://www.disneyplus.com/movies/wd/20a1PB36VPVF",
-  "hotstar": "https://www.hotstar.com/in/movies/peter-pan/1260018323/watch",
   "netflix": "https://www.netflix.com/title/60022286"
  },
  "movie:10830": {
@@ -101,9 +98,7 @@
   "netflix": "https://www.netflix.com/title/70033005",
   "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.26a9f6c0-33eb-83d9-3db6-76f877af2408"
  },
- "movie:1087192": {
-  "hotstar": "https://www.hotstar.com/in/movies/how-to-train-your-dragon/1271517345/watch"
- },
+ "movie:1087192": {},
  "movie:10895": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.4ixknv3558j9uodmwlui4gfy8",
   "disney": "https://www.disneyplus.com/movies/wd/3awzEJp1S6xg",
@@ -375,7 +370,6 @@
  },
  "movie:17264": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.45kkoukx4wdomj6oeizmga9c1",
-  "hotstar": "https://www.hotstar.com/in/movies/black-stallion/1000109912/watch",
   "netflix": "https://www.netflix.com/title/312525",
   "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.baa9f781-83a6-3228-7137-022bea35d4de"
  },
@@ -408,7 +402,6 @@
  },
  "movie:1885": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.35sgeb85f20mzxp5wv4qo7w0o",
-  "hotstar": "https://www.hotstar.com/in/movies/the-karate-kid/1271651426/watch",
   "netflix": "https://www.netflix.com/title/60036164"
  },
  "movie:1891": {
@@ -427,8 +420,7 @@
   "netflix": "https://www.netflix.com/title/705734"
  },
  "movie:1924": {
-  "appletv": "https://tv.apple.com/movie/umc.cmc.5qkqo6kcwxnno7lex3a2wmlal",
-  "hotstar": "https://www.hotstar.com/in/movies/superman/1271509950/watch"
+  "appletv": "https://tv.apple.com/movie/umc.cmc.5qkqo6kcwxnno7lex3a2wmlal"
  },
  "movie:19666": {
   "netflix": "https://www.netflix.com/title/60020906"
@@ -477,9 +469,7 @@
   "disney": "https://www.disneyplus.com/movies/wd/4Le2C4pyeB3J",
   "hotstar": "https://www.hotstar.com/in/movies/incredibles-2/1660010691/watch"
  },
- "movie:264038": {
-  "hotstar": "https://www.hotstar.com/in/movies/kaaka-muttai/1000070415/watch"
- },
+ "movie:264038": {},
  "movie:269149": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.24f3dqmqxdcw4bmcv1c9zw9gj",
   "disney": "https://www.disneyplus.com/movies/wd/1QOxldhm1sKg",
@@ -503,7 +493,6 @@
  },
  "movie:28178": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.2l2qtmj30xnptzo7cwmppu7b4",
-  "hotstar": "https://www.hotstar.com/in/movies/hachi-a-dog-s-tale/1271508745/watch",
   "netflix": "https://www.netflix.com/title/70118677"
  },
  "movie:295592": {
@@ -568,7 +557,6 @@
   "netflix": "https://www.netflix.com/title/80189213"
  },
  "movie:360814": {
-  "hotstar": "https://www.hotstar.com/in/movies/dangal/1271659734/watch",
   "netflix": "https://www.netflix.com/title/80166185"
  },
  "movie:36970": {
@@ -781,8 +769,7 @@
  },
  "movie:606856": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.kchxjh96mtncjtttqd1g8vp1",
-  "disney": "https://www.disneyplus.com/movies/wd/7jEeXqS5aEVr",
-  "hotstar": "https://www.hotstar.com/1260021358"
+  "disney": "https://www.disneyplus.com/movies/wd/7jEeXqS5aEVr"
  },
  "movie:620249": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.6kbrxgnic71diebvpriaqve37"
@@ -840,7 +827,6 @@
   "appletv": "https://tv.apple.com/movie/umc.cmc.5b8j1z7lh8osr80rbo69diwzf"
  },
  "movie:69891": {
-  "hotstar": "https://www.hotstar.com/in/movies/chillar-party/1271701682/watch",
   "netflix": "https://www.netflix.com/title/70139072"
  },
  "movie:739986": {
@@ -849,7 +835,6 @@
  "movie:7443": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.oorb0ak4pgdfn9m8gdl0k5nb",
   "disney": "https://www.disneyplus.com/movies/wd/5PcWiPyrGw3q",
-  "hotstar": "https://www.hotstar.com/in/movies/chicken-run/1971000705/watch",
   "netflix": "https://www.netflix.com/title/60001287"
  },
  "movie:7508": {
@@ -889,7 +874,6 @@
  },
  "movie:823219": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.22galt2spi1jlic15bdjvf1mz",
-  "hotstar": "https://www.hotstar.com/in/movies/flow/1271516173/watch",
   "netflix": "https://www.netflix.com/title/82040308"
  },
  "movie:82690": {
@@ -1018,8 +1002,7 @@
   "disney": "https://www.disneyplus.com/series/wp/4AbEzzTxhWxZ"
  },
  "tv:104359": {
-  "disney": "https://www.disneyplus.com/series/wp/5HfolGRtUHpv",
-  "hotstar": "https://www.hotstar.com/1260064342"
+  "disney": "https://www.disneyplus.com/series/wp/5HfolGRtUHpv"
  },
  "tv:1044": {
   "netflix": "https://www.netflix.com/title/70219642"
@@ -1162,7 +1145,7 @@
   "hotstar": "https://www.hotstar.com/in/shows/steven-universe/1971003363",
   "max": "https://play.hbomax.com/series/urn:hbo:series:GXbGBEw3y6pGYoAEAAAVc",
   "netflix": "https://www.netflix.com/title/80130696",
-  "prime": "https://app.primevideo.com/detail?asin=amzn1.dv.gti.5343821f-586a-4657-9936-0eac22b8e361"
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.5343821f-586a-4657-9936-0eac22b8e361"
  },
  "tv:61617": {
   "appletv": "https://tv.apple.com/show/umc.cmc.410w5085kvgoshzsilbm3gyu6",
@@ -1183,8 +1166,7 @@
   "netflix": "https://www.netflix.com/title/80195377"
  },
  "tv:72350": {
-  "disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE",
-  "hotstar": "https://www.hotstar.com/in/shows/ducktales/1260015294"
+  "disney": "https://www.disneyplus.com/series/wp/tc6CG7H7lhCE"
  },
  "tv:74313": {},
  "tv:74728": {
@@ -1197,7 +1179,6 @@
  },
  "tv:75782": {
   "disney": "https://www.disneyplus.com/series/wp/bON1qBV74Bes",
-  "hotstar": "https://www.hotstar.com/in/shows/one-strange-rock/16957",
   "netflix": "https://www.netflix.com/title/81071666"
  },
  "tv:79061": {

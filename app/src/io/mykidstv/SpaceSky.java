@@ -25,10 +25,32 @@ final class SpaceSky {
     private static final int[] CLOUD_COLORS = {0x227B5CFF /* violet */, 0x183A7BFF /* blue */, 0x12FF6FA8 /* rose */,
             0x082EC4B6 /* a breath of teal */};
 
+    private android.graphics.Bitmap cached;   // the whole sky, drawn once: redrawing it is then one copy
+    private final Paint blit = new Paint(Paint.FILTER_BITMAP_FLAG);
+
     void draw(Canvas c, int w, int h, float alpha) {
         if (w == 0 || h == 0) return;
+        if (cached == null || forW != w || forH != h) {
+            build(w, h);
+            try {
+                cached = android.graphics.Bitmap.createBitmap(w, h, android.graphics.Bitmap.Config.ARGB_8888);
+                paint(new Canvas(cached), w, h, 1);
+            } catch (OutOfMemoryError e) {
+                cached = null;
+            }
+        }
+        if (cached == null) {   // no memory for the picture: draw it live
+            paint(c, w, h, alpha);
+            return;
+        }
+        blit.setAlpha(Math.round(255 * alpha));
+        c.drawBitmap(cached, 0, 0, blit);
+    }
+
+    private void paint(Canvas c, int w, int h, float alpha) {
         if (base == null || forW != w || forH != h) build(w, h);
         int a = Math.round(255 * alpha);
+        fill.setDither(true);   // smooth gradients, no banding in the dark
         fill.setShader(base);
         fill.setAlpha(a);
         c.drawRect(0, 0, w, h, fill);

@@ -63,6 +63,11 @@ final class Spoken extends AccessibilityNodeProvider {
         manager = (AccessibilityManager) host.getContext().getSystemService(Context.ACCESSIBILITY_SERVICE);
     }
 
+    /** A screen reader (TalkBack) is on: nothing should move under it. */
+    boolean on() {
+        return manager != null && manager.isTouchExplorationEnabled();
+    }
+
     /** After every focus move (or change on screen): TalkBack reads the focused item if it changed. */
     void focusMoved() {
         if (!manager.isEnabled()) return;

@@ -146,7 +146,7 @@
   "appletv": "https://tv.apple.com/movie/umc.cmc.2bu7hwru4lky6tgu9a91trvr4",
   "hotstar": "https://www.hotstar.com/in/movies/the-grinch/1971000752/watch",
   "netflix": "https://www.netflix.com/title/80996790",
-  "prime": "https://app.primevideo.com/detail?asin=amzn1.dv.gti.bcb3c57a-7581-7d30-af92-0db26d4103cd"
+  "prime": "https://app.primevideo.com/detail?gti=amzn1.dv.gti.bcb3c57a-7581-7d30-af92-0db26d4103cd"
  },
  "movie:364689": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.52ok5fgzlftre3ug6glre6df9",
@@ -170,7 +170,6 @@
  },
  "movie:475215": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.5n3ojj870mov5u2kwzn694dhg",
-  "hotstar": "https://www.hotstar.com/in/movies/mirai/1271461808/watch",
   "netflix": "https://www.netflix.com/title/81004268"
  },
  "movie:508965": {
@@ -180,7 +179,6 @@
  "movie:51162": {
   "appletv": "https://tv.apple.com/movie/umc.cmc.3ypq9jn33efvbv0h4aqijbysx",
   "disney": "https://www.disneyplus.com/movies/wd/6nl0Z9PyWwIC",
-  "hotstar": "https://www.hotstar.com/in/movies/winnie-the-pooh/1260020572/watch",
   "netflix": "https://www.netflix.com/title/70178626"
  },
  "movie:514754": {
@@ -314,8 +312,7 @@
   "hotstar": "https://www.hotstar.com/in/shows/curious-george/1971003063"
  },
  "tv:720": {
-  "disney": "https://www.disneyplus.com/series/wp/1H1pGQ8RYFqN",
-  "hotstar": "https://www.hotstar.com/in/shows/ducktales/1260015294"
+  "disney": "https://www.disneyplus.com/series/wp/1H1pGQ8RYFqN"
  },
  "tv:7248": {
   "appletv": "https://tv.apple.com/show/umc.cmc.12p25pug3vct9sy63qd7dwjbe",

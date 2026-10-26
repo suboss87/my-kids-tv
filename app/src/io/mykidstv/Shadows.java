@@ -14,7 +14,8 @@ import java.util.HashMap;
  * time the shape changes size (every frame of a focus animation): on a Mali-450 (Mi Box 3, Android 9) that alone took
  * ~40 ms a frame. Here each (corner radius, blur) is blurred once into a small alpha bitmap and drawn as a nine-slice
  * (corners as they are, edges and center stretched), tinted with the paint's color.
- * Android 12+ keeps drawing the real BlurMaskFilter.
+ * Used on every Android version: on a 2024 Google TV (Android 14, Mali GPU) the real BlurMaskFilter still cost a GPU
+ * render target per shadow size, 363 of them (84 MB) after a few minutes of focus animations, and most frames missed.
  */
 final class Shadows {
     private final HashMap<Long, Bitmap> cache = new HashMap<>();
@@ -27,10 +28,14 @@ final class Shadows {
 
     /** Draws `shape` (radius `r`) with `paint`, whose BlurMaskFilter was made with radius `blur`. */
     void draw(Canvas c, RectF shape, float r, float blur, Paint paint) {
-        if (!Ui.LEGACY) {
-            c.drawRoundRect(shape, r, r, paint);
-            return;
-        }
+        draw(c, shape, r, blur, paint, false);
+    }
+
+    /**
+     * `under`: the shadow of something opaque drawn right over it, so its middle is never seen and isn't painted (on a
+     * fill-rate-bound TV GPU that middle was a full extra layer of pixels for a big window).
+     */
+    void draw(Canvas c, RectF shape, float r, float blur, Paint paint, boolean under) {
         int radius = Math.max(0, Math.round(r)), b = Math.max(1, Math.round(blur));
         int m = (int) Math.ceil(b * 1.8f) + 1;        // how far the blur spreads outside the shape
         int corner = radius + 2 * m;                  // the slice that holds the curve and the blur on both sides of it
@@ -43,6 +48,7 @@ final class Shadows {
             if (sy[i + 1] == sy[i]) continue;
             for (int j = 0; j < 3; j++) {
                 if (sx[j + 1] == sx[j]) continue;
+                if (under && i == 1 && j == 1) continue;
                 src.set(sx[j], sy[i], sx[j + 1], sy[i + 1]);
                 dst.set(xs[j], ys[i], xs[j + 1], ys[i + 1]);
                 c.drawBitmap(mask, src, dst, tint);

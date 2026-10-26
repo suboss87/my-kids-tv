@@ -96,8 +96,9 @@ final class Photos {
     }
 
     /** On in Home Settings and something imported. */
+    /** Your own photos are no longer offered (the settings row is gone): always off, so none can stay on unseen. */
     static boolean on(Context c) {
-        return Prefs.photos() && !files(c).isEmpty();
+        return false;
     }
 
     /** For the screensaver: the photos as picks (no title, no caption). */

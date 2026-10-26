@@ -63,7 +63,7 @@ final class Recs {
     private static final long LIST_EVERY = 6 * 3600_000L;   // every title on the TV's apps, looked up again every 6 hours
     static final long SPOT_EVERY = 10_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 10 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 18;   // 18 = every available title in the list; each opens its page or the app's search
+    private static final int CACHE_VERSION = 19;   // 19 = the audited links
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -132,6 +132,9 @@ final class Recs {
     private final Context context;
     private final SharedPreferences cache;
     private final ExecutorService io = Executors.newSingleThreadExecutor();
+    // Pictures on their own thread: a list refresh (minutes on a bad connection) never holds up the cards.
+    private final ExecutorService imageIo = Executors.newSingleThreadExecutor();
+    private final Map<String, Long> failedImages = new HashMap<>();   // picture -> when it last failed
     private final Handler main = new Handler(Looper.getMainLooper());
     private final List<Listener> listeners = new ArrayList<>();
     private final Map<String, Backdrop> images = new LinkedHashMap<>();   // this hour's, built and ready to draw
@@ -287,9 +290,11 @@ final class Recs {
         synchronized (images) {
             Backdrop b = images.get(key);
             if (b != null) return b;
+            Long failed = failedImages.get(key);
+            if (failed != null && System.currentTimeMillis() - failed < 10 * 60_000L) return null;   // not again yet
             if (!pending.add(key)) return null;
         }
-        io.execute(() -> {
+        imageIo.execute(() -> {
             try {
                 loadImage(p);
             } finally {
@@ -297,6 +302,15 @@ final class Recs {
             }
         });
         return null;
+    }
+
+    /** The pick's picture couldn't be had lately: the cards don't wait for it. */
+    boolean imageFailed(Pick p) {
+        if (p == null || p.backdrop == null) return true;
+        synchronized (images) {
+            Long failed = failedImages.get(p.backdrop);
+            return failed != null && System.currentTimeMillis() - failed < 10 * 60_000L;
+        }
     }
 
     private boolean hasImage(Pick p) {
@@ -326,6 +340,7 @@ final class Recs {
         boolean missing = false;
         for (Pick pick : wanted()) missing |= !pick.detailed || !hasImage(pick) || needsLink(pick);
         if (!stale && !missing) return;
+        if (newKey) context.getSharedPreferences("recs_history", Context.MODE_PRIVATE).edit().remove("away").apply();   // apps changed
         keyStamp = stamp;
         fetching = true;
         io.execute(() -> {
@@ -483,9 +498,11 @@ final class Recs {
         // A bad moment for TMDB (rate limits, an ISP resetting connections): keep the list we have and try again later
         // rather than show a thin one.
         if (list.size() < 9 && !picks.isEmpty()) throw new IOException("only " + list.size() + " titles came back from TMDB");
-        remember(list);
         if (list.isEmpty()) throw new IOException("TMDB returned no recommendations");
-        picks = list;
+        java.util.Set<String> opened = watched();   // opened while this list was being made
+        List<Pick> live = new ArrayList<>();
+        for (Pick pick : list) if (!opened.contains(key(pick))) live.add(pick);
+        picks = live;
         period = p;
         listAt = System.currentTimeMillis();
         listLanguage = Ui.language;
@@ -904,7 +921,29 @@ final class Recs {
     /** The service's app is on the TV, and the service isn't hidden (an app the TV ships without a subscription, say). */
     private boolean installed(String pkg) {
         if (!HIDDEN.isEmpty()) for (String[] s : SERVICES) if (s[2].equals(pkg) && HIDDEN.contains(s[1])) return false;
-        return HomeApps.launchIntent(context.getPackageManager(), pkg) != null;
+        // Asked of the package manager at most once a minute per app (this runs many times per tick, on the main thread).
+        long now = System.currentTimeMillis();
+        synchronized (installedAt) {
+            Long at = installedAt.get(pkg);
+            if (at != null && now - at < 60_000L) return Boolean.TRUE.equals(installedCache.get(pkg));
+        }
+        boolean yes = HomeApps.launchIntent(context.getPackageManager(), pkg) != null;
+        synchronized (installedAt) {
+            installedCache.put(pkg, yes);
+            installedAt.put(pkg, now);
+        }
+        return yes;
+    }
+
+    private final Map<String, Boolean> installedCache = new HashMap<>();
+    private final Map<String, Long> installedAt = new HashMap<>();
+
+    /** A title has been on screen (in the window): it waits its turn before coming back. */
+    void shown(Pick p) {
+        if (p == null) return;
+        List<Pick> one = new ArrayList<>();
+        one.add(p);
+        remember(one);
     }
 
     private long sourceStamp() {
@@ -1083,7 +1122,9 @@ final class Recs {
         } catch (IOException | RuntimeException | OutOfMemoryError e) {
             //noinspection ResultOfMethodCallIgnored
             f.delete();
+            synchronized (images) { failedImages.put(p.backdrop, System.currentTimeMillis()); }
             AppLog.w("recommendation image: " + e.getMessage());
+            notifyListeners();
         }
     }
 
@@ -1126,10 +1167,7 @@ final class Recs {
             SharedPreferences.Editor e = cache.edit().putString("picks", a.toString()).putInt("period", period).putLong("listAt", listAt)
                     .putString("language", listLanguage).putString("band", listBand)
                     .putLong("keyStamp", keyStamp).putInt("version", CACHE_VERSION);
-            // Watchmode links of titles no longer in the list go (the refused-key mark stays).
-            Set<String> keep = new HashSet<>();
-            for (Pick p : picks) keep.add(linkKey(p));
-            for (String k : cache.getAll().keySet()) if (k.startsWith("wm:") && !k.equals("wm:refused") && !keep.contains(k)) e.remove(k);
+            // Watchmode lookups stay (each costs 2 of the free plan's requests): titles come back to the list often.
             e.apply();
         } catch (Exception ignored) {
         }
