@@ -421,7 +421,7 @@ var Data = (function () {
    */
   var BAND = /^(4-6|7-10|11-13)$/.test(CONFIG.ageBand || '') ? CONFIG.ageBand : '7-10';
   var CATALOG = (window.CATALOG && window.CATALOG.band === BAND && window.CATALOG.titles) || [];
-  var MOVIES = 100, SHOWS = 50, ENOUGH = 12, HISTORY_MAX = 400;
+  var MOVIES = 400, SHOWS = 200, ENOUGH = 12, HISTORY_MAX = 400;
 
   /** The titles shown lately ("movie:123"), oldest first, so a new list starts with others. */
   function history() {
@@ -465,12 +465,12 @@ var Data = (function () {
    * famous ones (nearly every family has seen them) mixed in. Looks at most max * 6 of them up.
    */
   function handPicked(kind, max, shown, done) {
-    var fresh = [], old = [], famous = [], out = [];
+    var fresh = [], old = [], famous = [], famousOld = [], out = [];
     var watched = stored('watched') || [];
     for (var i = 0; i < CATALOG.length; i++) {
       var t = CATALOG[i];
       if (t.kind !== kind || watched.indexOf(kind + ':' + t.id) >= 0) continue;
-      if (t.famous) { if (!shown[kind + ':' + t.id]) famous.push(t); continue; }
+      if (t.famous) { (shown[kind + ':' + t.id] ? famousOld : famous).push(t); continue; }
       (shown[kind + ':' + t.id] ? old : fresh).push(t);
     }
     weightedShuffle(fresh);
@@ -482,8 +482,7 @@ var Data = (function () {
     for (var f = 0; f < Math.min(few, famous.length); f++) {
       order.splice(Math.floor(Math.random() * (Math.min(order.length, max) + 1)), 0, famous[f]);
     }
-    if (order.length < max) order = order.concat(famous.slice(few));   // a small catalog
-    order = order.slice(0, max * 6);
+    order = order.concat(famous.slice(few)).concat(weightedShuffle(famousOld));   // every title gets its turn, famous ones after the gems
     var i2 = 0;
     (function next() {
       if (out.length >= max || i2 >= order.length) { done(out); return; }

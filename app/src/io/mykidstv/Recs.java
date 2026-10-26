@@ -63,7 +63,7 @@ final class Recs {
     private static final long LIST_EVERY = 6 * 3600_000L;   // every title on the TV's apps, looked up again every 6 hours
     static final long SPOT_EVERY = 10_000L, ROTATE_EVERY = 3 * SPOT_EVERY;   // the window moves on every 10 s; a new set after all 3
     /** Bump when what is saved for each title changes (the saved list is discarded and fetched again). */
-    private static final int CACHE_VERSION = 19;   // 19 = the audited links
+    private static final int CACHE_VERSION = 22;   // 21 = every title on the TV's apps in the rotation, famous ones included
     private static final int MANHA = 0, TARDE = 1, NOITE = 2;
     /** Service name on TMDB (part of the name, lowercase) → TV app (HomeApps key, package). */
     private static final String[][] SERVICES = {
@@ -152,7 +152,11 @@ final class Recs {
     private Recs(Context c) {
         context = c;
         cache = c.getSharedPreferences("recs", Context.MODE_PRIVATE);
-        if (cache.getInt("version", 0) != CACHE_VERSION) cache.edit().clear().putInt("version", CACHE_VERSION).apply();
+        if (cache.getInt("version", 0) != CACHE_VERSION) {
+            cache.edit().clear().putInt("version", CACHE_VERSION).apply();
+            // A new version may judge availability differently: what earlier ones marked "not on the TV's apps" goes.
+            c.getSharedPreferences("recs_history", Context.MODE_PRIVATE).edit().remove("away").apply();
+        }
         try {
             String saved = cache.getString("picks", null);
             if (saved != null) picks = parse(new JSONArray(saved));
@@ -487,13 +491,13 @@ final class Recs {
         // Kids only: the age band's vetted catalog, the titles not shown lately first.
         java.util.Set<String> history = history();
         loadCatalog();
-        List<Pick> handMovies = handPicked(catalogMovies, "movie", history, 100);
-        List<Pick> handShows = handPicked(catalogShows, "tv", history, 50);
+        List<Pick> handMovies = handPicked(catalogMovies, "movie", history, 400);
+        List<Pick> handShows = handPicked(catalogShows, "tv", history, 200);
         String band = Prefs.ageBand();
         // Only vetted titles, ever: no "highly rated" fallback from TMDB at large (it once let an R-rated anime in).
         List<Pick> list = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
-        alternate(list, seen, handMovies, handShows, 150);
+        alternate(list, seen, handMovies, handShows, 600);
         AppLog.w("picks: " + handMovies.size() + " movies and " + handShows.size() + " shows from the " + band + " catalog");
         // A bad moment for TMDB (rate limits, an ISP resetting connections): keep the list we have and try again later
         // rather than show a thin one.
@@ -582,13 +586,13 @@ final class Recs {
         notifyListeners();
     }
 
-    /** Catalog titles none of the TV's apps had when last looked up, for a week ("movie:12"). */
+    /** Catalog titles none of the TV's apps had when last looked up, for 2 days ("movie:12"). */
     private java.util.Set<String> unavailable() {
         long today = System.currentTimeMillis() / 86_400_000L;
         java.util.Set<String> out = new java.util.HashSet<>();
         for (String e : context.getSharedPreferences("recs_history", Context.MODE_PRIVATE).getStringSet("away", new java.util.HashSet<>())) {
             int at = e.lastIndexOf('@');
-            if (at > 0 && today - Long.parseLong(e.substring(at + 1)) < 7) out.add(e.substring(0, at));
+            if (at > 0 && today - Long.parseLong(e.substring(at + 1)) < 2) out.add(e.substring(0, at));
         }
         return out;
     }
@@ -600,7 +604,7 @@ final class Recs {
         java.util.Set<String> all = new java.util.HashSet<>();
         for (String e : prefs.getStringSet("away", new java.util.HashSet<>())) {   // the expired ones go
             int at = e.lastIndexOf('@');
-            if (at > 0 && today - Long.parseLong(e.substring(at + 1)) < 7) all.add(e);
+            if (at > 0 && today - Long.parseLong(e.substring(at + 1)) < 2) all.add(e);
         }
         for (String k : keys) all.add(k + "@" + today);
         prefs.edit().putStringSet("away", all).apply();
@@ -622,12 +626,16 @@ final class Recs {
         if (fresh.size() < 12) for (int id : ids) if (!fresh.contains(id)) fresh.add(id);   // nearly all watched
         // Not on the TV's apps when last looked up (within a week): skipped, no need to ask TMDB again.
         java.util.Set<String> away = unavailable();
-        List<Integer> seenLately = new ArrayList<>();
+        List<Integer> seenLately = new ArrayList<>(), famousSeen = new ArrayList<>();
+        int skippedAway = 0;
         for (int id : fresh) {
             String k = kind + ":" + id;
-            if (away.contains(k)) continue;
+            if (away.contains(k)) {
+                skippedAway++;
+                continue;
+            }
             if (history.contains(k)) {
-                if (!catalogFamous.contains(k)) seenLately.add(id);
+                (catalogFamous.contains(k) ? famousSeen : seenLately).add(id);
             } else {
                 (catalogFamous.contains(k) ? famous : gems).add(id);
             }
@@ -642,7 +650,10 @@ final class Recs {
         java.util.Random rnd = new java.util.Random();
         for (int i = 0; i < Math.min(few, famous.size()); i++) order.add(rnd.nextInt(Math.min(order.size(), max) + 1), famous.get(i));
         order.addAll(seenLately);
-        if (order.size() < max) for (int id : famous) if (!order.contains(id)) order.add(id);   // a small catalog
+        // The rest of the famous ones too: every title on the TV's apps gets its turn; they just come after the gems.
+        for (int id : famous) if (!order.contains(id)) order.add(id);
+        weightedShuffle(famousSeen, kind);
+        order.addAll(famousSeen);   // famous and shown lately: last, but still in
         // Looked up six at a time (on a connection that drops half the requests, one by one took minutes), in batches,
         // keeping the order, until there are enough.
         List<Pick> out = new ArrayList<>();
@@ -652,7 +663,7 @@ final class Recs {
         String lastError = "";
         java.util.concurrent.ExecutorService pool = Executors.newFixedThreadPool(6);
         try {
-            int limit = Math.min(order.size(), max * 6);
+            int limit = order.size();   // every title, once
             for (int from = 0; from < limit && out.size() < max; from += 12) {
                 List<java.util.concurrent.Future<Pick>> batch = new ArrayList<>();
                 for (int i = from; i < Math.min(limit, from + 12); i++) {
@@ -696,7 +707,8 @@ final class Recs {
         // Every title on the TV's apps gets its turn: the ones that open the title (or the app's search for it) first,
         // the few that can only open the app after them.
         for (Pick p : unlinked) if (out.size() < max) out.add(p);
-        AppLog.w(kind + ": " + order.size() + " to look up, " + tried + " looked up, " + out.size() + " kept, " + notHere
+        AppLog.w(kind + ": " + ids.length + " in the catalog, " + (ids.length - fresh.size()) + " opened before, " + skippedAway
+                + " not on the TV's apps lately, " + order.size() + " to look up, " + tried + " looked up, " + out.size() + " kept, " + notHere
                 + " not on the TV's apps, " + noImage + " without a picture, " + unlinked.size() + " without a direct link, " + failed + " failed" + (failed > 0 ? " (" + lastError + ")" : ""));
         return out;
     }
