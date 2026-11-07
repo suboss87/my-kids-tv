@@ -366,6 +366,11 @@ public class SettingsActivity extends Activity {
             spoken.readAgain();
             if (lock != null) postDelayed(() -> { if (lock != null) announceForAccessibility(lock.spoken()); }, 400);
             Photos.importInbox(getContext(), this::invalidate);   // photos a computer just sent
+            if (Prefs.importConfig(getContext())) {   // settings a computer just sent
+                HomeData.get(getContext()).settingsChanged();
+                whyRows = null;
+                invalidate();
+            }
         }
 
         void pause() {
@@ -634,7 +639,7 @@ public class SettingsActivity extends Activity {
             }
             version.setTextAlign(Paint.Align.LEFT);
             c.drawText(versionName(getContext()), x, 920 * k, version);
-            if (!Config.WATCHMODE_KEY.trim().isEmpty()) c.drawText(Ui.tr("Links to the titles by Watchmode."), x, 888 * k, version);
+            if (!Prefs.watchmodeKey().isEmpty()) c.drawText(Ui.tr("Links to the titles by Watchmode."), x, 888 * k, version);
             version.setTextAlign(Paint.Align.CENTER);
             String credit = Ui.tr("This product uses the TMDB API but is not endorsed or certified by TMDB.");
             if (creditLayout == null || !credit.equals(creditFor)) {

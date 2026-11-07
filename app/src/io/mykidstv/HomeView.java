@@ -395,6 +395,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             checkNight(true);
             updatePicks();      // three new ones every minute
             updateSleep();
+            if (Prefs.importConfig(getContext())) {   // settings a computer just sent: draw everything again
+                HomeData.get(getContext()).settingsChanged();
+                if (getContext() instanceof android.app.Activity) ((android.app.Activity) getContext()).recreate();
+                return;
+            }
             handler.postDelayed(this, 15_000);
         }
     };

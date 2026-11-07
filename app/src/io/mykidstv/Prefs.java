@@ -69,8 +69,118 @@ final class Prefs {
     static void init(Context c) {
         app = c.getApplicationContext();
         migrateKeys();   // before anything reads the button choices
+        importConfig(app);   // settings a computer sent (ConfigInbox), before anything reads them
         Ui.applyLanguage();   // the language picked on the TV, now that it can be read
     }
+
+    // MARK: - Settings sent from a computer (tools/push-config.py, ConfigInbox)
+
+    /**
+     * Applies a config.properties that a computer sent (the same keys as the file build.sh reads) and deletes it. The
+     * values go where the settings screen's go, so they win over the build's; parent_pin sets the PIN; tmdb_key and
+     * the other keys stay on the TV only. true when something was applied (the screens then draw again). Only one
+     * process imports a given file: the first to rename it. Nothing from the file is logged.
+     */
+    static boolean importConfig(Context c) {
+        File inbox = ConfigInbox.inbox(c.getApplicationContext());
+        File f = new File(inbox, ConfigInbox.NAME);
+        if (!f.exists()) return false;
+        File mine = new File(inbox, ConfigInbox.NAME + "." + android.os.Process.myPid());
+        if (!f.renameTo(mine)) return false;   // another process took it
+        java.util.Properties props = new java.util.Properties();
+        try (java.io.InputStreamReader r = new java.io.InputStreamReader(new java.io.FileInputStream(mine), StandardCharsets.UTF_8)) {
+            props.load(r);
+        } catch (IOException e) {
+            AppLog.w("settings from the computer: unreadable file");
+            //noinspection ResultOfMethodCallIgnored
+            mine.delete();
+            return false;
+        }
+        //noinspection ResultOfMethodCallIgnored
+        mine.delete();
+        if (app == null) app = c.getApplicationContext();
+        SharedPreferences.Editor e = sp().edit();
+        List<String> applied = new ArrayList<>();
+        boolean pin = false;
+        for (String name : props.stringPropertyNames()) {
+            String v = props.getProperty(name, "").trim().replace("\"", "");
+            switch (name) {
+                case "age_band":
+                    if (java.util.Arrays.asList(AGE_BANDS).contains(v)) { e.putString("age_band", v); applied.add(name); }
+                    break;
+                case "child_name": e.putString("child_name", v); applied.add(name); break;
+                case "language": e.putString("language", v.isEmpty() ? "auto" : v); applied.add(name); break;
+                case "temperature": e.putString("temperature", v.isEmpty() ? "auto" : v); applied.add(name); break;
+                case "theme": e.putString("theme", v.isEmpty() ? "dark" : v); applied.add(name); break;
+                case "city": e.putString("city", v); applied.add(name); break;
+                case "latitude": case "longitude":
+                    if (v.matches("-?[0-9]+(\\.[0-9]+)?")) { e.putString(name, v); applied.add(name); }
+                    break;
+                case "tmdb_key": case "watchmode_key": case "hide_services":
+                    e.putString(name, v); applied.add(name);
+                    break;
+                case "tmdb_region":
+                    if (v.isEmpty() || v.matches("[A-Za-z]{2}")) { e.putString(name, v.toUpperCase(Locale.ROOT)); applied.add(name); }
+                    break;
+                case "hide_animation": case "disable_assistant": case "continue_watching":
+                    e.putBoolean(name, "true".equalsIgnoreCase(v)); applied.add(name);
+                    break;
+                case "block_youtube_button":
+                    setBlockYoutubeButton("true".equalsIgnoreCase(v)); applied.add(name);
+                    break;
+                case "parent_pin":
+                    if (v.matches("[0-9]{4}")) {
+                        e.putString("pin", hashPin(v)).putInt("pinFails", 0).putLong("pinWaitUntil", 0);
+                        pin = true;
+                    }
+                    break;
+                default: break;   // keys build.sh doesn't know either, or none of the TV's business
+            }
+        }
+        if (applied.isEmpty() && !pin) return false;
+        e.apply();
+        version++;
+        Ui.applyLanguage();
+        java.util.Collections.sort(applied);
+        AppLog.w("settings from the computer: " + String.join(", ", applied) + (pin ? ", parent PIN" : ""));
+        if (!applied.isEmpty()) HomeMode.notice(app, Ui.trf("New settings arrived from your computer: {list}.", "list", String.join(", ", applied)));
+        if (pin) HomeMode.notice(app, Ui.tr("The parent PIN was set from your computer."));
+        return true;
+    }
+
+    // MARK: - Keys and country (from the build, or sent from a computer; the TV keeps them, never the log)
+
+    /** The TMDB key: the one sent from a computer, else the build's. "" without one (then no picks). */
+    static String tmdbKey() {
+        return app == null ? Config.TMDB_KEY.trim() : sp().getString("tmdb_key", Config.TMDB_KEY).trim();
+    }
+
+    static String watchmodeKey() {
+        return app == null ? Config.WATCHMODE_KEY.trim() : sp().getString("watchmode_key", Config.WATCHMODE_KEY).trim();
+    }
+
+    /** The picks' streaming region (two letters), sent, else the build's, else the TV's time zone (Place). */
+    static String region() {
+        String v = app == null ? "" : sp().getString("tmdb_region", "").trim().toUpperCase(Locale.ROOT);
+        return v.isEmpty() ? Place.region() : v;
+    }
+
+    /** Services to leave out of the picks, comma separated ("hulu,peacock"). */
+    static String hideServices() {
+        return app == null ? Config.HIDE_SERVICES : sp().getString("hide_services", Config.HIDE_SERVICES);
+    }
+
+    static boolean hideAnimation() {
+        return app == null ? Config.HIDE_ANIMATION : sp().getBoolean("hide_animation", Config.HIDE_ANIMATION);
+    }
+
+    static boolean disableAssistant() {
+        return app == null ? Config.DISABLE_ASSISTANT : sp().getBoolean("disable_assistant", Config.DISABLE_ASSISTANT);
+    }
+
+    /** A title the child was in the middle of (Watch Next, from the streaming apps) comes first on the cards. */
+    static boolean continueWatching() { return sp().getBoolean("continue_watching", true); }
+    static void setContinueWatching(boolean on) { put("continue_watching", on); }
 
     /** The TV's own 12/24-hour setting (Settings → System → Date & time). */
     static boolean clock24() {

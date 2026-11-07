@@ -46,6 +46,7 @@ public class HomeActivity extends Activity {
 
     @Override protected void onResume() {
         super.onResume();
+        if (Prefs.importConfig(this)) HomeData.get(this).settingsChanged();   // settings a computer just sent
         if (prefsVersion != Prefs.version) {
             prefsVersion = Prefs.version;
             HomeData.get(this).settingsChanged();

@@ -188,6 +188,13 @@
             android:authorities="io.mykidstv.photos"
             android:exported="true" />
 
+        <!-- tools/push-config.py sends a config.properties here (settings, the parent PIN, the TMDB key) with no
+             rebuild; only adb's shell may write (ConfigInbox checks). -->
+        <provider
+            android:name=".ConfigInbox"
+            android:authorities="io.mykidstv.config"
+            android:exported="true" />
+
         <!-- The sleep timer's minutes left over any app, while the timer runs. A process of its own: a foreground
              service in :home would keep the whole home screen in memory under the app in front. -->
         <service

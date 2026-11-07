@@ -9,6 +9,7 @@ package io.mykidstv;
 public class ScreensaverAlone extends Screensaver {
     @Override public void onAttachedToWindow() {
         Prefs.reload();   // the settings screen saves from :home; this process keeps what it first read
+        Prefs.importConfig(this);   // settings a computer just sent
         super.onAttachedToWindow();
     }
 }

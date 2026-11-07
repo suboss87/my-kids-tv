@@ -117,7 +117,8 @@ final class Recs {
         SERVICE_NAME.put("wink", "Wink");
     }
     /** Country for "what streams where" (config.properties "tmdb_region", e.g. US, GB, BR). */
-    static final String REGION = Place.region();
+    /** The picks' streaming region; read again before each refresh (a computer can send a new one). */
+    static volatile String REGION = Prefs.region();
     /** The errors the settings say in words: TMDB lists none of the TV's apps in REGION, or the TV has none we know. */
     static final String NO_APPS = "none of the TV's streaming services are on TMDB";
     static final String NO_KNOWN_APPS = "none of the TV's streaming apps can give picks";
@@ -173,7 +174,7 @@ final class Recs {
     void removeListener(Listener l) { listeners.remove(l); }
 
     static boolean hasKey(Context c) {
-        return !Config.TMDB_KEY.trim().isEmpty();
+        return !Prefs.tmdbKey().isEmpty();
     }
 
     /** Last fetch, for the settings screen: {count, error, at}. Written by the home screen (another process). */
@@ -328,6 +329,7 @@ final class Recs {
     /** With a key: fetches the list if stale or the time of day (morning/afternoon/night) changed; then the details. */
     void refreshIfStale() {
         if (!hasKey(context) || fetching) return;
+        REGION = Prefs.region();
         long now = System.currentTimeMillis();
         long stamp = sourceStamp();   // a new key, country, age band, animation choice or installed streaming-app set refetches
         boolean newKey = stamp != keyStamp;
@@ -772,7 +774,7 @@ final class Recs {
     private static void add(List<Pick> list, JSONObject o, String kind) {
         String backdrop = o.optString("backdrop_path", "");
         if (backdrop.isEmpty() || "null".equals(backdrop)) return;
-        if (Config.HIDE_ANIMATION && animated(o)) return;
+        if (Prefs.hideAnimation() && animated(o)) return;
         Pick p = new Pick();
         p.id = o.optInt("id");
         p.kind = kind;
@@ -924,7 +926,7 @@ final class Recs {
     /** Services named in hide_services (config.properties), trimmed and lowercased: never a source of picks. */
     private static final Set<String> HIDDEN = new HashSet<>();
     static {
-        for (String s : Config.HIDE_SERVICES.split(",")) {
+        for (String s : Prefs.hideServices().split(",")) {
             String key = s.trim().toLowerCase(Locale.ROOT);
             if (!key.isEmpty()) HIDDEN.add(key);
         }
@@ -959,8 +961,8 @@ final class Recs {
     }
 
     private long sourceStamp() {
-        long stamp = ((Config.TMDB_KEY.hashCode() * 31L + REGION.hashCode()) * 31L + (Config.HIDE_ANIMATION ? 1 : 0)) * 31L
-                + Prefs.ageBand().hashCode();
+        long stamp = ((Prefs.tmdbKey().hashCode() * 31L + REGION.hashCode()) * 31L + (Prefs.hideAnimation() ? 1 : 0)) * 31L
+                + Prefs.ageBand().hashCode() * 31L + Prefs.hideServices().trim().hashCode();
         for (String[] service : SERVICES) stamp = stamp * 31L + (installed(service[2]) ? service[2].hashCode() : 0);
         return stamp;
     }
@@ -978,7 +980,7 @@ final class Recs {
 
     /** A key is set and Watchmode hasn't refused it (a refused key isn't tried again until it changes). */
     private boolean linksOn() {
-        String key = Config.WATCHMODE_KEY.trim();
+        String key = Prefs.watchmodeKey();
         return !key.isEmpty() && cache.getInt("wm:refused", 0) != key.hashCode();
     }
 
@@ -1011,7 +1013,7 @@ final class Recs {
             p.link = link.isEmpty() ? null : link;
         } catch (Exception e) {
             if ("Watchmode returned HTTP 401".equals(e.getMessage())) {
-                cache.edit().putInt("wm:refused", Config.WATCHMODE_KEY.trim().hashCode()).apply();
+                cache.edit().putInt("wm:refused", Prefs.watchmodeKey().hashCode()).apply();
             }
             linkRetryAt = System.currentTimeMillis() + 10 * 60_000L;   // quota or network: not again right away
             AppLog.w("watchmode: " + e.getMessage());
@@ -1020,7 +1022,7 @@ final class Recs {
 
     private static String watchmode(String path) throws IOException {
         HttpURLConnection c = (HttpURLConnection) new URL("https://api.watchmode.com/v1" + path + (path.contains("?") ? "&" : "?")
-                + "apiKey=" + URLEncoder.encode(Config.WATCHMODE_KEY.trim(), "UTF-8")).openConnection();
+                + "apiKey=" + URLEncoder.encode(Prefs.watchmodeKey(), "UTF-8")).openConnection();
         c.setConnectTimeout(8000);
         c.setReadTimeout(10000);
         try {
@@ -1076,7 +1078,7 @@ final class Recs {
     }
 
     private String readKey() {
-        String key = Config.TMDB_KEY.trim();
+        String key = Prefs.tmdbKey();
         return key.isEmpty() ? null : key;
     }
 
