@@ -26,7 +26,9 @@ Ask these in one or two short batches, in plain words, with the choices shown. E
 
 Geocode the city with `https://geocoding-api.open-meteo.com/v1/search?name=<city>&count=5` and confirm the match with
 them. Temperature: `C` outside the US unless they say otherwise.
-A `parent_pin` is built into the app file: tell them to keep `MyKidsTV.apk` to themselves.
+A `parent_pin` or `tmdb_key` in `config.properties` at build time is built into the app file: then tell them to keep
+`MyKidsTV.apk` to themselves. Better: leave both out of the build and send them after the install with
+`python3 tools/push-config.py <TV IP>` (step 5): they then live only on the TV, and the APK carries nothing private.
 
 **Their country decides the apps.** Set `tmdb_region` to the country's two-letter code (`US`, `GB`, `IN`, `BR`, ...):
 the picks only show titles streaming there. Then show them the apps the picks support in their country and ask which
@@ -74,7 +76,14 @@ to switch modes. Never forward port 5555 on the router.
 Apps they asked to hide: with their OK, `adb shell pm disable-user --user 0 <package>` for each, and write the list to
 `kids-disabled.txt` (not committed) so `pm enable <package>` can bring them back. Never uninstall or clear data.
 
-## 5. Check
+## 5. Settings later, without a rebuild
+
+Any change after the install (another age band, the child's name, a new PIN, the TMDB key, the city, the apps to
+leave out) goes to the TV with `python3 tools/push-config.py <TV IP>` (sends `config.properties`) or
+`python3 tools/push-config.py <TV IP> --set age_band=11-13 --set parent_pin=2468`. The TV applies it within 15 s
+on the home screen, or when the settings next open. Never print the values it sends.
+
+## 6. Check
 
 `adb logcat -s MyKidsTV` shows what the switch did. Press Home: My Kids TV opens. Wait a minute: the picks load (some
 ISPs, India's included, reset many connections to TMDB; the app retries, so the first load can take a while). Have
@@ -86,10 +95,17 @@ The My Kids TV settings (the app's icon, the home screen's gear) ask for a 4-dig
 Back leaves to the home screen, and 5 wrong tries wait 30 seconds. The TV keeps only a salted hash of it. Age and the
 YouTube button can also be changed there (Home Settings).
 
-**Forgotten PIN:** with their OK, put a new one after `parent_pin=` in `config.properties`, run `./build.sh` and
-`adb install -r MyKidsTV.apk`: a new `parent_pin` replaces the PIN on the TV, and the other settings stay. Never use
+**Forgotten PIN:** with their OK, `python3 tools/push-config.py <TV IP> --set parent_pin=<new>`: the TV takes the
+new PIN and everything else stays (a rebuild with a new `parent_pin=` and `adb install -r` works too). Never use
 `adb shell pm clear io.mykidstv` (or clear the app's data in the TV's settings) for this: it wipes every setting, the
 home screen choice and the photos too.
+
+## After a TV update, and the way back
+
+The app checks itself 45 s after every boot and once a day, and puts back what a TV update turned on
+(`docs/firmware-updates.md`); `python3 tools/check.py <TV IP> [--fix]` does it from the computer. If the app is gone
+or broken, `python3 tools/restore.py <TV IP>` restores the TV from the records it left in the TV's settings
+(`docs/restore.md`). Every connection the app makes is listed in `docs/privacy.md`: point parents there when they ask.
 
 ## Catalogs
 

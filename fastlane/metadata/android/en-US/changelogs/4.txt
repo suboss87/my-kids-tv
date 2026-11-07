@@ -1,0 +1,5 @@
+• Continue watching: the film or show your child was in the middle of comes first on its tab, and OK resumes it. Only titles from their catalog. A switch in Home Settings turns it off.
+• Settings from your computer, no rebuild: tools/push-config.py sends age, name, city, the TMDB key or a new parent PIN to the TV.
+• A self-check once a day (not only at boot) puts back what a TV update changed; the Home Screen page shows when it last ran.
+• The way back without the app: the switch records the home screen it replaced in the TV's own settings; tools/restore.py restores everything with adb alone, tools/check.py reports drift.
+• New pages: what leaves the TV (docs/privacy.md), after a TV update, the way back, contributing and security.

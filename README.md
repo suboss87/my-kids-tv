@@ -22,6 +22,9 @@ open source, and nothing about your child ever leaves the TV.
 - **Something new every few seconds, never in their face.** The window moves on every 10 seconds and a fresh set
   arrives every 30. The moment your child picks up the remote, everything holds still so they can choose.
 - **Movies and Shows**, from the catalog for their age: **4-6**, **7-10** or **11-13**.
+- **Where they left off, first.** A film or show your child was in the middle of (as its app reports it to the TV)
+  comes first on its tab with a *Continue* mark, and OK resumes it. Only titles from their catalog, never anything
+  else that was watched on the TV; off with one switch in the settings.
 - **Only what you can play, one press away.** A title appears only if it's on an app you have in your country
   (Netflix, Disney+, Prime Video, Apple TV+, ...), and OK opens that title's page in the app, no searching (for most
   titles; the rest open the app). Once your child opens a title, it isn't suggested again.
@@ -44,10 +47,14 @@ Everything below sits behind a **parent PIN**.
 | **The YouTube button** | Make the remote's YouTube button do nothing (Haier, TCL, Hisense, Sony). The app itself stays. |
 | **Apps** | Choose which apps sit on the home screen; hide the ones your child shouldn't see (turned off, never uninstalled). |
 | **Sleep timer** | Turn the TV off after 5 minutes to 4 hours, with the time left on screen. |
-| **The way back** | *Original* restores the TV's own home screen and everything that was turned off. No root needed. |
+| **Continue watching** | On or off. On, the title your child was in the middle of comes first. |
+| **Settings from your computer** | `python3 tools/push-config.py <TV IP>` sends a `config.properties` (age, name, city, the TMDB key, a new PIN…) to the TV. No rebuild, no reinstall. |
+| **The way back** | *Original* restores the TV's own home screen and everything that was turned off. No root needed. From a computer, `tools/restore.py` does the same with adb alone, even with the app gone ([docs/restore.md](docs/restore.md)). |
+| **After a TV update** | The app checks itself at boot and once a day and puts back what the update changed; `tools/check.py` does it from a computer ([docs/firmware-updates.md](docs/firmware-updates.md)). |
 
 **Privacy:** no ads, no accounts, no tracking. The app talks only to TMDB (titles and pictures) and Open-Meteo
-(weather). What your child opened is remembered on the TV and nowhere else.
+(weather). What your child opened is remembered on the TV and nowhere else. Every connection the app makes, and what
+it sends, is listed in [docs/privacy.md](docs/privacy.md).
 
 ## How titles are chosen
 
@@ -87,7 +94,8 @@ About twenty minutes. You need the TV and a computer on the same Wi-Fi.
 3. **On the TV:** open *My Kids TV* → *Home Screen* → *My Kids TV*, and allow USB debugging when asked.
 
 You'll need a free [TMDB API key](https://www.themoviedb.org/settings/api) for the titles. It stays on your computer
-and your TV. Optional: put a `child-photo.png` next to `build.sh` to show your child's picture in the settings; it is
+and your TV. Later changes (another age band, a new PIN, a new key) need no rebuild: edit `config.properties` and run
+`python3 tools/push-config.py <TV IP>`. Optional: put a `child-photo.png` next to `build.sh` to show your child's picture in the settings; it is
 packed into your own build only and never committed.
 
 ## For developers
@@ -98,8 +106,9 @@ web/        The same home screen for LG and Samsung (HTML, CSS, ES5)
 webos/      LG package          tizen/   Samsung package
 catalog/    The catalog pipeline: candidates → rules → Jev → policy → review
 data/       The open dataset
-tools/      check.sh (all builds and translations), translate.py (25 languages), webapp.py
-docs/       TECHNICAL.md: builds, adb and every TV brand's quirks
+tools/      check.sh (all builds and translations), translate.py (25 languages), webapp.py,
+            push-config.py (settings to the TV), check.py (drift after a TV update), restore.py (the way back)
+docs/       TECHNICAL.md: builds, adb and every TV brand's quirks; privacy.md, restore.md, firmware-updates.md
 ```
 
 ```bash
@@ -109,7 +118,8 @@ TYPESAFE_API_KEY=... python3 catalog/pipeline.py --band 7-10 all   # rebuild a c
 ```
 
 The design principles are in [PRODUCT.md](PRODUCT.md); the setup flow an AI assistant follows is in
-[CLAUDE.md](CLAUDE.md). Issues and pull requests are welcome.
+[CLAUDE.md](CLAUDE.md). Issues and pull requests are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md), and
+[SECURITY.md](SECURITY.md) for anything that should stay private.
 
 **Status:** running daily on a Haier Google TV (Android 14). The LG and Samsung apps build and pass the checks, and
 still need a run on real TVs.

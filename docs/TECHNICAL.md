@@ -226,7 +226,22 @@ entries; its system pieces are in `PROTECTED`. USB debugging opens ADB on 5555 t
 - Settings come from `config.properties` through the generated `out/gen/io/mykidstv/Config.java` (never edit that).
   Built with `--generic`, the place values are empty and `Place` fills them from the TV's time zone
   (`app/assets/zones.json`, written by `tools/make_zones.py` with `web/zones.js`).
-  What the person changes on the TV (`Prefs`: Home Settings, Shelf, Remote Buttons, Sleep Timer) wins over those first values.
+  What the person changes on the TV (`Prefs`: Home Settings, Shelf, Remote Buttons, Sleep Timer) wins over those first values,
+  and so does a `config.properties` sent from a computer (`tools/push-config.py` → `ConfigInbox`, a provider only adb's
+  shell may write → `Prefs.importConfig`, called where the screens resume and every 15 s on the home screen; the first
+  process to rename the file imports it). Code reads keys, the region and the service filters through `Prefs`
+  (`tmdbKey`, `region`, `hideServices`, …), never `Config` directly, so a sent value applies without a rebuild.
+- "Continue watching": `WatchNext` reads the TV provider's Watch Next rows (`READ_TV_LISTINGS`, a runtime permission
+  `HomeMode` grants with `pm grant` at the switch and at every check, revokes with Original) with a named projection
+  and no selection (a selection or a null projection fails on some TVs). `Recs.refreshContinue` keeps, once a minute,
+  the rows whose normalized title is in the child's catalog (`catalogTitles`) and from an app in `SERVICES`, one per
+  tab, placed first by `at()`, badge `continue`, with the row's `intent:` URI as the link (`HomeApps.open` parses it,
+  forces the row's package and drops URI grants). Off with `Prefs.continueWatching`.
+- The switch records what it replaced twice: in `home-state.json` and in the TV's global settings
+  (`free_my_tv_disabled`, `free_my_tv_original`), so `tools/restore.py` can undo it with adb alone. `verifyNow` runs
+  45 s after boot, after an app update and once a day (`ModeJob.scheduleDaily`, a persisted periodic job cancelled by
+  Original) and writes `checkedAt`/`checkedFixed`; `tools/check.py` reads the records and can start that job
+  (`cmd jobscheduler run`).
 - The settings open behind the parent PIN (`ParentLock`, drawn by `SettingsView` in the list's place; locked again in
   `onStop`). `Prefs` keeps a salted SHA-256 hash only; `parent_pin` (`Config.PARENT_PIN`) replaces it whenever it
   differs from the one it last set (`pin_preset`), which is how a forgotten PIN is reset. Wrong tries and the 30 s wait

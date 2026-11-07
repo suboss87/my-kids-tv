@@ -13,27 +13,29 @@ what stays on the TV, so a parent can decide with the facts.
   never logged.
 - **Your keys.** The TMDB key (and the optional Watchmode key) are yours. They are sent only to that service, with its
   own requests, and never written to the log.
-- **Your Wi-Fi, your other apps' data.** The app never reads them. The switch to My Kids TV mode talks to the TV's
-  own Android Debug Bridge on the TV itself (127.0.0.1); nothing listens on the network.
+- **Your Wi-Fi, your other apps' data.** The app never reads them. The app itself opens no port and listens for
+  nothing. The switch to My Kids TV mode talks to the TV's own Android Debug Bridge on the TV itself (127.0.0.1); that
+  bridge is the one thing that does listen on your network, and the last section is about it.
 
 ## What the app asks the internet for
 
 | Service | What is sent | Why | When |
 |---|---|---|---|
-| **TMDB** (themoviedb.org) | Your TMDB key, your country code, the TV's language, and the ids of catalog titles | Titles, pictures, which app streams each title where you live | A few times a day, and when the age band or the apps change |
+| **TMDB** (themoviedb.org) | Your TMDB key, your country code, the TV's language, and the ids of catalog titles | Titles, pictures, which app streams each title where you live | Every 6 hours, and when the age band, the key or the streaming apps change |
 | **TMDB images** (image.tmdb.org) | The path of a picture | The artwork on the cards | When a title first shows |
-| **Open-Meteo** (open-meteo.com) | Your city's coordinates (from `config.properties`, the settings, or the TV's time zone) | The weather on the home screen and the sunset that turns it dark | About every 30 minutes while the home screen is on; off with the weather widget |
+| **Open-Meteo** (open-meteo.com) | Your city's coordinates (from `config.properties`, the settings, or the TV's time zone) | The weather on the home screen and the sunset that turns it dark | Every 30 minutes while the home screen or the screensaver is on |
 | **Watchmode** (optional, only if you set a key) | Your Watchmode key and a title's TMDB id | A title's own page in its app, where the catalog has no address | Only for titles that need it |
 | **Open-Meteo geocoding** | The city name you type | The City picker in Home Settings | Only when you search a city |
 
 That is the whole list. The app opens no other connection. Each of these is a plain HTTPS request with no cookie,
-no device id and nothing about your child.
+no device id and nothing about your child; the weather request names the app ("MyKidsTV") as its user agent, nothing
+more.
 
 ## What stays on the TV, and can be read with ADB
 
 The TV's own settings keep two small records so the way back works even without the app: the apps My Kids TV
-turned off (`free_my_tv_disabled`) and the home screen it replaced (`free_my_tv_original`). They hold package
-names, nothing else. [docs/restore.md](restore.md) explains how they are used.
+turned off (`free_my_tv_disabled`) and the home screen and screensaver it replaced (`free_my_tv_original`). They hold
+package and component names, nothing else. [docs/restore.md](restore.md) explains how they are used.
 
 ## Continue watching
 
@@ -42,11 +44,15 @@ With *Continue watching* on (Home Settings), the app reads the rows the streamin
 titles in your child's catalog and shows at most one per tab. Nothing about those rows leaves the TV, and turning
 the setting off stops the reading.
 
-## The one network risk to know about
+## The one risk to know about: USB debugging
 
-My Kids TV mode needs USB debugging on, on the TV, so the app can switch modes through the TV's own ADB. ADB on a
-TV listens on the local network. Keep the TV on your home Wi-Fi and never forward port 5555 on your router: anyone
-who can reach that port can control the TV. *Original* mode does not need it; you can turn USB debugging off then.
+My Kids TV mode needs USB debugging on, on the TV. That is how the app switches modes.
+
+- With it on, the TV's ADB listens on port 5555 on your home network.
+- Anyone who can reach that port can control the TV. On a normal home Wi-Fi that is only the devices in your home.
+- Never forward port 5555 on your router. Never put the TV on a public or shared network with it on.
+- The TV asks once, "Allow USB debugging?", for each computer and for the app itself. Say yes only to your own.
+- *Original* mode does not need it. Turn USB debugging off then if you like.
 
 ## Sending settings from a computer
 

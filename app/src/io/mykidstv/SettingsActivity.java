@@ -795,7 +795,7 @@ public class SettingsActivity extends Activity {
             if (freeActive() && checkedAt > 0) {
                 JSONArray fixed = state.optJSONArray("checkedFixed");
                 String line = fixed != null && fixed.length() > 0
-                        ? Ui.trf("Last check {time}: put back {n} thing(s) a TV update had changed.", "time", ago(checkedAt), "n", fixed.length())
+                        ? Ui.trf("Last check {time}: put back what a TV update had changed ({n}).", "time", ago(checkedAt), "n", fixed.length())
                         : Ui.trf("Last check {time}: everything as you left it.", "time", ago(checkedAt));
                 c.drawText(line, LIST_X * k + 30 * k, hy + 38 * k, hint);
             }

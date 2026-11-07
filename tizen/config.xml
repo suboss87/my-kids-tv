@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://github.com/suboss87/my-kids-tv/tizen" version="1.2.0" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://github.com/suboss87/my-kids-tv/tizen" version="1.3.0" viewmodes="maximized">
     <tizen:application id="MyKidsTVio.MyKidsTV" package="MyKidsTVio" required_version="3.0"/>
     <name>My Kids TV</name>
     <author href="https://github.com/suboss87/my-kids-tv">My Kids TV</author>
