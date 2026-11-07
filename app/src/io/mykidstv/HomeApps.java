@@ -531,7 +531,18 @@ final class HomeApps {
                 intent = launchIntent(a.getPackageManager(), it.pkg);
                 plain = intent;
                 if (plain != null) plain.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-                if (intent != null && it.uri != null) {
+                if (intent != null && it.uri != null && it.uri.startsWith("intent:")) {
+                    // A Watch Next row's own intent (Continue watching): the app resumes the title where it left it. Always
+                    // the row's app, whatever the intent names, and no permission grants from it.
+                    try {
+                        Intent resume = Intent.parseUri(it.uri, Intent.URI_INTENT_SCHEME);
+                        resume.setPackage(it.pkg).setComponent(null).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        resume.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                        intent = resume;
+                    } catch (java.net.URISyntaxException e) {
+                        AppLog.w("couldn't read the row's intent for " + it.label);   // the app's home instead
+                    }
+                } else if (intent != null && it.uri != null) {
                     // A fresh task: with the app already open, Android would otherwise only bring it to the front and the
                     // title's page wouldn't open (the flags Netflix documents for TV launchers).
                     intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(it.uri)).addCategory(Intent.CATEGORY_BROWSABLE).setPackage(it.pkg)

@@ -3390,6 +3390,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         int dot;
         switch (badge) {
             case "must": label = Ui.tr("Must-watch"); dot = 0xFFFFB020; break;
+            case "continue": label = Ui.tr("Continue"); dot = 0xFF4C8DFF; break;   // where the child left off (WatchNext)
             case "learn": label = Ui.tr("Learn something"); dot = 0xFF14B8A6; break;
             case "loved": label = Ui.tr("Kids love it"); dot = 0xFFFF5C8A; break;
             default: return false;

@@ -358,6 +358,7 @@ final class HomeMode {
             check(adb.shell("cmd package set-home-activity " + HOME_ACTIVITY), "Success",
                     Ui.tr("Android didn't accept the new home screen"));
             adb.shell("settings put secure screensaver_components " + DREAM);
+            grantWatchNext(adb, true);
             boolean jmOurs = !jm || setJmHome(adb, PKG);
             if (!jmOurs) AppLog.w("JmLauncher keeps the Home button: " + JM_HOME + " didn't take");
             JSONObject started = state(c);
@@ -476,6 +477,7 @@ final class HomeMode {
                 AppLog.w("remote buttons service: " + e.getMessage());
             }
             SleepTimer.stop(c);
+            grantWatchNext(adb, false);
             adb.shell("appops set " + PKG + " SYSTEM_ALERT_WINDOW default");   // SleepOverlay's, if it was allowed
             Capabilities.forget(c, Capabilities.OVERLAY);                       // asked again next time
             s = state(c);
@@ -696,6 +698,7 @@ final class HomeMode {
                     if (!savers.contains(OTHER_DREAM)) fixed.add(Ui.tr("the screensaver"));   // ours, moved: not the TV
                 }
                 record(adb, disabled);
+                if (!reverted) grantWatchNext(adb, true);   // an app update takes runtime permissions back
                 JSONObject latest = state(app);
                 latest.put("disabled", new JSONArray(sorted(disabled)));
                 save(app, latest);
@@ -756,6 +759,16 @@ final class HomeMode {
         String component = lines[lines.length - 1].trim();
         // With no default home yet, the system's chooser answers ("android/...ResolverActivity"): unknown.
         return component.contains("/") && !component.startsWith("android/") ? packageOf(component) : "";
+    }
+
+    /**
+     * "Continue watching" reads the streaming apps' Watch Next rows with READ_TV_LISTINGS, a runtime permission Android
+     * TV has no screen for: granted here in My Kids TV mode, taken back with Original. A TV that refuses is left alone
+     * (the cards then show no Continue title).
+     */
+    private static void grantWatchNext(Adb adb, boolean on) throws IOException {
+        String out = adb.shell("pm " + (on ? "grant " : "revoke ") + PKG + " " + WatchNext.PERMISSION);
+        if (out.contains("Exception") || out.contains("Error")) AppLog.w("continue watching permission: " + out.trim());
     }
 
     /** Whether the Home button goes through JmLauncher (see JM_HOME). */

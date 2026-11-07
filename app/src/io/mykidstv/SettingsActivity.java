@@ -902,8 +902,8 @@ public class SettingsActivity extends Activity {
          * Home Settings: the child's age and the YouTube button (a parent's choices, first), language, temperature, theme,
          * sounds, weather, city and forecast. (My Photos is gone from here: the picks fill the home screen.)
          */
-        private static final int AGE_ROW = 0, YOUTUBE_ROW = 1, LANGUAGE_ROW = 2, TEMPERATURE_ROW = 3, THEME_ROW = 4,
-                PHOTOS_ROW = -1, SOUNDS_ROW = 5, WEATHER_ROW = 6, CITY_ROW = 7, FORECAST_ROW = 8;
+        private static final int AGE_ROW = 0, YOUTUBE_ROW = 1, CONTINUE_ROW = 2, LANGUAGE_ROW = 3, TEMPERATURE_ROW = 4,
+                THEME_ROW = 5, PHOTOS_ROW = -1, SOUNDS_ROW = 6, WEATHER_ROW = 7, CITY_ROW = 8, FORECAST_ROW = 9;
         /** Home Settings rows on screen at once (what fits above the hints at 1080p); a longer list scrolls. */
         private static final int SETTINGS_VISIBLE = 10;
 
@@ -911,6 +911,7 @@ public class SettingsActivity extends Activity {
             List<String> l = new ArrayList<>();
             l.add(Ui.tr("Age"));
             l.add(Ui.tr("Block YouTube button"));
+            l.add(Ui.tr("Continue watching"));
             l.add(Ui.tr("Language"));
             l.add(Ui.tr("Temperature"));
             l.add(Ui.tr("Theme"));
@@ -926,6 +927,7 @@ public class SettingsActivity extends Activity {
             String[] v = new String[labels.length];
             v[AGE_ROW] = Ui.trf("{band} years", "band", Prefs.ageBand());
             v[YOUTUBE_ROW] = onOff(Prefs.blockYoutubeButton());
+            v[CONTINUE_ROW] = onOff(Prefs.continueWatching());
             String lang = Prefs.language();
             v[LANGUAGE_ROW] = lang.equals("auto") ? Ui.tr("Automatic") : Ui.languageName(lang);
             String unit = Prefs.temperature();
@@ -957,7 +959,8 @@ public class SettingsActivity extends Activity {
                 case MAIN:
                     return i == 5 ? Capabilities.NEED_REMOTE_BUTTONS : i == 6 ? Capabilities.NEED_ADB : null;
                 case HOME_SETTINGS:
-                    return pickScroll + i == YOUTUBE_ROW ? Capabilities.NEED_REMOTE_BUTTONS : null;
+                    return pickScroll + i == YOUTUBE_ROW ? Capabilities.NEED_REMOTE_BUTTONS
+                            : pickScroll + i == CONTINUE_ROW ? Capabilities.NEED_ADB : null;
                 case POWER: {
                     int id = powerRows()[i];
                     return id == P_WHERE ? Capabilities.NEED_OVERLAY : null;
@@ -1186,6 +1189,9 @@ public class SettingsActivity extends Activity {
                 }
                 case YOUTUBE_ROW:
                     Prefs.setBlockYoutubeButton(!Prefs.blockYoutubeButton());
+                    return;
+                case CONTINUE_ROW:   // the cards read the rows again within a minute
+                    Prefs.setContinueWatching(!Prefs.continueWatching());
                     return;
                 case LANGUAGE_ROW: break;   // OK opens the language picker.
                 case TEMPERATURE_ROW: {

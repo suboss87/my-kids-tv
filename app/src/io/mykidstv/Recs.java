@@ -244,8 +244,12 @@ final class Recs {
         }
         List<Pick> out = new ArrayList<>();
         java.util.Set<String> seen = new java.util.HashSet<>();
-        if ("movie".equals(kind)) take(out, seen, movies, slot * 3, 3);
-        else if ("tv".equals(kind)) take(out, seen, shows, slot * 3, 3);
+        // What the child was in the middle of comes first (one per tab); the slot's own titles fill the rest.
+        for (Pick c : continueFor(kind, have)) {
+            if (seen.add(franchise(c.title))) out.add(c);
+        }
+        if ("movie".equals(kind)) take(out, seen, movies, slot * 3, 3 - out.size());
+        else if ("tv".equals(kind)) take(out, seen, shows, slot * 3, 3 - out.size());
         else {
             // What Movies and Shows show this slot, so Explore skips them (and their franchises).
             take(new ArrayList<>(), seen, movies, slot * 3, 3);
@@ -281,6 +285,121 @@ final class Recs {
         int cut = t.indexOf(':');
         if (cut < 0) cut = t.indexOf(" - ");
         return (cut > 0 ? t.substring(0, cut) : t).trim();
+    }
+
+    // MARK: - Continue watching (the streaming apps' Watch Next rows, kept to the catalog)
+
+    private volatile List<Pick> continuePicks = new ArrayList<>();
+    private final Map<String, Pick> continueCache = new HashMap<>();   // "tv:246" -> its details, once fetched
+    private volatile long continueAt;
+    private volatile boolean continueBusy;
+    private static final long CONTINUE_EVERY = 60_000L;
+
+    /** The continue title for a tab (at most one), if its app is still on the TV. */
+    private List<Pick> continueFor(String kind, Map<String, Boolean> have) {
+        List<Pick> out = new ArrayList<>();
+        for (Pick p : continuePicks) {
+            if (kind != null && !kind.equals(p.kind)) continue;
+            if (p.pkg == null || !p.detailed || !have.computeIfAbsent(p.pkg, this::installed)) continue;
+            boolean dup = false;
+            for (Pick o : out) dup |= o.kind.equals(p.kind);
+            if (!dup) out.add(p);
+            if (out.size() >= (kind == null ? 2 : 1)) break;
+        }
+        return out;
+    }
+
+    /**
+     * Reads the Watch Next rows once a minute (cheap) and keeps the ones that are catalog titles on the TV's apps,
+     * newest first, with the row's own intent as the link (the app resumes where it left off). Details come from
+     * TMDB as for any pick, once per title.
+     */
+    private void refreshContinue() {
+        long now = System.currentTimeMillis();
+        if (continueBusy || now - continueAt < CONTINUE_EVERY && now >= continueAt) return;
+        continueAt = now;
+        if (!Prefs.continueWatching() || !WatchNext.allowed(context)) {
+            if (!continuePicks.isEmpty()) {
+                continuePicks = new ArrayList<>();
+                notifyListeners();
+            }
+            return;
+        }
+        continueBusy = true;
+        io.execute(() -> {
+            try {
+                java.util.Set<String> apps = new java.util.HashSet<>();
+                for (String[] s : SERVICES) if (installed(s[2])) apps.add(s[2]);
+                loadCatalog();
+                List<Pick> found = new ArrayList<>();
+                java.util.Set<String> seen = new java.util.HashSet<>();
+                for (WatchNext.Row r : WatchNext.read(context, apps)) {
+                    String key = catalogTitles.get(WatchNext.normalize(r.title));
+                    if (key == null || !seen.add(key) || found.size() >= 4) continue;
+                    Pick p;
+                    synchronized (continueCache) { p = continueCache.get(key); }
+                    if (p == null) {
+                        for (Pick o : picks) if (key(o).equals(key)) { p = copy(o); break; }
+                    }
+                    if (p == null) {
+                        p = new Pick();
+                        p.kind = key.substring(0, key.indexOf(':'));
+                        p.id = Integer.parseInt(key.substring(key.indexOf(':') + 1));
+                        try {
+                            fetchDetails(p);
+                        } catch (Exception e) {
+                            continue;   // next time
+                        }
+                    }
+                    if (p.backdrop == null) continue;
+                    p.badge = "continue";
+                    p.pkg = r.pkg;
+                    p.app = serviceOf(r.pkg);
+                    p.link = r.intent != null && r.intent.startsWith("intent:") ? r.intent : p.link;
+                    List<String> parts = new ArrayList<>();
+                    if (!r.where().isEmpty()) parts.add(r.where());
+                    if (r.minutesLeft() > 0) parts.add(Ui.trf("{n} min left", "n", r.minutesLeft()));
+                    if (p.app != null) parts.add(SERVICE_NAME.get(p.app));
+                    p.meta = String.join(" · ", parts);
+                    synchronized (continueCache) {
+                        continueCache.put(key, p);
+                        while (continueCache.size() > 8) continueCache.remove(continueCache.keySet().iterator().next());
+                    }
+                    found.add(p);
+                }
+                boolean changed = !samePicks(found, continuePicks);
+                continuePicks = found;
+                if (changed) {
+                    AppLog.w("continue watching: " + found.size() + " of the child's titles in the apps' rows");
+                    notifyListeners();
+                }
+            } catch (RuntimeException e) {
+                AppLog.w("continue watching: " + e.getMessage());
+            } finally {
+                continueBusy = false;
+            }
+        });
+    }
+
+    private static boolean samePicks(List<Pick> a, List<Pick> b) {
+        if (a.size() != b.size()) return false;
+        for (int i = 0; i < a.size(); i++) {
+            if (!key(a.get(i)).equals(key(b.get(i))) || !String.valueOf(a.get(i).meta).equals(String.valueOf(b.get(i).meta))) return false;
+        }
+        return true;
+    }
+
+    private static Pick copy(Pick o) {
+        Pick p = new Pick();
+        p.id = o.id; p.kind = o.kind; p.title = o.title; p.backdrop = o.backdrop; p.meta = o.meta; p.app = o.app; p.pkg = o.pkg;
+        p.link = o.link; p.badge = o.badge; p.tagline = o.tagline; p.detailed = o.detailed;
+        return p;
+    }
+
+    /** The service id ("prime") of a streaming app's package, or null. */
+    private static String serviceOf(String pkg) {
+        for (String[] s : SERVICES) if (s[2].equals(pkg)) return s[1];
+        return null;
     }
 
     /** Name of the service the pick is on ("Netflix"), or empty. */
@@ -328,6 +447,7 @@ final class Recs {
 
     /** With a key: fetches the list if stale or the time of day (morning/afternoon/night) changed; then the details. */
     void refreshIfStale() {
+        refreshContinue();
         if (!hasKey(context) || fetching) return;
         REGION = Prefs.region();
         long now = System.currentTimeMillis();
@@ -540,6 +660,8 @@ final class Recs {
     private static final Map<String, Double> catalogScores = new HashMap<>();   // Jev's 0-1 score: higher shows up more
     // Straight to the title's page in each app (Wikidata's ids, built into the catalog): "movie:12" -> {netflix: url}
     private static final Map<String, JSONObject> catalogLinks = new HashMap<>();
+    // The catalog's titles as the apps may spell them (WatchNext.normalize) -> "movie:12", for Continue watching.
+    private static final Map<String, String> catalogTitles = new HashMap<>();
     private static String catalogBand;
 
     private void loadCatalog() {
@@ -550,6 +672,7 @@ final class Recs {
         catalogFamous.clear();
         catalogScores.clear();
         catalogLinks.clear();
+        catalogTitles.clear();
         List<Integer> movies = new ArrayList<>(), shows = new ArrayList<>();
         try (java.io.InputStream in = context.getAssets().open("catalog/" + band + ".json")) {
             JSONArray titles = new JSONObject(read(in)).getJSONArray("titles");
@@ -560,6 +683,8 @@ final class Recs {
                 if (t.optBoolean("famous")) catalogFamous.add(t.optString("kind") + ":" + t.getInt("id"));
                 catalogScores.put(t.optString("kind") + ":" + t.getInt("id"), t.optDouble("score", 0.7));
                 if (t.optJSONObject("links") != null) catalogLinks.put(t.optString("kind") + ":" + t.getInt("id"), t.optJSONObject("links"));
+                String name = WatchNext.normalize(t.optString("title"));
+                if (!name.isEmpty() && !catalogTitles.containsKey(name)) catalogTitles.put(name, t.optString("kind") + ":" + t.getInt("id"));
             }
         } catch (Exception e) {
             AppLog.w("catalog " + band + ": " + e.getMessage());

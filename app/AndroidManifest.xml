@@ -15,6 +15,10 @@
     <!-- The sleep timer on time: from Android 12, windows under 10 minutes stretch to 10. No prompt for either. -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!-- "Continue watching": the rows the streaming apps publish to Android TV (WatchNext). A runtime permission the
+         switch grants through ADB in My Kids TV mode and takes back with Original; without it the cards simply show
+         no Continue title. -->
+    <uses-permission android:name="android.permission.READ_TV_LISTINGS" />
 
     <!-- Android 11+: without this list the app can't "see" the other apps (getLeanbackLaunchIntentForPackage
          returns null). The shelf and streaming apps, the live TV apps and, through the <intent>, every TV app
@@ -64,6 +68,8 @@
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="content" android:host="android.media.tv" />
         </intent>
+        <!-- The TV provider's Watch Next rows (Continue watching). -->
+        <provider android:authorities="android.media.tv" />
     </queries>
 
     <uses-feature android:name="android.software.leanback" android:required="false" />
