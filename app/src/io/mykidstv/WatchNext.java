@@ -102,6 +102,13 @@ final class WatchNext {
         return m.find() ? Integer.parseInt(m.group()) : 0;
     }
 
+    /** The year in a row's title ("Frozen (2013)"), or 0. */
+    static int year(String title) {
+        if (title == null) return 0;
+        java.util.regex.Matcher m = java.util.regex.Pattern.compile("[(\\[](\\d{4})[)\\]]\\s*$").matcher(title.trim());
+        return m.find() ? Integer.parseInt(m.group(1)) : 0;
+    }
+
     /**
      * A title as the catalog and the apps may both spell it: lower case, no accents, no punctuation, one space, and
      * without a trailing "(2019)", ": Season 2" or "- Season 2".

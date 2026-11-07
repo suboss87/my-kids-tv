@@ -333,7 +333,6 @@ final class HomeMode {
             String jmBefore = jm ? jmHome(adb) : "";
             if (jm && !jmBefore.equals(PKG)) latest.put("originalJmHome", jmBefore.matches("[\\w.]*") ? jmBefore : "");
             save(c, latest);
-            recordOriginal(adb, latest);
             // Turning off an app makes Android delete the Wi-Fi networks it saved (#14), and Original can't bring them
             // back. The TV's first setup usually saved the network: then stop here, before anything changes.
             Set<String> owners = wifiOwners(adb);
@@ -356,6 +355,7 @@ final class HomeMode {
                 measureMemory(c, adb, ORIGINAL);
             }
             busy(c, Ui.tr("Switching the home screen and screensaver…"));
+            recordOriginal(adb, state(c));   // only now: a refused switch leaves no record for restore.py to act on
             Watchdog.clear(c);
             check(adb.shell("cmd package set-home-activity " + HOME_ACTIVITY), "Success",
                     Ui.tr("Android didn't accept the new home screen"));
@@ -480,7 +480,6 @@ final class HomeMode {
                 AppLog.w("remote buttons service: " + e.getMessage());
             }
             SleepTimer.stop(c);
-            grantWatchNext(adb, false);
             adb.shell("appops set " + PKG + " SYSTEM_ALERT_WINDOW default");   // SleepOverlay's, if it was allowed
             Capabilities.forget(c, Capabilities.OVERLAY);                       // asked again next time
             ModeJob.cancelDaily(c);
@@ -501,6 +500,9 @@ final class HomeMode {
             done(c, null);
             adb.shell("am start -a android.intent.action.MAIN -c android.intent.category.HOME");
             ModeJob.schedule(c, ModeJob.MEMORY, ORIGINAL, 120_000);
+            // Last, and detached: taking back a runtime permission makes Android stop every process of this app, so it
+            // must come after the state is saved and the home screen handed back.
+            adb.shell("(sleep 5; pm revoke " + PKG + " " + WatchNext.PERMISSION + ") >/dev/null 2>&1 &");
         } catch (Exception e) {
             done(c, Ui.trf("Couldn't go back to the original: {error}", "error", e.getMessage()));
         }
@@ -704,13 +706,13 @@ final class HomeMode {
                 }
                 record(adb, disabled);
                 if (!reverted) grantWatchNext(adb, true);   // an app update takes runtime permissions back
+                if (adb.shell("settings get global " + RECORD_ORIGINAL).trim().matches("|null")) recordOriginal(adb, s);   // switched by an older version
                 JSONObject latest = state(app);
                 latest.put("disabled", new JSONArray(sorted(disabled)));
                 save(app, latest);
             } catch (Exception e) {
-                checked(app, fixed);
                 notice(app, Ui.trf("Couldn't check My Kids TV: {error}", "error", e.getMessage()));
-                return;
+                return;   // the last good check stays on the settings page; the notice says this one failed
             }
             checked(app, fixed);
             if (!fixed.isEmpty()) {
@@ -990,7 +992,7 @@ final class HomeMode {
     static void save(Context c, JSONObject s) {
         synchronized (FILE_LOCK) {
             File dir = c.getFilesDir();
-            File tmp = new File(dir, "home-state.json.tmp");
+            File tmp = new File(dir, "home-state.json." + android.os.Process.myPid() + ".tmp");   // one per process
             try (FileOutputStream out = new FileOutputStream(tmp)) {
                 out.write(s.toString().getBytes(StandardCharsets.UTF_8));
                 out.getFD().sync();

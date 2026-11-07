@@ -8,7 +8,8 @@ to know now, or from a cron job.
 
 It reads the TV's own records (what My Kids TV turned off, and the home screen it replaced), the packages that are
 off now, the home screen and the screensaver in use. --fix runs the app's own check job (the one that knows every
-brand's rules), waits, and reports again. Exit codes: 0 in sync (or fixed), 1 drift, 2 the TV could not be read.
+brand's rules), waits, and reports again. Exit codes: 0 in sync (or fixed), 1 drift, 2 the TV could not be read,
+3 the check job could not be started (the app is not in My Kids TV mode, or is too old).
 """
 import os
 import sys
@@ -18,7 +19,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tvadb  # noqa: E402
 
 PKG = 'io.mykidstv'
-VERIFY_JOB = 1000 + abs(tvadb.java_hash('verify')) % 1000   # ModeJob.schedule's id for the "verify" action
+DAILY_JOB = 2001                                             # ModeJob.DAILY_ID: registered all the while My Kids TV is on
+VERIFY_JOB = 1000 + abs(tvadb.java_hash('verify')) % 1000   # ModeJob.schedule's one-off "verify" (pending ~47 s after boot)
 
 
 def check():
@@ -52,10 +54,15 @@ def check():
 
 
 def fix():
-    out = tvadb.shell(f'cmd jobscheduler run -f {PKG} {VERIFY_JOB}')
-    if 'Running' not in out and 'run' not in out.lower():
-        print('Could not start the check job: ' + out.strip())
-        return 2
+    started = False
+    for job in (DAILY_JOB, VERIFY_JOB):
+        out = tvadb.shell(f'cmd jobscheduler run -f {PKG} {job}')
+        if 'Running' in out or 'running' in out.lower():
+            started = True
+            break
+    if not started:
+        print('Could not start the check job (is My Kids TV mode on, and the app a recent one?): ' + out.strip())
+        return 3
     print('My Kids TV is checking the TV… (about 30 s)')
     time.sleep(30)
     return check()

@@ -30,7 +30,7 @@ python3 tools/check.py 192.168.1.50 --fix    # run the app's own check now, then
 `check.py` reads the TV's records (what was turned off, the home screen that was replaced) and compares them with the
 TV: which of those apps are on again, who holds the Home button, which screensaver is set. `--fix` asks the My Kids TV
 on the TV to run its check job (the one that knows every brand's rules), waits half a minute and reports again. Exit
-codes: 0 in sync, 1 drift, 2 the TV could not be read, so it fits a cron job.
+codes: 0 in sync, 1 drift, 2 the TV could not be read, 3 the check could not be started, so it fits a cron job.
 
 ## If the TV update broke more than that
 

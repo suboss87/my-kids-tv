@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -51,6 +52,7 @@ final class Recs {
         String tagline = "";    // the story in a line, for the window (TMDB's tagline, or a short synopsis)
         boolean detailed;
         java.io.File photo;     // one of your own photos (Photos): no title, no caption
+        int year, runtime;      // from TMDB: the release year, and a film's minutes (Continue watching checks both)
     }
 
     interface Listener { void onRecs(); }
@@ -334,10 +336,17 @@ final class Recs {
                 List<Pick> found = new ArrayList<>();
                 java.util.Set<String> seen = new java.util.HashSet<>();
                 for (WatchNext.Row r : WatchNext.read(context, apps)) {
-                    String key = catalogTitles.get(WatchNext.normalize(r.title));
+                    // A row with a season or episode is a series, one without is a film: "Frozen" the thriller and
+                    // "Frozen" the Disney film share a name, and the child must never get the parent's resume intent.
+                    String kind = r.season > 0 || r.episode > 0 ? "tv" : "movie";
+                    String key = catalogTitles.get(kind + "/" + WatchNext.normalize(r.title));
                     if (key == null || !seen.add(key) || found.size() >= 4) continue;
-                    Pick p;
-                    synchronized (continueCache) { p = continueCache.get(key); }
+                    int rowYear = WatchNext.year(r.title);
+                    Integer catalogYear = catalogYears.get(key);
+                    if (rowYear > 0 && catalogYear != null && rowYear != catalogYear) continue;
+                    Pick cached;
+                    synchronized (continueCache) { cached = continueCache.get(key); }
+                    Pick p = cached != null ? copy(cached) : null;   // a copy: the one on the cards is never changed under it
                     if (p == null) {
                         for (Pick o : picks) if (key(o).equals(key)) { p = copy(o); break; }
                     }
@@ -352,6 +361,9 @@ final class Recs {
                         }
                     }
                     if (p.backdrop == null) continue;
+                    // A film's length must agree too (a quarter either way): a namesake of another length is not it.
+                    if ("movie".equals(kind) && r.duration > 0 && p.runtime > 0
+                            && Math.abs(r.duration / 60_000L - p.runtime) > Math.max(10, p.runtime / 4)) continue;
                     p.badge = "continue";
                     p.pkg = r.pkg;
                     p.app = serviceOf(r.pkg);
@@ -392,7 +404,7 @@ final class Recs {
     private static Pick copy(Pick o) {
         Pick p = new Pick();
         p.id = o.id; p.kind = o.kind; p.title = o.title; p.backdrop = o.backdrop; p.meta = o.meta; p.app = o.app; p.pkg = o.pkg;
-        p.link = o.link; p.badge = o.badge; p.tagline = o.tagline; p.detailed = o.detailed;
+        p.link = o.link; p.badge = o.badge; p.tagline = o.tagline; p.detailed = o.detailed; p.year = o.year; p.runtime = o.runtime;
         return p;
     }
 
@@ -662,6 +674,7 @@ final class Recs {
     private static final Map<String, JSONObject> catalogLinks = new HashMap<>();
     // The catalog's titles as the apps may spell them (WatchNext.normalize) -> "movie:12", for Continue watching.
     private static final Map<String, String> catalogTitles = new HashMap<>();
+    private static final Map<String, Integer> catalogYears = new HashMap<>();   // "movie:12" -> 2019
     private static String catalogBand;
 
     private void loadCatalog() {
@@ -673,6 +686,7 @@ final class Recs {
         catalogScores.clear();
         catalogLinks.clear();
         catalogTitles.clear();
+        catalogYears.clear();
         List<Integer> movies = new ArrayList<>(), shows = new ArrayList<>();
         try (java.io.InputStream in = context.getAssets().open("catalog/" + band + ".json")) {
             JSONArray titles = new JSONObject(read(in)).getJSONArray("titles");
@@ -684,7 +698,10 @@ final class Recs {
                 catalogScores.put(t.optString("kind") + ":" + t.getInt("id"), t.optDouble("score", 0.7));
                 if (t.optJSONObject("links") != null) catalogLinks.put(t.optString("kind") + ":" + t.getInt("id"), t.optJSONObject("links"));
                 String name = WatchNext.normalize(t.optString("title"));
-                if (!name.isEmpty() && !catalogTitles.containsKey(name)) catalogTitles.put(name, t.optString("kind") + ":" + t.getInt("id"));
+                // One key per kind and name: a film and a series of the same name are told apart by the row's shape.
+                if (!name.isEmpty()) catalogTitles.putIfAbsent(t.optString("kind") + "/" + name, t.optString("kind") + ":" + t.getInt("id"));
+                String year = t.optString("year", "");
+                if (year.matches("\\d{4}")) catalogYears.put(t.optString("kind") + ":" + t.getInt("id"), Integer.parseInt(year));
             }
         } catch (Exception e) {
             AppLog.w("catalog " + band + ": " + e.getMessage());
@@ -954,8 +971,11 @@ final class Recs {
             String name = genres.getJSONObject(0).optString("name");
             parts.add(genre(name));
         }
+        String date = o.optString(p.kind.equals("movie") ? "release_date" : "first_air_date", "");
+        if (date.length() >= 4 && date.substring(0, 4).matches("\\d{4}")) p.year = Integer.parseInt(date.substring(0, 4));
         if (p.kind.equals("movie")) {
             int minutes = o.optInt("runtime");
+            p.runtime = minutes;
             if (minutes > 0) parts.add(minutes >= 60 ? Ui.trf("{h}h {m}m", "h", minutes / 60, "m", minutes % 60) : Ui.trf("{m}m", "m", minutes));
         } else {
             int seasons = o.optInt("number_of_seasons");
@@ -1048,18 +1068,28 @@ final class Recs {
         return first;
     }
 
-    /** Services named in hide_services (config.properties), trimmed and lowercased: never a source of picks. */
-    private static final Set<String> HIDDEN = new HashSet<>();
-    static {
-        for (String s : Prefs.hideServices().split(",")) {
-            String key = s.trim().toLowerCase(Locale.ROOT);
-            if (!key.isEmpty()) HIDDEN.add(key);
+    /** Services named in hide_services (config.properties, or sent from a computer), lowercased: never a source of picks. */
+    private static volatile Set<String> hidden = Collections.emptySet();
+    private static String hiddenFrom;
+
+    private static Set<String> hidden() {
+        String v = Prefs.hideServices();
+        if (!v.equals(hiddenFrom)) {
+            Set<String> out = new HashSet<>();
+            for (String s : v.split(",")) {
+                String key = s.trim().toLowerCase(Locale.ROOT);
+                if (!key.isEmpty()) out.add(key);
+            }
+            hidden = out;
+            hiddenFrom = v;
         }
+        return hidden;
     }
 
     /** The service's app is on the TV, and the service isn't hidden (an app the TV ships without a subscription, say). */
     private boolean installed(String pkg) {
-        if (!HIDDEN.isEmpty()) for (String[] s : SERVICES) if (s[2].equals(pkg) && HIDDEN.contains(s[1])) return false;
+        Set<String> off = hidden();
+        if (!off.isEmpty()) for (String[] s : SERVICES) if (s[2].equals(pkg) && off.contains(s[1])) return false;
         // Asked of the package manager at most once a minute per app (this runs many times per tick, on the main thread).
         long now = System.currentTimeMillis();
         synchronized (installedAt) {

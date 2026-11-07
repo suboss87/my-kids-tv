@@ -84,9 +84,9 @@ final class Prefs {
     static boolean importConfig(Context c) {
         File inbox = ConfigInbox.inbox(c.getApplicationContext());
         File f = new File(inbox, ConfigInbox.NAME);
-        if (!f.exists()) return false;
+        if (!f.exists()) return reloadIfImportedElsewhere(inbox);
         File mine = new File(inbox, ConfigInbox.NAME + "." + android.os.Process.myPid());
-        if (!f.renameTo(mine)) return false;   // another process took it
+        if (!f.renameTo(mine)) return reloadIfImportedElsewhere(inbox);   // another process took it
         java.util.Properties props = new java.util.Properties();
         try (java.io.InputStreamReader r = new java.io.InputStreamReader(new java.io.FileInputStream(mine), StandardCharsets.UTF_8)) {
             props.load(r);
@@ -138,13 +138,54 @@ final class Prefs {
             }
         }
         if (applied.isEmpty() && !pin) return false;
+        // A PIN from the computer must not be undone by the build's parent_pin at the next check (applyPinPreset).
+        if (pin && Config.PARENT_PIN.trim().matches("[0-9]{4}")) e.putString("pin_preset", hashPin(Config.PARENT_PIN.trim()));
         e.apply();
         version++;
         Ui.applyLanguage();
+        stampImport(inbox);
         java.util.Collections.sort(applied);
         AppLog.w("settings from the computer: " + String.join(", ", applied) + (pin ? ", parent PIN" : ""));
         if (!applied.isEmpty()) HomeMode.notice(app, Ui.trf("New settings arrived from your computer: {list}.", "list", String.join(", ", applied)));
         if (pin) HomeMode.notice(app, Ui.tr("The parent PIN was set from your computer."));
+        return true;
+    }
+
+    // Every process keeps its own copy of the settings in memory, and a write from one would put a stale copy over
+    // another's import. The importer leaves a stamp; the others see a new stamp and read the file again (reload) before
+    // they read or write anything, so a PIN or a key sent while the home screen was in the background still applies.
+    private static String importStamp;
+
+    private static File stampFile(File inbox) {
+        return new File(inbox, "applied");
+    }
+
+    private static void stampImport(File inbox) {
+        String token = android.os.Process.myPid() + ":" + System.currentTimeMillis();
+        try (FileOutputStream out = new FileOutputStream(stampFile(inbox))) {
+            out.write(token.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException ignored) {
+        }
+        importStamp = token;
+    }
+
+    /** true when another process imported since this one last looked (then the settings were read again). */
+    private static boolean reloadIfImportedElsewhere(File inbox) {
+        File f = stampFile(inbox);
+        String token = "";
+        if (f.exists()) {
+            try (BufferedReader r = new BufferedReader(new FileReader(f))) {
+                token = String.valueOf(r.readLine()).trim();
+            } catch (IOException ignored) {
+            }
+        }
+        if (importStamp == null) {   // first look in this process: whatever is on disk is what it read at start
+            importStamp = token;
+            return false;
+        }
+        if (token.equals(importStamp)) return false;
+        importStamp = token;
+        reload();
         return true;
     }
 

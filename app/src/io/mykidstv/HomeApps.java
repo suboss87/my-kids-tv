@@ -536,11 +536,12 @@ final class HomeApps {
                     // the row's app, whatever the intent names, and no permission grants from it.
                     try {
                         Intent resume = Intent.parseUri(it.uri, Intent.URI_INTENT_SCHEME);
+                        resume.setSelector(null);   // setPackage refuses an intent with a selector
                         resume.setPackage(it.pkg).setComponent(null).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         resume.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                         intent = resume;
-                    } catch (java.net.URISyntaxException e) {
-                        AppLog.w("couldn't read the row's intent for " + it.label);   // the app's home instead
+                    } catch (java.net.URISyntaxException | RuntimeException e) {
+                        AppLog.w("couldn't use the row's intent for " + it.label + ": " + e.getMessage());   // the app's home instead
                     }
                 } else if (intent != null && it.uri != null) {
                     // A fresh task: with the app already open, Android would otherwise only bring it to the front and the
