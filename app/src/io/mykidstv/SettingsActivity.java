@@ -788,8 +788,17 @@ public class SettingsActivity extends Activity {
                 }
             }
             Paint hint = Ui.text(Ui.regular, 23 * k, 0x8CFFFFFF);
-            c.drawText(Ui.tr("Switching takes a few seconds; the screen blinks while it measures."), LIST_X * k + 30 * k,
-                    (LIST_TOP + 20 + 2 * (CHOICE_H + ROW_GAP) + 40) * k, hint);
+            float hy = (LIST_TOP + 20 + 2 * (CHOICE_H + ROW_GAP) + 40) * k;
+            c.drawText(Ui.tr("Switching takes a few seconds; the screen blinks while it measures."), LIST_X * k + 30 * k, hy, hint);
+            // The last self-check (at boot and once a day): a TV update that turned things back on was put right then.
+            long checkedAt = state.optLong("checkedAt", 0);
+            if (freeActive() && checkedAt > 0) {
+                JSONArray fixed = state.optJSONArray("checkedFixed");
+                String line = fixed != null && fixed.length() > 0
+                        ? Ui.trf("Last check {time}: put back {n} thing(s) a TV update had changed.", "time", ago(checkedAt), "n", fixed.length())
+                        : Ui.trf("Last check {time}: everything as you left it.", "time", ago(checkedAt));
+                c.drawText(line, LIST_X * k + 30 * k, hy + 38 * k, hint);
+            }
         }
 
         private static int blend(int a, int b, float f) {

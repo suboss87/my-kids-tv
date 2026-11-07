@@ -42,6 +42,29 @@ public class ModeJob extends JobService {
         return false;
     }
 
+    /** The daily check's job id (a periodic job of its own, so a one-off VERIFY never replaces it). */
+    static final int DAILY_ID = 2001;
+    private static final long DAILY_MS = 24 * 60 * 60_000L;
+
+    /**
+     * A check once a day while My Kids TV is on, besides the one at boot: a TV update that comes in over days, or a
+     * maker's service that turns its apps back on, is put right within a day, not at the next restart.
+     */
+    static void scheduleDaily(Context c) {
+        JobScheduler scheduler = c.getSystemService(JobScheduler.class);
+        if (scheduler == null) return;
+        PersistableBundle extras = new PersistableBundle();
+        extras.putString("action", VERIFY);
+        extras.putString("mode", "");
+        scheduler.schedule(new JobInfo.Builder(DAILY_ID, new ComponentName(c, ModeJob.class)).setExtras(extras)
+                .setPeriodic(DAILY_MS).setPersisted(true).build());
+    }
+
+    static void cancelDaily(Context c) {
+        JobScheduler scheduler = c.getSystemService(JobScheduler.class);
+        if (scheduler != null) scheduler.cancel(DAILY_ID);
+    }
+
     /** Schedules a job (one pending per action: a new request replaces the old one). */
     static void schedule(Context c, String action, String mode, long delayMs) {
         JobScheduler scheduler = c.getSystemService(JobScheduler.class);

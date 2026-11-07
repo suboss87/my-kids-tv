@@ -235,6 +235,7 @@ final class HomeMode {
         if (AMAZON) return;
         ensureRemoteService(c, 30_000);
         ModeJob.schedule(c, ModeJob.VERIFY, null, 45_000);
+        if (FREE.equals(state(c).optString("mode"))) ModeJob.scheduleDaily(c);
     }
 
     /** After an update of this app: complete My Kids TV mode if anything is missing. */
@@ -332,6 +333,7 @@ final class HomeMode {
             String jmBefore = jm ? jmHome(adb) : "";
             if (jm && !jmBefore.equals(PKG)) latest.put("originalJmHome", jmBefore.matches("[\\w.]*") ? jmBefore : "");
             save(c, latest);
+            recordOriginal(adb, latest);
             // Turning off an app makes Android delete the Wi-Fi networks it saved (#14), and Original can't bring them
             // back. The TV's first setup usually saved the network: then stop here, before anything changes.
             Set<String> owners = wifiOwners(adb);
@@ -422,6 +424,7 @@ final class HomeMode {
                 }
             }
             notice(c, Ui.trf("My Kids TV is on: new home screen and screensaver, {n} apps turned off.", "n", disabled.size()));
+            ModeJob.scheduleDaily(c);
             busy(c, Ui.tr("Measuring My Kids TV…"));
             measureHomeTime(c, adb, FREE);
             done(c, null);
@@ -480,6 +483,8 @@ final class HomeMode {
             grantWatchNext(adb, false);
             adb.shell("appops set " + PKG + " SYSTEM_ALERT_WINDOW default");   // SleepOverlay's, if it was allowed
             Capabilities.forget(c, Capabilities.OVERLAY);                       // asked again next time
+            ModeJob.cancelDaily(c);
+            if (failed.isEmpty() && homeOk) adb.shell("settings delete global " + RECORD_ORIGINAL);
             s = state(c);
             s.put("mode", ORIGINAL).put("since", System.currentTimeMillis()).put("homeReverted", false)
                     .put("disabled", new JSONArray(failed)).remove("keptOff");
@@ -703,9 +708,11 @@ final class HomeMode {
                 latest.put("disabled", new JSONArray(sorted(disabled)));
                 save(app, latest);
             } catch (Exception e) {
+                checked(app, fixed);
                 notice(app, Ui.trf("Couldn't check My Kids TV: {error}", "error", e.getMessage()));
                 return;
             }
+            checked(app, fixed);
             if (!fixed.isEmpty()) {
                 notice(app, updated ? Ui.trf("The TV update turned back on {list}.", "list", String.join(", ", fixed))
                         : Ui.trf("Turned off what was missing: {list}.", "list", String.join(", ", fixed)));
@@ -713,6 +720,15 @@ final class HomeMode {
                 notice(app, Ui.tr("The TV was updated; My Kids TV is still on."));
             }
         }
+    }
+
+    /** When the last check ran and what it put back (the settings show it; tools/check.py reads the same). */
+    private static void checked(Context app, List<String> fixed) {
+        JSONObject s = state(app);
+        try {
+            s.put("checkedAt", System.currentTimeMillis()).put("checkedFixed", new JSONArray(fixed));
+        } catch (JSONException ignored) {}
+        save(app, s);
     }
 
     /**
@@ -1031,6 +1047,22 @@ final class HomeMode {
      * and a new install must still tell its own work from what the person had turned off (#142).
      */
     private static final String RECORD = "free_my_tv_disabled";
+    /**
+     * The TV's own home screen, screensaver service and screensaver setting as they were before the switch, kept in
+     * the TV's settings too ("home|dream|screensaver"): tools/restore.py puts them back from a computer with adb
+     * alone, with this app gone or broken. Deleted by Original.
+     */
+    static final String RECORD_ORIGINAL = "free_my_tv_original";
+
+    private static void recordOriginal(Adb adb, JSONObject s) {
+        String v = originalHome(s) + "|" + originalDream(s) + "|" + safeComponents(s.optString("originalScreensaver", ""));
+        if (!v.matches("[\\w./$,|]*")) return;
+        try {
+            adb.shell("settings put global " + RECORD_ORIGINAL + " '" + v + "'");
+        } catch (IOException e) {
+            AppLog.w("could not save the record of the original home screen: " + e.getMessage());
+        }
+    }
 
     private static Set<String> recorded(Adb adb) {
         Set<String> out = new HashSet<>();
