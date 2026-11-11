@@ -80,10 +80,22 @@ def main():
         print('The My Kids TV on this TV is too old to take settings this way: install the new MyKidsTV.apk first.')
         return 1
     uri = f'content://io.mykidstv.config/config.properties?size={len(data)}'
-    r = subprocess.run(['adb', *SERIAL, 'exec-in', 'content', 'write', '--uri', uri], input=data, capture_output=True)
-    if r.returncode != 0:
-        print('Sending failed: ' + (r.stderr.decode(errors="replace").strip() or 'adb returned an error'))
-        return 1
+    # Through a file only adb's shell can read (/data/local/tmp), not a stream: `adb exec-in content write` reaches
+    # some TVs (Android 14 over Wi-Fi among them) with nothing on its stdin, and the app then sees an empty send.
+    remote = f'/data/local/tmp/mykidstv-config-{os.getpid()}.properties'
+    with tempfile.NamedTemporaryFile('wb', suffix='.properties', delete=False) as tmp:
+        tmp.write(data)
+    try:
+        r = adb('push', tmp.name, remote)
+        if r.returncode != 0:
+            print('Sending failed: ' + (r.stderr.strip() or r.stdout.strip() or 'adb push returned an error'))
+            return 1
+        r = adb('shell', f"content write --uri '{uri}' < {remote}; rc=$?; rm -f {remote}; exit $rc")
+        if r.returncode != 0 or 'Error' in r.stdout + r.stderr or 'Exception' in r.stdout + r.stderr:
+            print('Sending failed: ' + ((r.stdout + r.stderr).strip() or 'the TV returned an error'))
+            return 1
+    finally:
+        os.unlink(tmp.name)
     keys = sorted({line.split('=', 1)[0].strip() for line in text.splitlines()
                    if '=' in line and not line.lstrip().startswith('#')})
     shown = ', '.join(k for k in keys if k not in ('tmdb_key', 'watchmode_key', 'parent_pin'))

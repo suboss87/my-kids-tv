@@ -238,9 +238,13 @@ final class HomeMode {
         if (FREE.equals(state(c).optString("mode"))) ModeJob.scheduleDaily(c);
     }
 
-    /** After an update of this app: complete My Kids TV mode if anything is missing. */
+    /**
+     * After an update of this app: complete My Kids TV mode if anything is missing, and set the daily check again (an
+     * install from before it, or one where the update dropped the job, gets it without waiting for the next boot).
+     */
     static void verify(Context c) {
         ModeJob.schedule(c, ModeJob.VERIFY, null, 0);
+        if (FREE.equals(state(c).optString("mode"))) ModeJob.scheduleDaily(c);
     }
 
     /**

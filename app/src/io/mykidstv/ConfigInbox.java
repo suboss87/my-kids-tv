@@ -15,8 +15,9 @@ import java.io.IOException;
 
 /**
  * Where tools/push-config.py sends a config.properties, so settings (and the parent PIN, and the TMDB key) change
- * without a rebuild: `adb exec-in content write --uri content://io.mykidstv.config/config.properties?size=<bytes>`.
- * Only adb's shell (or root) may write, as with PhotoInbox. The file lands in the app's private inbox and
+ * without a rebuild: `adb shell "content write --uri content://io.mykidstv.config/config.properties?size=<bytes>
+ * < /data/local/tmp/<file>"` (a file, not `exec-in`: on some TVs the stream arrives empty). Only adb's shell (or root)
+ * may write, as with PhotoInbox. The file lands in the app's private inbox and
  * {@link Prefs#importConfig} applies and deletes it the next time the home screen, the screensaver or the settings
  * open (the home screen also looks every 15 s while it is on). Nothing in it is ever logged.
  */
